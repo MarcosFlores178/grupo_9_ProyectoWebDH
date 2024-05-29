@@ -8,3 +8,12 @@ Explora nuestra selección de camisetas transpirables, pantalones cómodos, calz
 Público Objetivo:
 
 Nuestro sitio está dirigido a los amantes del futbol. Además, ofrecemos opciones para hombres, mujeres y niños, asegurando que toda la familia pueda encontrar lo que necesita para alcanzar sus metas deportivas y mantenerse activa con estilo.
+
+Sitios de Referencia:
+
+https://www.solodeportes.com.ar/
+https://www.megasports.com.ar/
+https://www.sportline.com.ar/
+https://www.dexter.com.ar/?gad_source=1&gclid=CjwKCAjwgdayBhBQEiwAXhMxtkiereV571tLhtRtvqRGSc6xB4pAznmQONkLJ5W1JYI_UGhGxxI4tRoC1nQQAvD_BwE
+https://www.digitalsport.com.ar/
+https://www.netshoes.com.br/lst/promo-treino?mi=hm_sc_f1_treino_250524-mas-00&psn=Banner_Full_1
