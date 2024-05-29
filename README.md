@@ -1,19 +1,29 @@
-<h1>Oferta de Indumentaria Deportiva:</h1>
+<h1>Oferta de Indumentaria Deportiva</h1>
 
-Nuestra tienda online de indumentaria deportiva ofrece una amplia gama de productos diseñados para satisfacer las necesidades de todos los amantes del futbol, tanto a atletas y entusiastas de este hermoso deporte. Desde ropa especializada hasta accesorios de alta calidad, nuestra colección está cuidadosamente seleccionada para brindar comodidad, rendimiento y estilo en cada actividad física.
-Nos enfocamos en aquellos que valoran la calidad, la innovación y el confort.
+Nuestra tienda de indumentaria deportiva online ofrece una amplia gama de productos diseñados para todos los amantes del Futbol. Ropa especializada, accesorios de alta calidad, colección cuidadosamente seleccionada, todo esto para brindar comodidad, rendimiento y un estilo de vida activo.
 
-Explora nuestra selección de camisetas transpirables, pantalones cómodos, calzado de alto rendimiento y accesorios funcionales como mochilas, gorras y guantes. Además, contamos con una variedad de marcas reconocidas por su excelencia en la industria deportiva, asegurando que nuestros clientes tengan acceso a lo mejor en tecnología y diseño.
+Explora nuestra selección de camisetas transpirables, pantalones cómodos, calzado de alto rendimiento y accesorios funcionales como bolsos, canilleras y guantes. Además, trabajamos con variedades de marcas de primer nivel en la industria deportiva.
 
-Público Objetivo:
+<h2>>Público Objetivo:</h2>
 
-Nuestro sitio está dirigido a los amantes del futbol. Además, ofrecemos opciones para hombres, mujeres y niños, asegurando que toda la familia pueda encontrar lo que necesita para alcanzar sus metas deportivas y mantenerse activa con estilo.
+Dirigido para los y las amantes del futbol. Nos enfocamos en aquellos que valoran la calidad, la innovación y el confort, por lo que ofrecemos varias opciones, para hombres, mujeres, niños, niñas, abuelos, etc. Nos aseguramos que todas las familias puedan encontrar lo que necesitan para alcanzar sus metas deportivas y mantenerse activas con estilo.
 
-Sitios de Referencia:
+<h2>Sitios de Referencia:</h2>
 
-https://www.solodeportes.com.ar/
+https://www.solodeportes.com.ar/ 
+/n
 https://www.megasports.com.ar/
+/n
 https://www.sportline.com.ar/
-https://www.dexter.com.ar/?gad_source=1&gclid=CjwKCAjwgdayBhBQEiwAXhMxtkiereV571tLhtRtvqRGSc6xB4pAznmQONkLJ5W1JYI_UGhGxxI4tRoC1nQQAvD_BwE
+/n
+https://www.dexter.com.ar
+/n
 https://www.digitalsport.com.ar/
-https://www.netshoes.com.br/lst/promo-treino?mi=hm_sc_f1_treino_250524-mas-00&psn=Banner_Full_1
+/n
+https://www.netshoes.com.br
+
+<h2>Integrantes del equipo:</h2>
+
+<h3>QUINTERO CARLOS GASTON</h3>
+_Graduado de la carrera de **Ingenieria en Sistemas** en la Universidad Nacional de La Rioja (UNLAR), tengo 34 años y 2 hijos. Actualmente soy director del Punto Digital del departamento Sanagasta. Cuento con experiencia en tecnologias de bases de datos (SQL Server), redes e instalaciones de camaras de seguridad atraves de IP, manejo de Active Directory (Proxy, Dominios, Directivas), reparacion de equipos informaticos e instalación de SO, manejo de PowerBI, amplio conocimiento en Electricidad Domiciliaria e instalacion de Paneles solares. Uso Windows 10. Comprometido y colaborativo con todos los equipos que me toco integrar o dirigir, siempre dispuesto a aprender, enseñar y mejorar. Mi manejo del lenguaje ingles es moderado._
+
