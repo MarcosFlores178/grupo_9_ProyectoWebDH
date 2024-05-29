@@ -21,4 +21,3 @@ https://www.netshoes.com.br
 
 <h3>QUINTERO CARLOS GASTON</h3>
 Graduado de la carrera de Ingenieria en Sistemas en la Universidad Nacional de La Rioja (UNLAR), tengo 34 años y 2 hijos. Actualmente soy director del Punto Digital del departamento Sanagasta. Cuento con experiencia en tecnologias de bases de datos (SQL Server), redes e instalaciones de camaras de seguridad atraves de IP, manejo de Active Directory (Proxy, Dominios, Directivas), reparacion de equipos informaticos e instalación de SO, manejo de PowerBI, amplio conocimiento en Electricidad Domiciliaria e instalacion de Paneles solares. Uso Windows 10. Comprometido y colaborativo con todos los equipos que me toco integrar o dirigir, siempre dispuesto a aprender, enseñar y mejorar. Mi manejo del lenguaje ingles es moderado.
-
