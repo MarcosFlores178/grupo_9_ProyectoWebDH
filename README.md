@@ -31,3 +31,9 @@ Mis conocimientos en programacion son HTML, CSS, JavaScript, React, SQL, Express
 <h3>PAZ SANCHEZ JAVIER</h3>
 
 Estudiante de la carrera de Programación, Universidad Tecnologica Nacional. Conocimientos basicos en la mayoria de las herramientas, siempre fui un entusiaste por la rama de sistemas y lo amplio que puede ser. Actualmente me encuentro trabajando en la empresa Cladd en distintas fabricas en el pais, conformo un grupo de montaje de maquinas de ultima tecnologia en lo industrial donde me desarrollo como Electricista/electronico, por lastima lo unico que puedo tocar de sistema es la configuración y estructuración de PLC. Tengo conocimiento en python, pyqt, pseudo base de datos, y ahi seguimos aprendiendo...
+
+***Marcos Fabián Flores
+
+Soy estudiante de Licenciatura en Sistemas de Información en la Universidad Nacional de La Rioja :tw-1f4d2:. 
+Estoy en constante aprendizaje para mejorar mis habilidades en HTML, CSS y JavaScript :tw-1f4bb:.
+Creo firmemente que con motivación, esfuerzo y constancia, todo es posible :tw-1f4aa:.
