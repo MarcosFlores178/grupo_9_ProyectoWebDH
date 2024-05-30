@@ -27,3 +27,7 @@ Graduado de la carrera de Ingenieria en Sistemas en la Universidad Nacional de L
 Soy estudiante avanzado de la Tecnicatura
 Universitaria en Programación de la Universidad Tecnológica Nacional.Ya habiendo culminado la currícula de la carrera, sigo perfeccionando mi perfil con cursos de programación para adquirir mas herramientas como programador Fullstack. Mi nivel de Inglés es básico cubriendo lo esencial. Día a día en continua formación.En cuanto a mi experiencia laboral previa: mi paso por distintos rubros de trabajo han logrado que desarrolle habilidades de negociacion,capacidad de adaptacion, tolerancia a las criticas. Siempre con un enfoque de mejora continua.
 Mis conocimientos en programacion son HTML, CSS, JavaScript, React, SQL, Express, NodeJS.
+
+<h3>PAZ SANCHEZ JAVIER</h3>
+
+Estudiante de la carrera de Programación, Universidad Tecnologica Nacional. Conocimientos basicos en la mayoria de las herramientas, siempre fui un entusiaste por la rama de sistemas y lo amplio que puede ser. Actualmente me encuentro trabajando en la empresa Cladd en distintas fabricas en el pais, conformo un grupo de montaje de maquinas de ultima tecnologia en lo industrial donde me desarrollo como Electricista/electronico, por lastima lo unico que puedo tocar de sistema es la configuración y estructuración de PLC. Tengo conocimiento en python, pyqt, pseudo base de datos, y ahi seguimos aprendiendo...
