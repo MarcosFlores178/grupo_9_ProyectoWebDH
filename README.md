@@ -32,7 +32,7 @@ Mis conocimientos en programacion son HTML, CSS, JavaScript, React, SQL, Express
 
 Estudiante de la carrera de Programación, Universidad Tecnologica Nacional. Conocimientos basicos en la mayoria de las herramientas, siempre fui un entusiaste por la rama de sistemas y lo amplio que puede ser. Actualmente me encuentro trabajando en la empresa Cladd en distintas fabricas en el pais, conformo un grupo de montaje de maquinas de ultima tecnologia en lo industrial donde me desarrollo como Electricista/electronico, por lastima lo unico que puedo tocar de sistema es la configuración y estructuración de PLC. Tengo conocimiento en python, pyqt, pseudo base de datos, y ahi seguimos aprendiendo...
 
-*** Marcos Fabián Flores
+<h3>MARCOS FABIÁN FLORES</h3>
 
 Soy estudiante de Licenciatura en Sistemas de Información en la Universidad Nacional de La Rioja. 
 Estoy en constante aprendizaje para mejorar mis habilidades en HTML, CSS y JavaScript.
