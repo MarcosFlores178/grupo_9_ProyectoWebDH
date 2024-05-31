@@ -1,5 +1,11 @@
 <h1>Oferta de Indumentaria Deportiva</h1>
 
+![GitHub Created At](https://img.shields.io/github/created-at/MarcosFlores178/grupo_9_ProyectoWebDH )
+![GitHub commit activity](https://img.shields.io/github/commit-activity/t/MarcosFlores178/grupo_9_ProyectoWebDH )
+![GitHub last commit](https://img.shields.io/github/last-commit/MarcosFlores178/grupo_9_ProyectoWebDH )
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MarcosFlores178/grupo_9_ProyectoWebDH )
+![GitHub License](https://img.shields.io/github/license/MarcosFlores178/grupo_9_ProyectoWebDH )
+
 Nuestra tienda de indumentaria deportiva online ofrece una amplia gama de productos diseñados para todos los amantes del Futbol. Ropa especializada, accesorios de alta calidad, colección cuidadosamente seleccionada, todo esto para brindar comodidad, rendimiento y un estilo de vida activo.
 
 Explora nuestra selección de camisetas transpirables, pantalones cómodos, calzado de alto rendimiento y accesorios funcionales como bolsos, canilleras y guantes. Además, trabajamos con variedades de marcas de primer nivel en la industria deportiva.
