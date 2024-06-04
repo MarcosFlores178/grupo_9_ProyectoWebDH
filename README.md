@@ -46,3 +46,7 @@ Estudiante de la carrera de Programación, Universidad Tecnologica Nacional. Con
 Soy estudiante de Licenciatura en Sistemas de Información en la Universidad Nacional de La Rioja. 
 Estoy en constante aprendizaje para mejorar mis habilidades en HTML, CSS y JavaScript.
 Creo firmemente que con motivación, esfuerzo y constancia, todo es posible.
+
+<h3>DIEGO ORLANDO DIAZ JARA</h3>
+
+Soy estudiante de Ingenieria en Sistemas, cursando 4 año, conocimientos medio en lenguajes como c, c++, c#, en 2021 me recibí de diplomado en robótica, día a día me esfuerzo en aprender cosas nuevas relacionadas al mundo de las IT, estoy en constante capacitación, tambien me dedico a la parte técnica en arreglo de pc y cel. Con perseverancia y siendo resiliente tengo la confianza en que podremos afrontar estos desafios y aprender paralelamente.
