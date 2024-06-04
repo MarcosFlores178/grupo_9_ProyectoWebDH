@@ -23,15 +23,26 @@ https://www.solodeportes.com.ar
 https://www.megasports.com.ar  
 https://www.sportline.com.ar  
 https://www.dexter.com.ar  
-https://www.digitalsport.com.ar  
 https://www.netshoes.com.br
+
+<p>Elegimos estos sitios webs antes descriptos, porque son los que se asemejan al proyecto que vamos a desarrollar. Estos sitios en dispositivos moviles nos dejo ciertas ideas y preferencias que pondremos en practica, y donde podremos comenzar. Algunos de estas ideas son: 
+<ul>
+    <li>Los carruseles de productos</li> 
+    <li>Los carruseles de marcas deportivas</li> 
+    <li>Logueo y Registro sencillo de algunos sitios</li>
+    <li>Los menus desplegables</li>
+    <li>El carrito de compras</li>
+    <li>La pagina de favoritos</li>
+</ul>
+Todas las paginas, a su vez, usan un fondo blanco para resaltar los productos, y solo usan colores relativos a la marca en el header y el color negro/gris oscuro en el footer</p>
 
 <h2>Integrantes del equipo:</h2>
 
 <h3>QUINTERO CARLOS GASTON</h3>
+
 Graduado de la carrera de Ingenieria en Sistemas en la Universidad Nacional de La Rioja (UNLAR), tengo 34 años y 2 hijos. Actualmente soy director del Punto Digital del departamento Sanagasta. Cuento con experiencia en tecnologias de bases de datos (SQL Server), redes e instalaciones de camaras de seguridad atraves de IP, manejo de Active Directory (Proxy, Dominios, Directivas), reparacion de equipos informaticos e instalación de SO, manejo de PowerBI, amplio conocimiento en Electricidad Domiciliaria e instalacion de Paneles solares. Uso Windows 10. Comprometido y colaborativo con todos los equipos que me toco integrar o dirigir, siempre dispuesto a aprender, enseñar y mejorar. Mi manejo del lenguaje ingles es moderado.
 
-<h3>>LUCAS BARRERA MENEM</h3>
+<h3>LUCAS BARRERA MENEM</h3>
 
 Soy estudiante avanzado de la Tecnicatura
 Universitaria en Programación de la Universidad Tecnológica Nacional.Ya habiendo culminado la currícula de la carrera, sigo perfeccionando mi perfil con cursos de programación para adquirir mas herramientas como programador Fullstack. Mi nivel de Inglés es básico cubriendo lo esencial. Día a día en continua formación.En cuanto a mi experiencia laboral previa: mi paso por distintos rubros de trabajo han logrado que desarrolle habilidades de negociacion,capacidad de adaptacion, tolerancia a las criticas. Siempre con un enfoque de mejora continua.
