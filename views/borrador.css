@@ -1,0 +1,32 @@
+
+/* Define estilos generales aquí */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.header {
+    position: relative; /* Posiciona el header de manera relativa */
+    display: flex; /* Utiliza flexbox para el diseño flexible */
+    justify-content: space-between; /* Distribuye los elementos a lo largo del header */
+    align-items: center; /* Centra verticalmente los elementos */
+    background-color: #f0f0f0; /* Color de fondo del header (solo como ejemplo) */
+    padding: 10px 20px; /* Espaciado interno del header */
+}
+/* Contenedor del menú */
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: blueviolet;
+    height: max-content;
+}
+
+/* Ajuste del tamaño del logo */
+.logo {
+    width: 20vw; /* Ajusta este valor según tus necesidades */
+    max-width: 80px; /* Ancho máximo del logo */
+    min-width: 30px; /* Ancho mínimo del logo */
+    height: auto; /* Mantiene la proporción del logo */
+    margin: 3px auto 3px auto;
+}
