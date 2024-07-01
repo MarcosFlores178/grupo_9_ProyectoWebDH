@@ -84,68 +84,66 @@ body {
     background-color: #2966cf;
     color: white;
     border-radius: 5px;
-    width: 150px;
+    width: 200px;
     height: 30px;
-    img {
+    i {
+      margin: 5px;
       width: 20px;
       height: 20px;
     }
   }
 }
 /* seccion de estilos de footer */
-.footer {
-  background-color: #fff;
+footer {
+  background-color: #61bcd3;
+  border-top: 1px solid #18798b;
+}
+.footer-div-menus {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
+}
+.singular-menu {
   position: relative;
+  display: inline-block;
+  width: 90%;
 }
-.institucional {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  a {
-    text-decoration: none;
-    color: black;
-  }
-}
-.ayuda {
+.footer-h3 {
   width: 100%;
-  align-items: center;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  a {
-    text-decoration: none;
-    color: black;
-  }
+  padding: 8px;
+  box-sizing: content-box;
+  cursor: pointer;
+  margin: 5px;
 }
-.atencion-cliente {
-  width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  a {
-    text-decoration: none;
-    color: black;
-  }
+.footer-h3:hover {
+  background-color: #13949c;
 }
-
-@media (min-width: 426px) {
-  .footer {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .atencion-cliente {
-    width: 30%;
-  }
-  .ayuda {
-    width: 30%;
-  }
-  .institucional {
-    width: 30%;
-  }
+.sub-menus-footer {
+  display: none;
+  background-color: #61bcd3;
+  padding: 10px;
+}
+.sub-menus-footer a {
+  color: black;
+  padding: 8px 0;
+  text-decoration: none;
+  display: block;
+}
+.sub-menus-footer a:hover {
+  background-color: #13949c;
+}
+footer img {
+  height: 50px;
+}
+.footer-div-copyright {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  background-color: #13949c;
+  border-top: 1px solid #18798b;
+}
+.footer-p-copyright {
+  font-size: 10px;
+  text-align: justify;
 }

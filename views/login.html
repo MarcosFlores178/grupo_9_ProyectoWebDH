@@ -9,9 +9,9 @@
       rel="stylesheet"
     />
     <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    rel="stylesheet"
-  />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
     <title>Login goool store</title>
   </head>
   <body>
@@ -19,54 +19,76 @@
       <div class="hamburger">
         <i class="fa-solid fa-bars"></i>
       </div>
-      <img class="logo" src="/images/logo_sin_fondo.png" alt="" />
+      <img class="logo" src="../images/logo_sin_fondo.png" alt="" />
       <div class="iconos">
         <i class="fa-solid fa-right-to-bracket"></i>
-        <i class="fa-solid fa-user-plus"></i>      
+        <i class="fa-solid fa-user-plus"></i>
       </div>
     </header>
     <form class="login">
       <input
-      required
-      minlength="3"
-      maxlength="30"
+        required
+        minlength="3"
+        maxlength="30"
         type="text"
         placeholder="Nombre de usuario"
       />
-      <input 
-      type="password" 
-      placeholder="Contaraseña"
-       required />
+      <input type="password" placeholder="Contaraseña" required />
       <div class="remember">
-        <input type="checkbox" name="remember" id="" value="remember"/><label
-        for="remember"
-        >Recordarme</label
+        <input type="checkbox" name="remember" id="" value="remember" /><label
+          for="remember"
+          >Recordarme</label
         >
       </div>
-        <input class="boton-enviar" type="submit" value="Ingresar" />
-      <button class="boton-enviar"><img src="https://img.icons8.com/fluency/48/google-logo.png" alt="google-logo"/> Ingresar con Google </button>
+      <input class="boton-enviar" type="submit" value="Ingresar" />
+      <button class="boton-enviar">
+        <i class="fa-brands fa-google"></i>Ingresar con Google
+      </button>
     </form>
-    <footer class="footer">
-      <div class="institucional">
-          <h3 class="titlulo-institucional">Institucional</h3>
-          <a href="">Acerca de nosotros</a>
-          <a href="">Quienes somos</a>
-          <a href="">Politicas de privacidad<a>
-          <a href="">Terminos y condiciones</a>
-          <a href="">Defensa al consumidor</a>
-          <a href="">Trabaja con nosotros</a>
+    <footer>
+      <div class="footer-div-menus">
+        <div class="singular-menu">
+          <h3 class="footer-h3">Institucional</h3>
+          <div class="sub-menus-footer">
+            <a href="#">Quiénes somos</a>
+            <a href="#">Historia</a>
+            <a href="#">Misión y Visión</a>
+            <a href="#">Políticas de privacidad</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Defensa al consumidor</a>
+          </div>
+        </div>
+        <div class="singular-menu">
+          <h3 class="footer-h3">Ayuda</h3>
+          <div class="sub-menus-footer">
+            <a href="#">FAQ</a>
+            <a href="#">Pagos y promociones</a>
+            <a href="#">Soporte Técnico</a>
+          </div>
+        </div>
+        <div class="singular-menu">
+          <h3 class="footer-h3">Atención al Cliente</h3>
+          <div class="sub-menus-footer">
+            <a href="#">Teléfonos</a>
+            <a href="#">Emails</a>
+            <a href="#">Horario</a>
+          </div>
+        </div>
       </div>
-      <div class="ayuda">
-          <h3 class="titulo-ayuda">Ayuda</h3>
-          <a href="">Preguntas frecuentes</a>
-          <a href="">Pagos y promociones</a>
-          <a href="">Devoluciones</a>
-      </div>
-      <div class="atencion-cliente">
-        <h3>Atencion al cliente</h3>
-        <a href="mailto:">Envianos un email</a>
-        <a href="">whatsapp : 3804385769</a>
+      <div class="footer-div-copyright">
+        <img src="images/logo_sin_fondo.png" alt="imagen de goool store" />
+        <p class="footer-p-copyright">
+          © Copyright GOOOL STORE 2024 - www.gooolstore.com.ar - TODOS LOS
+          DERECHOS RESERVADOS. Las fotos del site y el logotipo son propiedad de
+          www.gooolstore.com.ar y las marcas de sus respectivos titulares. Está
+          prohibida la reproducción total o parcial, sin la expresa autorización
+          del administrador de la tienda virtual. GOOOL STORE, empresa
+          perteneciente al grupo DIGITALHOUSE con domicilio en
+          "VALLA–A–SABER–DONDE" N° "VALLA–A–SABER–CUAL" de la Provincia de
+          Buenos Aires – Argentina.
+        </p>
       </div>
     </footer>
+    <script src="../js/login.js"></script>
   </body>
 </html>
