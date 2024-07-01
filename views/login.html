@@ -8,34 +8,35 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
       rel="stylesheet"
     />
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    rel="stylesheet"
+  />
     <title>Login goool store</title>
   </head>
   <body>
     <header class="header">
       <div class="hamburger">
-        <img
-          src="https://img.icons8.com/ios-glyphs/30/menu--v3.png"
-          alt="menu--v3"
-        />
+        <i class="fa-solid fa-bars"></i>
       </div>
-      <div class="logo">
-        <img src="/images/logo_sin_fondo.png" alt="" />
-      </div class="usuario">
+      <img class="logo" src="/images/logo_sin_fondo.png" alt="" />
       <div class="iconos">
-        <img class="login-icon"  src="https://img.icons8.com/ios/50/enter-2.png" alt="logearse"/>
-        <img class="register-icon" src="https://img.icons8.com/ios/50/add-user-male.png" alt="registrarse"/>
+        <i class="fa-solid fa-right-to-bracket"></i>
+        <i class="fa-solid fa-user-plus"></i>      
       </div>
-    </div>
     </header>
     <form class="login">
       <input
+      required
+      minlength="3"
+      maxlength="30"
         type="text"
         placeholder="Nombre de usuario"
-        required
-        minlength="2"
-        maxlength="30"
       />
-      <input type="password" placeholder="Contaraseña" required />
+      <input 
+      type="password" 
+      placeholder="Contaraseña"
+       required />
       <div class="remember">
         <input type="checkbox" name="remember" id="" value="remember"/><label
         for="remember"
@@ -45,5 +46,27 @@
         <input class="boton-enviar" type="submit" value="Ingresar" />
       <button class="boton-enviar"><img src="https://img.icons8.com/fluency/48/google-logo.png" alt="google-logo"/> Ingresar con Google </button>
     </form>
+    <footer class="footer">
+      <div class="institucional">
+          <h3 class="titlulo-institucional">Institucional</h3>
+          <a href="">Acerca de nosotros</a>
+          <a href="">Quienes somos</a>
+          <a href="">Politicas de privacidad<a>
+          <a href="">Terminos y condiciones</a>
+          <a href="">Defensa al consumidor</a>
+          <a href="">Trabaja con nosotros</a>
+      </div>
+      <div class="ayuda">
+          <h3 class="titulo-ayuda">Ayuda</h3>
+          <a href="">Preguntas frecuentes</a>
+          <a href="">Pagos y promociones</a>
+          <a href="">Devoluciones</a>
+      </div>
+      <div class="atencion-cliente">
+        <h3>Atencion al cliente</h3>
+        <a href="mailto:">Envianos un email</a>
+        <a href="">whatsapp : 3804385769</a>
+      </div>
+    </footer>
   </body>
 </html>
