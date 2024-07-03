@@ -1,0 +1,16 @@
+{
+  "name": "proyectodh",
+  "version": "1.0.0",
+  "description": "ramaLucas",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon ./app.js",
+    "dev": "node --watch ./app.js"
+  },
+  "author": "Lucas Barrera Menem",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
+}
