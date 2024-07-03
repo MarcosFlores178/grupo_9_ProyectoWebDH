@@ -1,13 +1,18 @@
-const express = require ('express');
-const path = require ('path');
-const app = express ();
+const express = require("express");
+const path = require("path");
+const app = express();
 
-app.use (express.static("./public"));
+const publicPath = path.resolve(__dirname, "./public");
 
-const port = 8080;
+app.use(express.static(publicPath));
 
-app.listen(port, () => console.log("Servidor corriendo en el puerto 8080"));
-
+app.get("/login", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./views/login.html"));
+});
 app.get("/register",(req, res)=>{
     res.sendFile(path.resolve("./views/register.html"));
 })
+app.listen(8080, () => {
+  console.log("Servidor corriendo en el puerto 8080");
+});
+
