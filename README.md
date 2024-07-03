@@ -24,6 +24,9 @@ Explora nuestra selección de camisetas transpirables, pantalones cómodos, calz
 
 Dirigido para los y las amantes del futbol. Nos enfocamos en aquellos que valoran la calidad, la innovación y el confort, por lo que ofrecemos varias opciones, para hombres, mujeres, niños, niñas, abuelos, etc. Nos aseguramos que todas las familias puedan encontrar lo que necesitan para alcanzar sus metas deportivas y mantenerse activas con estilo.
 
+<h2>Tablero Jira:</h2>
+https://proyectwebdh.atlassian.net/jira/software/projects/SCRUM/boards/1
+
 <h2>Sitios de Referencia:</h2>
 
 https://www.solodeportes.com.ar  
