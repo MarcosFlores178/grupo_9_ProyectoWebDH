@@ -123,6 +123,13 @@ i {
     border-radius: 4px;
 }
 
+.promociones img{
+           max-width: 100%;
+        height: auto;
+        display: block; /* Opcional, elimina el espacio debajo de la imagen */
+   
+    
+}
 
 .search-bar button:hover {
     background-color: #365f9b;
@@ -145,15 +152,27 @@ i {
 
 .categorias img {
     width: 100%;
-    /* Ajusta el ancho al 100% del contenedor */
     height: auto;
-    /* Mantiene la proporción de aspecto */
     max-width: 450px;
-    /* Tamaño máximo para las imágenes */
     margin-bottom: 10px;
-    /* Espacio inferior entre imágenes */
 }
 
+/* .image-container {
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+.image-container img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    width: 100%;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+} */
 .logo-container-desktop {
     display: none;
 }
