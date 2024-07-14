@@ -21,6 +21,10 @@ app.get("/details-product", (req, res) => {
   res.sendFile(path.resolve(__dirname, 'views/Details-producto.html'));
 });
 
+app.get("/shopping-cart", (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'views/shopping-cart.html'));
+});
+
 app.listen(8080, () => {
   console.log("Servidor corriendo en el puerto 8080");
 });
