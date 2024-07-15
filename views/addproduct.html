@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/producto.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="nav_principal">
+        <nav class="navigation">
+        <section class="encabezado_principal">
+            <article class="logo">
+                <picture>
+                <img class="imagen_logo" src="/images/logo_sin_fondo.svg" alt="log GOL STORE">
+            </picture>
+        </article>
+    </nav>
+        <nav>
+        <article class="buscador">
+            <form class="barra">
+                <input type="search" class="barra_buscar" id="search" name="search"
+                    placeholder="Buscar productos, marcas"><i class="fas fa-search"></i>
+            </form>
+    </article>
+</nav>
+    <nav class="login_icons">
+        <ul type="none" class="menu2">
+            <li><a href='/register'><i id="icons" class="fa-regular fa-user"></i></a></li>
+            <li><a href='/login'><i id="icons" class="fa-solid fa-heart"></i></a></li>
+            <li><a href=''><i id="icons" class="fa-solid fa-cart-shopping"></i></a></li>
+        </ul>
+    </nav>
+</nav>
+        <div class="menu_mobile">
+                <button class="navbar-toggler d-md-none" type="button" aria-controls="sg-navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    ☰
+                </button>
+            </div>
+            </section>
+    </header>
+    <main>
+        <section class="cargaproducto">
+            <h2>
+             Formulario de Carga y Edicion de productos
+            </h2>
+            <form action="" class="formulario">
+                    <div class="opciones">
+                        <div class="op">
+                            <input
+                              class="input"
+                              type="radio"
+                              name="cargar-editar"
+                              id="carga"
+                              value="carga"
+                            /><label for="carga">Cargar</label>
+                        </div>
+                        <div class="op">
+                            <input
+                              class="input"
+                              type="radio"
+                              name="cargar-editar"
+                              value="editar"
+                              id="editar"
+                            /><label for="editar">Editar</label>
+                        </div>
+                    </div>
+                    <label for="nombre">Nombre del producto</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  placeholder="Nombre del producto"
+                />
+                <label for="descripcion">Descriondel producto</label>
+                <textarea
+                  type="text"
+                  name="descripcion"
+                  id="descripcion"
+                  placeholder="descripcion"
+                ></textarea>
+                <div class="imagen">
+                    <label for="imagen">Imagen del producto</label>
+                    <input type="file" name="imagen" id="imagen" />
+                </div>
+                </div class="categoria">
+                <h3 class="titulocategoria">Categoria</h3>
+                <div class="categoria">
+                  <div class="categoria-input">
+                    <input type="radio" value="hombre" id="hombre" name="categoria"/><label for="hombre" >Hombre</label>
+                  </div>
+                  <div class="categoria-input">
+                    <input type="radio" name="categoria" id=" mujer"value="mujer" /><label>Mujer</label>
+                  </div>
+                  <div class="categoria-input">
+                    <input type="radio" name="categoria" value="ninos" id="ninos" /><label for="ninos">Niños<label>
+                  </div>
+                </div>
+               
+                <div class="botones">
+                  <input class="boton"type="submit" name="enviar" id="enviar" value="Confirmar" />
+                  <button type="reset"class="boton">Borrar todo</button>
+                </div>
+              </form>
+        </section>
+    </main>
+
+
+    <!-- seccion del footer -->
+    <footer>
+        <div class="footer-div-menus">
+            <div class="singular-menu">
+                <h3 class="footer-h3">Institucional</h3>
+                <div class="sub-menus-footer">
+                    <a href="#">Quiénes somos</a>
+                    <a href="#">Historia</a>
+                    <a href="#">Misión y Visión</a>
+                    <a href="#">Políticas de privacidad</a>
+                    <a href="#">Términos y condiciones</a>
+                    <a href="#">Defensa al consumidor</a>
+                </div>
+            </div>
+            <div class="singular-menu">
+                <h3 class="footer-h3">Ayuda</h3>
+                <div class="sub-menus-footer">
+                    <a href="#">FAQ</a>
+                    <a href="#">Pagos y promociones</a>
+                    <a href="#">Soporte Técnico</a>
+                </div>
+            </div>
+            <div class="singular-menu">
+                <h3 class="footer-h3">Atención al Cliente</h3>
+                <div class="sub-menus-footer">
+                    <a href="#">Teléfonos</a>
+                    <a href="#">Emails</a>
+                    <a href="#">Horario</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-div-copyright">
+            <img src="images/logo_sin_fondo.svg" alt="imagen de goool store">
+            <p class="footer-p-copyright">© Copyright GOOOL STORE 2024 - www.gooolstore.com.ar - TODOS LOS DERECHOS RESERVADOS. Las fotos del site y el logotipo son propiedad de www.gooolstore.com.ar y las marcas de sus respectivos titulares. Está prohibida la reproducción total o parcial, sin la expresa autorización del administrador de la tienda virtual. GOOOL STORE, empresa perteneciente al grupo DIGITALHOUSE con domicilio en "VALLA–A–SABER–DONDE" N° "VALLA–A–SABER–CUAL" de la Provincia de Buenos Aires – Argentina. </p>
+        </div>
+    </footer>
+    
+</body>
+</html>
