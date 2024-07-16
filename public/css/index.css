@@ -58,7 +58,16 @@ header {
     margin-right: auto;
     color: white;
 }
-
+.menu-container i{
+    color: #000000;
+    background-color: #ffffff;
+    width: 22px;
+    height: 22px;
+    padding: 7px;
+    border-radius: 6px;
+    font-size: 22px;
+    left: 20px;
+}
 .logo-container {
     position: absolute;
     left: 50%;
@@ -69,6 +78,13 @@ header {
     display: flex;
     gap: 20px;
     margin-left: auto;
+    color: white;
+}
+.icons-container i:hover{
+    color: #000000;
+    cursor: pointer;
+}
+.icons-container a{
     color: white;
 }
 
@@ -124,11 +140,9 @@ i {
 }
 
 .promociones img{
-           max-width: 100%;
+        max-width: 100%;
         height: auto;
         display: block; /* Opcional, elimina el espacio debajo de la imagen */
-   
-    
 }
 
 .search-bar button:hover {
@@ -196,7 +210,13 @@ i {
     justify-content: space-evenly;
     width: 20%;
 }
-
+.menu-desktop a:hover{
+    color: #000000;
+    cursor: pointer;
+}
+.menu-desktop a i{
+    margin-left: 10px;
+}
 /* .menu-categorias{
     display: none;
 } */
@@ -347,9 +367,8 @@ nav.menu-categorias {
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-right: 10px;
-        width: 33vw;
+        border-radius: 4px 0px 0px 4px;
+
     }
 
     .search-container {
@@ -357,12 +376,23 @@ nav.menu-categorias {
         justify-content: space-between;
         width: 33vw;
     }
+    .button-search {   
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #ffffff;
+        cursor: pointer;
+        border-radius: 0px 4px 4px 0px;
+    }
 
     .icons-container {
         display: none;
         gap: 20px;
         margin-left: auto;
         color: white;
+    }
+    .icons-container:hover{
+        color: #000000;
+        cursor: pointer;
     }
 
 
@@ -379,8 +409,7 @@ nav.menu-categorias {
 
     .menu-desktop {
         display: flex;
-        justify-content: space-evenly;
-        width: 30%;
+        width: auto;
     }
 
     .menu-desktop a {

@@ -10,23 +10,24 @@ paleta {
 /*------------------- HTML -----------------*/
 html {
     font-family: "roboto";
-    font-size: 12px;
+    font-size: 16px;
 }
 
 /*------------------- BODY -----------------*/
 body { 
     background-color: #DCF1F4;
     margin: 0;
+    width: 100%;
 }
 
 /*----------------- HEADER -----------------*/
 header { 
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: #00131F;
-    position: relative;
+    background-color: #4878D9;
 }
 .first-box { 
     width : 100%;
@@ -37,8 +38,8 @@ header {
 .burger-menu {
     display: flex;
     align-items: center;
-    color :#ebebeb;
-    background-color: #00B5B9;
+    color :#000000;
+    background-color: #ffffff;
     width: 22px;
     height: 22px;
     padding: 7px;
@@ -90,10 +91,10 @@ header {
     font-size: 20px;
     font-weight: 900;
     cursor: pointer;
-    color: #00B5B9;
+    color: #ffffff;
 }
 .box-icons > i:hover{
-    color: #f21f26;
+    color: #000000;
 }
 /*------------------ MAIN ------------------*/
 .container {
@@ -240,17 +241,32 @@ header {
 footer { 
     background-color: #61BCD3;
     border-top: 1px solid #18798B;
+    width: 100%;
+}
+.footer-menus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5em;
 }
 .footer-div-menus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    width: 40%;
 }
 .singular-menu {
     position: relative;
     display: inline-block;
     width: 90%;
+}
+.footer-icon {
+    margin-right: 12px;
+    color: #000000;
+    font-size: xx-large;
+}
+.footer-icon:hover{
+    color:#FF0000;
 }
 .footer-h3 {
     width: 100%;
@@ -288,7 +304,7 @@ footer img {
     border-top: 1px solid #18798B;
 }
 .footer-p-copyright {
-    font-size: 10px;
+    font-size: 12px;
     text-align: justify;
     padding: 0 20px;
 }

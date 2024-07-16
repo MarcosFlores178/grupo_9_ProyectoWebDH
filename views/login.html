@@ -1,17 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/login.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      rel="stylesheet"
-    />
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
     <title>Login goool store</title>
   </head>
   <body>
@@ -19,31 +13,26 @@
       <div class="hamburger">
         <i class="fa-solid fa-bars"></i>
       </div>
-      <img class="logo" src="../images/logo_sin_fondo.png" alt="" />
+      <img class="logo" src="../images/logo_sin_fondo.png" alt=""/>
       <div class="iconos">
         <i class="fa-solid fa-right-to-bracket"></i>
         <i class="fa-solid fa-user-plus"></i>
       </div>
     </header>
     <form class="login">
-      <input
-        required
-        minlength="3"
-        maxlength="30"
-        type="text"
-        placeholder="Nombre de usuario"
-      />
-      <input type="password" placeholder="Contaraseña" required />
+      <input required minlength="3" maxlength="30" type="text" placeholder="Nombre de usuario"/>
+      <input type="password" placeholder="Contraseña" required/><br>
       <div class="remember">
-        <input type="checkbox" name="remember" id="" value="remember" /><label
-          for="remember"
-          >Recordarme</label
-        >
+        <input type="checkbox" name="remember" id="" value="remember"/>
+        <label for="remember">Recordarme</label>
       </div>
-      <input class="boton-enviar" type="submit" value="Ingresar" />
-      <button class="boton-enviar">
-        <i class="fa-brands fa-google"></i>Ingresar con Google
-      </button>
+      <div class="style-div-botones">
+        <button class="boton-aceptar" type="submit">Aceptar</button>
+        <button class="boton-cancelar" type="reset">Cancelar</button>
+        <button class="boton-aceptar"><i class="fa-brands fa-google"></i>Ingresa con Google</button>
+      </div>
+      <h5>¿No tenés cuenta?</h5><br>
+      <a href="/register" class="boton-link">Registrate</a>
     </form>
     <footer>
       <div class="footer-div-menus">
