@@ -18,6 +18,10 @@ app.get("/register", (req, res) => {
   res.sendFile(path.resolve(__dirname, 'views/register.html'));
 });
 
+app.get("/details-product", (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'views/Details-producto.html'));
+});
+
 app.listen(8080, () => {
   console.log("Servidor corriendo en el puerto 8080");
 });

@@ -1,5 +1,6 @@
-{
-  "name": "grupo_9_proyectowebdh",
+
+{ 
+ "name": "grupo_9_proyectowebdh",
   "version": "1.0.0",
   "description": "<div align=\"center\">\r <img src=\"public/images/logo_sin_fondo.svg\" alt=\"logo\" width=\"26%\" align= center> \r </div>",
   "main": "app.js",
