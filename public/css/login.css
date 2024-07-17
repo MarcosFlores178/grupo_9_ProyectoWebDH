@@ -1,11 +1,7 @@
 /* color de titulos #4cc6ca  
 color boton cancelar #a4a8ab */
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  margin: 0;
-  padding: 0;
+*{
+  font-family: 'roboto';
 }
 body {
   background-color: #dcf1f4;
@@ -38,7 +34,7 @@ body {
   width: 60px;
   margin: 0 auto;
 }
-.iconos {
+/*.iconos {
   height: 30px;
   width: 60px;
   display: flex;
@@ -49,7 +45,8 @@ body {
     font-size: 20px;
     color: #00b4ba;
   }
-}
+}*/
+
 /* seccion de estilos de login  */
 .login {
   height: 80vh;
@@ -73,7 +70,7 @@ body {
     justify-content: center;
     input {
       margin: 0;
-      width: 10%;
+      width: 5%;
     }
   }
   .style-div-botones {
@@ -137,7 +134,7 @@ body {
       background-color: #0022AA;
   }
 }
-/* seccion de estilos de footer */
+/* seccion de estilos de footer 
 footer {
   background-color: #61bcd3;
   border-top: 1px solid #18798b;
@@ -191,3 +188,4 @@ footer img {
   font-size: 10px;
   text-align: justify;
 }
+*/
