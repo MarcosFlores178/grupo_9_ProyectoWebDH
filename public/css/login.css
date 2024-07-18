@@ -1,11 +1,7 @@
 /* color de titulos #4cc6ca  
 color boton cancelar #a4a8ab */
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  margin: 0;
-  padding: 0;
+*{
+  font-family: 'roboto';
 }
 body {
   background-color: #dcf1f4;
@@ -29,7 +25,6 @@ body {
   background-color: #00b4ba;
   font-size: 20px;
   color: #fff;
-
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -39,7 +34,7 @@ body {
   width: 60px;
   margin: 0 auto;
 }
-.iconos {
+/*.iconos {
   height: 30px;
   width: 60px;
   display: flex;
@@ -50,7 +45,8 @@ body {
     font-size: 20px;
     color: #00b4ba;
   }
-}
+}*/
+
 /* seccion de estilos de login  */
 .login {
   height: 80vh;
@@ -64,7 +60,7 @@ body {
     margin: 10px 0px 10px 0px;
     border-radius: 5px;
     height: 25px;
-    width: 70%;
+    width: 60%;
   }
   .remember {
     display: flex;
@@ -74,26 +70,71 @@ body {
     justify-content: center;
     input {
       margin: 0;
-      width: 10%;
+      width: 5%;
     }
   }
-  .boton-enviar {
+  .style-div-botones {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    background-color: #2966cf;
-    color: white;
+    width: 80%;
+    margin: 2%;
+  }
+  .boton-aceptar {
+      color :#ebebeb; 
+      background-color: #2968c8; 
+      border-radius: 5px; 
+      margin: 2% 5% 2% 5%;
+      border: none;
+      font-weight: bold;
+      width: 50%;
+      height: 35px;
+      cursor: pointer;
+      transition: background-color 500ms;
+      text-decoration: none;
+  }
+  .boton-aceptar i{
+    font-weight: 400;
+    margin-right: 15px;
+  }
+  .boton-aceptar:hover{
+      background-color: #0022AA;
+  }
+  .boton-cancelar {
+      color :#ebebeb; 
+      background-color: #A5A8AB; 
+      border-radius: 5px; 
+      border: none;
+      font-weight: bold;
+      width: 50%;
+      height: 35px;
+      cursor: pointer;
+      transition: background-color 500ms;
+  }
+  .boton-cancelar:hover {
+      background-color: #878B8F;
+  }
+  .boton-link {
+    display: inline-block;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #ebebeb;
+    background-color: #2968c8;
+    text-align: center;
+    text-decoration: none;
     border-radius: 5px;
-    width: 200px;
-    height: 30px;
-    i {
-      margin: 5px;
-      width: 20px;
-      height: 20px;
-    }
+    margin: 2px 5px 2px 5px;
+    border: none;
+    font-weight: bold;
+    width: 30%;
+    cursor: pointer;
+    transition: background-color 500ms;
+  } 
+  .boton-link:hover {
+      background-color: #0022AA;
   }
 }
-/* seccion de estilos de footer */
+/* seccion de estilos de footer 
 footer {
   background-color: #61bcd3;
   border-top: 1px solid #18798b;
@@ -147,3 +188,4 @@ footer img {
   font-size: 10px;
   text-align: justify;
 }
+*/

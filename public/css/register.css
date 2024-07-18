@@ -8,26 +8,18 @@ paleta {
 }
 
 /*------------------- HTML -----------------*/
-html {
-    font-family: "roboto";
-    font-size: 12px;
+*{
+    font-family: 'roboto';
 }
 
 /*------------------- BODY -----------------*/
 body { 
     background-color: #DCF1F4;
     margin: 0;
+    width: 100%;
 }
 
-/*----------------- HEADER -----------------*/
-header { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #00131F;
-    position: relative;
-}
+/*----------------- HEADER -----------------
 .first-box { 
     width : 100%;
     display: flex;
@@ -37,8 +29,8 @@ header {
 .burger-menu {
     display: flex;
     align-items: center;
-    color :#ebebeb;
-    background-color: #00B5B9;
+    color :#000000;
+    background-color: #ffffff;
     width: 22px;
     height: 22px;
     padding: 7px;
@@ -64,37 +56,16 @@ header {
     position: absolute;
     right: 20px;
 }
-.search-container {
-    display: flex ;
-    align-items: center;
-}
-.input-search {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    background-color: #fff;
-    flex: 1;
-}
-.button-search {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-}
-.button-search:hover {
-    background-color: #f0f0f0;
-}
 .box-icons > i {
     margin-left: 15px;
     font-size: 20px;
     font-weight: 900;
     cursor: pointer;
-    color: #00B5B9;
+    color: #ffffff;
 }
 .box-icons > i:hover{
-    color: #f21f26;
-}
+    color: #000000;
+}*/
 /*------------------ MAIN ------------------*/
 .container {
     width: 100%;
@@ -238,19 +209,35 @@ header {
 
 /*------------------ FOOTER ------------------*/
 footer { 
-    background-color: #61BCD3;
+    color: #EEFCFF;
+    background-color: #585858;
     border-top: 1px solid #18798B;
+    width: 100%;
+}
+.footer-menus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5em;
 }
 .footer-div-menus {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    width: 40%;
 }
 .singular-menu {
     position: relative;
     display: inline-block;
     width: 90%;
+}
+.footer-icon i{
+    margin-right: 12px;
+    color: #EEFCFF;
+    font-size: xx-large;
+}
+.footer-icon i:hover{
+    color:#4878D9;
 }
 .footer-h3 {
     width: 100%;
@@ -260,21 +247,22 @@ footer {
     margin: 5px;
 }
 .footer-h3:hover {
-    background-color: #13949C;
+    background-color: #333;
 }
 .sub-menus-footer {
     display: none;
-    background-color: #61BCD3;
+    color: #EEFCFF;
+    background-color: #585858;
     padding: 10px;
 }
 .sub-menus-footer a {
-    color: black;
-    padding: 8px 0;
+    color: #EEFCFF;
+    padding: 8px 30px;
     text-decoration: none;
     display: block;
 }
 .sub-menus-footer a:hover {
-    background-color: #13949C;
+    background-color: #333;
 }
 footer img { 
     height: 50px;
@@ -284,44 +272,18 @@ footer img {
     display: flex;
     align-items: center;
     gap: 2%;
-    background-color: #13949C;
-    border-top: 1px solid #18798B;
+    background-color: #333;
+    border-top: 1px solid #1a1a1a;
 }
 .footer-p-copyright {
-    font-size: 10px;
+    font-size: 12px;
     text-align: justify;
     padding: 0 20px;
 }
 
 /*------------------ MEDIA QUERYS ------------------*/
-@media (max-width : 769px) {
-    .input-search {
-        display: none;
-    }
-    .input-search.show {
-        display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
-        background-color: #fff;
-        flex: 1;
-    }
-    .input-search.show + .button-search {
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 0 4px 4px 0;
-        background-color: #fff;
-        cursor: pointer;
-    }
-}
 
 @media (min-width : 769px) {
-    .input-search {
-        display: inline;
-    }
-    .button-search {
-        border-radius: 0 4px 4px 0;
-    }
     .imagen-box {
         position: relative;
         padding: 0 0 0 25%;

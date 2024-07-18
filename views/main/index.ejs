@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<%-include ('../partials/head.ejs', {estilo:'index'})%>
+
+  <body>
+    <%-include ('../partials/header.ejs')%>
+      <form class="search-bar">
+        <input type="text" name="" placeholder="Buscar productos, marcas, etc..." />
+        <!-- <button type="submit">Buscar</button> -->
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </form>
+      <nav class="menu-categorias">
+        <ul class="menu-izquierdo">
+          <li>
+            <a href="#">Hombre</a>
+            <ul class="submenu">
+              <li><a href="#">Botines</a></li>
+              <li><a href="#">Camisetas</a></li>
+              <li><a href="#">Shorts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Mujer</a>
+            <ul class="submenu">
+              <li><a href="#">Botines</a></li>
+              <li><a href="#">Camisetas</a></li>
+              <li><a href="#">Shorts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Infantil</a>
+            <ul class="submenu">
+              <li><a href="#">Botines</a></li>
+              <li><a href="#">Camisetas</a></li>
+              <li><a href="#">Shorts</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Marcas</a>
+            <ul class="submenu">
+              <li><a href="#">Adidas</a></li>
+              <li><a href="#">Converse</a></li>
+              <li><a href="#">Fila</a></li>
+              <li><a href="#">Lotto</a></li>
+              <li><a href="#">Nike</a></li>
+              <li><a href="#">Puma</a></li>
+              <li><a href="#">Reebok</a></li>
+              <li><a href="#">Topper</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Clubes</a>
+            <ul class="submenu">
+              <li><a href="#">Nacionales</a></li>
+              <li><a href="#">Internacionales</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Accesorios</a>
+            <ul class="submenu">
+              <li><a href="#">Guantes</a></li>
+              <li><a href="#">Medias</a></li>
+              <li><a href="#">Pelotas</a></li>
+              <li><a href="#">Protección</a></li>
+              <li><a href="#">Redes</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="menu-derecho">
+          <li><a href="#">Ofertas</a></li>
+          <li><a href="#">Promociones</a></li>
+        </ul>
+      </nav>
+      <main>
+        <section class="promociones">
+          <img src="/images/1.webp" alt="">
+        </section>
+        <section class="destacado">
+          <!-- <h3>PRODUCTO DESTACADO</h3> -->
+        <a href="/products/details-product">  <img src="/images/destacado.jpg" alt=""></a>
+          <button class="detalle">Detalle del producto</button>
+        </section>
+        <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="/images/1.webp" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="/images/2.webp" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="/images/3.webp" alt="Third slide">
+              </div>
+            </div>
+           </div> -->
+
+        <section>
+          <h2 class="most-searched">CATEGORIAS</h2>
+          <div class="categorias">
+            <img src="images/FLYERHOMBRE.jpg" alt="categoria hombres" />
+            <img src="images/flyermujer.jpg" alt="categoria hombres" />
+          </div>
+          <div class="categorias">
+            <img src="images/flyerniños.jpg" alt="categoria hombres" />
+            <img src="images/FLYERACC.jpg" alt="categoria hombres" />
+          </div>
+        </section>
+        <section class="promociones">
+          <!-- <h2>Promociones</h2> -->
+
+        </section>
+      </main>
+      <%-include ('../partials/footer.ejs')%>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+          crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>
+
+</html>

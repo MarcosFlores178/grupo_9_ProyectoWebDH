@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <%-include ('../partials/head.ejs', {estilo:'login'})%>
+  <body>
+    <%-include ('../partials/header.ejs')%>
+    <form class="login">
+      <input required minlength="3" maxlength="30" type="text" placeholder="Nombre de usuario"/>
+      <input type="password" placeholder="Contraseña" required/><br>
+      <div class="remember">
+        <input type="checkbox" name="remember" id="" value="remember"/>
+        <label for="remember">Recordarme</label>
+      </div>
+      <div class="style-div-botones">
+        <button class="boton-aceptar" type="submit">Aceptar</button>
+        <button class="boton-cancelar" type="reset">Cancelar</button>
+        <button class="boton-aceptar"><i class="fa-brands fa-google"></i>Ingresa con Google</button>
+      </div>
+      <h3>¿No tenés cuenta?</h3><br>
+      <a href="register" class="boton-link">Registrate</a>
+    </form>
+    <%-include ('../partials/footer.ejs')%>
+  </body>
+</html>
