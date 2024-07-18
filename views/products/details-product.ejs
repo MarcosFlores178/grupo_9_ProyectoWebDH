@@ -1,55 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
-
     <%-include ('../partials/head.ejs', {estilo:'producto'})%>
-
-
 <body>
         <%-include ('../partials/header.ejs')%>
-   
-
+        <%-include ('../partials/nav-bar.ejs')%>
     <main>
-        <nav class="opciones">
-            <ul type="none" class="opciones-1">
-                <li class="opciones-2"><a href="">Categorias</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-                <li class="opciones-2"><a href="">Mujer</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-                <li class="opciones-2"><a href="">Hombre</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-                <li class="opciones-2"><a href="">Marcas</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-                <li class="opciones-2"><a href="">Zapatillas</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-                <li class="opciones-2"><a href="">Novedades</a><ul class="opciones-3" type="none">
-                    <li><a href="#">Servicio 1</a></li>
-                    <li><a href="#">Servicio 2</a></li>
-                    <li><a href="#">Servicio 3</a></li>
-                </ul></li>
-            </ul>
-        </nav>
+        <%-include ('../partials/button-top.ejs')%>
         <nav class="product">
             <nav class="imagenes-productos">
                 <section class="img_product">
-                    <img class="img_product-1" src="/images/ADIU2142-1.jfif" alt="">
-                    <img class="img_product-1" src="/images/ADIU2142-2.jfif" alt="">
-                    <img class="img_product-1" src="/images/ADIU2142-3.jfif" alt="">
-                    <img class="img_product-1" src=" /images/ADIU2142-4.jfif" alt="">
+                    <img class="img_product-1" src="../images/ADIU2142-1.jfif" alt="">
+                    <img class="img_product-1" src="../images/ADIU2142-2.jfif" alt="">
+                    <img class="img_product-1" src="../images/ADIU2142-3.jfif" alt="">
+                    <img class="img_product-1" src="../images/ADIU2142-4.jfif" alt="">
             </nav>
             <nav>    
                 </section>
@@ -67,11 +30,7 @@
             <p><i class="fa-regular fa-credit-card"></i><a href="/">Conoce las promociones</a></p>
         </nav>
         </nav>
-
     </main>
-
         <%-include ('../partials/footer.ejs')%>
-
-    
 </body>
 </html>
