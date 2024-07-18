@@ -145,6 +145,36 @@ i {
         display: block; /* Opcional, elimina el espacio debajo de la imagen */
 }
 
+.destacado{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+}
+.destacado img {
+    max-width: 100%;
+    height: auto;
+    /* display: block; */
+    /* text-align: center; */
+
+}
+
+.detalle {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .detalle:hover {
+        background-color: #0056b3;
+    }
+
 .search-bar button:hover {
     background-color: #365f9b;
 }
