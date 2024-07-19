@@ -3,7 +3,8 @@ html {
   font-size: 16px;
 }
 body {
-  background-color: white;
+  /* background-color: white; */
+  background-color: #EEFCFF;
 }
 
 /*header {
@@ -93,6 +94,11 @@ main {
   width: 100%;
   align-items: center;
 }
+.cargaproducto h2 {
+ padding-bottom: 2rem;
+}
+
+
 .opciones {
   width: 30%;
   text-align: center;
@@ -129,10 +135,10 @@ main {
     border: solid 4px #61bcd3;
     padding: 15px;
   }
-  input {
+  /* input {
     height: 30px;
     margin-top: 10px;
-  }
+  } */
   .imagen {
     display: flex;
     flex-direction: column;
@@ -160,7 +166,7 @@ main {
 .categoria-input input{
   margin: 0;
 }
-.botones {
+/* .botones {
   margin: 15px auto;
   width: 50%;
   display: flex;
@@ -171,6 +177,34 @@ main {
     background-color: #15a1a1;
     border-radius: 20px;
   }
+} */
+.boton-confirmar {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-confirmar:hover {
+  background-color: #0056b3;
+}
+.boton-reset {
+  background-color: #ff4d4d; /* Rojo */
+  color: #fff; /* Blanco para el texto */
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boton-reset:hover {
+  background-color: #e60000; 
 }
 .button-index {
   position: fixed;

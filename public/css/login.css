@@ -111,7 +111,7 @@ body {
   }
   .boton-cancelar {
       color :#ebebeb; 
-      background-color: #A5A8AB; 
+      background-color: #f52536; 
       border-radius: 5px; 
       border: none;
       font-weight: bold;
@@ -121,7 +121,7 @@ body {
       transition: background-color 500ms;
   }
   .boton-cancelar:hover {
-      background-color: #878B8F;
+      background-color: #9c042a;
   }
   .boton-link {
     display: inline-block;
