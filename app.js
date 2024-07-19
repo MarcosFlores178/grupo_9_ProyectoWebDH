@@ -20,6 +20,6 @@ app.use('/users', rutaUsers);
 app.use('/products', rutaProducts);
 app.use('/', rutaMain);
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log("Servidor corriendo en el puerto 8080");
 });
