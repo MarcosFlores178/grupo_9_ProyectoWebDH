@@ -1,5 +1,5 @@
 const express = require('express');
-const path = require("path");
+const productsController = require('../controllers/productsController');
 const router = express.Router();
 
 // router.get("/details-product", (req, res) => {
@@ -10,13 +10,9 @@ const router = express.Router();
 //    res.sendFile(path.resolve(__dirname,'shopping-cart.ejs'));
 // });
 
-router.get("/details-product", (req, res) => {
-    res.render('products/details-product');
-});
+router.get("/details-product", productsController.showDetails);
   
-router.get("/shop-cart", (req, res) =>{
-   res.render('products/shop-cart');
-});
+router.get("/shop-cart", productsController.showShopCart);
 
 
 module.exports = router;
