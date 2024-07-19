@@ -8,8 +8,10 @@ paleta {
 }
 
 /*------------------- HTML -----------------*/
+
 *{
     font-family: 'roboto';
+
 }
 
 /*------------------- BODY -----------------*/
@@ -19,7 +21,9 @@ body {
     width: 100%;
 }
 
+
 /*----------------- HEADER -----------------
+
 .first-box { 
     width : 100%;
     display: flex;
@@ -65,7 +69,9 @@ body {
 }
 .box-icons > i:hover{
     color: #000000;
+
 }*/
+
 /*------------------ MAIN ------------------*/
 .container {
     width: 100%;
@@ -251,6 +257,7 @@ footer {
     display: inline-block;
     width: 90%;
 }
+
 .footer-icon i{
     margin-right: 12px;
     color: #EEFCFF;
@@ -258,6 +265,7 @@ footer {
 }
 .footer-icon i:hover{
     color:#4878D9;
+
 }
 .footer-h3 {
     width: 100%;

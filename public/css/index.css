@@ -77,7 +77,10 @@ header {
     margin-right: auto;
     color: white;
 }
-/*.menu-container i{
+
+/*
+.menu-container i{
+
     color: #000000;
     background-color: #ffffff;
     width: 22px;
@@ -86,7 +89,9 @@ header {
     border-radius: 6px;
     font-size: 22px;
     left: 20px;
+
 }*/
+
 .logo-container {
     position: absolute;
     left: 50%;
