@@ -8,9 +8,10 @@ paleta {
 }
 
 /*------------------- HTML -----------------*/
-html {
-    font-family: "roboto";
-    font-size: 16px;
+
+*{
+    font-family: 'roboto';
+
 }
 
 /*------------------- BODY -----------------*/
@@ -20,15 +21,9 @@ body {
     width: 100%;
 }
 
-/*----------------- HEADER -----------------*/
-header { 
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #4878D9;
-}
+
+/*----------------- HEADER -----------------
+
 .first-box { 
     width : 100%;
     display: flex;
@@ -65,27 +60,6 @@ header {
     position: absolute;
     right: 20px;
 }
-.search-container {
-    display: flex ;
-    align-items: center;
-}
-.input-search {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    background-color: #fff;
-    flex: 1;
-}
-.button-search {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    cursor: pointer;
-}
-.button-search:hover {
-    background-color: #f0f0f0;
-}
 .box-icons > i {
     margin-left: 15px;
     font-size: 20px;
@@ -95,7 +69,9 @@ header {
 }
 .box-icons > i:hover{
     color: #000000;
-}
+
+}*/
+
 /*------------------ MAIN ------------------*/
 .container {
     width: 100%;
@@ -120,6 +96,26 @@ header {
 }
 .div-par {
     display: flex;
+}
+.button-index {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    color: #000000;
+    border-radius: 50%;
+    background-color: #4878D9;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.button-index.show {
+    display: block;
+}
+.button-index i {
+    font-size: x-large;
+    color: #000000;
 }
 .cuadros-login {
     margin: 1% 2% 1% 0;
@@ -213,7 +209,7 @@ header {
 }
 .boton-cancelar {
     color :#ebebeb; 
-    background-color: #A5A8AB; 
+    background-color: #f52536; 
     border-radius: 5px; 
     margin: 2% 5% 2% 5%;
     border: none;
@@ -224,7 +220,7 @@ header {
     transition: background-color 500ms;
 }
 .boton-cancelar:hover {
-    background-color: #878B8F;
+    background-color: #9c042a;
 }
 .style-label-acept {
     display: flex;
@@ -239,7 +235,8 @@ header {
 
 /*------------------ FOOTER ------------------*/
 footer { 
-    background-color: #61BCD3;
+    color: #EEFCFF;
+    background-color: #585858;
     border-top: 1px solid #18798B;
     width: 100%;
 }
@@ -260,13 +257,15 @@ footer {
     display: inline-block;
     width: 90%;
 }
-.footer-icon {
+
+.footer-icon i{
     margin-right: 12px;
-    color: #000000;
+    color: #EEFCFF;
     font-size: xx-large;
 }
-.footer-icon:hover{
-    color:#FF0000;
+.footer-icon i:hover{
+    color:#4878D9;
+
 }
 .footer-h3 {
     width: 100%;
@@ -276,21 +275,22 @@ footer {
     margin: 5px;
 }
 .footer-h3:hover {
-    background-color: #13949C;
+    background-color: #333;
 }
 .sub-menus-footer {
     display: none;
-    background-color: #61BCD3;
+    color: #EEFCFF;
+    background-color: #585858;
     padding: 10px;
 }
 .sub-menus-footer a {
-    color: black;
-    padding: 8px 0;
+    color: #EEFCFF;
+    padding: 8px 30px;
     text-decoration: none;
     display: block;
 }
 .sub-menus-footer a:hover {
-    background-color: #13949C;
+    background-color: #333;
 }
 footer img { 
     height: 50px;
@@ -300,8 +300,8 @@ footer img {
     display: flex;
     align-items: center;
     gap: 2%;
-    background-color: #13949C;
-    border-top: 1px solid #18798B;
+    background-color: #333;
+    border-top: 1px solid #1a1a1a;
 }
 .footer-p-copyright {
     font-size: 12px;
@@ -310,34 +310,8 @@ footer img {
 }
 
 /*------------------ MEDIA QUERYS ------------------*/
-@media (max-width : 769px) {
-    .input-search {
-        display: none;
-    }
-    .input-search.show {
-        display: inline-block;
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px 0 0 4px;
-        background-color: #fff;
-        flex: 1;
-    }
-    .input-search.show + .button-search {
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        border-radius: 0 4px 4px 0;
-        background-color: #fff;
-        cursor: pointer;
-    }
-}
 
 @media (min-width : 769px) {
-    .input-search {
-        display: inline;
-    }
-    .button-search {
-        border-radius: 0 4px 4px 0;
-    }
     .imagen-box {
         position: relative;
         padding: 0 0 0 25%;

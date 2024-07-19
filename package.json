@@ -1,20 +1,21 @@
 
-{ 
- "name": "grupo_9_proyectowebdh",
-  "version": "1.0.0",
-  "description": "<div align=\"center\">\r <img src=\"public/images/logo_sin_fondo.svg\" alt=\"logo\" width=\"26%\" align= center> \r </div>",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
-  "keywords": [],
-  "author": "",
-
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.19.2",
-    "nodemon": "^3.1.4"
-  }
+{
+    "name":"grupo_9_proyectowebdh",
+    "version":"1.0.0",
+    "description":"<div align=\"center\">\r <img src=\"public/images/logo_sin_fondo.svg\" alt=\"logo\" width=\"26%\" align= center> \r </div>",
+    "main":"app.js",
+    "scripts":{
+        "test":"echo \"Error: no test specified\" && exit 1",
+        "start":"node app.js",
+        "dev":"nodemon app.js"
+    },
+    "keywords":[],
+    "author":"",
+    "license":"ISC",
+    "dependencies":{
+        "ejs":"^3.1.10",
+        "express":"^4.19.2",
+        "nodemon":"^3.1.4"
+    }
 }
+

@@ -1,11 +1,7 @@
 /* color de titulos #4cc6ca  
 color boton cancelar #a4a8ab */
-* {
-  font-family: "Roboto", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-  margin: 0;
-  padding: 0;
+*{
+  font-family: 'roboto';
 }
 body {
   background-color: #dcf1f4;
@@ -38,7 +34,7 @@ body {
   width: 60px;
   margin: 0 auto;
 }
-.iconos {
+/*.iconos {
   height: 30px;
   width: 60px;
   display: flex;
@@ -49,7 +45,8 @@ body {
     font-size: 20px;
     color: #00b4ba;
   }
-}
+}*/
+
 /* seccion de estilos de login  */
 .login {
   height: 80vh;
@@ -64,6 +61,17 @@ body {
     border-radius: 5px;
     height: 25px;
     width: 60%;
+
+  }
+  .cuadros-login {
+    margin: 1% 2% 1% 0;
+    text-align: start;
+    padding-left: 10px;
+    width: 40%;
+    border-radius: 5px;
+    height: 35px;
+    border: 1px solid #00B5B9;
+
   }
   .remember {
     display: flex;
@@ -73,7 +81,7 @@ body {
     justify-content: center;
     input {
       margin: 0;
-      width: 10%;
+      width: 5%;
     }
   }
   .style-div-botones {
@@ -105,7 +113,9 @@ body {
   }
   .boton-cancelar {
       color :#ebebeb; 
-      background-color: #A5A8AB; 
+
+      background-color: #f52536; 
+
       border-radius: 5px; 
       border: none;
       font-weight: bold;
@@ -115,7 +125,9 @@ body {
       transition: background-color 500ms;
   }
   .boton-cancelar:hover {
-      background-color: #878B8F;
+
+      background-color: #9c042a;
+
   }
   .boton-link {
     display: inline-block;
@@ -137,7 +149,27 @@ body {
       background-color: #0022AA;
   }
 }
-/* seccion de estilos de footer */
+.button-index {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  color: #000000;
+  border-radius: 50%;
+  background-color: #4878D9;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+.button-index.show {
+  display: block;
+}
+.button-index i {
+  font-size: x-large;
+  color: #000000;
+}
+/* seccion de estilos de footer 
 footer {
   background-color: #61bcd3;
   border-top: 1px solid #18798b;
@@ -191,3 +223,4 @@ footer img {
   font-size: 10px;
   text-align: justify;
 }
+*/

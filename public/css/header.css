@@ -1,7 +1,10 @@
-/* Define estilos generales aquí */
-*{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'roboto';
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -26,26 +29,7 @@ header {
     background-color: #4878D9;
     height: 100px;
 }
-.button-index {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 50px;
-    height: 50px;
-    color: #000000;
-    border-radius: 50%;
-    background-color: #4878D9;
-    border: none;
-    cursor: pointer;
-    display: none;
-}
-.button-index.show {
-    display: block;
-}
-.button-index i {
-    font-size: x-large;
-    color: #000000;
-}
+
 /* Contenedor del menú */
 /* .menu-container {
     display: flex;
@@ -77,21 +61,16 @@ header {
     margin-right: auto;
     color: white;
 }
-
-/*
 .menu-container i{
-
     color: #000000;
     background-color: #ffffff;
-    width: 22px;
-    height: 22px;
+    width: 33px;
+    height: 35px;
     padding: 7px;
     border-radius: 6px;
     font-size: 22px;
     left: 20px;
-
-}*/
-
+}
 .logo-container {
     position: absolute;
     left: 50%;
@@ -168,36 +147,6 @@ i {
         height: auto;
         display: block; /* Opcional, elimina el espacio debajo de la imagen */
 }
-
-.destacado{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 2rem;
-}
-.destacado img {
-    max-width: 100%;
-    height: auto;
-    /* display: block; */
-    /* text-align: center; */
-
-}
-
-.detalle {
-        padding: 10px 20px;
-        margin: 10px;
-        border: none;
-        background-color: #007bff;
-        color: #fff;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    .detalle:hover {
-        background-color: #0056b3;
-    }
 
 .search-bar button:hover {
     background-color: #365f9b;
@@ -281,86 +230,6 @@ nav.menu-categorias {
     display: none;
     /* Esconde el menú por defecto */
 }
-/*
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-}
-
-.footer .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1 1 200px;
-    margin: 20px;
-}
-
-.footer-section h3 {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-}
-
-.footer-section p, .footer-section ul, .footer-section a {
-    margin-bottom: 10px;
-    color: #bbb;
-    text-decoration: none;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li a:hover {
-    color: white;
-}
-
-
-.footer-section .social a {
-    display: inline-block;
-    margin-right: 10px;
-    color: #bbb;
-    font-size: 1.5em;
-}
-
-.footer-section .social a:hover {
-    color: white;
-}
-
-.footer-section .newsletter input[type="email"] {
-    padding: 10px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-}
-
-.footer-section .newsletter button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #ff5e14;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.footer-section .newsletter button:hover {
-    background-color: #e04d0b;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: #bbb;
-}
-*/
 @media (min-width: 954px) {
 
     nav.menu-categorias {
