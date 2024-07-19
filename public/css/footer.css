@@ -6,7 +6,7 @@ html {
 footer { 
     color: #EEFCFF;
     background-color: #585858;
-    border-top: 1px solid #18798B;
+    border-top: 1px solid #1a1a1a;
     width: 100%;
 }
 .footer-menus {
@@ -61,7 +61,10 @@ footer {
     color:#FF0000;
 }
 /*fin iconos redes sociales*/
-
+.e-mail {
+    width: 100%;
+    margin: 5px 0;
+}
 .footer-h3 {
     width: 100%;
     padding: 8px;

@@ -3,9 +3,10 @@
   <%-include ('../partials/head.ejs', {estilo:'login'})%>
   <body>
     <%-include ('../partials/header.ejs')%>
+    <%-include ('../partials/button-top.ejs')%>
     <form class="login">
-      <input required minlength="3" maxlength="30" type="text" placeholder="Nombre de usuario"/>
-      <input type="password" placeholder="Contraseña" required/><br>
+      <input class="cuadros-login" required minlength="3" maxlength="30" type="text" id="nombreUsuario" name="nombreUsuario" placeholder="* Nombre de usuario"/>
+      <input class="cuadros-login" type="password"  id="password" name="password"  placeholder="* Contraseña" required/><br>
       <div class="remember">
         <input type="checkbox" name="remember" id="" value="remember"/>
         <label for="remember">Recordarme</label>
@@ -18,6 +19,6 @@
       <h3>¿No tenés cuenta?</h3><br>
       <a href="register" class="boton-link">Registrate</a>
     </form>
-    <%-include ('../partials/footer.ejs')%>
   </body>
+  <%-include ('../partials/footer.ejs')%>
 </html>

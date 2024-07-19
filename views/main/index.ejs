@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<%-include ('../partials/head.ejs', {estilo:'index'})%>
-
+  <%-include ('../partials/head.ejs', {estilo:'index'})%>
   <body>
     <%-include ('../partials/header.ejs')%>
       <form class="search-bar">
@@ -9,76 +8,20 @@
         <!-- <button type="submit">Buscar</button> -->
         <button type="submit"><i class="fas fa-search"></i></button>
       </form>
-      <nav class="menu-categorias">
-        <ul class="menu-izquierdo">
-          <li>
-            <a href="#">Hombre</a>
-            <ul class="submenu">
-              <li><a href="#">Botines</a></li>
-              <li><a href="#">Camisetas</a></li>
-              <li><a href="#">Shorts</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Mujer</a>
-            <ul class="submenu">
-              <li><a href="#">Botines</a></li>
-              <li><a href="#">Camisetas</a></li>
-              <li><a href="#">Shorts</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Infantil</a>
-            <ul class="submenu">
-              <li><a href="#">Botines</a></li>
-              <li><a href="#">Camisetas</a></li>
-              <li><a href="#">Shorts</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Marcas</a>
-            <ul class="submenu">
-              <li><a href="#">Adidas</a></li>
-              <li><a href="#">Converse</a></li>
-              <li><a href="#">Fila</a></li>
-              <li><a href="#">Lotto</a></li>
-              <li><a href="#">Nike</a></li>
-              <li><a href="#">Puma</a></li>
-              <li><a href="#">Reebok</a></li>
-              <li><a href="#">Topper</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Clubes</a>
-            <ul class="submenu">
-              <li><a href="#">Nacionales</a></li>
-              <li><a href="#">Internacionales</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Accesorios</a>
-            <ul class="submenu">
-              <li><a href="#">Guantes</a></li>
-              <li><a href="#">Medias</a></li>
-              <li><a href="#">Pelotas</a></li>
-              <li><a href="#">Protección</a></li>
-              <li><a href="#">Redes</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="menu-derecho">
-          <li><a href="#">Ofertas</a></li>
-          <li><a href="#">Promociones</a></li>
-        </ul>
-      </nav>
+      <%-include ('../partials/nav-bar.ejs')%>
       <main>
+        <%-include ('../partials/button-top.ejs')%>
+               <section class="promociones">
+                <img src="../images/1.webp" alt="">
+               </section>
+          <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-bs-ride="carousel">
         <section class="promociones">
           <img src="/images/1.webp" alt="">
         </section>
         <section class="destacado">
-          <!-- <h3>PRODUCTO DESTACADO</h3> -->
-        <a href="/products/details-product">  <img src="/images/destacado.jpg" alt=""></a>
-        <a href="/products/details-product"> <button class="detalle">Detalle del producto</button></a>
+          <!- <h3>PRODUCTO DESTACADO</h3> -->
+        <a href="/products/details-product"><img src="../images/destacado.jpg" width="100%"></a>
+        <a href="/products/details-product"><button class="detalle">Detalle del producto</button></a>
         </section>
         <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -116,5 +59,5 @@
           crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </body>
-
+  <%# Desplazamiento suave del boton %>
 </html>

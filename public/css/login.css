@@ -62,6 +62,15 @@ body {
     height: 25px;
     width: 60%;
   }
+  .cuadros-login {
+    margin: 1% 2% 1% 0;
+    text-align: start;
+    padding-left: 10px;
+    width: 40%;
+    border-radius: 5px;
+    height: 35px;
+    border: 1px solid #00B5B9;
+  }
   .remember {
     display: flex;
     flex-direction: row;
@@ -133,6 +142,26 @@ body {
   .boton-link:hover {
       background-color: #0022AA;
   }
+}
+.button-index {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  color: #000000;
+  border-radius: 50%;
+  background-color: #4878D9;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+.button-index.show {
+  display: block;
+}
+.button-index i {
+  font-size: x-large;
+  color: #000000;
 }
 /* seccion de estilos de footer 
 footer {

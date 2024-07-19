@@ -1,8 +1,6 @@
 /* Reseteo básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    font-family: 'roboto';
 }
 
 /* Estilos generales */
@@ -12,7 +10,26 @@ body {
     background-color: #EEFCFF;
     color: #333;
 }
-
+.button-index {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    color: #000000;
+    border-radius: 50%;
+    background-color: #4878D9;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.button-index.show {
+    display: block;
+}
+.button-index i {
+    font-size: x-large;
+    color: #000000;
+}
 .titulo {
     text-align: center;
     margin: 20px 0;

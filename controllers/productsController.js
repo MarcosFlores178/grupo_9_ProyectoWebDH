@@ -5,7 +5,10 @@ const productsController = {
 
     showShopCart: (req, res) => {
         res.render('products/shop-cart');
+    },
+
+    showAddProduct: (req, res) => {
+        res.render('products/addproduct');
     }
 };
-
 module.exports = productsController;
