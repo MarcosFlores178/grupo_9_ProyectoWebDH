@@ -4,7 +4,7 @@ html {
 }
 body {
   /* background-color: white; */
-  background-color: #EEFCFF;
+  background-color: #eefcff;
 }
 
 /*header {
@@ -95,9 +95,8 @@ main {
   align-items: center;
 }
 .cargaproducto h2 {
- padding-bottom: 2rem;
+  padding-bottom: 2rem;
 }
-
 
 .opciones {
   width: 30%;
@@ -151,7 +150,11 @@ main {
   justify-content: space-evenly;
   width: 50%;
   text-align: center;
-
+}
+.categorias {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: start;
 }
 .titulocategoria {
   margin: 10px;
@@ -163,7 +166,7 @@ main {
     margin-left: 5px;
   }
 }
-.categoria-input input{
+.categoria-input input {
   margin: 0;
 }
 /* .botones {
@@ -204,7 +207,7 @@ main {
 }
 
 .boton-reset:hover {
-  background-color: #e60000; 
+  background-color: #e60000;
 }
 .button-index {
   position: fixed;
@@ -214,7 +217,7 @@ main {
   height: 50px;
   color: #000000;
   border-radius: 50%;
-  background-color: #4878D9;
+  background-color: #4878d9;
   border: none;
   cursor: pointer;
   display: none;
