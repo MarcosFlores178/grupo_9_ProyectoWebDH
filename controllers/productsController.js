@@ -49,7 +49,7 @@ const productsController = {
     const { id } = req.params;
     const productos = await dataSource.load();
     const product = productos.find((p) => p.id === id);
-    res.render("products/editproduct", { product });
+    res.render("products/editproduct", { product, estilo: 'editproduct' });
   },
   editProduct: async (req, res) => {
     let image = "";

@@ -12,13 +12,7 @@ const fileUpload = require("../service/fileUpload");
 
 router.get("/shop-cart", productsController.showShopCart);
 
-<<<<<<< HEAD
-router.get("/addproduct", (req, res) =>{
-    res.render('products/addproduct');
- });
-=======
 router.get("/", productsController.showAll);
->>>>>>> origin/lucas-sprint-4
 
 // router.get("/details-product", productsController.showDetails);
 
@@ -30,11 +24,7 @@ router.post("/", fileUpload.single("image"), productsController.addProduct);
 
 router.get("/editproduct/:id", productsController.showEditForm);
 
-router.put(
-  "/detail/:id",
-  fileUpload.single("image"),
-  productsController.editProduct
-);
+router.put("/detail/:id", fileUpload.single("image"), productsController.editProduct);
 
 router.delete("/detail/:id", productsController.deleteProduct);
 
