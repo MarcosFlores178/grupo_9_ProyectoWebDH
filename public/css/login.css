@@ -61,6 +61,17 @@ body {
     border-radius: 5px;
     height: 25px;
     width: 60%;
+
+  }
+  .cuadros-login {
+    margin: 1% 2% 1% 0;
+    text-align: start;
+    padding-left: 10px;
+    width: 40%;
+    border-radius: 5px;
+    height: 35px;
+    border: 1px solid #00B5B9;
+
   }
   .cuadros-login {
     margin: 1% 2% 1% 0;
@@ -111,7 +122,9 @@ body {
   }
   .boton-cancelar {
       color :#ebebeb; 
-      background-color: #A5A8AB; 
+
+      background-color: #f52536; 
+
       border-radius: 5px; 
       border: none;
       font-weight: bold;
@@ -121,7 +134,9 @@ body {
       transition: background-color 500ms;
   }
   .boton-cancelar:hover {
-      background-color: #878B8F;
+
+      background-color: #9c042a;
+
   }
   .boton-link {
     display: inline-block;

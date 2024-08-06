@@ -1,75 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%-include ('../partials/head.ejs', {estilo:'addproduct'})%>
+<%-include ('../partials/head.ejs', {estilo:'addproduct'})%>
+
     <body>
         <%-include ('../partials/header.ejs')%>
-        <%-include ('../partials/nav-bar.ejs')%>
-        <main>
-            <%-include ('../partials/button-top.ejs')%>
-            <section class="cargaproducto">
-                <h2>
-                Carga y Edición de productos
-                </h2>
-                <form action="" class="formulario">
-                        <div class="opciones">
-                            <div class="op">
-                                <input
-                                class="input"
-                                type="radio"
-                                name="cargar-editar"
-                                id="carga"
-                                value="carga"
-                                /><label for="carga">Cargar</label>
-                            </div>
-                            <div class="op">
-                                <input
-                                class="input"
-                                type="radio"
-                                name="cargar-editar"
-                                value="editar"
-                                id="editar"
-                                /><label for="editar">Editar</label>
-                            </div>
-                        </div>
-                        <label for="nombre">Nombre del producto</label>
-                    <input
-                    type="text"
-                    name="nombre"
-                    id="nombre"
-                    placeholder="* Nombre del producto"
-                    />
-                    <label for="descripcion">Descriondel producto</label>
-                    <textarea
-                    type="text"
-                    name="descripcion"
-                    id="descripcion"
-                    placeholder="* Descripcion del producto"
-                    ></textarea>
-                    <div class="imagen">
-                        <label for="imagen">Imagen del producto</label>
-                        <input type="file" name="imagen" id="imagen" />
-                    </div>
-                    </div class="categoria">
-                    <h3 class="titulocategoria">Categoria</h3>
-                    <div class="categoria">
-                    <div class="categoria-input">
-                        <input type="radio" value="hombre" id="hombre" name="categoria"/><label for="hombre" >Hombre</label>
-                    </div>
-                    <div class="categoria-input">
-                        <input type="radio" name="categoria" id=" mujer"value="mujer" /><label>Mujer</label>
-                    </div>
-                    <div class="categoria-input">
-                        <input type="radio" name="categoria" value="ninos" id="ninos" /><label for="ninos">Niños<label>
-                    </div>
-                    </div>
-                
-                    <div class="botones">
-                    <input class="boton"type="submit" name="enviar" id="enviar" value="Confirmar" />
-                    <button type="reset"class="boton">Borrar todo</button>
-                    </div>
-                </form>
-            </section>
-        </main>
+            <%-include ('../partials/nav-bar.ejs')%>
+                <main>
+                    <%-include ('../partials/button-top.ejs')%>
+                        <section class="cargaproducto">
+                            <h2>
+                                Carga de productos
+                            </h2>
+                            <form action="/products" method="post" enctype="multipart/form-data" class="formulario">
+                                <label for="name">Nombre del producto</label>
+                                <input type="text" name="name" id="name" placeholder="Nombre del producto" />
+                                <label for="description">Descripción del producto</label>
+                                <textarea type="text" name="description" id="description"
+                                    placeholder="* Descripcion del producto"></textarea>
+                                <div class="imagen">
+                                    <label for="imagen">Imagen del producto</label>
+                                    <input type="file" name="image" id="imagen" />
+                                    <div>
+                                        <label for="colors">Color del producto</label>
+                                        <input type="text" name="colors" id="colors" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="price">Price del producto</label>
+                                    <input type="text" name="price" id="price" />
+                                </div>
+                                <div>
+                                    <label for="size">Talle del producto</label>
+                                    <input type="text" name="size" id="size" />
+                                </div>
+                                <div>
+                                    <label for="brand">Marca del producto</label>
+                                    <input type="text" name="brand" id="brand" />
+                                </div>
+
+
+                                </div>
+                                <div class="botones">
+                                    <input class="boton-confirmar" type="submit" name="enviar" id="enviar"
+                                        value="Confirmar" />
+                                    <button type="reset" class="boton-reset">Borrar</button>
+                                </div>
+                            </form>
+                        </section>
+                </main>
     </body>
     <%-include ('../partials/footer.ejs')%>
 </html>

@@ -66,6 +66,7 @@ body {
 .box-icons > i:hover{
     color: #000000;
 }*/
+
 /*------------------ MAIN ------------------*/
 .container {
     width: 100%;
@@ -203,7 +204,7 @@ body {
 }
 .boton-cancelar {
     color :#ebebeb; 
-    background-color: #A5A8AB; 
+    background-color: #f52536; 
     border-radius: 5px; 
     margin: 2% 5% 2% 5%;
     border: none;
@@ -214,7 +215,7 @@ body {
     transition: background-color 500ms;
 }
 .boton-cancelar:hover {
-    background-color: #878B8F;
+    background-color: #9c042a;
 }
 .style-label-acept {
     display: flex;

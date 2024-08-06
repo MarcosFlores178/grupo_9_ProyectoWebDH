@@ -3,7 +3,7 @@
     font-family: 'roboto';
 }
 
-/* Estilos generales */
+
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
@@ -38,7 +38,7 @@ body {
 
 
 
-/* Contenedor principal */
+
 .container {
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Artículo de producto */
+
 .product-purchase {
     display: flex;
     justify-content: space-between;
@@ -97,7 +97,7 @@ body {
     background-color: #e60000;
 }
 
-/* Detalle de compra */
+
 .detalle-compra {
     max-width: 800px;
     margin: 20px auto;
@@ -140,7 +140,7 @@ body {
 }
 
 .cancel-button:hover {
-    background-color: #e60000; /* Rojo más oscuro al pasar el cursor */
+    background-color: #e60000; 
 }
 
 .detalle-compra h2, .detalle-compra h3 {
