@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%-include ('../partials/head.ejs', {estilo:'editproduct'})%>
+    <%-include ('../partials/head.ejs', {estilo:'detailsproduct'})%>
     <body>
         <%-include ('../partials/header')%>
         <%-include ('../partials/nav-bar')%>
         <main>
             <%-include ('../partials/button-top')%>
-            <nav class="product">
-                <nav class="imagenes-productos">
-                    <section class="img_product">
-                        <img class="img_product-1" src="/images/products/<%= product.image%>" alt="" width="250px">
+            <nav class="detail-product">
+                <h2>Detalle del producto</h2>
+                <nav>
+                    <h3><%= product.name %></h3>
+                    <section>
+                        <img src="/images/products/<%= product.image%>" alt="" width="250px">
                     </section>
                 </nav>
                 <nav>
-                    <section class="det_product">
-                        <div class="descriptions">
-                            <h2><%= product.name %></h2>
-                            <p>Descripcion : <%= product.description %></p>
-                            <p>Marca : <%= product.brand %></p>
-                            <p>Talla : <%= product.size %></p>
-                            <p>Color : <%= product.colors %></p>
+                    <section>
+                        <div>
+                            <div class="description-div"><h4>Descripción:</h4><%= product.description %></div>
                         </div>
-                        <div class="n_article">
-                        </div>
-                        <div class="price">
-                            <h4>$ <%=product.price%></h4>
-                        </div>
+                        <div class="description-div"><h4>Marca: </h4><%= product.brand %></div>
+                        <div class="description-div"><h4>Talla: </h4><%= product.size %></div>
+                        <div class="description-div"><h4>Color: </h4><%= product.colors %></div>
+                        <div class="description-div"><h4>Precio: </h4>$<%=product.price%></div>
                         <div class="botones">
-                            <button><a href="/products/editproduct/<%= product.id %>">Editar</a></button>
-                            <form method="POST" action="/products/detail/<%= product.id %>?_method=DELETE" style="display:inline;">
-                                <button type="submit">Eliminar</button>
+                            <a href="/products/editproduct/<%= product.id %>"><button class="boton-editar">Editar</button></a>
+                            <form class="boton-eliminar" method="POST" action="/products/detail/<%= product.id %>?_method=DELETE" style="display:inline;">
+                                <button class="boton-eliminar" type="submit">Eliminar</button>
                             </form>
-                        </div><br>
-                        <p><i class="fa-regular fa-credit-card"></i><a href="/">Conoce las promociones</a></p>
+                        </div>
                     </section>
                 </nav>
             </nav>
         </main>
+        <%-include ('../partials/footer')%>
     </body>
-    <%-include ('../partials/footer')%>
 </html>

@@ -48,6 +48,10 @@ body {
 }*/
 
 /* seccion de estilos de login  */
+.h1 {
+  text-align: center;
+  margin-top: 20px;
+}
 .login {
   height: 80vh;
   display: flex;

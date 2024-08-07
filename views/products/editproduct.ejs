@@ -4,47 +4,58 @@
 
     <body>
         <%-include ('../partials/header.ejs')%>
-            <%-include ('../partials/nav-bar.ejs')%>
-                <main>
-                    <%-include ('../partials/button-top.ejs')%>
-                    <section class="cargaproducto">
-                        <h2>
-                            Edición de productos
-                        </h2>
-                        <form action="/products/detail/<%= product.id %>?_method=put" method="POST"
-                            enctype="multipart/form-data" class="formulario">
-                            <label for="name">
-                                Nombre del producto
-                            </label>
-                            <input type="text" name="name" id="name" placeholder="* Nombre del producto"
-                                value="<%= product.name%>" />
-                            <label for="price">Precio : </label>
-                            <input type="text" name="price" id="price" value="<%= product.price %>">
-                            <label for="brand">Marca : </label>
-                            <input type="text" name="brand" id="brnad" value="<%= product.brand %>">
-                            <label for="colors">Color : </label>
-                            <input type="text" name="colors" id="colors" value="<%= product.colors %>">
-                            <label for="size">Size : </label>
-                            <input type="text" name="size" id="size" value="<%= product.size %>">
-                            <label for="description">Descripción del producto</label>
-                            <textarea type="text" name="description"
-                                id="description"><%= product.description%></textarea>
-                            <div class="imagen">
-                                <img src="/images/products/<%= product.image %>" alt="" width="250px"><br>
-                                <label for="imagen">Cambiar imagen del producto</label>
-                                <input type="file" name="imagen" id="imagen" value="<%=product.image%>" />
-                                <input type="hidden" name="currentImage" value="<%= product.image %>">
-                            </div>
-                            <br>
-                            <div class="botones">
-                                <input class="boton-confirmar" type="submit" name="enviar" id="enviar"
-                                    value="Confirmar" />
-                                <button type="reset" class="boton-reset">Borrar</button>
-                            </div>
-                        </form>
-                    </section>
-                </main>
+        <%-include ('../partials/nav-bar.ejs')%>
+        <main>
+            <%-include ('../partials/button-top.ejs')%>
+            <section class="cargaproducto">
+                <h2>Editar producto</h2>
+                <form action="/products/detail/<%= product.id %>?_method=put" method="POST" enctype="multipart/form-data" class="formulario">
+                    <div>
+                        <label for="name">Nombre del producto:</label>
+                        <input type="text" name="name" id="name" placeholder="* Nombre del producto" value="<%= product.name%>" />
+                    </div>
+                    <div>
+                        <label for="price">Precio: </label>
+                        <input type="text" name="price" id="price" value="<%= product.price %>">
+                    </div>
+                    <div>
+                        <label for="brand">Marca: </label>
+                        <input type="text" name="brand" id="brnad" value="<%= product.brand %>">
+                    </div>
+                    <div>
+                        <label for="colors">Color: </label>
+                        <input type="text" name="colors" id="colors" value="<%= product.colors %>">
+                    </div>
+                    <div>
+                        <label for="size">Size: </label>
+                        <input type="text" name="size" id="size" value="<%= product.size %>">
+                    </div>
+                    <div>
+                        <label for="description">Descripción del producto:</label>
+                        <textarea type="text" name="description" id="description"><%= product.description%></textarea>
+                    </div>
+                    <div>
+                        <label for="imagen">Cambiar imagen del producto</label>
+                    </div>
+                    <div>
+                        <img src="/images/products/<%= product.image %>" alt="" width="200px"><br>
+                    </div>
+                    <div>
+                        <input type="file" name="imagen" id="imagen" value="<%=product.image%>" />
+                        <input type="hidden" name="currentImage" value="<%= product.image %>">
+                    </div><br>
+                    <div class="botones">
+                        <button class="boton-aceptar" type="submit" name="enviar" id="enviar">Confirmar</button>
+                        <button class="boton-cancelar" type="reset" class="boton-reset" onclick="cancelar()">Cancelar</button>
+                        <script>
+                            function cancelar() {
+                                window.location.href = `http://localhost:8080/products`; // Reemplaza con la URL a la que quieres redirigir
+                            }
+                        </script>
+                    </div>
+                </form>
+            </section>
+        </main>
+        <%-include ('../partials/footer.ejs')%>
     </body>
-    <%-include ('../partials/footer.ejs')%>
-
 </html>

@@ -1,0 +1,123 @@
+*{
+    font-family: 'roboto';
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #EEFCFF;
+    
+}
+
+.detail-product {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: x-large;
+    text-align: center;
+    margin: 2%;
+    h2 {
+        margin-bottom: 20px;
+        text-decoration: underline;
+    }
+    .description-div{
+        margin:10px;
+        display: inline-block;
+        h4{
+            text-decoration: underline;
+        }
+    }
+    img{
+        width: 250px;
+        margin-bottom: 20px;
+    }
+    .botones {
+        display: flex;
+        flex-direction: row;
+        width: auto;
+        margin: 2%;
+    }
+    a{
+        color :#ebebeb; 
+        background-color: #2968c8; 
+        border-radius: 5px; 
+        margin: auto;
+        border: none;
+        font-weight: bold;
+        width: 25%;
+        height: 35px;
+        cursor: pointer;
+        transition: background-color 500ms;
+        text-decoration: none;
+        .boton-editar {
+            color :#ebebeb; 
+            background-color: #2968c8; 
+            border-radius: 5px; 
+            margin: auto;
+            border: none;
+            font-weight: bold;
+            width: 100%;
+            height: 35px;
+            cursor: pointer;
+            transition: background-color 500ms;
+            text-decoration: none;
+        }
+    }
+    a:hover{
+        background-color: #0022AA;
+        .boton-editar:hover{
+            background-color: #0022AA;
+        }
+    }
+    form{
+        color :#ebebeb; 
+        background-color: #ff4d4d; 
+        border-radius: 5px; 
+        margin: auto;
+        border: none;
+        font-weight: bold;
+        width: 25%;
+        height: 35px;
+        cursor: pointer;
+        transition: background-color 500ms;
+        .boton-eliminar {
+            color :#ebebeb; 
+            background-color: #ff4d4d; 
+            border-radius: 5px; 
+            margin: auto;
+            border: none;
+            font-weight: bold;
+            width: 100%;
+            height: 35px;
+            cursor: pointer;
+            transition: background-color 500ms;
+        }
+    }
+    form:hover {
+        background-color: #e60000;
+        .boton-eliminar:hover {
+            background-color: #e60000
+        }
+    }
+}
+/*-------CSS de button-top.ejs-------*/
+.button-index {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    color: #000000;
+    border-radius: 50%;
+    background-color: #4878D9;
+    border: none;
+    cursor: pointer;
+    display: none;
+}
+.button-index.show {
+    display: block;
+}
+.button-index i {
+    font-size: x-large;
+    color: #000000;
+}
