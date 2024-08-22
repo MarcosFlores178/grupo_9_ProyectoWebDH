@@ -1,0 +1,18 @@
+!DOCTYPE html>
+<html lang="es">
+<%- include('../partials/head.ejs', {estilo:'register'})%>
+
+    <body>
+        <%-include ('../partials/header.ejs')%>
+            <%-include ('../partials/button-top.ejs')%>
+                <section class="perfil-usuario">
+                    <h1>perfil de usuario</h1>
+                    <%= 'NOMBRE: ' + usuario.nombre%>
+                        <%= 'apellido: ' + usuario.lastname%>
+                            <%= 'EMAIL: ' + usuario.email%>
+                                <%= 'foto perfil: ' + usuario.foto%>
+                </section>
+                <%-include ('../partials/footer.ejs')%>
+    </body>
+
+</html>

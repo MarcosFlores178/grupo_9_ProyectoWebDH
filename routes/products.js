@@ -16,6 +16,8 @@ router.get("/", productsController.showAll);
 
 // router.get("/details-product", productsController.showDetails);
 
+router.get("/brands/:brand", productsController.showBrand);
+
 router.get("/detail/:id", productsController.showById);
 
 router.get("/addproduct/", productsController.showAddProduct);
@@ -24,7 +26,11 @@ router.post("/", fileUpload.single("image"), productsController.addProduct);
 
 router.get("/editproduct/:id", productsController.showEditForm);
 
-router.put("/detail/:id", fileUpload.single("image"), productsController.editProduct);
+router.put(
+  "/detail/:id",
+  fileUpload.single("image"),
+  productsController.editProduct
+);
 
 router.delete("/detail/:id", productsController.deleteProduct);
 

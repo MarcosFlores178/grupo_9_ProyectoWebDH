@@ -21,13 +21,23 @@ const productsController = {
     const product = productos.find((p) => p.id === id);
     res.render("products/details-product", { product });
   },
+  showBrand: async (req, res) => {
+    const { brand } = req.params.brand;
+    this.productsList = await dataSource.load();
+    res.render("products/brands", {
+      productos: this.productsList,
+      brand: brand,
+    });
+    console.log(this.productsList);
+  },
+
   showAddProduct: (req, res) => {
     res.render("products/addproduct");
   },
   addProduct: async (req, res) => {
     const imgProduct = req.file
       ? `${req.file.filename}`
-      : "/images/default.jpg";
+      : "/images/products/default.jpg";
     const { name, description, image, colors, price, size, brand } = req.body;
     const newProduct = {
       id: crypto.randomUUID(),
@@ -49,7 +59,7 @@ const productsController = {
     const { id } = req.params;
     const productos = await dataSource.load();
     const product = productos.find((p) => p.id === id);
-    res.render("products/editproduct", { product, estilo: 'editproduct' });
+    res.render("products/editproduct", { product, estilo: "editproduct" });
   },
   editProduct: async (req, res) => {
     let image = "";

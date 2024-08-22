@@ -178,5 +178,19 @@
     "password": "fEA7%0(c1e0WMkBA",
     "type": "Admin",
     "image": "snapshot789.jpg"
+  },
+  {
+    "id": "da5d6495-f536-4cf8-afc1-dd257d3d3748",
+    "nombre": " Lucas",
+    "apellido": "Barrera",
+    "dni": "36437698",
+    "telefono": "12345678",
+    "domicilio": "La Rioja",
+    "country": "Argentina",
+    "nombreUsuario": "LucasBM",
+    "email": "barreramenemlucas@gmail.com",
+    "password": "lucas1234",
+    "tipoUsuario": "on",
+    "foto": "user-b39f8b23c12536fd.jpg"
   }
 ]

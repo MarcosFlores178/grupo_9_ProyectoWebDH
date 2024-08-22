@@ -8,6 +8,7 @@ const rutaUsers = require("./routes/users.js");
 const rutaProducts = require("./routes/products.js");
 const rutaMain = require("./routes/main.js");
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -15,6 +16,14 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(
+  session({
+    secret: "claveSecreta",
+    saveUninitialized: false,
+    resave: false,
+    cookie: { secure: false },
+  })
+);
 
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);
