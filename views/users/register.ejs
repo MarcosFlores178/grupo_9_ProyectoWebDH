@@ -6,7 +6,7 @@
     <%-include ('../partials/button-top.ejs')%>
     <main class="container">
         <h1 class="h1">REGISTRO DE USUARIO</h1>
-        <form class="form" action="" method="">
+        <form class="form" action="/register" method="POST">
             <h3 class="h3">Datos Personales</h3>
             <div>
                 <div class="div-par">
@@ -22,20 +22,10 @@
                     <label for="countries"></label>
                     <input class="cuadros-login" list="countries" id="country" name="country" placeholder="* País">
                     <datalist id="countries">
-                        <option value="Argentina">
-                        <option value="Bolivia">
-                        <option value="Brasil">
-                        <option value="Chile">
-                        <option value="Colombia">
-                        <option value="Ecuador">
-                        <option value="España">
-                        <option value="Estados Unidos">
-                        <option value="Mexico">
-                        <option value="Paraguay">
-                        <option value="Perú">
-                        <option value="Uruguay">
-                        <option value="Venezuela">
-                    </datalist>
+                        <% countries.forEach(function(country) { %>
+                          <option value="<%= country %>"></option>
+                        <% }); %>
+                      </datalist>
                     <br>
                 </div>
             </div>
