@@ -1,6 +1,7 @@
 const express = require("express");
 const usersController = require("../controllers/usersController.js");
 const fotoUserUpload = require("../service/fotoUserUpload");
+const {body}=require("express-validator");
 const router = express.Router();
 
 router.get("/login", usersController.showLogin);
