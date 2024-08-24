@@ -28,21 +28,11 @@
                                 <label for="countries"></label>
                                 <input class="cuadros-login" list="countries" id="country" name="country"
                                     placeholder="* País">
-                                <datalist id="countries">
-                                    <option value="Argentina">
-                                    <option value="Bolivia">
-                                    <option value="Brasil">
-                                    <option value="Chile">
-                                    <option value="Colombia">
-                                    <option value="Ecuador">
-                                    <option value="España">
-                                    <option value="Estados Unidos">
-                                    <option value="Mexico">
-                                    <option value="Paraguay">
-                                    <option value="Perú">
-                                    <option value="Uruguay">
-                                    <option value="Venezuela">
-                                </datalist>
+                                    <datalist id="countries">
+                                        <% countries.forEach(function(country) { %>
+                                          <option value="<%= country %>"></option>
+                                        <% }); %>
+                                      </datalist>
                                 <br>
                             </div>
                         </div>

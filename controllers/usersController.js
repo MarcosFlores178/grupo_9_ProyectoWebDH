@@ -1,3 +1,5 @@
+const {validationResult} = require('express-validator');
+const { countries } = require('countries-list');
 const usersDataSource = require("../service/usersDataSource");
 const usersController = {
   userList: null,
@@ -15,7 +17,9 @@ const usersController = {
     res.redirect("/users/perfil");
   },
   showRegister: (req, res) => {
-    res.render("users/register");
+    // res.render("users/register");
+    const countryList = Object.values(countries).map(country => country.name);
+            res.render('users/register', { countries: countryList });
   },
   register: async (req, res) => {
     const fotoUsuario = req.file ? `${req.file.filename}` : "default.jpg";
