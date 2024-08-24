@@ -180,17 +180,33 @@
     "image": "snapshot789.jpg"
   },
   {
-    "id": "da5d6495-f536-4cf8-afc1-dd257d3d3748",
+    "id": "9f4762c4-093d-4c66-a4c0-d8cdf7a23261",
     "nombre": " Lucas",
     "apellido": "Barrera",
-    "dni": "36437698",
-    "telefono": "12345678",
+    "dni": "23434253",
+    "telefono": "345345345345",
     "domicilio": "La Rioja",
     "country": "Argentina",
     "nombreUsuario": "LucasBM",
     "email": "barreramenemlucas@gmail.com",
     "password": "lucas1234",
-    "tipoUsuario": "on",
-    "foto": "user-b39f8b23c12536fd.jpg"
+    "admincomp": "admin",
+    "tipoUsuario": "hombre",
+    "foto": "user-b3730780e3ffb9de.jpg"
+  },
+  {
+    "id": "dad66913-1d1e-4389-93e3-9cea71722a21",
+    "nombre": "Ezio Javier",
+    "apellido": "Barrera",
+    "dni": "23434253",
+    "telefono": "12345678",
+    "domicilio": "La Rioja",
+    "country": "Argentina",
+    "nombreUsuario": "EzioJavi",
+    "email": "eziojavi@gmail.com",
+    "password": "ezio12345",
+    "admincomp": "comprador",
+    "tipoUsuario": "hombre",
+    "foto": "user-be7518decdbefb6d.jpg"
   }
 ]

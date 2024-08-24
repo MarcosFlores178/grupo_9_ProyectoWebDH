@@ -8,7 +8,11 @@ const productsController = {
   },
 
   showShopCart: (req, res) => {
-    res.render("products/shop-cart");
+    if (req.session.user) {
+      const usuario = req.session.user;
+      return usuario;
+    }
+    res.render("products/shop-cart", { usuario });
   },
 
   showAll: async (req, res) => {

@@ -1,6 +1,3 @@
-const { validationResult } = require("express-validator");
-const path = require("path");
-const fs = require("fs");
 const usersDataSource = require("../service/usersDataSource");
 const usersController = {
   userList: null,
@@ -9,15 +6,19 @@ const usersController = {
     res.render("users/login");
   },
   login: async (req, res) => {
+    const { email, password } = req.body;
+    this.userList = await usersDataSource.load();
+    this.user = this.userList.find((u) => {
+      return u.email == email && u.password == password;
+    });
+    req.session.user = this.user;
     res.redirect("/users/perfil");
   },
   showRegister: (req, res) => {
     res.render("users/register");
   },
   register: async (req, res) => {
-    const fotoUsuario = req.file
-      ? `${req.file.filename}`
-      : "/images/users/userDefault.jpg";
+    const fotoUsuario = req.file ? `${req.file.filename}` : "default.jpg";
     const {
       nombre,
       apellido,
@@ -28,6 +29,7 @@ const usersController = {
       nombreUsuario,
       email,
       password,
+      admincomp,
       tipoUsuario,
       foto,
     } = req.body;
@@ -42,6 +44,7 @@ const usersController = {
       nombreUsuario,
       email,
       password,
+      admincomp,
       tipoUsuario,
       foto: fotoUsuario,
     };
@@ -53,8 +56,8 @@ const usersController = {
     res.redirect("/users/login");
   },
   perfil: (req, res) => {
-    delete req.session.user;
-    res.render("users/userPerfil", { usuario: this.user });
+    const usuario = req.session.user;
+    res.render("users/userPerfil", { usuario });
   },
 };
 

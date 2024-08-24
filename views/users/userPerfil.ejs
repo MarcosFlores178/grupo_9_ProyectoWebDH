@@ -1,4 +1,3 @@
-!DOCTYPE html>
 <html lang="es">
 <%- include('../partials/head.ejs', {estilo:'register'})%>
 
@@ -8,9 +7,9 @@
                 <section class="perfil-usuario">
                     <h1>perfil de usuario</h1>
                     <%= 'NOMBRE: ' + usuario.nombre%>
-                        <%= 'apellido: ' + usuario.lastname%>
+                        <%= 'APELLIDO: ' + usuario.apellido%>
                             <%= 'EMAIL: ' + usuario.email%>
-                                <%= 'foto perfil: ' + usuario.foto%>
+                                <img src="/images/users/<%= usuario.foto%>" alt="">
                 </section>
                 <%-include ('../partials/footer.ejs')%>
     </body>
