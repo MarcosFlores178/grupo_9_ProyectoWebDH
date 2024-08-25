@@ -7,6 +7,7 @@ router.get("/login", usersController.showLogin);
 
 router.post("/login", usersController.login);
 
+router.get("/logout", usersController.logout);
 router.get("/register", usersController.showRegister);
 
 router.post(

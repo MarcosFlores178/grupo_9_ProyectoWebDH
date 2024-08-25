@@ -14,6 +14,10 @@ const usersController = {
     req.session.user = this.user;
     res.redirect("/users/perfil");
   },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
+  },
   showRegister: (req, res) => {
     res.render("users/register");
   },

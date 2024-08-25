@@ -5,7 +5,8 @@ const mainController = {
       usuario = req.session.user;
       return res.render("main/index", { usuario });
     } else {
-      return res.render("main/index");
+      usuario = "no hay usuario logueado";
+      return res.render("main/index", { usuario });
     }
   },
 };
