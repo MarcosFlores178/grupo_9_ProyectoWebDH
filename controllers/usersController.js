@@ -1,4 +1,5 @@
 const {validationResult} = require('express-validator');
+const { v4: uuidv4 } = require('uuid');
 const { countries } = require('countries-list');
 const usersDataSource = require("../service/usersDataSource");
 const usersController = {
@@ -22,6 +23,10 @@ const usersController = {
             res.render('users/register', { countries: countryList });
   },
   register: async (req, res) => {
+    let errores = validationResult(req);
+    if(!errores.isEmpty()){
+      return res.render ("register", { mensajesDeError: errores.mapped()})
+    }
     const fotoUsuario = req.file ? `${req.file.filename}` : "default.jpg";
     const {
       nombre,
@@ -38,7 +43,7 @@ const usersController = {
       foto,
     } = req.body;
     const newUser = {
-      id: crypto.randomUUID(),
+      id: uuidv4(),
       nombre,
       apellido,
       dni,
