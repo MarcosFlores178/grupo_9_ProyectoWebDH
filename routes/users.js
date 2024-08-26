@@ -1,14 +1,15 @@
 const express = require("express");
 const usersController = require("../controllers/usersController.js");
 const fotoUserUpload = require("../service/fotoUserUpload");
+const logregMiddleware = require("../middlewares/logregMiddelware.js");
 const router = express.Router();
 
-router.get("/login", usersController.showLogin);
+router.get("/login", logregMiddleware, usersController.showLogin);
 
 router.post("/login", usersController.login);
 
 router.get("/logout", usersController.logout);
-router.get("/register", usersController.showRegister);
+router.get("/register", logregMiddleware, usersController.showRegister);
 
 router.post(
   "/register",

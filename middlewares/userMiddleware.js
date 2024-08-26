@@ -2,7 +2,7 @@ function userMiddleware(req, res, next) {
   if (req.session.user) {
     next();
   } else {
-    res.send("Debe loguearse para acceder al carrito de compras");
+    res.redirect("/users/login");
   }
 }
 module.exports = userMiddleware;
