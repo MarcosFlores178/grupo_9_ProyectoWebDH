@@ -19,3 +19,12 @@ router.post(
 router.get("/perfil", usersController.perfil);
 
 module.exports = router;
+
+// validacion de rutas
+// app.use((req, res, next) => {
+//   if (req.session.user) {
+//       next();
+//   } else {
+//       res.redirect('/login');
+//   }
+// });

@@ -9,6 +9,7 @@ const rutaProducts = require("./routes/products.js");
 const rutaMain = require("./routes/main.js");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -24,6 +25,7 @@ app.use(
     cookie: { secure: false },
   })
 );
+app.use(rememberMiddleware);
 
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);

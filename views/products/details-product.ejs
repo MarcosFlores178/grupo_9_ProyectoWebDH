@@ -1,38 +1,63 @@
 <!DOCTYPE html>
 <html lang="es">
-    <%-include ('../partials/head.ejs', {estilo:'detailsproduct'})%>
+<%-include ('../partials/head.ejs', {estilo:'detailsproduct'})%>
+
     <body>
         <%-include ('../partials/header')%>
-        <%-include ('../partials/nav-bar')%>
-        <main>
-            <%-include ('../partials/button-top')%>
-            <nav class="detail-product">
-                <h2>Detalle del producto</h2>
-                <nav>
-                    <h3><%= product.name %></h3>
-                    <section>
-                        <img src="/images/products/<%= product.image%>" alt="" width="250px">
-                    </section>
-                </nav>
-                <nav>
-                    <section>
-                        <div>
-                            <div class="description-div"><h4>Descripción:</h4><%= product.description %></div>
-                        </div>
-                        <div class="description-div"><h4>Marca: </h4><%= product.brand %></div>
-                        <div class="description-div"><h4>Talla: </h4><%= product.size %></div>
-                        <div class="description-div"><h4>Color: </h4><%= product.colors %></div>
-                        <div class="description-div"><h4>Precio: </h4>$<%=product.price%></div>
-                        <div class="botones">
-                            <a href="/products/editproduct/<%= product.id %>"><button class="boton-editar">Editar</button></a>
-                            <form class="boton-eliminar" method="POST" action="/products/detail/<%= product.id %>?_method=DELETE" style="display:inline;">
-                                <button class="boton-eliminar" type="submit">Eliminar</button>
-                            </form>
-                        </div>
-                    </section>
-                </nav>
-            </nav>
-        </main>
-        <%-include ('../partials/footer')%>
+            <%-include ('../partials/nav-bar')%>
+                <main>
+                    <%-include ('../partials/button-top')%>
+                        <nav class="detail-product">
+                            <h2>Detalle del producto</h2>
+                            <nav>
+                                <h3>
+                                    <%= product.name %>
+                                </h3>
+                                <section>
+                                    <img src="/images/products/<%= product.image%>" alt="" width="250px">
+                                </section>
+                            </nav>
+                            <nav>
+                                <section>
+                                    <div>
+                                        <div class="description-div">
+                                            <h4>Descripción:</h4>
+                                            <%= product.description %>
+                                        </div>
+                                    </div>
+                                    <div class="description-div">
+                                        <h4>Marca: </h4>
+                                        <%= product.brand %>
+                                    </div>
+                                    <div class="description-div">
+                                        <h4>Talla: </h4>
+                                        <%= product.size %>
+                                    </div>
+                                    <div class="description-div">
+                                        <h4>Color: </h4>
+                                        <%= product.colors %>
+                                    </div>
+                                    <div class="description-div">
+                                        <h4>Precio: </h4>$<%=product.price%>
+                                    </div>
+                                    <% if (usuario.admincomp) { %>
+                                        <div class="botones">
+                                            <a href="/products/editproduct/<%= product.id %>"><button
+                                                    class="boton-editar">Editar</button></a>
+                                            <form class="boton-eliminar" method="POST"
+                                                action="/products/detail/<%= product.id %>?_method=DELETE"
+                                                style="display:inline;">
+                                                <button class="boton-eliminar" type="submit">Eliminar</button>
+                                            </form>
+                                        </div>
+                                        <%}%>
+
+
+                                </section>
+                            </nav>
+                        </nav>
+                </main>
+                <%-include ('../partials/footer')%>
     </body>
+
 </html>

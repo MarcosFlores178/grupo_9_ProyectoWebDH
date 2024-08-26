@@ -6,24 +6,35 @@ const productsController = {
   showDetails: (req, res) => {
     res.render("products/details-product");
   },
-
   showShopCart: (req, res) => {
     if (req.session.user) {
       const usuario = req.session.user;
-      return usuario;
+      res.render("products/shop-cart", { usuario });
     }
-    res.render("products/shop-cart", { usuario });
   },
-
   showAll: async (req, res) => {
     this.productsList = await dataSource.load();
     res.render("products/productos", { productos: this.productsList });
   },
   showById: async function (req, res) {
+    let usuario = req.session.user || null; // Asigna null si no hay usuario
+
+    // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
+    if (usuario && usuario.admincomp === "admin") {
+      console.log("administrador:", usuario);
+    } else {
+      usuario = {};
+    }
     const { id } = req.params;
     const productos = await dataSource.load();
     const product = productos.find((p) => p.id === id);
-    res.render("products/details-product", { product });
+
+    res.render("products/details-product", { product, usuario });
+
+    // const { id } = req.params;
+    // const productos = await dataSource.load();
+    // const product = productos.find((p) => p.id === id);
+    // res.render("products/details-product", { product, usuario });
   },
   showBrand: async (req, res) => {
     const { brand } = req.params.brand;

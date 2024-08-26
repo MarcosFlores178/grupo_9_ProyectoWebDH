@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const usersDataSource = require("../service/usersDataSource");
 const usersController = {
   userList: null,
@@ -9,9 +10,12 @@ const usersController = {
     const { email, password } = req.body;
     this.userList = await usersDataSource.load();
     this.user = this.userList.find((u) => {
-      return u.email == email && u.password == password;
+      return u.email == email && bcrypt.compareSync(password, u.password);
     });
     req.session.user = this.user;
+    if (req.body.remember != undefined) {
+      res.cookie("remember", this.user.email, { maxAge: 120 * 1000 });
+    }
     res.redirect("/users/perfil");
   },
   logout: (req, res) => {
@@ -47,7 +51,7 @@ const usersController = {
       country,
       nombreUsuario,
       email,
-      password,
+      password: bcrypt.hashSync(password, 10),
       admincomp,
       tipoUsuario,
       foto: fotoUsuario,
