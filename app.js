@@ -10,6 +10,7 @@ const rutaMain = require("./routes/main.js");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
