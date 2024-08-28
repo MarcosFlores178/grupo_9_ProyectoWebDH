@@ -18,12 +18,26 @@ const validator = [
   body('country').notEmpty().trim().withMessage('Ingrese su pais'),
   body('nombreUsuario').notEmpty().trim().withMessage('Ingrese su nombre de usuario'),
   body('email').isEmail().trim().withMessage('Ingrese su email'),
-  body('emailVerify').isEmail().trim().withMessage('Confirme su email'),
+  body('emailVerify').isEmail().trim().withMessage('Confirme su email')
+      .custom((value, {req}) => value === req.body.email).withMessage("Los emails no coinciden"),
   body('password')
       .notEmpty().withMessage('Ingrese una contraseña')
       .trim()
       .isLength({ min: 8 }).withMessage('La contraseña debe contener al menos 8 caracteres.'),
-      body('passwordVerify').notEmpty().withMessage('Confirme su contraseña'),
+  body('passwordVerify').notEmpty().withMessage('Confirme su contraseña')
+      .notEmpty().withMessage('Ingrese una contraseña')
+      .trim()
+      .isLength({ min: 8 }).withMessage('La contraseña debe contener al menos 8 caracteres.')
+      .custom((value, {req}) => value === req.body.password).withMessage("Las contraseñas no coinciden"),
+  check('admincomp')
+  .exists().withMessage('Seleccione un rol')
+  .bail()
+  // .custom((value, { req }) => {
+  //     if (!req.body.role || !Array.isArray(req.body.role) || req.body.role.length !== 1) {
+  //         throw new Error('Seleccione un rol válido');
+  //     }
+  //     return true;
+  // })
     ] 
 router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);

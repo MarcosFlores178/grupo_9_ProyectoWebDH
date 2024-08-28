@@ -160,6 +160,15 @@
                                 <input class="radio-checkbox" type="radio" name="admincomp" value="comprador">Comprador
                             </label>
                         </div>
+                        <div class="error-container">
+                            <% if (mapsDeError.admincomp) { %>
+                                <p class="errorValidator izquierda">
+                                    <%= mapsDeError.admincomp.msg %>
+                                </p>
+                                <% } else { %>
+                                    <p class="errorValidator izquierda">&nbsp;</p>
+                                <% } %>
+                        </div>
                         <h3 class="h3">Sexo</h3>
                         <div class="style-label">
                             <label class="style-label-r">
