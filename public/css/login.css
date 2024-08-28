@@ -4,7 +4,7 @@ color boton cancelar #a4a8ab */
   font-family: 'roboto';
 }
 body {
-  background-color: #dcf1f4;
+  background-color: #EEFCFF;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

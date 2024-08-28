@@ -1,6 +1,7 @@
 const mainController = {
   showIndex: (req, res) => {
-    let usuario;
+    let usuario = null;
+    // console.log(usuario);
     if (req.session.user) {
       usuario = req.session.user;
       return res.render("main/index", { usuario });

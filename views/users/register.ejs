@@ -7,63 +7,149 @@
             <%-include ('../partials/button-top.ejs')%>
                 <main class="container">
                     <h1 class="h1">REGISTRO DE USUARIO</h1>
-                    <form class="form" action="/users/register" method="post" enctype="multipart/form-data">
+                    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
                         <h3 class="h3">Datos Personales</h3>
                         <div>
                             <div class="div-par">
-                                <input class="cuadros-login" type="text" id="nombre" name="nombre" required
-                                    placeholder="* Nombre"><br>
-                                <input class="cuadros-login" type="text" id="apellido" name="apellido" required
-                                    placeholder="* Apellido"><br>
+                                <input class="cuadros-login <%= mapsDeError.nombre ? 'error-border' : '' %>" type="text"
+                                    id="nombre" name="nombre" placeholder="* Nombre" value="<%= locals.old && old.nombre? old.nombre : "" %>"><br>
+                                <input class="cuadros-login <%= mapsDeError.apellido ? 'error-border' : '' %>"
+                                    type="text" id="apellido" name="apellido" placeholder="* Apellido" value="<%= locals.old && old.apellido? old.apellido : "" %>" ><br>
+                            </div>
+
+                            <div class="error-container">
+                                <% if (mapsDeError.nombre) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.nombre.msg %>
+                                    </p>
+                                    <% } else { %>
+                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    <% } %>
+
+
+                                        <% if (mapsDeError.apellido) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.apellido.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
+                            </div>
+
+                            <div class="div-par">
+                                <input class="cuadros-login <%= mapsDeError.dni ? 'error-border' : '' %>" type="text"
+                                    id="dni" name="dni" placeholder="* DNI"
+                                    maxlength="8" value="<%= locals.old && old.dni? old.dni : "" %>" ><br>
+                                <input class="cuadros-login <%= mapsDeError.telefono ? 'error-border' : '' %>"
+                                    type="tel" id="telefono" name="telefono" placeholder="* Teléfono" value="<%= locals.old && old.telefono? old.telefono : "" %>"><br>
+                            </div>
+                            <div class="error-container">
+                                <% if (mapsDeError.dni) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.dni.msg %>
+                                    </p>
+                                    <% } else { %>
+                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    <% } %>
+                                        <% if (mapsDeError.telefono) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.telefono.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
                             </div>
                             <div class="div-par">
-                                <input class="cuadros-login" type="text" id="dni" name="dni" placeholder="* DNI"
-                                    pattern="[0-9]{8}" minlength="8" maxlength="8"><br>
-                                <input class="cuadros-login" type="tel" id="telefono" name="telefono" required
-                                    placeholder="* Teléfono"><br>
-                            </div>
-                            <div class="div-par">
-                                <input class="cuadros-login" type="text" id="domicilio" name="domicilio" required
-                                    placeholder="* Domicilio">
+                                <input class="cuadros-login <%= mapsDeError.domicilio ? 'error-border' : '' %>"
+                                    type="text" id="domicilio" name="domicilio" placeholder="* Domicilio" value="<%= locals.old && old.domicilio? old.domicilio : "" %>">
                                 <label for="countries"></label>
-                                <input class="cuadros-login" list="countries" id="country" name="country"
-                                    placeholder="* País">
+                                <input class="cuadros-login <%= mapsDeError.country ? 'error-border' : '' %>"
+                                    list="countries" id="country" name="country" placeholder="* País" value="<%= locals.old && old.country? old.country : "" %>">
                                 <datalist id="countries">
-                                    <option value="Argentina">
-                                    <option value="Bolivia">
-                                    <option value="Brasil">
-                                    <option value="Chile">
-                                    <option value="Colombia">
-                                    <option value="Ecuador">
-                                    <option value="España">
-                                    <option value="Estados Unidos">
-                                    <option value="Mexico">
-                                    <option value="Paraguay">
-                                    <option value="Perú">
-                                    <option value="Uruguay">
-                                    <option value="Venezuela">
+                                    <% countries.forEach(function(country) { %>
+                                        <option value="<%= country %>"></option>
+                                        <% }); %>
                                 </datalist>
                                 <br>
                             </div>
+                            <div class="error-container">
+                                <% if (mapsDeError.domicilio) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.domicilio.msg %>
+                                    </p>
+                                    <% } else { %>
+                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    <% } %>
+                                        <% if (mapsDeError.country) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.country.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
+                            </div>
+
                         </div>
                         <h3 class="h3">Perfil de usuario</h3>
                         <div>
                             <div class="div-par">
-                                <input class="cuadros-login" type="text" id="nombreUsuario" name="nombreUsuario"
-                                    required placeholder="* Nombre de Usuario"><br>
+                                <input class="cuadros-login <%= mapsDeError.nombreUsuario ? 'error-border' : '' %>"
+                                    type="text" id="nombreUsuario" name="nombreUsuario"
+                                    placeholder="* Nombre de Usuario" value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : "" %>"><br>
+                            </div>
+                            <div class="error-container">
+                                <% if (mapsDeError.nombreUsuario) { %>
+                                    <p class="errorValidator">
+                                        <%= mapsDeError.nombreUsuario.msg %>
+                                    </p>
+                                    <% } %>
                             </div>
                             <div class="div-par">
-                                <input class="cuadros-login" type="email" id="email" name="email" required
-                                    placeholder="* Email"><br>
-                                <input class="cuadros-login" type="email" id="emailVerify" name="emailVerify" required
-                                    placeholder="* Confirmar Email"><br>
+                                <input class="cuadros-login <%= mapsDeError.email ? 'error-border' : '' %>" type="email"
+                                    id="email" name="email" placeholder="* Email" value="<%= locals.old && old.email? old.email : "" %>"><br>
+                                <input class="cuadros-login <%= mapsDeError.emailVerify ? 'error-border' : '' %>"
+                                    type="email" id="emailVerify" name="emailVerify"
+                                    placeholder="* Confirmar Email" value="<%= locals.old && old.emailVerify? old.emailVerify : "" %>"><br>
+                            </div>
+                            <div class="error-container">
+                                <% if (mapsDeError.email) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.email.msg %>
+                                    </p>
+                                    <% } else { %>
+                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    <% } %>
+                                        <% if (mapsDeError.emailVerify) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.emailVerify.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
                             </div>
                             <div class="div-par">
-                                <input class="cuadros-login" type="password" id="password" name="password" required
-                                    placeholder="* Contraseña"><br>
-                                <input class="cuadros-login" type="password" id="passwordVerify" name="passwordVerify"
-                                    required placeholder="* Confirmar contraseña"><br>
+                                <input class="cuadros-login <%= mapsDeError.password ? 'error-border' : '' %>"
+                                    type="password" id="password" name="password" placeholder="* Contraseña"><br>
+                                <input class="cuadros-login <%= mapsDeError.passwordVerify ? 'error-border' : '' %>"
+                                    type="password" id="passwordVerify" name="passwordVerify"
+                                    placeholder="* Confirmar contraseña"><br>
                             </div>
+                        </div>
+                        <div class="error-container">
+                            <% if (mapsDeError.password) { %>
+                                <p class="errorValidator izquierda">
+                                    <%= mapsDeError.password.msg %>
+                                </p>
+                                <% } else { %>
+                                    <p class="errorValidator izquierda">&nbsp;</p>
+                                <% } %>
+                                    <% if (mapsDeError.passwordVerify) { %>
+                                        <p class="errorValidator derecha">
+                                            <%= mapsDeError.passwordVerify.msg %>
+                                        </p>
+                                        <% } else { %>
+                                            <p class="errorValidator derecha">&nbsp;</p>
+                                        <% } %>
                         </div>
                         <h3 class="h3">Admin-Comprador</h3>
                         <div class="style-label">
@@ -73,6 +159,15 @@
                             <label class="style-label-r">
                                 <input class="radio-checkbox" type="radio" name="admincomp" value="comprador">Comprador
                             </label>
+                        </div>
+                        <div class="error-container">
+                            <% if (mapsDeError.admincomp) { %>
+                                <p class="errorValidator izquierda">
+                                    <%= mapsDeError.admincomp.msg %>
+                                </p>
+                                <% } else { %>
+                                    <p class="errorValidator izquierda">&nbsp;</p>
+                                <% } %>
                         </div>
                         <h3 class="h3">Sexo</h3>
                         <div class="style-label">
