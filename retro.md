@@ -1,1 +1,1 @@
-<img src="./sprint-documents/retrospectives/retro3.jpg" alt="retrospectiva" width="26%" align= center> 
+<img src="./sprint-documents/retrospectives/retro5.jpeg" alt="retrospectiva" width="26%" align= center> 
