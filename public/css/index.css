@@ -141,7 +141,9 @@ i {
     background-color: #fff;
     /* Color de fondo de la barra de búsqueda */
 }
-
+main section img{
+    width: 100%;
+}
 .search-bar input {
     flex: 1;
     padding: 10px;
