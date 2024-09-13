@@ -27,6 +27,13 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
 
     }
-    const Usuario = sequelize.define(alias, cols, config);
+    const Carrito = sequelize.define(alias, cols, config);
+    Carrito.associate = function(models){
+        Carrito.belongsTo(models.Usuario, {
+            as: "usuarios",
+            foreignKey: "id_usuarios"
+        })
+       
+    }
     return Usuario;
 }

@@ -18,6 +18,12 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
 
     }
-    const Usuario = sequelize.define(alias, cols, config);
+    const Talle = sequelize.define(alias, cols, config);
+    Talle.associate = function(models){
+        Talle.hasMany(models.Productos, {
+            as: "productos",
+            foreignKey: "id_talles"
+        })
+    }
     return Usuario;
 }

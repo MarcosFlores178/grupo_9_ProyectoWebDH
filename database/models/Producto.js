@@ -1,5 +1,7 @@
+const { FOREIGNKEYS } = require("sequelize/lib/query-types");
+
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Usuarios";
+    let alias = "Productos";
     let cols = {
         id_productos: {
             autoIncrement: true,
@@ -35,6 +37,19 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
 
     }
-    const Usuario = sequelize.define(alias, cols, config);
+    const Producto = sequelize.define(alias, cols, config);
+    Producto.associate = function(models){
+        Producto.belongsTo(models.Talle, {
+            as: "talles",
+            foreignKey: "id_talles"
+        })
+        Producto.belongsTo(models.Marca, {
+            as: "marcas",
+            foreignKey: "id_marcas"
+        })
+    }
+
+ 
     return Usuario;
 }
+
