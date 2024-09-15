@@ -1,18 +1,18 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Carritos";
+    let alias = "Carrito";
     let cols = {
-        id_carritos: {
+        idCarritos: {
             autoIncrement: true,
             primaryKey: true,
             type: dataTypes.INTEGER,
             allowNull: false
         },
         totalItems: {
-            type: dataTypes.STRING,
+            type: dataTypes.INTEGER,
             allowNull: false
         },
         totalPrecio: {
-            type: dataTypes.STRING,
+            type: dataTypes.DECIMAL(8,2),
             allowNull: false
         },
         fechaCompra: {
@@ -41,5 +41,5 @@ module.exports = (sequelize, dataTypes) => {
             timestamps: false
         })
     }
-    return Usuario;
+    return Carrito;
 }

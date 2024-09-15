@@ -23,12 +23,19 @@ router.get("/", productsController.showAll);
 router.get("/detail/:id", productsController.showById);
 
 router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
+router.get("/addproductdb/", productsController.showAddProductdb);
 
 router.post(
   "/",
   fileUpload.single("image"),
   adminMiddleware,
   productsController.addProduct
+);
+
+router.post(
+  "/db",
+  fileUpload.single("image"),
+  productsController.addProductdb
 );
 
 router.get(

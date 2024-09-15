@@ -1,7 +1,5 @@
-const { FOREIGNKEYS } = require("sequelize/lib/query-types");
-
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Productos";
+    let alias = "Producto";
     let cols = {
         id_productos: {
             autoIncrement: true,
@@ -57,6 +55,6 @@ module.exports = (sequelize, dataTypes) => {
     }
 
  
-    return Usuario;
+    return Producto;
 }
 

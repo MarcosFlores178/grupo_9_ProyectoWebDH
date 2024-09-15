@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Marcas";
+    let alias = "Marca";
     let cols = {
         id_marcas: {
             autoIncrement: true,
@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false
         },
-        descripcion: {
+        marca: {
             type: dataTypes.STRING,
             allowNull: false
         },
@@ -19,12 +19,12 @@ module.exports = (sequelize, dataTypes) => {
         underscored: true,
 
     }
-    const Usuario = sequelize.define(alias, cols, config);
+    const Marca = sequelize.define(alias, cols, config);
     Marca.associate = function(models){
         Marca.hasMany(models.Producto, {
             as: "productos",
             foreignKey: "id_marcas"
         })
     }
-    return Usuario;
+    return Marca;
 }

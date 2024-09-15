@@ -1,7 +1,7 @@
 // const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Usuarios";
+    let alias = "Usuario";
     let cols = {
         id_usuarios: {
             autoIncrement: true,
@@ -65,8 +65,8 @@ module.exports = (sequelize, dataTypes) => {
 
     }
     const Usuario = sequelize.define(alias, cols, config);
-    Usuarios.associate = function(models){
-        Usuarios.belongsTo(models.Carrito, {
+    Usuario.associate = function(models){
+        Usuario.belongsTo(models.Carrito, {
             as: "carritos",
             foreignKey: "id_usuarios"
         })
