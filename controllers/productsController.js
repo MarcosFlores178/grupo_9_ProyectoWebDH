@@ -1,10 +1,14 @@
+const db = require("../database/models");
 const fs = require("fs");
 const path = require("path");
 const dataSource = require("../service/dataSource.js");
+const { where } = require("sequelize");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
-    res.render("products/details-product");
+    db.Producto.findbyPk(req.param).then((producto) => {
+      return res.render("products/details-product", { producto });
+    });
   },
   showShopCart: (req, res) => {
     if (req.session.user) {
@@ -13,8 +17,11 @@ const productsController = {
     }
   },
   showAll: async (req, res) => {
-    this.productsList = await dataSource.load();
-    res.render("products/productos", { productos: this.productsList });
+    db.Producto.findAll().then((productos) => {
+      return res.render("products/productos", { productos });
+    });
+    // this.productsList = await dataSource.load();
+    // res.render("products/productos", { productos: this.productsList });
   },
   showById: async function (req, res) {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
@@ -25,11 +32,12 @@ const productsController = {
     } else {
       usuario = {};
     }
-    const { id } = req.params;
-    const productos = await dataSource.load();
-    const product = productos.find((p) => p.id === id);
-
-    res.render("products/details-product", { product, usuario });
+    db.Producto.findByPk(req.params.id).then((producto) => {
+      return res.render("products/details-product", {
+        producto,
+        usuario,
+      });
+    });
 
     // const { id } = req.params;
     // const productos = await dataSource.load();
@@ -53,30 +61,42 @@ const productsController = {
     const imgProduct = req.file
       ? `${req.file.filename}`
       : "/images/products/default.jpg";
-    const { name, description, image, colors, price, size, brand } = req.body;
-    const newProduct = {
-      id: crypto.randomUUID(),
-      name,
-      description,
+    db.Producto.create({
+      nombre: req.body.nombre,
+      descripcion: req.body.descripcion,
       image: imgProduct,
-      colors,
-      price,
-      size,
-      brand,
-    };
-    this.productsList = await dataSource.load();
-    this.productsList.push(newProduct);
-    await dataSource.save(this.productsList);
-    console.log(newProduct);
-    res.redirect("/products");
+      color: req.body.color,
+      precio: req.body.precio,
+      talle: req.body.talle,
+      marca: req.body.marca,
+    }).then(() => {
+      res.redirect("/products");
+    });
   },
-  showEditForm: async (req, res) => {
+  showEditForm: (req, res) => {
     const { id } = req.params;
-    const productos = await dataSource.load();
-    const product = productos.find((p) => p.id === id);
-    res.render("products/editproduct", { product, estilo: "editproduct" });
+    const pedidoProducto = db.Producto.findOne({
+      where: {
+        id: id,
+      },
+      include: [
+        {
+          model: db.Talle,
+          atributes: ["talle"],
+        },
+        {
+          model: db.Marca,
+          atributes: ["marca"],
+        },
+      ],
+    }).then((pedidoProducto) => {
+      console.log(pedidoProducto);
+      res.render("products/editproduct", {
+        estilo: "editproduct",
+      });
+    });
   },
-  editProduct: async (req, res) => {
+  editProduct: (req, res) => {
     let image = "";
     const { name, description, colors, price, size, brand, currentImage } =
       req.body;
@@ -86,7 +106,7 @@ const productsController = {
       image = req.body.currentImage;
     }
     const { id } = req.params;
-    this.productsList = await dataSource.load();
+    this.productsList = dataSource.load();
     const updateProduct = this.productsList.map((p) =>
       p.id === id
         ? {
@@ -101,7 +121,7 @@ const productsController = {
           }
         : p
     );
-    await dataSource.save(updateProduct);
+    dataSource.save(updateProduct);
     res.redirect(`/products/detail/${id}`);
   },
   deleteProduct: async (req, res) => {
