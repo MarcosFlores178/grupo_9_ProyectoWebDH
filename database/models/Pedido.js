@@ -2,12 +2,12 @@ module.exports = (sequelize, dataTypes) => {
     let alias = "Pedido";
     let cols = {
         id_pedidos: {
-            type: DataTypes.INTEGER,
+            type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        total_precio: DataTypes.DECIMAL(8, 2),
-        fecha_pedido: DataTypes.DATE,
+        total_precio: dataTypes.DECIMAL(8, 2),
+        fecha_pedido: dataTypes.DATE,
 
 
     };

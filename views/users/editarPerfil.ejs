@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('../partials/head.ejs', {estilo:'register'})%>
+<%- include('../partials/head.ejs', {estilo:'editarPerfil'})%>
 
     <body>
         <%-include ('../partials/header.ejs')%>
             <%-include ('../partials/button-top.ejs')%>
                 <main class="container">
-                    <h1 class="h1">REGISTRO DE USUARIO</h1>
+                    <h1 class="h1">Editar perfil</h1>
                     <form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
                         <h3 class="h3">Datos Personales</h3>
                         <div>
                             <div class="div-par">
+                                <label for="nombre">Nombre</label>
                                 <input class="cuadros-login <%= mapsDeError.nombre ? 'error-border' : '' %>" type="text"
-                                    id="nombre" name="nombre" placeholder="* Nombre" value="<%= locals.old && old.nombre? old.nombre : "" %>"><br>
+                                    id="nombre" name="nombre" placeholder="*nombre" value="<%= locals.old && old.nombre? old.nombre : usuario.nombre %>"><br>
                                 <input class="cuadros-login <%= mapsDeError.apellido ? 'error-border' : '' %>"
-                                    type="text" id="apellido" name="apellido" placeholder="* Apellido" value="<%= locals.old && old.apellido? old.apellido : "" %>" ><br>
+                                    type="text" id="apellido" name="apellido" placeholder="* Apellido" value="<%= locals.old && old.apellido? old.apellido : usuario.apellido %>" ><br>
                             </div>
 
                             <div class="error-container">
@@ -39,9 +40,9 @@
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.dni ? 'error-border' : '' %>" type="text"
                                     id="dni" name="dni" placeholder="* DNI"
-                                    maxlength="8" value="<%= locals.old && old.dni? old.dni : "" %>" ><br>
+                                    maxlength="8" value="<%= locals.old && old.dni? old.dni : usuario.dni %>" ><br>
                                 <input class="cuadros-login <%= mapsDeError.telefono ? 'error-border' : '' %>"
-                                    type="tel" id="telefono" name="telefono" placeholder="* Teléfono" value="<%= locals.old && old.telefono? old.telefono : "" %>"><br>
+                                    type="tel" id="telefono" name="telefono" placeholder="* Teléfono" value="<%= locals.old && old.telefono? old.telefono : usuario.telefono %>"><br>
                             </div>
                             <div class="error-container">
                                 <% if (mapsDeError.dni) { %>
@@ -61,10 +62,10 @@
                             </div>
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.domicilio ? 'error-border' : '' %>"
-                                    type="text" id="domicilio" name="domicilio" placeholder="* Domicilio" value="<%= locals.old && old.domicilio? old.domicilio : "" %>">
+                                    type="text" id="domicilio" name="domicilio" placeholder="* Domicilio" value="<%= locals.old && old.domicilio? old.domicilio : usuario.domicilio %>">
                                 <label for="countries"></label>
                                 <input class="cuadros-login <%= mapsDeError.country ? 'error-border' : '' %>"
-                                    list="countries" id="country" name="country" placeholder="* País" value="<%= locals.old && old.country? old.country : "" %>">
+                                    list="countries" id="country" name="country" placeholder="* País" value="<%= locals.old && old.country? old.country : usuario.pais %>">
                                 <datalist id="countries">
                                     <% countries.forEach(function(country) { %>
                                         <option value="<%= country %>"></option>
@@ -95,7 +96,7 @@
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.nombreUsuario ? 'error-border' : '' %>"
                                     type="text" id="nombreUsuario" name="nombreUsuario"
-                                    placeholder="* Nombre de Usuario" value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : "" %>"><br>
+                                    placeholder="* Nombre de Usuario" value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : usuario.nombreUsuario %>"><br>
                             </div>
                             <div class="error-container">
                                 <% if (mapsDeError.nombreUsuario) { %>

@@ -12,7 +12,9 @@ const adminMiddleware = require("../middlewares/adminMiddleware.js");
 //    res.sendFile(path.resolve(__dirname,'shopping-cart.ejs'));
 // });
 
-router.get("/shop-cart", userMiddleware, productsController.showShopCart);
+// router.get("/shop-cart", userMiddleware, productsController.showShopCart);
+
+
 
 router.get("/", productsController.showAll);
 
@@ -23,7 +25,7 @@ router.get("/", productsController.showAll);
 router.get("/detail/:id", productsController.showById);
 
 router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
-router.get("/addproductdb/", productsController.showAddProductdb);
+router.get("/addproductdb/", adminMiddleware, productsController.showAddProductdb);
 
 router.post(
   "/",
@@ -34,7 +36,8 @@ router.post(
 
 router.post(
   "/db",
-  fileUpload.single("image"),
+  fileUpload.single("imagen"),
+  adminMiddleware,
   productsController.addProductdb
 );
 

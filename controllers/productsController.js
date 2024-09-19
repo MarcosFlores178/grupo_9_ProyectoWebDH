@@ -20,29 +20,77 @@ const productsController = {
     }
   },
   showAll: async (req, res) => {
-    this.productsList = await dataSource.load();
-    res.render("products/productos", { productos: this.productsList });
+    try {
+      // Obtener todos los productos de la base de datos
+      const productos = await Producto.findAll({
+        include: {
+          model: Marca,
+          as: 'marcas',  // Alias que definimos en la asociación
+          attributes: ['marca'] // Solo traer el nombre de la marca
+        }
+      });
+  
+      // Renderizar la vista y pasar los productos
+      res.render('products/productos', { productos });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al cargar los productos');
+    }
   },
+  // showAll: async (req, res) => {
+  //   this.productsList = await dataSource.load();
+  //   res.render("products/productos", { productos: this.productsList });
+  // },
   showById: async function (req, res) {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
 
     // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
-    if (usuario && usuario.admincomp === "admin") {
+    if (usuario && usuario.tipoUsuario === "admin") {
       console.log("administrador:", usuario);
     } else {
       usuario = {};
     }
-    const { id } = req.params;
-    const productos = await dataSource.load();
-    const product = productos.find((p) => p.id === id);
-
-    res.render("products/details-product", { product, usuario });
-
-    // const { id } = req.params;
-    // const productos = await dataSource.load();
-    // const product = productos.find((p) => p.id === id);
-    // res.render("products/details-product", { product, usuario });
+    try {
+      const { id } = req.params;
+      
+      // Busca el producto en la base de datos por su ID, incluyendo la marca asociada
+      const producto = await Producto.findByPk(id, {
+        include: {
+          model: Marca,
+          as: 'marcas',  // Asegúrate de que el alias sea correcto
+          attributes: ['marca']  // Traemos solo el nombre de la marca
+        }
+      });
+  
+      // Si no se encuentra el producto, puedes manejarlo como error o mostrar un mensaje
+      if (!producto) {
+        return res.status(404).send('Producto no encontrado');
+      }
+  
+      // Renderiza la vista con el producto y el usuario
+      console.log(usuario.tipoUsuario);
+      res.render('products/details-product', { producto, usuario });
+      
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al buscar el producto');
+    }
   },
+  // showById: async function (req, res) {
+  //   let usuario = req.session.user || null; // Asigna null si no hay usuario
+
+  //   // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
+  //   if (usuario && usuario.admincomp === "admin") {
+  //     console.log("administrador:", usuario);
+  //   } else {
+  //     usuario = {};
+  //   }
+  //   const { id } = req.params;
+  //   const productos = await dataSource.load();
+  //   const product = productos.find((p) => p.id === id);
+
+  //   res.render("products/details-product", { product, usuario });
+  // },
   showBrand: async (req, res) => {
     const { brand } = req.params.brand;
     this.productsList = await dataSource.load();

@@ -26,6 +26,22 @@ module.exports = (sequelize, dataTypes) => {
         precio: {
             type: dataTypes.DECIMAL(8,2),
             allowNull: false
+        },
+        id_talles: {  // Agrega la columna id_talles como llave foránea
+            type: dataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'talles',  // Hace referencia a la tabla Talles
+                key: 'id_talles'
+            }
+        },
+        id_marcas: {  // Agrega la columna id_marcas como llave foránea
+            type: dataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'marcas',  // Hace referencia a la tabla Marcas
+                key: 'id_marcas'
+            }
         }
 
     };

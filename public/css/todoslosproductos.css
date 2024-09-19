@@ -22,7 +22,38 @@ body {
     section {
         width: 50%;
     }
-    a {
+    .boton-enlace {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+      
+      .boton-enlace:hover {
+        background-color: #45a049;
+      }
+    .boton-carrito {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4c90af;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        font-size: 12px;
+      }
+      
+      .boton-carrito:hover {
+        background-color: #4565a0;
+      }
+      
+    .a {
         display: flex;
         flex-direction: row;
         align-items: center;

@@ -1,15 +1,17 @@
 <html lang="es">
-<%- include('../partials/head.ejs', {estilo:'register'})%>
+<%- include('../partials/head.ejs', {estilo:'perfil'})%>
 
     <body>
         <%-include ('../partials/header.ejs')%>
             <%-include ('../partials/button-top.ejs')%>
-                <section class="perfil-usuario">
-                    <h1>perfil de usuario</h1>
+                <section class="div-body">
+                    <h1 class="product-title">Perfil de Usuario</h1>
                     <%= 'NOMBRE: ' + usuario.nombre%>
                         <%= 'APELLIDO: ' + usuario.apellido%>
                             <%= 'EMAIL: ' + usuario.email%>
-                                <img src="/images/users/<%= usuario.foto%>" alt="">
+                                <img src="<%= usuario.fotoPerfil%>" alt="">
+                                <a href="editar-perfil">Editar perfil</a>
+                               
                 </section>
                 <%-include ('../partials/footer.ejs')%>
     </body>

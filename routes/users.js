@@ -33,7 +33,7 @@ const validator = [
       .trim()
       .isLength({ min: 8 }).withMessage('La contraseña debe contener al menos 8 caracteres.')
       .custom((value, {req}) => value === req.body.password).withMessage("Las contraseñas no coinciden"),
-  check('admincomp')
+  check('tipoUsuario')
   .exists().withMessage('Seleccione un rol')
   .bail()
   // .custom((value, { req }) => {
@@ -46,7 +46,9 @@ const validator = [
 router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
 
+router.get("/perfil/:id", usersController.buscarPerfil);
 router.get("/perfil", usersController.perfil);
+router.get("/editar-perfil", usersController.editarPerfil);
 
 module.exports = router;
 

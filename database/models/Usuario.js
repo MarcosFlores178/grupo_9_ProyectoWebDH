@@ -39,7 +39,9 @@ module.exports = (sequelize, dataTypes) => {
         },
         email: {
             type: dataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true
+
         },
         password: {
             type: dataTypes.STRING,
@@ -55,7 +57,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         fotoPerfil: {
             type: dataTypes.STRING,
-            allowNull: false
+            // allowNull: false
         }
     };
     let config = {

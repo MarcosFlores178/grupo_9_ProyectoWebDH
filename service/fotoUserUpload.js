@@ -10,8 +10,8 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     const randomString = crypto.randomBytes(8).toString("hex");
     const extension = path.extname(file.originalname);
-    const image = "user-" + randomString + extension;
-    cb(null, image);
+    const imagen = "user-" + randomString + extension;
+    cb(null, imagen);
   },
 });
 const fotoUserUpload = multer({ storage });

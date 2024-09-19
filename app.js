@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const rutaUsers = require("./routes/users.js");
 const rutaProducts = require("./routes/products.js");
 const rutaMain = require("./routes/main.js");
+const rutaCarrito = require('./routes/shop-cart.js');
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
@@ -30,7 +31,9 @@ app.use(rememberMiddleware);
 
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);
+app.use("/shop-cart", rutaCarrito)
 app.use("/", rutaMain);
+
 
 app.listen(port, () => {
   console.log("Servidor corriendo en el puerto 8080");

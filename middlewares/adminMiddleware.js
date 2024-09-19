@@ -1,6 +1,6 @@
 function adminMiddleware(req, res, next) {
   if (req.session.user) {
-    if (req.session.user.admincomp == "admin") {
+    if (req.session.user.tipoUsuario == "admin") {
       next();
     }
   } else {
