@@ -32,7 +32,20 @@ const productsController = {
     } else {
       usuario = {};
     }
-    db.Producto.findByPk(req.params.id).then((producto) => {
+    const pedidoProducto = db.Producto.findByPk(req.params.id, {
+      include: [
+        {
+          model: db.Talle,
+          atributes: ["descripcion"],
+          as: "talle",
+        },
+        {
+          model: db.Marca,
+          atributes: ["descripcion"],
+          as: "marca",
+        },
+      ],
+    }).then((producto) => {
       return res.render("products/details-product", {
         producto,
         usuario,
@@ -74,25 +87,22 @@ const productsController = {
     });
   },
   showEditForm: (req, res) => {
-    const { id } = req.params;
-    const pedidoProducto = db.Producto.findOne({
-      where: {
-        id: id,
-      },
+    const pedidoProducto = db.Producto.findByPk(req.params.id, {
       include: [
         {
           model: db.Talle,
-          atributes: ["talle"],
+          atributes: ["descripcion"],
+          as: "talle",
         },
         {
           model: db.Marca,
-          atributes: ["marca"],
+          atributes: ["descripcion"],
+          as: "marca",
         },
       ],
-    }).then((pedidoProducto) => {
-      console.log(pedidoProducto);
-      res.render("products/editproduct", {
-        estilo: "editproduct",
+    }).then((producto) => {
+      return res.render("products/editproduct", {
+        producto,
       });
     });
   },

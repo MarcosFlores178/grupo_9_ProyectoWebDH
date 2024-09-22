@@ -9,43 +9,43 @@
                     <%-include ('../partials/button-top.ejs')%>
                         <section class="cargaproducto">
                             <h2>Editar producto</h2>
-                            <form action="/products/detail/<%= pedidoProducto.id %>?_method=put" method="POST"
+                            <form action="/products/detail/<%= producto.id %>?_method=put" method="POST"
                                 enctype="multipart/form-data" class="formulario">
                                 <div>
-                                    <label for="name">Nombre del pedidoProducto:</label>
+                                    <label for="name">Nombre del Producto:</label>
                                     <input type="text" name="name" id="name" placeholder="* Nombre del pedidoProducto"
-                                        value="<%= pedidoProducto.nombre%>" />
+                                        value="<%= producto.nombre%>" />
                                 </div>
                                 <div>
                                     <label for="price">Precio: </label>
-                                    <input type="text" name="price" id="price" value="<%= pedidoProducto.precio %>">
+                                    <input type="text" name="price" id="price" value="<%= producto.precio %>">
                                 </div>
                                 <div>
                                     <label for="brand">Marca: </label>
-                                    <input type="text" name="brand" id="brnad" value="<%= pedidoMarca.descripcion %>">
+                                    <input type="text" name="brand" id="brnad" value="<%=producto.marca.descripcion %>">
                                 </div>
                                 <div>
                                     <label for="colors">Color: </label>
-                                    <input type="text" name="colors" id="colors" value="<%= pedidoProducto.color %>">
+                                    <input type="text" name="colors" id="colors" value="<%= producto.color %>">
                                 </div>
                                 <div>
                                     <label for="size">Size: </label>
-                                    <input type="text" name="size" id="size" value="<%= pedidoProducto.talle %>">
+                                    <input type="text" name="size" id="size" value="<%= producto.talle.descripcion %>">
                                 </div>
                                 <div>
-                                    <label for="description">Descripción del pedidoProducto:</label>
+                                    <label for="description">Descripción del Producto:</label>
                                     <textarea type="text" name="description"
-                                        id="description"><%= pedidoProducto.descripcion%></textarea>
+                                        id="description"><%= producto.descripcion%></textarea>
                                 </div>
                                 <div>
-                                    <label for="imagen">Cambiar imagen del pedidoProducto</label>
+                                    <label for="imagen">Cambiar imagen del Producto</label>
                                 </div>
                                 <div>
-                                    <img src="/images/products/<%= pedidoProducto.imagen %>" alt="" width="200px"><br>
+                                    <img src="/images/products/<%= producto.imagen %>" alt="" width="200px"><br>
                                 </div>
                                 <div>
-                                    <input type="file" name="imagen" id="imagen" value="<%=pedidoProducto.imagen%>" />
-                                    <input type="hidden" name="currentImage" value="<%= pedidoProducto.imagen %>">
+                                    <input type="file" name="imagen" id="imagen" value="<%=producto.imagen%>" />
+                                    <input type="hidden" name="currentImage" value="<%= producto.imagen %>">
                                 </div><br>
                                 <div class="botones">
                                     <button class="boton-aceptar" type="submit" name="enviar"

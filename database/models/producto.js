@@ -27,12 +27,12 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: false,
   };
   let Producto = sequelize.define(alias, cols, config);
-  Producto.assosiate = (models) => {
+  Producto.associate = (models) => {
     Producto.belongsTo(models.Marca, {
       as: "marca",
       foreignKey: "id_marca",
     });
-    Producto.belongsTo(models.TALLE, {
+    Producto.belongsTo(models.Talle, {
       as: "talle",
       foreignKey: "id_talle",
     });
