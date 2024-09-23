@@ -12,29 +12,50 @@
                             <form action="/products/detail/<%= producto.id %>?_method=put" method="POST"
                                 enctype="multipart/form-data" class="formulario">
                                 <div>
-                                    <label for="name">Nombre del Producto:</label>
-                                    <input type="text" name="name" id="name" placeholder="* Nombre del pedidoProducto"
-                                        value="<%= producto.nombre%>" />
+                                    <label for="nombre">Nombre del Producto:</label>
+                                    <input type="text" name="nombre" id="nombre"
+                                        placeholder="* Nombre del pedidoProducto" value="<%= producto.nombre%>" />
                                 </div>
                                 <div>
-                                    <label for="price">Precio: </label>
-                                    <input type="text" name="price" id="price" value="<%= producto.precio %>">
+                                    <label for="precio">Precio: </label>
+                                    <input type="text" name="precio" id="precio" value="<%= producto.precio %>">
                                 </div>
                                 <div>
-                                    <label for="brand">Marca: </label>
-                                    <input type="text" name="brand" id="brnad" value="<%=producto.marca.descripcion %>">
+                                    <label for="color">Color: </label>
+                                    <input type="text" name="color" id="color" value="<%= producto.color %>">
                                 </div>
                                 <div>
-                                    <label for="colors">Color: </label>
-                                    <input type="text" name="colors" id="colors" value="<%= producto.color %>">
+                                    <label for="marca">Marca: </label>
+                                    <select name="marca" id="marca">
+                                        <% for( let i=0; i < marcas.length; i++ ) { %>
+                                            <option value="<%= marcas[i].id %>" <% if (talles[i].id===producto.id_marca)
+                                                { %> selected <% } %> >
+                                                    <%= marcas[i].descripcion %>
+                                            </option>
+                                            <option value="<%=marcas[i].id%>">
+                                                <%=marcas[i].descripcion%>
+                                            </option>
+                                            <% } %>
+                                    </select>
                                 </div>
                                 <div>
-                                    <label for="size">Size: </label>
-                                    <input type="text" name="size" id="size" value="<%= producto.talle.descripcion %>">
+                                    <label for="talle">Talle: </label>
+                                    <select name="talle" id="talle">
+                                        <% for( let i=0; i < talles.length; i++ ) { %>
+                                            <option value="<%= talles[i].id %>" <% if (talles[i].id===producto.id_talle)
+                                                { %> selected <% } %> >
+                                                    <%= talles[i].descripcion %>
+                                            </option>
+                                            <option value="<%= talles[i].id %>">
+                                                <%= talles[i].descripcion %>
+                                            </option>
+                                            <% } %>
+
+                                    </select>
                                 </div>
                                 <div>
-                                    <label for="description">Descripción del Producto:</label>
-                                    <textarea type="text" name="description"
+                                    <label for="descripcion">Descripción del Producto:</label>
+                                    <textarea type="text" name="descripcion"
                                         id="description"><%= producto.descripcion%></textarea>
                                 </div>
                                 <div>

@@ -4,14 +4,16 @@
     <body>
         <%-include ('../partials/header.ejs')%>
             <%-include ('../partials/button-top.ejs')%>
-                <section class="perfil-usuario">
-                    <h1>perfil de usuario</h1>
-                    <%= 'NOMBRE: ' + usuario.nombre%>
-                        <%= 'APELLIDO: ' + usuario.apellido%>
-                            <%= 'EMAIL: ' + usuario.email%>
-                                <img src="/images/users/<%= usuario.foto%>" alt="">
-                </section>
-                <%-include ('../partials/footer.ejs')%>
+                <%- include('../partials/nav-bar.ejs') %>
+
+                    <section class="perfil-usuario">
+                        <h1>perfil de usuario</h1>
+                        <%= 'NOMBRE: ' + usuario.nombre%>
+                            <%= 'APELLIDO: ' + usuario.apellido%>
+                                <%= 'EMAIL: ' + usuario.email%>
+                                    <img src="/images/users/<%= usuario.foto%>" alt="">
+                    </section>
+                    <%-include ('../partials/footer.ejs')%>
     </body>
 
 </html>

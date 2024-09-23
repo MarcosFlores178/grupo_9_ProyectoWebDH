@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<%-include ('../partials/head.ejs', {estilo:'detailsproduct'})%>
+
+    <body>
+        <%-include ('../partials/header')%>
+            <%-include ('../partials/nav-bar')%>
+                <main>
+                    <%-include ('../partials/button-top')%>
+                        <nav class="detail-product">
+                            <h2>Seguro desea eliminar este Producto?</h2>
+                            <nav>
+                                <h3>
+                                    <%= producto.nombre %>
+                                </h3>
+                                <section>
+                                    <img src="/images/products/<%= producto.imagen%>" alt="" width="250px">
+                                </section>
+                            </nav>
+                            <nav>
+                                <section>
+                                    <% if (usuario.admincomp) { %>
+                                        <form class="boton-eliminar" method="POST"
+                                            action="/products/deleteProduct/<%= producto.id %>?_method=DELETE"
+                                            style="display:inline;">
+                                            <button class="boton-eliminar" type="submit">Eliminar</button>
+                                        </form>
+                                        </div>
+                                        <%}%>
+
+
+                                </section>
+                            </nav>
+                        </nav>
+                </main>
+                <%-include ('../partials/footer')%>
+    </body>
+
+</html>

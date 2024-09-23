@@ -42,13 +42,12 @@
                                     </div>
                                     <% if (usuario.admincomp) { %>
                                         <div class="botones">
-                                            <a href="/products/editproduct/<%= producto.id %>"><button
-                                                    class="boton-editar">Editar</button></a>
-                                            <form class="boton-eliminar" method="POST"
-                                                action="/products/detail/<%= producto.id %>?_method=DELETE"
-                                                style="display:inline;">
-                                                <button class="boton-eliminar" type="submit">Eliminar</button>
-                                            </form>
+                                            <a href="/products/editproduct/<%= producto.id %>">
+                                                <button class="boton-editar">Editar</button>
+                                            </a>
+                                            <a href="/products/showDelete/<%= producto.id %>">
+                                                <button>Eliminar</button>
+                                            </a>
                                         </div>
                                         <%}%>
 
