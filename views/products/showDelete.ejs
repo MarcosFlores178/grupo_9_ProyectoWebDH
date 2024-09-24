@@ -20,15 +20,15 @@
                             <nav>
                                 <section>
                                     <% if (usuario.admincomp) { %>
+
                                         <form class="boton-eliminar" method="POST"
                                             action="/products/deleteProduct/<%= producto.id %>?_method=DELETE"
                                             style="display:inline;">
                                             <button class="boton-eliminar" type="submit">Eliminar</button>
                                         </form>
-                                        </div>
                                         <%}%>
-
-
+                                            <a href="/products/detail/<%= producto.id %>"><button>Cancelar</button></a>
+                                            </div>
                                 </section>
                             </nav>
                         </nav>

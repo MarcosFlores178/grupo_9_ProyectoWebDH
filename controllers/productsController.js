@@ -2,7 +2,6 @@ const db = require("../database/models");
 const fs = require("fs");
 const path = require("path");
 const dataSource = require("../service/dataSource.js");
-const { where } = require("sequelize");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
@@ -32,7 +31,7 @@ const productsController = {
     } else {
       usuario = {};
     }
-    const pedidoProducto = db.Producto.findByPk(req.params.id, {
+    db.Producto.findByPk(req.params.id, {
       include: [
         {
           model: db.Talle,
