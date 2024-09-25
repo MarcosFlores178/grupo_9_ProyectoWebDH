@@ -12,20 +12,7 @@
       <%-include ('../partials/nav-bar.ejs')%>
         <main>
           <%-include ('../partials/button-top.ejs')%>
-            <% if (usuario.nombre && usuario.apellido) { %>
-              <p>El perfil que esta logueado es del usuario:
-                <%= usuario.apellido%> ,
-                  <%=usuario.nombre %>
-              </p>
-              <form action="/users/logout" method="get">
-                <input type="submit" value="Cerrar Sesión">
-              </form>
-              <% } else { %>
-                <p>
-                  <%= usuario %>
-                </p>
-                <% } %>
-                  <section cla ss="promociones">
+                     <section class="promociones">
                     <img src="../images/1.webp" alt="">
                   </section>
                   <section class="destacado">
@@ -42,10 +29,10 @@
                       <img src="images/FLYERACC.jpg" alt="categoria hombres" />
                     </div>
                   </section>
-                  <section class="promociones">
-                    <!-- <h2>Promociones</h2> -->
+                  <!-- <section class="promociones">
+                    <h2>Promociones</h2> 
 
-                  </section>
+                  </section> -->
         </main>
         <%-include ('../partials/footer.ejs')%>
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

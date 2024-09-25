@@ -15,31 +15,6 @@
 
     <%# cambiamos el nombre del css segun la vista q declaramos %>
 
-    <% if (typeof estilo !== 'undefined' && estilo === 'register') { %>
-        <link rel="stylesheet" href="../css/register.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'login') { %>
-        <link rel="stylesheet" href="../css/login.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'index') { %>
-        <link rel="stylesheet" href="../css/index.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'shop-cart') { %>
-        <link rel="stylesheet" href="../css/shop-cart.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'producto') { %>
-        <link rel="stylesheet" href="../css/producto.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'addproduct') { %>
-        <link rel="stylesheet" href="../css/addproduct.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'todoslosproductos') { %>
-        <link rel="stylesheet" href="../css/todoslosproductos.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'detailsproduct') { %>
-        <link rel="stylesheet" href="/css/detailsproduct.css">
-    <% } %>
-    <% if (typeof estilo !== 'undefined' && estilo === 'editproduct') { %>
-        <link rel="stylesheet" href="/css/editproduct.css">
-    <% } %>
+    <% if (typeof estilo !== 'undefined') { %> <link rel="stylesheet" href="/css/<%= estilo %>.css"> <% } %>
+    
 </head>
