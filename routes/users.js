@@ -47,6 +47,22 @@ router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
 
 router.get("/perfil", usersController.perfil);
+// router.get("/perfil/:id", usersController.perfil);
+router.get("/editar-perfil", usersController.showEdit);
+router.get("/editar-cuenta", usersController.showEditCuenta);
+
+router.put(
+    "/perfil/:id",
+    fotoUserUpload.single("foto"),
+    // logregMiddleware,
+    usersController.editUser
+  );
+router.put(
+    "/cuenta/:id",
+    // fotoUserUpload.single("foto"),
+    // logregMiddleware,
+    usersController.editCuenta
+  );
 
 module.exports = router;
 
