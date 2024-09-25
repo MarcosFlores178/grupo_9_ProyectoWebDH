@@ -11,10 +11,10 @@
                             <h2>Detalle del producto</h2>
                             <nav>
                                 <h3>
-                                    <%= product.name %>
+                                    <%= producto.nombre %>
                                 </h3>
                                 <section>
-                                    <img src="/images/products/<%= product.image%>" alt="" width="250px">
+                                    <img src="/images/products/<%= producto.imagen%>" alt="" width="250px">
                                 </section>
                             </nav>
                             <nav>
@@ -22,33 +22,32 @@
                                     <div>
                                         <div class="description-div">
                                             <h4>Descripción:</h4>
-                                            <%= product.description %>
+                                            <%= producto.descripcion %>
                                         </div>
                                     </div>
                                     <div class="description-div">
                                         <h4>Marca: </h4>
-                                        <%= product.brand %>
+                                        <%= producto.marca.descripcion %>
                                     </div>
                                     <div class="description-div">
                                         <h4>Talla: </h4>
-                                        <%= product.size %>
+                                        <%= producto.talle.descripcion %>
                                     </div>
                                     <div class="description-div">
                                         <h4>Color: </h4>
-                                        <%= product.colors %>
+                                        <%= producto.color %>
                                     </div>
                                     <div class="description-div">
-                                        <h4>Precio: </h4>$<%=product.price%>
+                                        <h4>Precio: </h4>$<%=producto.precio%>
                                     </div>
                                     <% if (usuario.admincomp) { %>
                                         <div class="botones">
-                                            <a href="/products/editproduct/<%= product.id %>"><button
-                                                    class="boton-editar">Editar</button></a>
-                                            <form class="boton-eliminar" method="POST"
-                                                action="/products/detail/<%= product.id %>?_method=DELETE"
-                                                style="display:inline;">
-                                                <button class="boton-eliminar" type="submit">Eliminar</button>
-                                            </form>
+                                            <a href="/products/editproduct/<%= producto.id %>">
+                                                <button class="boton-editar">Editar</button>
+                                            </a>
+                                            <a href="/products/showDelete/<%= producto.id %>">
+                                                <button>Eliminar</button>
+                                            </a>
                                         </div>
                                         <%}%>
 

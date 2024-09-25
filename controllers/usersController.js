@@ -1,6 +1,6 @@
-const { validationResult } = require('express-validator');
-const { v4: uuidv4 } = require('uuid');
-const { countries } = require('countries-list');
+const { validationResult } = require("express-validator");
+const { v4: uuidv4 } = require("uuid");
+const { countries } = require("countries-list");
 const bcrypt = require("bcryptjs");
 const usersDataSource = require("../service/usersDataSource");
 const usersController = {
@@ -17,7 +17,7 @@ const usersController = {
     });
     req.session.user = this.user;
     if (req.body.remember != undefined) {
-      res.cookie("remember", this.user.email, { maxAge: 120 * 1000 });
+      res.cookie("remember", this.user.email, { maxAge: 3600 * 1000 });
     }
     res.redirect("/users/perfil");
   },
@@ -27,15 +27,15 @@ const usersController = {
   },
   showRegister: (req, res) => {
     // res.render("users/register");
-    const countryList = Object.values(countries).map(country => country.name);
+    const countryList = Object.values(countries).map((country) => country.name);
     // let errores = validationResult(req);
     // mapsDeError = undefined;
-            res.render('users/register', { countries: countryList, mapsDeError: {} });
+    res.render("users/register", { countries: countryList, mapsDeError: {} });
   },
   register: async (req, res) => {
     let errores = validationResult(req);
-    const countryList = Object.values(countries).map(country => country.name);
-    if(errores.isEmpty()){
+    const countryList = Object.values(countries).map((country) => country.name);
+    if (errores.isEmpty()) {
       const fotoUsuario = req.file ? `${req.file.filename}` : "default.jpg";
       const {
         nombre,
@@ -73,17 +73,15 @@ const usersController = {
       await usersDataSource.save(this.userList);
       console.log(newUser);
       res.redirect("/users/login");
-
     } else {
-     
-      return res.render ("users/register", { 
+      return res.render("users/register", {
         mapsDeError: errores.mapped(),
         old: req.body,
-        
+
         // arrayDeError: errores.array(),
-         countries: countryList})
+        countries: countryList,
+      });
     }
-    
   },
   perfil: (req, res) => {
     const usuario = req.session.user;

@@ -26,7 +26,7 @@ router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
 
 router.post(
   "/",
-  fileUpload.single("image"),
+  fileUpload.single("imagen"),
   adminMiddleware,
   productsController.addProduct
 );
@@ -39,11 +39,17 @@ router.get(
 
 router.put(
   "/detail/:id",
-  fileUpload.single("image"),
+  fileUpload.single("imagen"),
   adminMiddleware,
   productsController.editProduct
 );
 
-router.delete("/detail/:id", adminMiddleware, productsController.deleteProduct);
+router.get("/showDelete/:id", adminMiddleware, productsController.showDelete);
+
+router.delete(
+  "/deleteProduct/:id",
+  adminMiddleware,
+  productsController.deleteProduct
+);
 
 module.exports = router;
