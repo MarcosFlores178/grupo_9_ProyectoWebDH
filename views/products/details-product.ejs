@@ -40,7 +40,7 @@
                                     <div class="description-div">
                                         <h4>Precio: </h4>$<%=producto.precio%>
                                     </div>
-                                    <% if (usuario.admincomp) { %>
+                                    <% if (usuario.tipo_usuario) { %>
                                         <div class="botones">
                                             <a href="/products/editproduct/<%= producto.id %>">
                                                 <button class="boton-editar">Editar</button>
