@@ -71,7 +71,7 @@ const productsController = {
   addProduct: async (req, res) => {
     const imgProduct = req.file
       ? `${req.file.filename}`
-      : "/images/products/default.jpg";
+      : "default.jpg";
     db.Producto.create({
       nombre: req.body.nombre,
       descripcion: req.body.descripcion,
