@@ -27,7 +27,7 @@ module.exports = function (sequelize, dataTypes) {
     nombre_usuario: {
       type: dataTypes.STRING,
     },
-    emial: {
+    email: {
       type: dataTypes.STRING,
     },
     password: {
@@ -45,7 +45,7 @@ module.exports = function (sequelize, dataTypes) {
   };
   let config = {
     tableName: "usuarios",
-    timeStamps: false,
+    timestamps: false,
   };
   let Usuario = sequelize.define(alias, cols, config);
 
