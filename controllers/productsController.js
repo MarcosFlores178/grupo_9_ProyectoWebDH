@@ -5,8 +5,8 @@ const dataSource = require("../service/dataSource.js");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
-    db.Producto.findbyPk(req.param).then((producto) => {
-      return res.render("products/details-product", { producto });
+      db.Producto.findbyPk(req.param).then((producto) => {
+      return res.render("products/details-product", { producto, usuario });
     });
   },
   showShopCart: (req, res) => {
@@ -26,7 +26,7 @@ const productsController = {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
 
     // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
-    if (usuario && usuario.admincomp === "admin") {
+    if (usuario && usuario.tipo_usuario === "admin") {
       console.log("administrador:", usuario);
     } else {
       usuario = {};
