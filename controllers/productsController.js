@@ -16,8 +16,9 @@ const productsController = {
     }
   },
   showAll: async (req, res) => {
+    const usuario = req.session.user;
     db.Producto.findAll().then((productos) => {
-      return res.render("products/productos", { productos });
+      return res.render("products/productos", { productos, usuario });
     });
     // this.productsList = await dataSource.load();
     // res.render("products/productos", { productos: this.productsList });
