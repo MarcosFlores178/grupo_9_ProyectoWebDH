@@ -19,7 +19,7 @@
                             </nav>
                             <nav>
                                 <section>
-                                    <% if (usuario.admincomp) { %>
+                                    <% if (usuario) { %>
 
                                         <form class="boton-eliminar" method="POST"
                                             action="/products/deleteProduct/<%= producto.id %>?_method=DELETE"

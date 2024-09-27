@@ -5,7 +5,7 @@ const dataSource = require("../service/dataSource.js");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
-      db.Producto.findbyPk(req.param).then((producto) => {
+    db.Producto.findbyPk(req.param).then((producto) => {
       return res.render("products/details-product", { producto, usuario });
     });
   },
@@ -16,8 +16,15 @@ const productsController = {
     }
   },
   showAll: async (req, res) => {
+    let usuario = req.session.user || null; // Asigna null si no hay usuario
+    if (usuario) {
+    } else {
+      usuario = {};
+    }
+    console.log(usuario);
+
     db.Producto.findAll().then((productos) => {
-      return res.render("products/productos", { productos });
+      return res.render("products/productos", { productos, usuario });
     });
     // this.productsList = await dataSource.load();
     // res.render("products/productos", { productos: this.productsList });
@@ -69,9 +76,7 @@ const productsController = {
     });
   },
   addProduct: async (req, res) => {
-    const imgProduct = req.file
-      ? `${req.file.filename}`
-      : "default.jpg";
+    const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
     db.Producto.create({
       nombre: req.body.nombre,
       descripcion: req.body.descripcion,
