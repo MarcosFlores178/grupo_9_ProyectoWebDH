@@ -1,7 +1,9 @@
 const db = require("../database/models");
 const fs = require("fs");
 const path = require("path");
-const dataSource = require("../service/dataSource.js");
+// const dataSource = require("../service/dataSource.js");
+const { DefaultDeserializer } = require("v8");
+const { Sequelize } = require("sequelize");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
@@ -173,5 +175,22 @@ const productsController = {
       })
       .catch((error) => res.send(error));
   },
+  searchProduct: async (req, res )=>{
+    const query = req.query.query;
+    try {
+      const productos = await db.Producto.findAll({
+        where:{
+          nombre: {
+            [Sequelize.Op.like]: `%${query}%`
+          }
+        }
+      });
+      res.render('products/resultadosBusqueda', {productos, query})
+    }catch (error){
+      console.error('Error en la busqueda', error);
+      res.status(500).send('Error en la busqueda')
+    }
+
+  } 
 };
 module.exports = productsController;
