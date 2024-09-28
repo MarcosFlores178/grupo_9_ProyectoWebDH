@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <!-- Include Head -->
+  <%- include('../partials/head', {estilo: 'todoslosproductos'}) %>
+  <body>
+    <!-- Header -->
+    <%- include('../partials/header') %>
+    <!-- /nav-bar -->
+    <%- include('../partials/nav-bar') %>
+    <%-include ('../partials/button-top')%>
+    <!-- todos los productos -->
+    <div class="div-body">
+      <div>
+        <h2 class="products-title">Todos los productos</h2>
+      </div>
+      <div class="todos-los-productos">
+        <section>
+          <% productos.forEach(product=>{%>
+            <div class="a">
+          
+            <figure class="">
+              <img
+                src="/images/products/<%= product.imagen  %>"
+                alt="imagen de producto"
+              />
+            </figure>
+            <article class="">
+              <h2><%= product.nombre %></h2><br>
+              <h4><%= product.marcas.marca %></h4><br>
+              <h4>$ <%= product.precio %></h4><br>
+              <!-- <i class="fas fa-truck"></i> -->
+              <!-- <button class="boton-carrito" type="submit">Agregar al carrito</button> -->
+              <form action="/shop-cart/add" method="POST">
+                <input type="hidden" name="productoId" value="<%= product.id_productos %>">
+                <button class="boton-carrito" type="submit">Agregar al carrito</button>
+              </form>
+              <a class="boton-enlace" href="/products/detail/<%= product.id_productos %>">Detalles</a>
+            </article>
+   
+        </div>
+          <%})%>
+        </section><br>
+      </div>
+    </div>
+    <%- include('../partials/footer') %>
+  </body>
+</html>
