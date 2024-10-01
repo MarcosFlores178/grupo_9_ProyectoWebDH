@@ -32,7 +32,7 @@ app.use(rememberMiddleware);
 app.use(sessionMiddleware);
 
 
-app.use(obtenerCategorias);
+// app.use(obtenerCategorias);
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);
 app.use("/", rutaMain);
