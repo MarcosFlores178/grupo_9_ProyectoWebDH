@@ -2,6 +2,7 @@ const db = require("../database/models");
 const fs = require("fs");
 const path = require("path");
 const dataSource = require("../service/dataSource.js");
+const { Sequelize } = require("sequelize");
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
