@@ -45,7 +45,7 @@ const productsController = {
       });
   
       // Renderizar la vista y pasar los productos
-      res.render('products/products', { productos });
+      res.render('products/productos', { productos });
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al cargar los productos');

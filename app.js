@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
 const sessionMiddleware = require("./middlewares/sessionMiddleware.js");
-const obtenerCategorias = require("./middlewares/categoriasMiddleware.js");
+// const obtenerCategorias = require("./middlewares/categoriasMiddleware.js");
 
 
 app.set("views", path.join(__dirname, "views"));
@@ -28,8 +28,8 @@ app.use(
     cookie: { secure: false },
   })
 );
-app.use(rememberMiddleware);
 app.use(sessionMiddleware);
+app.use(rememberMiddleware);
 
 
 // app.use(obtenerCategorias);
