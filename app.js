@@ -10,6 +10,8 @@ const rutaMain = require("./routes/main.js");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
+const sessionMiddleware = require("./middlewares/sessionMiddleware.js");
+const obtenerCategorias = require("./middlewares/categoriasMiddleware.js");
 
 
 app.set("views", path.join(__dirname, "views"));
@@ -27,7 +29,10 @@ app.use(
   })
 );
 app.use(rememberMiddleware);
+app.use(sessionMiddleware);
 
+
+app.use(obtenerCategorias);
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);
 app.use("/", rutaMain);

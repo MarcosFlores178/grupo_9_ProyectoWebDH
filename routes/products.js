@@ -24,6 +24,10 @@ router.get("/detail/:id", productsController.showById);
 
 router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
 
+router.get('/search', productsController.searchProduct);
+
+router.get('/search-menu', productsController.menuSearch);
+
 router.post(
   "/",
   fileUpload.single("imagen"),
