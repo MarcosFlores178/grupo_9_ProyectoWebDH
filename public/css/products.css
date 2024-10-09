@@ -1,0 +1,59 @@
+.container{
+    /* flex-direction: column; */
+    display: flex;
+    justify-content: center; /* Centrará los productos horizontalmente */
+    flex-wrap: wrap; /* Permite que los productos se ajusten si son varios en la misma fila */
+    gap: 20px; /* Espacio entre productos */
+    margin: 20px;
+
+}
+.product {
+    /* display: flex; */
+    border: 1px solid #858282;
+    padding: 16px;
+    width: 250px;
+    position: relative;
+    background-color: aliceblue;
+}
+
+/* El enlace cubre sólo la parte del contenido, no los botones */
+.product-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.product-link img {
+    width: 100%;
+    height: auto;
+}
+
+.product-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.product-buttons .btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor:pointer; 
+}
+
+.product-buttons .btn:hover {
+    background-color: #0056b3;
+}
+
+.products-title{
+    display: flex;
+    justify-content: center;
+}
+/* Eliminar pointer-events para que el enlace funcione correctamente */
+
+
+/* Asegurarse de que los botones no formen parte del enlace */
+

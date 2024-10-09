@@ -17,13 +17,36 @@ const productsController = {
       res.render("products/shop-cart", { usuario });
     }
   },
+  // showAll: async (req, res) => {
+  //   // const usuario = req.session.user;
+  //   db.Producto.findAll().then((productos) => {
+  //     return res.render("products/products", { productos});
+  //   });
+  //   // this.productsList = await dataSource.load();
+  //   // res.render("products/productos", { productos: this.productsList });
+  // },
   showAll: async (req, res) => {
-    // const usuario = req.session.user;
-    db.Producto.findAll().then((productos) => {
-      return res.render("products/productos", { productos});
-    });
-    // this.productsList = await dataSource.load();
-    // res.render("products/productos", { productos: this.productsList });
+    try {
+      // Obtener todos los productos de la base de datos
+      const productos = await db.Producto.findAll({
+        include: {
+          model: db.Marca, //Acá se pone el modelo, o sea el return que se envia desde el modelo Marca
+          as: 'marca',  // Alias que definimos en la asociación
+          attributes: ['descripcion'] // Solo traer el nombre de la marca
+        }
+      // {   model: Talle,
+      //   as: 'talles',  // Alias que definimos en la asociación
+      //   attributes: ['talle'] 
+      //  }
+      
+      });
+  
+      // Renderizar la vista y pasar los productos
+      res.render('products/products', { productos });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al cargar los productos');
+    }
   },
   showById: async function (req, res) {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
@@ -191,6 +214,21 @@ const productsController = {
       res.status(500).send('Error en la busqueda')
     }
 
-  } 
+  },
+  menuSearch: async (req, res)=> {
+    try {
+    const categoria=req.params.id;
+    const productos= await db.Producto.findAll({
+      where: {id_categoria:categoria}
+    });
+
+    res.sender('productosPorCategoria', {productos})
+
+  }catch{error}
+},
+// categoriasMenu: async (req,res)=>{
+//   const categorias=await db.Categoria.findAll();
+//   res.render()
+// }
 };
 module.exports = productsController;

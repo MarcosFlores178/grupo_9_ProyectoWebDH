@@ -8,6 +8,7 @@ const Producto = db.Producto;
 const Marca = db.Marca;
 const Usuario = db.Usuario;
 const Talle = db.Talle;
+
 const usersController = {
   userList: null,
   user: null,

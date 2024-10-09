@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<%- include('../partials/head', {estilo: 'resultadosBusqueda' }) %>
+<%- include('../partials/head', {estilo: 'productosPorCategoria' }) %>
 
   <body>
     <!-- Header -->
@@ -15,9 +15,9 @@
             <div class="todos-los-productos">
               <section>
                 <% if (productos.length > 0) { %> 
-                    <div>
+                    <!-- <div>
                         <h2 class="products-title">Resultados para la búsqueda de: <%= query %></h2>
-                      </div>
+                      </div> -->
                 <% productos.forEach(product=>{%>
                   <a href="/products/detail/<%= product.id %>">
                     <figure class="">

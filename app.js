@@ -10,6 +10,9 @@ const rutaMain = require("./routes/main.js");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
+const sessionMiddleware = require("./middlewares/sessionMiddleware.js");
+
+const obtenerCategorias = require("./middlewares/categorias.js");
 
 
 app.set("views", path.join(__dirname, "views"));
@@ -27,15 +30,8 @@ app.use(
   })
 );
 app.use(rememberMiddleware);
-app.use((req, res, next) => {
-  if (req.session && req.session.user) {
-    console.log("Usuario en la sesión:", req.session.user); 
-      res.locals.user = req.session.user;
-  } else {
-      res.locals.user = null; // o lo que prefieras poner si no hay usuario
-  }
-  next();
-});
+app.use(sessionMiddleware);
+app.use(obtenerCategorias);
 
 app.use("/users", rutaUsers);
 app.use("/products", rutaProducts);
@@ -44,3 +40,5 @@ app.use("/", rutaMain);
 app.listen(port, () => {
   console.log("Servidor corriendo en el puerto 8080");
 });
+
+
