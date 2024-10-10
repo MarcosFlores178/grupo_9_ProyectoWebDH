@@ -347,6 +347,14 @@ footer img {
     padding: 0 20px;
 }
 
+input::placeholder {
+    color: grey; 
+  }
+  
+  input.error::placeholder {
+    color: red; 
+  }
+
 /*------------------ MEDIA QUERYS ------------------*/
 
 @media (min-width : 769px) {
