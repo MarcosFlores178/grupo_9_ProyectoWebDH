@@ -55,6 +55,14 @@ body {
     text-align: center;
    
 }
+#error-messagge{
+    /* margin: 0 2% 1% 0; */
+    text-align: start;
+    /* padding-left: 2%; */
+    width: 50%;
+    text-align: center;
+    color:rgba(248, 42, 87, 0.726);
+}
 .errorValidator.derecha{
     /* margin: 0 2% 1% 0; */
     text-align: start;

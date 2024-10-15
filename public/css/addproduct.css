@@ -12,6 +12,16 @@ main {
   text-align: center;
 }
 
+#charCounter {
+  color: grey;
+  font-size: 12px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+#charCounter.error {
+  color: red; /* Color rojo si el número de caracteres es menor al mínimo */
+}
 /* estilos de formulario de carga de producto */
 .cargaproducto {
   margin-top: 20px;
@@ -44,7 +54,7 @@ main {
   flex-direction: column;
   width: 80%;
   align-items: center;
-  #nombre {
+  #producto {
     margin: 5px;
     border-radius: 20px;
     border: solid 4px #61bcd3;

@@ -10,11 +10,11 @@
                         <section class="cargaproducto">
                             <h2>Editar producto</h2>
                             <form action="/products/detail/<%= producto.id %>?_method=put" method="POST"
-                                enctype="multipart/form-data" class="formulario">
+                                enctype="multipart/form-data" class="formulario" id="formulario">
                                 <div>
                                     <label for="nombre">Nombre del Producto:</label>
-                                    <input type="text" name="nombre" id="nombre"
-                                        placeholder="* Nombre del pedidoProducto" value="<%= producto.nombre%>" />
+                                    <input type="text" name="nombre" id="producto"
+                                        placeholder="* Nombre del Producto" value="<%= producto.nombre%>" />
                                 </div>
                                 <div>
                                     <label for="precio">Precio: </label>
@@ -51,7 +51,7 @@
                                 <div>
                                     <label for="descripcion">Descripción del Producto:</label>
                                     <textarea type="text" name="descripcion"
-                                        id="description"><%= producto.descripcion%></textarea>
+                                        id="descripcion"><%= producto.descripcion%></textarea>
                                 </div>
                                 <div>
                                     <label for="imagen">Cambiar imagen del Producto</label>

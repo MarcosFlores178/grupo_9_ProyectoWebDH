@@ -7,7 +7,7 @@
             <%-include ('../partials/button-top.ejs')%>
                 <main class="container">
                     <h1 class="h1">REGISTRO DE USUARIO</h1>
-                    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data" id="formulario">
                         <h3 class="h3">Datos Personales</h3>
                         <div>
                             <div class="div-par">
@@ -160,15 +160,16 @@
                         <h3 class="h3">Admin-Comprador</h3>
                         <div class="style-label">
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp" value="admin">Administrador
+                                <input class="radio-checkbox" type="radio" name="admincomp" value="admin" id="admin">Administrador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp" value="comprador">Comprador
+                                <input class="radio-checkbox" type="radio" name="admincomp" value="comprador" id="comp">Comprador
                             </label>
                         </div>
                         <div class="error-container">
+                            <p class="errorValidator izquierda" id="error-message">
                             <% if (mapsDeError.admincomp) { %>
-                                <p class="errorValidator izquierda">
+                                <p class="errorValidator izquierda" id="error-message">
                                     <%= mapsDeError.admincomp.msg %>
                                 </p>
                                 <% } else { %>
@@ -319,7 +320,7 @@
                         </div><br>
                         <div>
                             <label for="foto">Escoge una foto para tu perfil</label><br><br>
-                            <input type="file" name="foto">
+                            <input type="file" name="foto" id="fileUpload">
                         </div>
                         <div class="style-label-acept">
                             <input class="checkbox-accept" type="checkbox" id="privacy-policy"
