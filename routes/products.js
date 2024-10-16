@@ -14,16 +14,14 @@ const adminMiddleware = require("../middlewares/adminMiddleware.js");
 //    res.sendFile(path.resolve(__dirname,'shopping-cart.ejs'));
 // });
 
-const validator = [
-  body('nombre').notEmpty().trim().isLength({ min: 2}).withMessage('Ingrese el nombre del producto'),
-  body('descripcion').notEmpty().trim().isLength({ min: 20}).withMessage('Ingrese la descripción del producto'),
+const validatorProd = [
+  body('nombre').notEmpty().trim().withMessage('Ingrese su nombre').isLength({ min: 2}).withMessage('El nombre debe tener más de 2 caracteres'),
+  body('descripcion').notEmpty().trim().withMessage('Ingrese su apellido').isLength({ min: 20}).withMessage('La descripcion debe tener al menos 20 caracteres'),
   body('color').notEmpty().trim().withMessage('Ingrese el color'),
   body('precio').isDecimal().trim().withMessage('Ingrese el precio'),
-  body('marca').notEmpty().trim().withMessage('Ingrese su marca'),
+  body('marca').notEmpty().trim().withMessage('Ingrese la marca'),
   body('talle').notEmpty().trim().withMessage('Ingrese el talle'),
-  check('admincomp')
-  .exists().withMessage('Seleccione un rol')
-  .bail()
+  
   // .custom((value, { req }) => {
   //     if (!req.body.role || !Array.isArray(req.body.role) || req.body.role.length !== 1) {
   //         throw new Error('Seleccione un rol válido');
@@ -51,8 +49,8 @@ router.get('/search-menu', productsController.menuSearch);
 router.post(
   "/",
   fileUpload.single("imagen"),
-  validator,
   adminMiddleware,
+  validatorProd,
   productsController.addProduct
 );
 

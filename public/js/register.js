@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+    console.log('este es el script de register.js');
     // --------------------------------- Buscador ---------------------------------------------
     document.getElementById('button-search').addEventListener('click', function () {
         var inputSearch = document.getElementById('buscador');
@@ -92,6 +93,10 @@ window.addEventListener('load', function () {
             email.classList.remove('error'); 
             email.style.borderColor = ''; 
         }
+        email.addEventListener('focus', function() {
+            email.classList.remove('error'); // Eliminar el estilo de error
+            email.style.borderColor = ''; // Quitar borde rojo al volver a enfocar
+        });
     });
 
     let emailVerify = document.querySelector('#emailVerify');
@@ -112,6 +117,10 @@ window.addEventListener('load', function () {
             emailVerify.classList.remove('error'); 
             emailVerify.style.borderColor = ''; 
         }
+        emailVerify.addEventListener('focus', function() {
+            emailVerify.classList.remove('error'); // Eliminar el estilo de error
+            emailVerify.style.borderColor = ''; // Quitar borde rojo al volver a enfocar
+        });
     });
 
     // Validar Contraseña y Confirmación de Contraseña
@@ -135,6 +144,10 @@ window.addEventListener('load', function () {
             passwordVerify.classList.remove('error'); 
             passwordVerify.style.borderColor = ''; 
         }
+        passwordVerify.addEventListener('focus', function() {
+            passwordVerify.classList.remove('error'); // Eliminar el estilo de error
+            passwordVerify.style.borderColor = ''; // Quitar borde rojo al volver a enfocar
+        });
     });
     document.getElementById('formulario').addEventListener('submit', function (e) {
            
@@ -172,8 +185,8 @@ window.addEventListener('load', function () {
         const errorMessage = document.getElementById("error-message");
 
         const nombreValue = nombre.value.trim();
-        validateField(nombre, 2, 'Nombre debe tener más de 2 caracteres');
         if (nombreValue.length < 2) {
+            validateField(nombre, 2, 'Nombre debe tener más de 2 caracteres');
 
             formIsValid = false;
             

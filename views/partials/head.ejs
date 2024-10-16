@@ -4,8 +4,9 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="">
-    <script src="/js/register.js" defer></script>
-    <script src="/js/product.js" defer></script>
+    <!-- <script src="/js/register.js" defer></script> -->
+    <!-- <script src="/js/editRegister.js" defer></script> -->
+    <!-- <script src="/js/product.js" defer></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="icon" href="/images/logo_sin_fondo.ico" type="image/x-icon">
     <title>Goool Store</title>
@@ -16,6 +17,6 @@
 
     <%# cambiamos el nombre del css segun la vista q declaramos %>
 
-    <% if (typeof estilo !== 'undefined') { %> <link rel="stylesheet" href="/css/<%= estilo %>.css"> <% } %>
+    <% if (typeof estilo !== 'undefined') { %> <link rel="preload" href="/css/<%= estilo %>.css" as="style" onload="this.rel='stylesheet'"> <% } %>
     
 </head>

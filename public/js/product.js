@@ -1,4 +1,5 @@
 window.addEventListener('load', function () {
+    console.log('este es el script de product.js');
     // --------------------------------- Buscador ---------------------------------------------
     document.getElementById('button-search').addEventListener('click', function () {
         var inputSearch = document.getElementById('buscador');
