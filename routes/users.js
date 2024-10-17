@@ -43,6 +43,21 @@ const validator = [
   //     return true;
   // })
     ] 
+const validatorPerfil  = [
+  body('nombre').notEmpty().trim().withMessage('Ingrese su nombre'),
+  body('apellido').notEmpty().trim().withMessage('Ingrese su apellido'),
+  body('dni').isInt().trim().withMessage('Ingrese su dni'),
+  body('telefono').isInt().trim().withMessage('Ingrese su teléfono'),
+  body('domicilio').notEmpty().trim().withMessage('Ingrese su domicilio'),
+  body('country').notEmpty().trim().withMessage('Ingrese su pais'),
+  
+  // .custom((value, { req }) => {
+  //     if (!req.body.role || !Array.isArray(req.body.role) || req.body.role.length !== 1) {
+  //         throw new Error('Seleccione un rol válido');
+  //     }
+  //     return true;
+  // })
+    ] 
 router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
 
@@ -54,6 +69,7 @@ router.get("/editar-cuenta", usersController.showEditCuenta);
 router.put(
     "/perfil/:id",
     fotoUserUpload.single("foto"),
+    validatorPerfil,
     // logregMiddleware,
     usersController.editUser
   );
@@ -61,6 +77,7 @@ router.put(
     "/cuenta/:id",
     // fotoUserUpload.single("foto"),
     // logregMiddleware,
+    validatorPerfil,
     usersController.editCuenta
   );
 

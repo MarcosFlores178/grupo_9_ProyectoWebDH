@@ -64,6 +64,7 @@ router.put(
   "/detail/:id",
   fileUpload.single("imagen"),
   adminMiddleware,
+  validatorProd,
   productsController.editProduct
 );
 

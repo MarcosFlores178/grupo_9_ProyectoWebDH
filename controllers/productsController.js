@@ -99,47 +99,7 @@ const productsController = {
       res.render("products/addproduct", { marcas, talles,  mapsDeError: {}  });
     });
   },
-  // addProduct: async (req, res) => {
-  //   let marcas = db.Marca.findAll();
-  //   let talles = db.Talle.findAll();
-  //   let errores = validationResult(req);
-  //   const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
-  //   console.log(errores.mapped());
-  //   if (errores.isEmpty()) {
-  //     console.log(errores.mapped());
-  //     try {
-  //       await db.Producto.create({
-  //         nombre: req.body.nombre,
-  //         descripcion: req.body.descripcion,
-  //         imagen: imgProduct,
-  //         color: req.body.color,
-  //         precio: req.body.precio,
-  //         id_talle: req.body.talle,
-  //         id_marca: req.body.marca,
-  //       });
-  //       res.redirect("/products");
-  //     } catch (error) { 
-  //       console.error(error);
-  //       res.status(500).send('Error al agregar el producto');
-  //     }
-  //   } else {
-  //     // let marcas = db.Marca.findAll();
-  //     // let talles = db.Talle.findAll();
-  //     // Promise.all([marcas, talles]).then(([marcas, talles]) => {
-  //     //   res.render("products/addproduct", { marcas, talles, errores: errores.array() });
-  //     // });
-  //     Promise.all([marcas, talles]).then(([marcas, talles]) => {
-  //       res.render("products/addproduct", { marcas, talles,  mapsDeError: errores.mapped(), old: req.body  });
-  //     });
-  //   //   return res.render("products/addproduct", {
-  //   //     mapsDeError: errores.mapped(),
-  //   //     old: req.body, marcas, talles
-  //   //   });
-  //    }
-
-
-  // },
-  addProduct: async (req, res) => {
+   addProduct: async (req, res) => {
     try {
         // Consultas a la base de datos para obtener marcas y talles
         let marcas = db.Marca.findAll();
@@ -202,38 +162,113 @@ const productsController = {
     });
     Promise.all([marcas, talles, producto]).then(
       ([marcas, talles, producto]) => {
-        res.render("products/editproduct", { producto, marcas, talles });
+        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {}   });
       }
     );
   },
-  editProduct: (req, res) => {
-    let imgProduct = "";
-    if (req.file?.filename) {
-      imgProduct = `${req.file.filename}`;
-    } else {
-      imgProduct = req.body.currentImage;
-    }
-    const { id } = req.params;
+  // editProduct: (req, res) => {
+  //   try {
+  //     // Consultas a la base de datos para obtener marcas y talles
+  //     let marcas = db.Marca.findAll();
+  //     let talles = db.Talle.findAll();
+  //      // Validación de errores en el request
+  //      let errores = validationResult(req);
+  //     //  const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
+  //   let imgProduct = "";
+  //   if (req.file?.filename) {
+  //     imgProduct = `${req.file.filename}`;
+  //   } else {
+  //     imgProduct = req.body.currentImage;
+  //   }
+  //   const { id } = req.params;
+  //   if (errores.isEmpty()) {
+  //     // Si no hay errores, crear el producto
+  //     // await db.Producto.update(
+  //       db.Producto.update(
+  //     {
+  //       nombre: req.body.nombre,
+  //       descripcion: req.body.descripcion,
+  //       imagen: imgProduct,
+  //       color: req.body.color,
+  //       precio: req.body.precio,
+  //       id_talle: req.body.talle,
+  //       id_marca: req.body.marca,
+  //     },
+  //     {
+  //       where: { id: id },
+  //     }
+  //   )
+  //     // .then(() => { //aca no puede ir then porque no hay promesas, es un metodo sincronico 
+  //       res.redirect(`/products/detail/${id}`);
+  //     // })
+  //   } else {  
 
-    db.Producto.update(
-      {
-        nombre: req.body.nombre,
-        descripcion: req.body.descripcion,
-        imagen: imgProduct,
-        color: req.body.color,
-        precio: req.body.precio,
-        id_talle: req.body.talle,
-        id_marca: req.body.marca,
-      },
-      {
-        where: { id: id },
-      }
-    )
-      .then(() => {
+  //     console.log(errores.mapped());
+  //     // Si hay errores, realizar las consultas para obtener marcas y talles
+  //     let [marcasResult, tallesResult] = Promise.all([marcas, talles]);
+
+  //     // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
+  //     return res.render("products/addproduct", {
+  //         marcas: marcasResult,
+  //         talles: tallesResult,
+  //         mapsDeError: errores.mapped(),
+  //         old: req.body,  // Datos ingresados para que el formulario no se reinicie
+  //     });
+  //   }
+  // }
+  //     catch(error) {
+  //       console.error(error);
+  //       return res.status(500).send('Error al procesar la solicitud');
+  //     }
+  // },
+  editProduct: async (req, res) => {
+    try {
+      // Consultas a la base de datos para obtener marcas y talles (await porque son operaciones asincrónicas)
+      let marcas = await db.Marca.findAll();
+      let talles = await db.Talle.findAll();
+      
+      // Validación de errores en el request
+      let errores = validationResult(req);
+      console.log(errores);
+      // Manejo de imagen del producto
+      let imgProduct = req.file?.filename ? `${req.file.filename}` : req.body.currentImage;
+  
+      const { id } = req.params;
+      let producto = await db.Producto.findByPk(id);
+      if (errores.isEmpty()) {
+        console.log('dentro del if errores is empty');
+        // Si no hay errores, actualizar el producto
+        await db.Producto.update(
+          {
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            imagen: imgProduct,
+            color: req.body.color,
+            precio: req.body.precio,
+            id_talle: req.body.talle,
+            id_marca: req.body.marca,
+          },
+          { where: { id: id } }
+        );
+  console.log('objeto producto',  producto);
+        // Redirigir a la vista de detalle del producto actualizado
         res.redirect(`/products/detail/${id}`);
-      })
-      .catch((error) => res.send(error));
+      } else {
+        // Si hay errores, renderizar la vista de edición con errores y datos viejos
+        return res.render("products/editproduct", {
+          producto: producto,
+          marcas: marcas,
+          talles: talles,
+          mapsDeError: errores.mapped(),
+          old: req.body, // Datos ingresados para que el formulario no se reinicie
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).send("Error al procesar la solicitud");
+    }
   },
+  
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
 

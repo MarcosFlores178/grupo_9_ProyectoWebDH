@@ -57,7 +57,7 @@ const usersController = {
   },
   register: async (req, res) => {
     let errores = validationResult(req);
-    const countryList = Object.values(countries).map(country => country.name);
+    const countryList = Object.values(countries).map(country => country.name); //Lo que esta linea hace es que toma el objeto countries y lo convierte en un array con los nombres de los paises. Y eso se guarda en la variable countryList. Y el objeto countries se encuentra en la libreria countries-list.
     if (errores.isEmpty()) {
       const fotoUsuario = req.file ? `${req.file.filename}` : "default.jpg";
       const {
@@ -125,11 +125,14 @@ const usersController = {
   },
   showEditCuenta: (req, res) => {
     // const countryList = Object.values(countries).map(country => country.name);
-    const usuario = req.session.user;
+    const usuario = req.session.user; //Aca en esta linea lo que se hace es traer el usuario de la session, porque dentro del usuario están los datos que se quieren editar. Y la session user toma los datos de la base de datos. Y esa asignacion de datos se realiza cuando el usuario se loguea.
     res.render("users/editarCuenta", { usuario, mapsDeError: {} });
   },
   editUser: async (req, res) => {
+    try{
     let image = "";
+    let errores= validationResult(req);
+    const countryList = Object.values(countries).map(country => country.name); 
     const { nombre,
       apellido,
       dni,
@@ -146,8 +149,8 @@ const usersController = {
     }
 
     const { id } = req.params;
-
-    try {
+    let usuario = await db.Usuario.findByPk(id);
+    if (errores.isEmpty()) {
       // Buscar el producto por ID y actualizar los campos
       await db.Usuario.update(
         {
@@ -168,6 +171,15 @@ const usersController = {
       // console.log(req.body);
       //res.redirect(`/users/perfil/${id}`);
       res.redirect(`/users/perfil`);
+    } else {
+      // Si hay errores, renderizar la vista de edición con errores y datos viejos
+      return res.render("users/editarPerfil", {
+        usuario: usuario,
+        mapsDeError: errores.mapped(),
+        old: req.body, // Datos ingresados para que el formulario no se reinicie
+        countries: countryList
+      });
+    }
     } catch (error) {
       console.error("Error al actualizar el usuario: ", error);
       res.status(500).send("Error al actualizar el usuario");

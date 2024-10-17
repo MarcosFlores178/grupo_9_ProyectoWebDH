@@ -8,7 +8,24 @@ body {
     background-color: #EEFCFF;
     
 }
-
+.error-container {
+    display: flex; 
+    justify-content: space-between; /* Espacia los elementos a lo largo de la línea */
+    margin-bottom: 10px; /* Asegura que el contenedor de errores se muestre como bloque */
+    margin-right: 0;
+    /* gap: 9rem; */
+  }
+  
+  .errorValidator{
+    font-size: 0.8rem;
+    /* margin: 0 2% 1% 0; */
+    color: red;
+    text-align: start;
+    /* padding-left: 2%; */
+    width: 100%;
+    text-align: center;
+   
+  }
 .cargaproducto{
     width: auto;
     display: flex;
