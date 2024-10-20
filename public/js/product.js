@@ -183,12 +183,12 @@ window.addEventListener('load', function () {
         // Validar marca y talle
         if (!selectedMarcaValue) {
             formIsValid = false;
-            alert('Debe seleccionar una marca.');
+            // alert('Debe seleccionar una marca.');
         }
 
         if (!selectedTalleValue) {
             formIsValid = false;
-            alert('Debe seleccionar un talle.');
+            // alert('Debe seleccionar un talle.');
         }
 
         // Validar nombre
@@ -228,9 +228,22 @@ window.addEventListener('load', function () {
         // Si el formulario no es válido, evitar el envío
         if (formIsValid) {
             // Aquí se puede proceder con el envío del formulario si es válido
-            alert('Formulario enviado con éxito.');
+            // e.target.reset();
+            // Swal.fire({
+            //     title: 'Éxito!',
+            //     text: 'Producto creado con éxito.',
+            //     icon: 'success',
+            //     confirmButtonText: 'Aceptar'
+            // });
+            // alert('Formulario enviado con éxito.');
         } else {
-            e.preventDefault(); // Evita que el formulario se envíe si no es válido
+            e.preventDefault();
+            Swal.fire({
+                title: 'Error',
+                text: 'Debes completar todos los campos.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            }); // Evita que el formulario se envíe si no es válido
         }
     });
 
@@ -244,7 +257,13 @@ window.addEventListener('load', function () {
             const fileExtension = fileName.split('.').pop();  // Extraer la extensión del archivo
 
             if (!allowedExtensions.includes(fileExtension)) {
-                alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Solo se permiten archivos de imagen: ' + allowedExtensions.join(', '),
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+                // alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
                 imagen.value = '';  // Limpiar el input si no es válido
             } else {
                 // Aquí puedes proceder con el procesamiento del archivo válido

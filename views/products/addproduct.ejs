@@ -99,9 +99,31 @@
                         </section>
                 </main>
                 <!-- <script src="/js/product.js"></script> -->
-                <script src="/js/product.js"></script>
-
+                
                 <%-include ('../partials/footer.ejs')%>
+                <% if (errorMessage && errorMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Producto cargado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+                    <script src="/js/product.js"></script>
     </body>
 
 </html>

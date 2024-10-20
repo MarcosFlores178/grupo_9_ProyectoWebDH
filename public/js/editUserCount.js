@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+    console.log('El script de edit cuenta anda bien');
     const button = document.getElementById('enablePasswordChange');
     const newPassword = document.getElementById('newP');
     const confirmNewPassword = document.getElementById('confirmNewP');
@@ -56,6 +57,8 @@ window.addEventListener('load', function() {
         // --------------------------------- Validaciones de Formulario ---------------------------------------------
         const validateFieldBlur = (field, minLength, message) => {
             field.addEventListener('blur', function () {
+            console.log('El script de edit cuenta blur anda bien');
+
                 console.log('Campo:', field.id);
                 let value = field.value.trim();
                 if (value.length < minLength) {
@@ -152,6 +155,7 @@ window.addEventListener('load', function() {
         });
     });
     document.getElementById('formulario').addEventListener('submit', function (e) {
+    console.log('El script de edit cuenta submit anda bien');
            
 
         let formIsValid = true;

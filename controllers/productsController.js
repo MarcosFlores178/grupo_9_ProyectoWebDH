@@ -28,7 +28,7 @@ const productsController = {
   //   db.Producto.findAll().then((productos) => {
   //     return res.render("products/productos", { productos, usuario });
   //   });
-    
+
   // },
   showAll: async (req, res) => {
     try {
@@ -39,13 +39,13 @@ const productsController = {
           as: 'marca',  // Alias que definimos en la asociación
           attributes: ['descripcion'] // Solo traer el nombre de la marca
         }
-      // {   model: Talle,
-      //   as: 'talles',  // Alias que definimos en la asociación
-      //   attributes: ['talle'] 
-      //  }
-      
+        // {   model: Talle,
+        //   as: 'talles',  // Alias que definimos en la asociación
+        //   attributes: ['talle'] 
+        //  }
+
       });
-  
+
       // Renderizar la vista y pasar los productos
       res.render('products/productos', { productos });
     } catch (error) {
@@ -95,52 +95,62 @@ const productsController = {
   showAddProduct: (req, res) => {
     let marcas = db.Marca.findAll();
     let talles = db.Talle.findAll();
+    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
     Promise.all([marcas, talles]).then(([marcas, talles]) => {
-      res.render("products/addproduct", { marcas, talles,  mapsDeError: {}  });
+      res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage });
     });
   },
-   addProduct: async (req, res) => {
+  addProduct: async (req, res) => {
     try {
-        // Consultas a la base de datos para obtener marcas y talles
-        let marcas = db.Marca.findAll();
-        let talles = db.Talle.findAll();
+      // Consultas a la base de datos para obtener marcas y talles
+      let marcas = db.Marca.findAll();
+      let talles = db.Talle.findAll();
 
-        // Validación de errores en el request
-        let errores = validationResult(req);
-        const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
+      // Validación de errores en el request
+      let errores = validationResult(req);
+      const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
 
-        if (errores.isEmpty()) {
-            // Si no hay errores, crear el producto
-            await db.Producto.create({
-                nombre: req.body.nombre,
-                descripcion: req.body.descripcion,
-                imagen: imgProduct,
-                color: req.body.color,
-                precio: req.body.precio,
-                id_talle: req.body.talle,
-                id_marca: req.body.marca,
-            });
-
-            // Redirigir al listado de productos
-            return res.redirect("/products");
-        } else {
-          console.log(errores.mapped());
-            // Si hay errores, realizar las consultas para obtener marcas y talles
-            let [marcasResult, tallesResult] = await Promise.all([marcas, talles]);
-
-            // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
-            return res.render("products/addproduct", {
-                marcas: marcasResult,
-                talles: tallesResult,
-                mapsDeError: errores.mapped(),
-                old: req.body,  // Datos ingresados para que el formulario no se reinicie
-            });
-        }
+      if (errores.isEmpty()) {
+        // Si no hay errores, crear el producto
+        await db.Producto.create({
+          nombre: req.body.nombre,
+          descripcion: req.body.descripcion,
+          imagen: imgProduct,
+          color: req.body.color,
+          precio: req.body.precio,
+          id_talle: req.body.talle,
+          id_marca: req.body.marca,
+        });
+        // Guardar mensaje de éxito en flash
+        req.flash('successMessage', 'Producto creado con éxito.');
+        return res.redirect('/products/addproduct'); // Redirigir a la misma página de carga
+        // Redirigir al listado de productos
+        // return res.redirect("/products");
+        // return res.render("products/addproduct", { mapsDeError: {} });
+      } else {
+        console.log(errores.mapped());
+        req.flash('ValErrorMessage', 'Complete los campos requeridos');
+        // Si hay errores, realizar las consultas para obtener marcas y talles
+        let [marcasResult, tallesResult] = await Promise.all([marcas, talles]);
+        const errorMessage = req.flash('ValErrorMessage')[0] || '';
+        // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
+        return res.render("products/addproduct", {
+          marcas: marcasResult,
+          talles: tallesResult,
+          mapsDeError: errores.mapped(),
+          old: req.body,
+          errorMessage // Datos ingresados para que el formulario no se reinicie
+        });
+      }
     } catch (error) {
-        console.error(error);
-        return res.status(500).send('Error al procesar la solicitud');
+      console.error(error);
+      req.flash('ValErrorMessage', 'Ocurrió un error. Intente nuevamente');
+      return res.render("products/addproduct");
+
+      // return res.status(500).send('Error al procesar la solicitud');
     }
-},
+  },
 
 
   showEditForm: (req, res) => {
@@ -162,7 +172,7 @@ const productsController = {
     });
     Promise.all([marcas, talles, producto]).then(
       ([marcas, talles, producto]) => {
-        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {}   });
+        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {} });
       }
     );
   },
@@ -226,13 +236,13 @@ const productsController = {
       // Consultas a la base de datos para obtener marcas y talles (await porque son operaciones asincrónicas)
       let marcas = await db.Marca.findAll();
       let talles = await db.Talle.findAll();
-      
+
       // Validación de errores en el request
       let errores = validationResult(req);
       console.log(errores);
       // Manejo de imagen del producto
       let imgProduct = req.file?.filename ? `${req.file.filename}` : req.body.currentImage;
-  
+
       const { id } = req.params;
       let producto = await db.Producto.findByPk(id);
       if (errores.isEmpty()) {
@@ -250,7 +260,7 @@ const productsController = {
           },
           { where: { id: id } }
         );
-  console.log('objeto producto',  producto);
+        console.log('objeto producto', producto);
         // Redirigir a la vista de detalle del producto actualizado
         res.redirect(`/products/detail/${id}`);
       } else {
@@ -268,7 +278,7 @@ const productsController = {
       return res.status(500).send("Error al procesar la solicitud");
     }
   },
-  
+
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
 
@@ -306,33 +316,33 @@ const productsController = {
       })
       .catch((error) => res.send(error));
   },
-  searchProduct: async (req, res )=>{
+  searchProduct: async (req, res) => {
     const query = req.query.query;
     try {
       const productos = await db.Producto.findAll({
-        where:{
+        where: {
           nombre: {
             [Sequelize.Op.like]: `%${query}%`
           }
         }
       });
-      res.render('products/resultadosBusqueda', {productos, query})
-    }catch (error){
+      res.render('products/resultadosBusqueda', { productos, query })
+    } catch (error) {
       console.error('Error en la busqueda', error);
       res.status(500).send('Error en la busqueda')
     }
 
   },
-  menuSearch: async (req, res)=> {
+  menuSearch: async (req, res) => {
     try {
-    const categoria=req.params.id;
-    const productos= await db.Producto.findAll({
-      where: {id_categoria:categoria}
-    });
+      const categoria = req.params.id;
+      const productos = await db.Producto.findAll({
+        where: { id_categoria: categoria }
+      });
 
-    res.sender('productosPorCategoria', {productos})
+      res.sender('productosPorCategoria', { productos })
 
-  }catch{error}
-}
+    } catch { error }
+  }
 };
 module.exports = productsController;
