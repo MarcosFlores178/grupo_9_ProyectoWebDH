@@ -126,7 +126,9 @@ const usersController = {
   showEditCuenta: (req, res) => {
     // const countryList = Object.values(countries).map(country => country.name);
     const usuario = req.session.user; //Aca en esta linea lo que se hace es traer el usuario de la session, porque dentro del usuario están los datos que se quieren editar. Y la session user toma los datos de la base de datos. Y esa asignacion de datos se realiza cuando el usuario se loguea.
-    res.render("users/editarCuenta", { usuario, mapsDeError: {} });
+    const errorMessage = req.flash('errorMessage')[0] || '';
+    res.render("users/editarCuenta", { usuario, mapsDeError: {}, errorMessage});
+    // console.log(errorMessage);
   },
   editUser: async (req, res) => {
     try{
@@ -186,41 +188,56 @@ const usersController = {
     }
   },
   editCuenta: async (req, res) => {
-    
-    const { nombreUsuario,
-      email,
-      admincomp,
-      password
-     } = req.body;
-
-    const { id } = req.params;
-    
-     console.log('console log de params', req.params);
-     console.log('console log de body', req.body);
     try {
-      // Buscar el producto por ID y actualizar los campos
-      await db.Usuario.update(
-        {
-          nombre_usuario:nombreUsuario,
-          email,
-          tipo_usuario: admincomp,
-          password
-          
-        },
-        { where: { id } } // Condición para encontrar el producto por ID
-      );
-      //ACTUALIZA LA SESSION CON LOS NUEVOS DATOS EDITADOS
-      const userUpdated = await Usuario.findByPk(id); // Consulta los datos actualizados
-      req.session.user = userUpdated;
-      console.log(req.body);
-      //res.redirect(`/users/perfil/${id}`);
-      res.redirect(`/users/perfil`);
+      let errores = validationResult(req);
+      const errorMessage = req.flash('errorMessage')[0] || '';
+      const { email, password, nombreUsuario, admincomp, newP, confirmNewP, currentPassword } = req.body;
+      const { id } = req.params;
+      let usuario = await db.Usuario.findByPk(id);
+      let hashedNewPassword;
+      if (newP && confirmNewP) {
+        if (newP !== confirmNewP) {
+            return res.render("users/editarPerfil", {
+                usuario: usuario,
+                mapsDeError: { confirmNewPassword: { msg: "Las contraseñas no coinciden" } },
+                old: req.body,
+            });
+        }
+        hashedNewPassword = await bcrypt.hash(newPassword, 10);
+      }
+      if (errores.isEmpty()) {
+       
+        await db.Usuario.update(
+          { nombre_usuario: nombreUsuario,
+            tipo_usuario: admincomp,
+            email,
+            // password: bcrypt.hashSync(password, 10)
+            ...(hashedNewPassword && { password: hashedNewPassword })
+          },
+          { where: { id } } // Condición para encontrar el usuario por ID
+        );
+        //ACTUALIZA LA SESSION CON LOS NUEVOS DATOS EDITADOS
+        const userUpdated = await Usuario.findByPk(id); // Consulta los datos actualizados
+        req.session.user = userUpdated;
+        // console.log(req.body);
+        //res.redirect(`/users/perfil/${id}`);
+        res.redirect(`/users/perfil`);
+      } else {
+        // Si hay errores, renderizar la vista de edición con errores y datos viejos
+        return res.render("users/editarCuenta", {
+          usuario: usuario,
+          errorMessage,
+          mapsDeError: errores.mapped(),
+          old: req.body // Datos ingresados para que el formulario no se reinicie
+        });
+      }
     } catch (error) {
       console.error("Error al actualizar el usuario: ", error);
       res.status(500).send("Error al actualizar el usuario");
     }
-  }
 
+
+  }
 };
 
 module.exports = usersController;

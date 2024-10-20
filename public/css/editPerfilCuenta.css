@@ -48,22 +48,15 @@ paleta {
      /* gap: 9rem; */
  }
  
- .errorValidator.izquierda{
+ .errorValidator{
      /* margin: 0 2% 1% 0; */
-     text-align: start;
+     justify-content: center;
      /* padding-left: 2%; */
-     width: 50%;
+     width: 100%;
      text-align: center;
     
  }
- .errorValidator.derecha{
-     /* margin: 0 2% 1% 0; */
-     text-align: start;
-     /* padding-right: 2%; */
-     width: 50%;
-     text-align: center;
-    
- }
+ 
  
  /*----------------- HEADER -----------------
  .first-box { 
