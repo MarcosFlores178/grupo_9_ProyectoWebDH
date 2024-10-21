@@ -26,6 +26,17 @@ body {
     text-align: center;
    
   }
+
+  #charCounter {
+    color: grey;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  #charCounter.error {
+    color: red; /* Color rojo si el número de caracteres es menor al mínimo */
+  }
 .cargaproducto{
     width: auto;
     display: flex;

@@ -86,8 +86,10 @@
                                 <div>
                                     <label for="descripcion">Descripción del Producto:</label>
                                     <textarea type="text" name="descripcion"
-                                        id="descripcion"><%= producto.descripcion%></textarea>
-                                </div>
+                                        id="descripcion"><%= producto.descripcion%></textarea> 
+                                        <br>
+                                        </div>
+                                        <span id="charCounter">Faltan 20 caracteres para el mínimo requerido (20).</span>
                                 <div class="error-container">
                                         <% if (mapsDeError.descripcion) { %>
                                             <p class="errorValidator">
@@ -109,18 +111,37 @@
                                     <button class="boton-aceptar" type="submit" name="enviar"
                                         id="enviar">Confirmar</button>
                                     <button class="boton-cancelar" type="reset" class="boton-reset"
-                                        onclick="cancelar()">Cancelar</button>
-                                    <script>
-                                        function cancelar() {
-                                            window.location.href = `http://localhost:8080/products`; // Reemplaza con la URL a la que quieres redirigir
-                                        }
-                                    </script>
+                                    onclick="location.href='/users/products';">Cancelar</button>
+                                   
                                 </div>
                             </form>
                         </section>
                 </main>
+                <script src="/js/product.js"></script>
+                <% if (errorMessage && errorMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Producto editado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
                 <%-include ('../partials/footer.ejs')%>
-                    <script src="/js/product.js"></script>
+                  
     </body>
 
 </html>

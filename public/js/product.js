@@ -226,17 +226,8 @@ window.addEventListener('load', function () {
         }
 
         // Si el formulario no es válido, evitar el envío
-        if (formIsValid) {
-            // Aquí se puede proceder con el envío del formulario si es válido
-            // e.target.reset();
-            // Swal.fire({
-            //     title: 'Éxito!',
-            //     text: 'Producto creado con éxito.',
-            //     icon: 'success',
-            //     confirmButtonText: 'Aceptar'
-            // });
-            // alert('Formulario enviado con éxito.');
-        } else {
+        if (!formIsValid) {
+          
             e.preventDefault();
             Swal.fire({
                 title: 'Error',

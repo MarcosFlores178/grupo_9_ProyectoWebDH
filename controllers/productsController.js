@@ -55,7 +55,7 @@ const productsController = {
   },
   showById: async function (req, res) {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
-
+    let successMessage = req.flash('successMessage')[0] || '';
     // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
     if (usuario && usuario.tipo_usuario === "admin") {
       console.log("administrador:", usuario);
@@ -79,6 +79,7 @@ const productsController = {
       return res.render("products/details-product", {
         producto,
         usuario,
+        successMessage
       });
     });
   },
@@ -134,13 +135,15 @@ const productsController = {
         // Si hay errores, realizar las consultas para obtener marcas y talles
         let [marcasResult, tallesResult] = await Promise.all([marcas, talles]);
         const errorMessage = req.flash('ValErrorMessage')[0] || '';
+        const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
         // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
         return res.render("products/addproduct", {
           marcas: marcasResult,
           talles: tallesResult,
           mapsDeError: errores.mapped(),
           old: req.body,
-          errorMessage // Datos ingresados para que el formulario no se reinicie
+          errorMessage, // Datos ingresados para que el formulario no se reinicie
+          successMessage
         });
       }
     } catch (error) {
@@ -156,6 +159,8 @@ const productsController = {
   showEditForm: (req, res) => {
     let marcas = db.Marca.findAll();
     let talles = db.Talle.findAll();
+    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
     const producto = db.Producto.findByPk(req.params.id, {
       include: [
         {
@@ -172,7 +177,7 @@ const productsController = {
     });
     Promise.all([marcas, talles, producto]).then(
       ([marcas, talles, producto]) => {
-        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {} });
+        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {}, errorMessage, successMessage });
       }
     );
   },
@@ -260,22 +265,34 @@ const productsController = {
           },
           { where: { id: id } }
         );
+        // const { id } = req.params;
         console.log('objeto producto', producto);
+        req.flash('successMessage', 'Producto editado con éxito.');
         // Redirigir a la vista de detalle del producto actualizado
-        res.redirect(`/products/detail/${id}`);
+        return res.redirect(`/products/detail/${id}`);
       } else {
+        console.log(errores.mapped());
+        req.flash('ValErrorMessage', 'Complete los campos requeridos');
+        const errorMessage = req.flash('ValErrorMessage')[0] || '';
+        const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
         // Si hay errores, renderizar la vista de edición con errores y datos viejos
         return res.render("products/editproduct", {
           producto: producto,
           marcas: marcas,
           talles: talles,
           mapsDeError: errores.mapped(),
-          old: req.body, // Datos ingresados para que el formulario no se reinicie
+          old: req.body,
+          successMessage,
+          errorMessage // Datos ingresados para que el formulario no se reinicie
+
+
         });
       }
     } catch (error) {
       console.error(error);
-      return res.status(500).send("Error al procesar la solicitud");
+      req.flash('ValErrorMessage', 'Ocurrió un error. Intente nuevamente');
+      // return res.status(500).send("Error al procesar la solicitud");
+      return  res.redirect(`/products/detail/${id}`);
     }
   },
 
