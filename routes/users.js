@@ -134,6 +134,8 @@ router.put(
 
 module.exports = router;
 
+router.post('/validate-password', usersController.validatePassword);
+
 // validacion de rutas
 // app.use((req, res, next) => {
 //   if (req.session.user) {

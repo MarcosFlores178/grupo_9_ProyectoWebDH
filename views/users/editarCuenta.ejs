@@ -92,16 +92,16 @@
                         <h3 class="h3">Tipo de usuario</h3>
                         <div class="style-label">
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="admin"
                                     value="admin" <% if
                                     (usuario.tipo_usuario==='admin' ) { %> checked <% } %>>Administrador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="comp"
                                     value="comprador" <% if (usuario.tipo_usuario==='comprador' ) { %> checked <% } %>>Comprador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="vendedor"
                                     value="vendedor" <% if (usuario.tipo_usuario==='vendedor' ) { %> checked <% } %>>Vendedor
                             </label>
                         </div>

@@ -270,12 +270,34 @@
 
                         <div class="style-div-botones">
                             <button class="boton-aceptar" type="submit">Guardar</button>
-                            <button class="boton-cancelar" type="reset">Cancelar</button><br>
+                            <button class="boton-cancelar" type="reset" onclick="location.href='/users/perfil';">Cancelar</button><br>
                         </div>
                     </form>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
-               <script src="/js/register.js"> </script>
+                <% if (errorMessage && errorMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Perfil editado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+               <script src="/js/editRegister.js"> </script>
                 </body>
                 
                 </html>

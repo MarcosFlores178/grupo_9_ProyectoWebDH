@@ -130,7 +130,7 @@ window.addEventListener('load', function() {
 
     // Validar Contraseña y Confirmación de Contraseña
     let password = document.querySelector('#newP');
-    validateField(password, 8, 'Escribe una contraseña');
+    validateFieldBlur(password, 8, 'Escribe una contraseña');
 
     let passwordVerify = document.querySelector('#confirmNewP');
     passwordVerify.addEventListener('blur', function () {
@@ -154,7 +154,8 @@ window.addEventListener('load', function() {
             passwordVerify.style.borderColor = ''; // Quitar borde rojo al volver a enfocar
         });
     });
-    document.getElementById('formulario').addEventListener('submit', function (e) {
+    document.getElementById('editCount').addEventListener('submit', function (e) {
+        e.preventDefault();
     console.log('El script de edit cuenta submit anda bien');
            
 
@@ -183,6 +184,8 @@ window.addEventListener('load', function() {
         const confirmNewP = document.getElementById('confirmNewP');
         const admin = document.getElementById('admin');
         const comp = document.getElementById('comp');
+        const vendedor = document.getElementById('vendedor');
+        const currentPassword = document.getElementById('currentPassword');
         const errorMessage = document.getElementById("error-message");
 
     
@@ -212,40 +215,90 @@ window.addEventListener('load', function() {
 
             // alert('Debe ingresar el precio.');
         }
-        const passwordValue = newP.value.trim();
-        if (passwordValue.length < 1) {
-            validateField(password, 8, 'Escribe una contraseña');
+        if (emailValue !== emailVerifyValue) {
+            validateField(email, 8, 'Los emails no coinciden');
+            validateField(emailVerify, 8, 'Los emails no coinciden');
             formIsValid = false;
             // alert('Debe ingresar el precio.');
         }
+
+        
+        const passwordValue = newP.value.trim();
         const passwordVerifyValue =confirmNewP.value.trim();
+        const passwordDisabled = newPassword.disabled;
+        const confirmNewPasswordDisabled = confirmNewPassword.disabled;
+        console.log('habilitado valor',!passwordDisabled && !confirmNewPasswordDisabled);
+        if (!passwordDisabled && !confirmNewPasswordDisabled) {
+        if (passwordValue.length < 1) {
+            validateField(password, 8, 'Escribe una nueva contraseña');
+            formIsValid = false;
+            // alert('Debe ingresar el precio.');
+        }
         if (passwordVerifyValue.length < 1) {
-            validateField(passwordVerify, 8, 'Escribe una contraseña');
+            validateField(passwordVerify, 8, 'Confirma la nueva contraseña');
 
             formIsValid = false;
             // alert('Debe ingresar el precio.');
         }
+        if (passwordValue !== passwordVerifyValue) {
+            validateField(password, 8, 'Las contraseñas no coinciden');
+            validateField(passwordVerify, 8, 'Las contraseñas no coinciden');
+            formIsValid = false;
+            // alert('Debe ingresar el precio.');
+        }
+    }
+
+
         const adminValue = admin.checked;
         const compValue = comp.checked;
-        if (!adminValue && !compValue) {
+        const vendedorValue = vendedor.checked;
+        if (!adminValue && !compValue && !vendedorValue) {
             errorMessage.textContent = "Debes seleccionar una opción.";
             formIsValid = false;
             
         }
-        else { errorMessage.textContent = ""; }
-        
+        // else { errorMessage.textContent = ""; }
 
-        // Si el formulario no es válido, evitar el envío
-        if (formIsValid) {
-            // Aquí se puede proceder con el envío del formulario si es válido
-            alert('Formulario enviado con éxito.');
-            console.log(formIsValid);
-
+        // const currentPassword = document.getElementById('currentPassword').value;
+  
+  // Simulamos el envío al servidor para validar la contraseña actual
+  if (formIsValid) {
+    const currentPasswordValue = currentPassword.value.trim();
+    fetch('/users/validate-password', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ currentPassword: currentPasswordValue }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.valid) {
+            console.log('Contraseña válida. Enviando formulario...');
+            // Enviar el formulario solo si la contraseña es válida
+            document.getElementById('editCount').submit();
         } else {
-            alert('Debe completar todos los campos');
-            
-            e.preventDefault();
-             // Evita que el formulario se envíe si no es válido
+            console.log('Contraseña incorrecta');
+            Swal.fire({
+                title: 'Error',
+                text: 'La contraseña actual no es correcta.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
         }
+    })
+    .catch(error => {
+        console.error('Error en la validación de la contraseña:', error);
     });
+} else {
+    // Si hay errores de validación en el frontend
+    Swal.fire({
+        title: 'Error',
+        text: 'Debes completar todos los campos correctamente.',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+    });
+}
+}); //Tuve que cambiar el lugar de algunas funciones porque no estaba esperando la respuesta del fetch, por lo que el formulario se enviaba antes de que se validara la contraseña actual. Y el error de la contraseña actual era recibido por el backend. 
+// Entonces siempre hay que esperar la respuesta de evento asincronico como fetch, setTimeout, setInterval, etc. Y hacer que la lógica última que dependa de esa respuesta esté dentro de la función que se ejecuta cuando se recibe la respuesta. Y si hay más lógica que no depende de esa respuesta, se la puede dejar afuera de esa función. Y si hay más lógica que depende de esa respuesta, se la puede poner dentro de esa función. Y si hay más lógica que depende de esa respuesta y de otra respuesta, se
 });

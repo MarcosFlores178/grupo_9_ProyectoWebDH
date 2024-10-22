@@ -126,7 +126,7 @@ window.addEventListener('load', function () {
     validateField(producto, 2, 'Debe ingresar el nombre del producto', 'El nombre debe tener al menos X caracteres');
     // Validar descripción
     let descripcion = document.querySelector('#descripcion');
-    validateField(descripcion, 20, 'Debe ingresar una descripción');
+    validateField(descripcion, 20, 'Debe ingresar una descripción', 'La descripción debe tener al menos X caracteres');
     
     
     // Validar color
@@ -203,8 +203,8 @@ window.addEventListener('load', function () {
         // Validar Descripción
         const descripcionValue = descripcion.value.trim();
         if (descripcionValue.length < 20) {
-            validateField(descripcion, 20, 'Debe ingresar una descripción');
-
+            validateField(descripcion, 20, 'Debe ingresar una descripción', 'La descripción debe tener al menos X caracteres');
+            
             formIsValid = false;
             // alert('La descripción debe tener al menos 20 caracteres.');
         }
@@ -218,9 +218,10 @@ window.addEventListener('load', function () {
         }
         // Validar Precio
         const precioValue = precio.value.trim();
-        if (precioValue.length < 1) {
+        if (precioValue.length < 1 || !/^\d+(\.\d{1,2})?$/.test(precioValue)) {
             validateField(precio, 1, 'Escribe el precio');
-
+            precio.classList.add('error');
+            precio.style.borderColor = 'red';
             formIsValid = false;
             // alert('Debe ingresar el precio.');
         }
@@ -235,6 +236,7 @@ window.addEventListener('load', function () {
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             }); // Evita que el formulario se envíe si no es válido
+            // No se implementa alerta de success acá en el frontend porque se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y si se implementase un succes alert con la condición de que no haya errores, el usuario lo vería por pocos segundos antes de la redirección, lo cual no es lo más adecuado. Por eso, se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y otra solución el problema de que el success alert dure pocos segundos es que se lo implemente en el frontend, pero que dure más tiempo, pero no es lo más adecuado. Y para que dure mas tiempo lo que se tiene que hacer es agregar un setTimeout en el success alert, pero no es lo más adecuado.
         }
     });
 

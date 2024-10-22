@@ -88,6 +88,17 @@
                     </div>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Perfil editado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
     </body>
 
 </html>

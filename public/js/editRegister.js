@@ -64,7 +64,7 @@ window.addEventListener('load', function () {
 
     // Validar DNI, Teléfono, Domicilio, País y Usuario
     let dni = document.querySelector('#dni');
-    validateField(dni, 1, 'Escribe tu DNI');
+    validateField(dni, 8, 'Escribe tu DNI');
 
     let telefono = document.querySelector('#telefono');
     validateField(telefono, 1, 'Escribe tu Teléfono');
@@ -88,7 +88,13 @@ console.log('se activo el evento change');
         const fileExtension = fileName.split('.').pop();  // Extraer la extensión del archivo
 
         if (!allowedExtensions.includes(fileExtension)) {
-            alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
+            Swal.fire({
+                title: 'Error',
+                text: 'Solo se permiten archivos de imagen: ' + allowedExtensions.join(', '),
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            });
+            // alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
             fileInput.value = '';  // Limpiar el input si no es válido
         } else {
             // Aquí puedes proceder con el procesamiento del archivo válido
@@ -121,7 +127,7 @@ console.log('se activo el evento change');
         const dni = document.getElementById('dni');
         const telefono = document.getElementById('telefono');
         const domicilio = document.getElementById('domicilio');
-        const nombreUsuario = document.getElementById('nombreUsuario');
+        // const nombreUsuario = document.getElementById('nombreUsuario');
         const country = document.getElementById('country');
         
         const nombreValue = nombre.value.trim();
@@ -177,20 +183,18 @@ console.log('se activo el evento change');
 
 console.log(formIsValid);
         // Si el formulario no es válido, evitar el envío
-        if (formIsValid) {
-            // Aquí se puede proceder con el envío del formulario si es válido
-            alert('Formulario enviado con éxito.');
-            console.log(formIsValid);
-
-        } else {
-            alert('Debe completar todos los campos');
-            console.log(formIsValid);
-            console.log('Formulario no enviado');
+        if (!formIsValid) {
+          
             e.preventDefault();
-             // Evita que el formulario se envíe si no es válido
+            Swal.fire({
+                title: 'Error',
+                text: 'Debes completar todos los campos.',
+                icon: 'error',
+                confirmButtonText: 'Aceptar'
+            }); // Evita que el formulario se envíe si no es válido
+            // No se implementa alerta de success acá en el frontend porque se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y si se implementase un succes alert con la condición de que no haya errores, el usuario lo vería por pocos segundos antes de la redirección, lo cual no es lo más adecuado. Por eso, se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y otra solución el problema de que el success alert dure pocos segundos es que se lo implemente en el frontend, pero que dure más tiempo, pero no es lo más adecuado. Y para que dure mas tiempo lo que se tiene que hacer es agregar un setTimeout en el success alert, pero no es lo más adecuado.
         }
     });
-
    
     
 });
