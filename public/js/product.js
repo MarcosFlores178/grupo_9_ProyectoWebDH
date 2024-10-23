@@ -182,11 +182,15 @@ window.addEventListener('load', function () {
 
         // Validar marca y talle
         if (!selectedMarcaValue) {
+            talleSelect.classList.add('error');
+                    talleSelect.style.borderColor = 'red';
             formIsValid = false;
             // alert('Debe seleccionar una marca.');
         }
-
+       
         if (!selectedTalleValue) {
+            marcaSelect.classList.add('error');
+                    marcaSelect.style.borderColor = 'red';
             formIsValid = false;
             // alert('Debe seleccionar un talle.');
         }
@@ -238,6 +242,14 @@ window.addEventListener('load', function () {
             }); // Evita que el formulario se envíe si no es válido
             // No se implementa alerta de success acá en el frontend porque se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y si se implementase un succes alert con la condición de que no haya errores, el usuario lo vería por pocos segundos antes de la redirección, lo cual no es lo más adecuado. Por eso, se lo implementa en el backend, en la vista a la cual se redirige el usuario luego de enviar el formulario, en el controlador correspondiente. Y otra solución el problema de que el success alert dure pocos segundos es que se lo implemente en el frontend, pero que dure más tiempo, pero no es lo más adecuado. Y para que dure mas tiempo lo que se tiene que hacer es agregar un setTimeout en el success alert, pero no es lo más adecuado.
         }
+        if (talleSelect.value !== "") {
+            talleSelect.classList.remove('error'); // Eliminar el estilo de error
+            talleSelect.style.borderColor = ''; 
+            }
+    if (marcaSelect.value !== "") {
+            marcaSelect.classList.remove('error'); // Eliminar el estilo de error
+            marcaSelect.style.borderColor = ''; 
+            }
     });
 
     document.querySelector('#imagen').addEventListener('change', function () {
@@ -264,5 +276,18 @@ window.addEventListener('load', function () {
             }
         }
     });
-
+    const marcaSelect = document.getElementById('marca');
+    const talleSelect = document.getElementById('talle');
+    talleSelect.addEventListener('change', function() {
+        
+        talleSelect.classList.remove('error'); // Eliminar el estilo de error
+        talleSelect.style.borderColor = ''; 
+        
+    });
+    marcaSelect.addEventListener('change', function() {
+        
+        marcaSelect.classList.remove('error'); // Eliminar el estilo de error
+        marcaSelect.style.borderColor = ''; 
+        
+    });
 });
