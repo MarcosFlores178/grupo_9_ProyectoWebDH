@@ -49,7 +49,7 @@
                                     <label for="marca">Marca: </label>
                                     <select name="marca" id="marca">
                                         <% for( let i=0; i < marcas.length; i++ ) { %>
-                                            <option value="<%= marcas[i].id %>" <% if (talles[i].id===producto.id_marca)
+                                            <option value="<%= marcas[i].id %>" <% if (marcas[i].id===producto.id_marca)
                                                 { %> selected <% } %> >
                                                     <%= marcas[i].descripcion %>
                                             </option>

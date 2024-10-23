@@ -65,7 +65,7 @@ const validatorCuenta = [
   .isLength({ min: 8 }).withMessage('La nueva contraseña debe tener al menos 8 caracteres')
   .bail()
   .custom((value, { req }) => {
-      if (!value && req.body.confirmNewPassword) {
+      if (!value && req.body.confirmNewP) { //el nombre confirmNewP es el name del input de confirmar contraseña
           throw new Error('Debes ingresar una nueva contraseña si deseas confirmarla');
       }
       return true;
@@ -76,7 +76,7 @@ check('confirmNewP')
   .if(body('newP').exists()) // Solo validar si newPassword existe
   .notEmpty().withMessage('Debes confirmar la nueva contraseña')
   .custom((value, { req }) => {
-      if (value !== req.body.newPassword) {
+      if (value !== req.body.newP) {
           throw new Error('Las contraseñas no coinciden');
       }
       return true;

@@ -45,9 +45,9 @@ const productsController = {
         //  }
 
       });
-
+let successMessage = req.flash('successMessage')[0] || '';
       // Renderizar la vista y pasar los productos
-      res.render('products/productos', { productos });
+      res.render('products/productos', { productos, successMessage });
     } catch (error) {
       console.error(error);
       res.status(500).send('Error al cargar los productos');
@@ -181,61 +181,7 @@ const productsController = {
       }
     );
   },
-  // editProduct: (req, res) => {
-  //   try {
-  //     // Consultas a la base de datos para obtener marcas y talles
-  //     let marcas = db.Marca.findAll();
-  //     let talles = db.Talle.findAll();
-  //      // Validación de errores en el request
-  //      let errores = validationResult(req);
-  //     //  const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
-  //   let imgProduct = "";
-  //   if (req.file?.filename) {
-  //     imgProduct = `${req.file.filename}`;
-  //   } else {
-  //     imgProduct = req.body.currentImage;
-  //   }
-  //   const { id } = req.params;
-  //   if (errores.isEmpty()) {
-  //     // Si no hay errores, crear el producto
-  //     // await db.Producto.update(
-  //       db.Producto.update(
-  //     {
-  //       nombre: req.body.nombre,
-  //       descripcion: req.body.descripcion,
-  //       imagen: imgProduct,
-  //       color: req.body.color,
-  //       precio: req.body.precio,
-  //       id_talle: req.body.talle,
-  //       id_marca: req.body.marca,
-  //     },
-  //     {
-  //       where: { id: id },
-  //     }
-  //   )
-  //     // .then(() => { //aca no puede ir then porque no hay promesas, es un metodo sincronico 
-  //       res.redirect(`/products/detail/${id}`);
-  //     // })
-  //   } else {  
-
-  //     console.log(errores.mapped());
-  //     // Si hay errores, realizar las consultas para obtener marcas y talles
-  //     let [marcasResult, tallesResult] = Promise.all([marcas, talles]);
-
-  //     // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
-  //     return res.render("products/addproduct", {
-  //         marcas: marcasResult,
-  //         talles: tallesResult,
-  //         mapsDeError: errores.mapped(),
-  //         old: req.body,  // Datos ingresados para que el formulario no se reinicie
-  //     });
-  //   }
-  // }
-  //     catch(error) {
-  //       console.error(error);
-  //       return res.status(500).send('Error al procesar la solicitud');
-  //     }
-  // },
+  
   editProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles (await porque son operaciones asincrónicas)
@@ -298,7 +244,8 @@ const productsController = {
 
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
-
+    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
     // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
     if (usuario && usuario.admincomp === "admin") {
       console.log("administrador:", usuario);
@@ -322,6 +269,8 @@ const productsController = {
       return res.render("products/showDelete", {
         producto,
         usuario,
+        errorMessage,
+        successMessage
       });
     });
   },
@@ -329,6 +278,7 @@ const productsController = {
     let productId = req.params.id;
     db.Producto.destroy({ where: { id: productId }, force: true }) // force: true es para asegurar que se ejecute la acción
       .then(() => {
+        req.flash('successMessage', 'Producto eliminado con éxito.');
         return res.redirect("/products");
       })
       .catch((error) => res.send(error));

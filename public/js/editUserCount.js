@@ -133,6 +133,8 @@ window.addEventListener('load', function() {
     validateFieldBlur(password, 8, 'Escribe una contraseña');
 
     let passwordVerify = document.querySelector('#confirmNewP');
+    // validateFieldBlur(passwordVerify, 8, 'Confirma tu contraseña');
+
     passwordVerify.addEventListener('blur', function () {
         if (passwordVerify.value.trim() === '') {
             passwordVerify.classList.add('error');

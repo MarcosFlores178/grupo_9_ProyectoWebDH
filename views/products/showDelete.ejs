@@ -33,6 +33,17 @@
                             </nav>
                         </nav>
                 </main>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Perfil editado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
                 <%-include ('../partials/footer')%>
     </body>
 

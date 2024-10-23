@@ -113,7 +113,7 @@ const usersController = {
   },
   perfil: (req, res) => {
     const usuario = req.session.user; // Obtén el usuario de la sesión
-    let successMessage = req.flash('successMessage')[0] || '';
+    let successMessage = req.flash('successMessage')[0] || ''; //esta linea hace que si hay un mensaje de éxito, entonces se muestre en la vista. Y si no hay un mensaje de éxito, entonces no se muestre en la vista. Este req.flash viene desde el backend, desde el método el cual configura el success message y luego redirige el flujo hacia esta ruta/método. Y el [0] es para que se muestre el mensaje de éxito en la vista. Si no se pone el [0], entonces no se mostrará el mensaje de éxito en la vista. 
     if (!usuario) {
       return res.redirect('/users/login'); // Redirige si no hay usuario logueado
     }
@@ -221,8 +221,10 @@ const usersController = {
         }
         hashedNewPassword = await bcrypt.hash(newP, 10);
       }
+      console.log('Errores',errores.isEmpty());
+      console.log(errores.mapped());
+      console.log('Pass hasheada',hashedNewPassword);
       if (errores.isEmpty()) {
-       
         await db.Usuario.update(
           { nombre_usuario: nombreUsuario,
             tipo_usuario: admincomp,
@@ -235,10 +237,12 @@ const usersController = {
         //ACTUALIZA LA SESSION CON LOS NUEVOS DATOS EDITADOS
         const userUpdated = await Usuario.findByPk(id); // Consulta los datos actualizados
         req.session.user = userUpdated;
+        req.flash('successMessage', 'Cuenta editada con éxito.'); //esta linea es necesaria para que se muestre el mensaje de éxito en la vista. Sin esta linea, no se mostrará el mensaje de éxito en ruta a la cual se redirige.
         // console.log(req.body);
         //res.redirect(`/users/perfil/${id}`);
         res.redirect(`/users/perfil`);
       } else {
+        console.log('Errores else', errores.isEmpty());
         // Si hay errores, renderizar la vista de edición con errores y datos viejos
         return res.render("users/editarCuenta", {
           usuario: usuario,
