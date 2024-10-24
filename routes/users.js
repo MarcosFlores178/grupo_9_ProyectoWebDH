@@ -6,13 +6,9 @@ const fotoUserUpload = require("../service/fotoUserUpload");
 const logregMiddleware = require("../middlewares/logregMiddelware.js");
 
 
-router.get("/login", logregMiddleware, usersController.showLogin);
 
-router.post("/login", usersController.login);
 
-router.get("/logout", usersController.logout);
-router.get("/register", logregMiddleware, usersController.showRegister);
-
+//----------------------------------------Validar Registro Back----------------------------------
 const validator = [
   body('nombre').notEmpty().trim().withMessage('Ingrese su nombre'),
   body('apellido').notEmpty().trim().withMessage('Ingrese su apellido'),
@@ -43,14 +39,27 @@ const validator = [
   //     return true;
   // })
     ] 
+
+// Validar Login Back
+const validatorLogin = [
+  body('email').notEmpty().trim().withMessage('Ingrese su nombre de usuario'),
+  body('password')
+      .notEmpty().withMessage('Ingrese una contraseña')
+      .trim()
+      .isLength({ min: 8 }).withMessage('La contraseña debe contener al menos 8 caracteres.'),
+]
+
+//--------------------------------Rutas--------------------------------------------------------
+router.get("/login", logregMiddleware, usersController.showLogin);
+router.post('/login', validatorLogin, usersController.login);
+router.get("/logout", usersController.logout);
+router.get("/register", logregMiddleware, usersController.showRegister);
 router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
-
 router.get("/perfil", usersController.perfil);
 // router.get("/perfil/:id", usersController.perfil);
 router.get("/editar-perfil", usersController.showEdit);
 router.get("/editar-cuenta", usersController.showEditCuenta);
-
 router.put(
     "/perfil/:id",
     fotoUserUpload.single("foto"),

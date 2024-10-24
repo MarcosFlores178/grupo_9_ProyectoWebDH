@@ -38,6 +38,7 @@ window.addEventListener('load', function(){
             nombre.style.borderColor = 'red';
             nombre.placeholder = 'Escribe tus Nombres';
             nombre.value = '';
+            
                     } 
         else {
             nombre.placeholder = '';  
@@ -46,12 +47,12 @@ window.addEventListener('load', function(){
                       }
 
     })
-})
+
 //---------------------------------Validación de Apellido----------------------------------------
-window.addEventListener('load', function(){
-    let telefono = document.querySelector('#apellido')
+
+    let apellido = document.querySelector('#apellido')
     
-    telefono.addEventListener ('blur', function(e){
+    apellido.addEventListener ('blur', function(e){
         if(apellido.value.trim() === ''){
             apellido.classList.add('error');
             apellido.style.borderColor = 'red';
@@ -65,9 +66,9 @@ window.addEventListener('load', function(){
                                   }
 
     })
-})
+
 //---------------------------------Validación de DNI----------------------------------------------
-window.addEventListener('load', function(){
+
     let dni = document.querySelector('#dni')
     
     dni.addEventListener ('blur', function(e){
@@ -84,9 +85,9 @@ window.addEventListener('load', function(){
                                   }
 
     })
-})
+
 //---------------------------------Validación de Telefono-----------------------------------------
-window.addEventListener('load', function(){
+
     let telefono = document.querySelector('#telefono')
     
     telefono.addEventListener ('blur', function(e){
@@ -103,9 +104,9 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 //---------------------------------Validación de Domicilio----------------------------------------
-window.addEventListener('load', function(){
+
     let domicilio = document.querySelector('#domicilio')
     
     domicilio.addEventListener ('blur', function(e){
@@ -122,9 +123,9 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 //---------------------------------Validación de Pais---------------------------------------------
-    window.addEventListener('load', function(){
+
         let pais = document.querySelector('#country')
     
         pais.addEventListener ('blur', function(e){
@@ -141,11 +142,11 @@ window.addEventListener('load', function(){
                                                   }
     
         })
-    })
+   
 
 //---------------------------------Validación de Usuarios---------------------------------------------
 
-window.addEventListener('load', function(){
+
     let usuario = document.querySelector('#nombreUsuario')
     
     usuario.addEventListener ('blur', function(e){
@@ -162,11 +163,10 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 
 //---------------------------------Validación de Email---------------------------------------------
 
-window.addEventListener('load', function(){
     let email = document.querySelector('#email')
     
     email.addEventListener ('blur', function(e){
@@ -183,11 +183,10 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 
 //---------------------------------Confirmación de Email---------------------------------------------
 
-window.addEventListener('load', function(){
     let emailVerify = document.querySelector('#emailVerify')
     
     emailVerify.addEventListener ('blur', function(e){
@@ -204,11 +203,10 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 
 //---------------------------------Validación de Contraseña---------------------------------------------
 
-window.addEventListener('load', function(){
     let password = document.querySelector('#password')
     
     password.addEventListener ('blur', function(e){
@@ -225,11 +223,10 @@ window.addEventListener('load', function(){
                                               }
 
     })
-})
+
 
 //---------------------------------Confirmación de Password---------------------------------------------
 
-window.addEventListener('load', function(){
     let passwordVerify = document.querySelector('#passwordVerify')
     
     passwordVerify.addEventListener ('blur', function(e){
