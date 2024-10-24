@@ -63,16 +63,17 @@
                                     <input type="file" name="imagen" id="imagen" value="<%=producto.imagen%>" />
                                     <input type="hidden" name="currentImage" value="<%= producto.imagen %>">
                                 </div><br>
-                                <div class="botones">
-                                    <button class="boton-aceptar" type="submit" name="enviar"
-                                        id="enviar">Confirmar</button>
-                                    <button class="boton-cancelar" type="reset" class="boton-reset"
-                                        onclick="cancelar()">Cancelar</button>
-                                    <script>
-                                        function cancelar() {
-                                            window.location.href = `http://localhost:8080/products`; // Reemplaza con la URL a la que quieres redirigir
-                                        }
-                                    </script>
+                                <div class="style-div-botones">
+                                    <a href="/products/editproduct/<%= producto.id %>">
+                                        <button class="boton-confirmar" type="submit" name="enviar" id="enviar">
+                                            Confirmar
+                                        </button>
+                                    </a>
+                                    <a href="/products/detail/<%= producto.id %>">
+                                        <button class="boton-cancelar" type="button">
+                                            Cancelar
+                                        </button>
+                                    </a>
                                 </div>
                             </form>
                         </section>

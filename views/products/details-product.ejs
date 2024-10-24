@@ -41,12 +41,21 @@
                                         <h4>Precio: </h4>$<%=producto.precio%>
                                     </div>
                                     <% if (usuario.tipo_usuario) { %>
-                                        <div class="botones">
+                                        <div class="style-div-botones">
                                             <a href="/products/editproduct/<%= producto.id %>">
-                                                <button class="boton-editar">Editar</button>
+                                                <button class="boton-editar">
+                                                    Editar
+                                                </button>
                                             </a>
                                             <a href="/products/showDelete/<%= producto.id %>">
-                                                <button>Eliminar</button>
+                                                <button class="boton-eliminar">
+                                                    Eliminar
+                                                </button>
+                                            </a>
+                                            <a href="/products">
+                                                <button class="boton-cancelar" type="button">
+                                                    Cancelar
+                                                </button>
                                             </a>
                                         </div>
                                         <%}%>
