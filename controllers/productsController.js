@@ -102,6 +102,15 @@ let successMessage = req.flash('successMessage')[0] || '';
       res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage });
     });
   },
+  showNewProduct : (req, res) => {
+    let marcas = db.Marca.findAll();
+    let talles = db.Talle.findAll();
+    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
+    Promise.all([marcas, talles]).then(([marcas, talles]) => {
+      res.render("products/newproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage });
+    });
+  },
   addProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles
@@ -154,7 +163,60 @@ let successMessage = req.flash('successMessage')[0] || '';
       // return res.status(500).send('Error al procesar la solicitud');
     }
   },
+  newProduct: async (req, res) => {
+    try {
+      // Consultas a la base de datos para obtener marcas y talles
+      let marcas = db.Marca.findAll();
+      let talles = db.Talle.findAll();
 
+      // Validación de errores en el request
+      let errores = validationResult(req);
+      const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
+
+      if (errores.isEmpty()) {
+        // Si no hay errores, crear el producto
+        await db.Producto.create({
+          nombre: req.body.nombre,
+          descripcion: req.body.descripcion,
+          imagen: imgProduct,
+          color: req.body.color,
+          precio: req.body.precio,
+          id_categoria: req.body.categoria,
+          
+          id_talle: req.body.talle,
+          id_marca: req.body.marca,
+        });
+        // Guardar mensaje de éxito en flash
+        req.flash('successMessage', 'Producto creado con éxito.');
+        return res.redirect('/products/addproduct'); // Redirigir a la misma página de carga
+        // Redirigir al listado de productos
+        // return res.redirect("/products");
+        // return res.render("products/addproduct", { mapsDeError: {} });
+      } else {
+        console.log(errores.mapped());
+        req.flash('ValErrorMessage', 'Complete los campos requeridos');
+        // Si hay errores, realizar las consultas para obtener marcas y talles
+        let [marcasResult, tallesResult] = await Promise.all([marcas, talles]);
+        const errorMessage = req.flash('ValErrorMessage')[0] || '';
+        const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
+        // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
+        return res.render("products/addproduct", {
+          marcas: marcasResult,
+          talles: tallesResult,
+          mapsDeError: errores.mapped(),
+          old: req.body,
+          errorMessage, // Datos ingresados para que el formulario no se reinicie
+          successMessage
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      req.flash('ValErrorMessage', 'Ocurrió un error. Intente nuevamente');
+      return res.render("products/addproduct");
+
+      // return res.status(500).send('Error al procesar la solicitud');
+    }
+  },
 
   showEditForm: (req, res) => {
     let marcas = db.Marca.findAll();
