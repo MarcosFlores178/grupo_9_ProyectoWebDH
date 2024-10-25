@@ -12,8 +12,11 @@ const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
 const sessionMiddleware = require("./middlewares/sessionMiddleware.js");
 // const obtenerCategorias = require("./middlewares/categoriasMiddleware.js");
+const flash = require('connect-flash');
+// const Swal = require('sweetalert2')
 
 
+app.use(flash());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));

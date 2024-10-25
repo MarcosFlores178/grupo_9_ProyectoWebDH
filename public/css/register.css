@@ -54,6 +54,14 @@ body {
     width: 50%;
    
 }
+#error-messagge{
+    /* margin: 0 2% 1% 0; */
+    text-align: start;
+    /* padding-left: 2%; */
+    width: 50%;
+    text-align: center;
+    color:rgba(248, 42, 87, 0.726);
+}
 .errorValidator.derecha{
     /* margin: 0 2% 1% 0; */
     text-align: start;
@@ -344,6 +352,14 @@ footer img {
     text-align: justify;
     padding: 0 20px;
 }
+
+input::placeholder {
+    color: grey; 
+  }
+  
+  input.error::placeholder {
+    color: red; 
+  }
 
 /*------------------ MEDIA QUERYS ------------------*/
 

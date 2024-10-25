@@ -8,7 +8,7 @@
                 <main class="container">
                     <h1 class="h1">Editar Datos</h1>
                     <form action="/users/perfil/<%= usuario.id %>?_method=put" method="POST"
-                        enctype="multipart/form-data" class="form">
+                        enctype="multipart/form-data" class="form" id="editarRegistro">
                         <h3 class="h3">Datos Personales</h3>
                         <div class="personales">
                             <!-- <div class="containter-par"> -->
@@ -101,7 +101,6 @@
                                 <% }); %>
                         </datalist>
                         <br>
-                        </div>
                         <div class="error-container">
                             <% if (mapsDeError.domicilio) { %>
                                 <p class="errorValidator izquierda">
@@ -135,7 +134,7 @@
                             </label>
                         </div>
 
-                        </div>
+
                         <h3 class="h3">Tus preferencias</h3>
                         <h4>Marcas</h4>
                         <div class="style-label-user">
@@ -144,8 +143,8 @@
                                 <img src="../images/marcas/adidas.png" alt="Adidas">
                             </label>
                             <label class="style-label-cb">
-                                <input class="radio-checkbox" type="checkbox" name="intereses">
-                                <img src="../images/marcas/converse.png" alt="Converse">
+                            <input class="radio-checkbox" type="checkbox" name="intereses">
+                            <img src="../images/marcas/converse.png" alt="Converse">
                             </label>
                             <label class="style-label-cb">
                                 <input class="radio-checkbox" type="checkbox" name="intereses">
@@ -171,7 +170,8 @@
                                 <input class="radio-checkbox" type="checkbox" name="intereses">
                                 <img src="../images/marcas/topper.png" alt="Topper">
                             </label>
-                        </div><br>Talles</h4>
+                        </div>
+                        <h4>Talles</h4>
                         <div class="style-label-user">
                             <div>
                                 <h4 class="h4">Remera</h4>
@@ -265,24 +265,40 @@
                         </div>
                         <div>
                             <label for="foto">Escoge una foto para tu perfil</label><br>
-                            <input type="file" name="foto">
+                            <input type="file" name="foto" id="nuevaFoto">
                         </div>
-                       
+
                         <div class="style-div-botones">
-                            <a href="perfil">
-                                <button class="boton-aceptar" type="submit">
-                                    Guardar
-                                </button>
-                            </a>
-                            <a href="perfil">
-                                <button class="boton-cancelar" type="button">
-                                    Cancelar
-                                </button>
-                            </a>
+                            <button class="boton-aceptar" type="submit">Guardar</button>
+                            <button class="boton-cancelar" type="reset" onclick="location.href='/users/perfil';">Cancelar</button><br>
                         </div>
                     </form>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
-    </body>
-
-</html>
+                <% if (errorMessage && errorMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+                <% if (successMessage && successMessage.length > 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Perfil editado',
+                            text: '<%= successMessage %>',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar'
+                        });
+                        </script>
+                    
+                    <% } %>
+               <script src="/js/editRegister.js"> </script>
+                </body>
+                
+                </html>
+               

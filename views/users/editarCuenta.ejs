@@ -8,7 +8,7 @@
                 <main class="container">
                     <h1 class="h1">Editar Datos</h1>
                     <form action="/users/cuenta/<%= usuario.id %>?_method=put" method="POST"
-                        class="form">
+                        class="form" id="editCount">
                         <h3 class="h3">Datos de la Cuenta</h3>
                         <div>
                             
@@ -19,7 +19,7 @@
 
                                 <input class="cuadros-login <%= mapsDeError.nombreUsuario ? 'error-border' : '' %>"
                                     type="text" id="nombreUsuario" name="nombreUsuario"
-                                    placeholder="* Nombre de Usuario"
+                                    placeholder="* Nombre de Usuario" id="nombreUsuario"
                                     value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : usuario.nombre_usuario %>"><br>
                             </div>
                             <div class="error-container">
@@ -35,90 +35,110 @@
                                 <label for="email">Email</label> <br>
                                 <input class="cuadros-login <%= mapsDeError.email ? 'error-border' : '' %>" type="email"
                                     id="email" name="email" placeholder="* Email"
-                                    value="<%= locals.old && old.email? old.email : "" %>"><br>
+                                    value="<%= locals.old && old.email? old.email : usuario.email %>"><br>
+                                    <div class="error-container">
+                                        <% if (mapsDeError.email) { %>
+                                            <p class="errorValidator">
+                                                <%= mapsDeError.email.msg %>
+                                            </p>
+                                            <% } %> 
+                            </div>
+                                <label for="emailVerify">Confirmar email</label>
                                 <input class="cuadros-login <%= mapsDeError.emailVerify ? 'error-border' : '' %>"
                                     type="email" id="emailVerify" name="emailVerify" placeholder="* Confirmar Email"
-                                    value="<%= locals.old && old.emailVerify? old.emailVerify : "" %>"><br>
-                            </div>
-                            <div class="error-container">
-                                <% if (mapsDeError.email) { %>
-                                    <p class="errorValidator izquierda">
-                                        <%= mapsDeError.email.msg %>
-                                    </p>
-                                    <% } else { %>
-                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    value="<%= locals.old && old.emailVerify? old.emailVerify : usuario.email %>"><br>
+                                    <div class="error-container">
+                                    
+                                    <% if (mapsDeError.emailVerify) { %>
+                                        <p class="errorValidator">
+                                            <%= mapsDeError.emailVerify.msg %>
+                                        </p>
                                         <% } %>
-                                            <% if (mapsDeError.emailVerify) { %>
-                                                <p class="errorValidator derecha">
-                                                    <%= mapsDeError.emailVerify.msg %>
-                                                </p>
-                                                <% } else { %>
-                                                    <p class="errorValidator derecha">&nbsp;</p>
-                                                    <% } %>
-                            </div>
+                                        </div>
+                            
+                                           
                             </div>
                             <div class="div-par">
-                                <label for="password">Contraseña</label>
+                                <label for="newP">Nueva contraseña</label>
                                 <input class="cuadros-login <%= mapsDeError.password ? 'error-border' : '' %>"
-                                    type="password" id="password" name="password" placeholder="* Contraseña"><br>
+                                    type="password" id="newP" name="newP" placeholder="* Nueva contraseña" autocomplete="off" disabled><br>
+                                <div class="error-container">
+
+                                    <% if (mapsDeError.password) { %>
+                                        <p class="errorValidator">
+                                            <%= mapsDeError.password.msg %>
+                                        </p>
+                                        <% } %>
+                                </div>
+                                <label for="newPasswordVerify">Confirmar nueva contraseña</label>
                                 <input class="cuadros-login <%= mapsDeError.passwordVerify ? 'error-border' : '' %>"
-                                    type="password" id="passwordVerify" name="passwordVerify"
-                                    placeholder="* Confirmar contraseña"><br>
+                                    type="password" id="confirmNewP" name="confirmNewP"
+                                    placeholder="* Confirmar nueva contraseña" disabled><br>
+
+                                    <button type="button" id="enablePasswordChange">Habilitar cambio de contraseña</button>
+                                    <div class="error-container"></div>
+                                    <% if (mapsDeError.passwordVerify) { %>
+                                        <p class="errorValidator">
+                                            <%= mapsDeError.passwordVerify.msg %>
+                                        </p>
+                                        <% }  %>
+                                    </div>
                             </div>
                         </div>
-                        <div class="error-container">
-                            <% if (mapsDeError.password) { %>
-                                <p class="errorValidator izquierda">
-                                    <%= mapsDeError.password.msg %>
-                                </p>
-                                <% } else { %>
-                                    <p class="errorValidator izquierda">&nbsp;</p>
-                                    <% } %>
-                                        <% if (mapsDeError.passwordVerify) { %>
-                                            <p class="errorValidator derecha">
-                                                <%= mapsDeError.passwordVerify.msg %>
-                                            </p>
-                                            <% } else { %>
-                                                <p class="errorValidator derecha">&nbsp;</p>
-                                                <% } %>
+                        
+                            
+                                        
                         </div>
                         <h3 class="h3">Tipo de usuario</h3>
                         <div class="style-label">
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="admin"
                                     value="admin" <% if
                                     (usuario.tipo_usuario==='admin' ) { %> checked <% } %>>Administrador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="comp"
                                     value="comprador" <% if (usuario.tipo_usuario==='comprador' ) { %> checked <% } %>>Comprador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp"
+                                <input class="radio-checkbox" type="radio" name="admincomp" id="vendedor"
                                     value="vendedor" <% if (usuario.tipo_usuario==='vendedor' ) { %> checked <% } %>>Vendedor
                             </label>
                         </div>
                         <div class="error-container">
                             <% if (mapsDeError.tipoUsuario) { %>
-                                <p class="errorValidator izquierda">
+                                <p class="errorValidator">
                                     <%= mapsDeError.tipoUsuario.msg %>
                                 </p>
-                                <% } else { %>
-                                    <p class="errorValidator izquierda">&nbsp;</p>
-                                    <% } %>
+                                <% }  %>
                         </div> 
+                        <h3 class="h3">Ingrese su contraseña actual</h3>
+                        <label for="currentPassword"></label>
+                        <input class="cuadros-login" type="password" id="currentPassword" name="currentPassword" placeholder="* Ingrese su contraseña actual">
                         
                         <div class="style-div-botones">
                             <button class="boton-aceptar" type="submit">Aceptar</button>
-                            <a href="perfil">
-                                <button class="boton-cancelar" type="button">
-                                    Cancelar
-                                </button>
-                            </a>
+                            <button class="boton-cancelar" type="reset" onclick="location.href='/users/perfil';">Cancelar</button><br>
                         </div>
                     </form>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
+                    
+                    
+
+<% if (errorMessage && errorMessage.length > 0) { %>
+    <script>
+      Swal.fire({
+        title: 'Error',
+        text: '<%= errorMessage %>',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+    </script>
+    
+    <% } %>
+    <script src="/js/editUserCount.js"> </script>
+ 
     </body>
 
 </html>
