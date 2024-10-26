@@ -19,10 +19,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    section {
-        width: 50%;
+    section  {
+        display: flex;
+        flex-wrap: wrap; 
+        justify-content: space-between; 
+        gap: 20px;
     }
     a {
+        flex-basis: calc(33.333% - 20px); 
+        text-align: center; 
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -36,8 +41,9 @@ body {
         color: black;
         img {
             background-color:  white;
-            height: 170px;
+            height: 150px;
             padding: 10px 0;
+            border-radius: 15%;
         }
         article {
             text-decoration: none;
@@ -64,3 +70,75 @@ body {
     font-size: x-large;
     color: #000000;
 }
+
+.product-ejs:hover .fa-truck{
+    cursor: pointer;
+    position: relative; /* Posición relativa para el contenedor */
+    overflow: hidden; /* Oculta el desbordamiento */
+    transition: all 0.5s ease;
+    animation: mover-y-desaparecer 2s linear infinite; /* Aplicar la animación al hacer hover */
+   
+}
+
+
+.fa-truck{
+    display: flex; /* Usamos Flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    font-size: 17px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #4878D9;
+    border-radius: 50%;
+    right: 70px;
+    color: #4878D9;
+    top: -30%;
+    right: 10%;
+    
+    
+
+}
+
+@keyframes mover-y-desaparecer {
+    0% {
+        left: -30px; /* Comienza fuera de la vista por la izquierda */
+        opacity: 2; /* Totalmente visible */
+    }
+    100% {
+        left: 100%; /* Se mueve completamente a la derecha */
+        opacity: 0; /* Se vuelve invisible */
+    }
+}
+
+h2{
+    font-size: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*--------------------------------------------efecto 1-------------------------------------------
+.card-ejs {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-ejs:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+-----------------------------------------------efecto 2-----------------------------------------
+*/
+.card-ejs {
+    transition: all 0.8s ease-in-out;
+
+}
+
+.card-ejs:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+
+
+
+
+
+    

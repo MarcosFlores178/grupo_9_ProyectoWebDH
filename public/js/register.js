@@ -29,6 +29,7 @@ document.querySelectorAll('.footer-h3').forEach(item => {
         content.style.display = isVisible ? 'none' : 'block';
     });
 });
+<<<<<<< HEAD
 //---------------------------------Validación de Nombre------------------------------------------
 window.addEventListener('load', function(){
     let nombre = document.querySelector('#nombre')
@@ -244,3 +245,66 @@ window.addEventListener('load', function(){
 
     })
 })
+=======
+
+window.addEventListener('load', function() {
+    let nombre = document.querySelector('#nombre')
+    let apellido = document.querySelector('#apellido')
+    let dni = document.querySelector('#dni')
+    let telefono = document.querySelector('#telefono')
+    let ei = document.querySelector('#izquierda')
+    let ed = document.querySelector('#derecha')
+    nombre.addEventListener('blur', function (e){
+        if(nombre.value == ''){
+            nombre.style.borderColor= 'red';
+            ei.innerText= 'campo vacio'
+            ei.style.color= 'red'
+        }
+    })
+    nombre.addEventListener('input', function(e) {
+        if (nombre.value !== '') {
+            nombre.style.borderColor = '';
+            ei.innerText = '';
+        }
+    });
+    apellido.addEventListener('blur', function (e){
+        if(apellido.value == ''){
+            apellido.style.borderColor= 'red';
+            ed.innerText= 'campo vacio'
+            ed.style.color= 'red'
+        }
+    })
+    apellido.addEventListener('input', function(e) {
+        if (apellido.value !== '') {
+            apellido.style.borderColor = '';
+            ed.innerText = '';
+        }
+    });
+    dni.addEventListener('blur', function (e){
+        if(dni.value == ''){
+            dni.style.borderColor= 'red';
+            ei.innerText= 'campo vacio'
+            ei.style.color= 'red'
+        }
+    })
+    dni.addEventListener('input', function(e) {
+        if (dni.value !== '') {
+            dni.style.borderColor = '';
+            ei.innerText = '';
+        }
+    });
+    telefono.addEventListener('blur', function (e){
+        if(telefono.value == ''){
+            telefono.style.borderColor= 'red';
+            ed.innerText= 'campo vacio'
+            ed.style.color= 'red'
+        }
+    })
+    telefono.addEventListener('input', function(e) {
+        if (telefono.value !== '') {
+            telefono.style.borderColor = '';
+            ed.innerText = '';
+        }
+    });
+})
+>>>>>>> main
