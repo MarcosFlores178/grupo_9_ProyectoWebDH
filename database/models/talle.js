@@ -15,7 +15,7 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: false,
   };
   let Talle = sequelize.define(alias, cols, config);
-  Talle.assosiate = (models) => {
+  Talle.associate = (models) => {
     Talle.hasMany(models.Producto, {
       as: "producto",
       foreignKey: "id_talle",

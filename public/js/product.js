@@ -1,5 +1,19 @@
 window.addEventListener('load', function () {
     console.log('este es el script de product.js');
+    document.getElementById('categoria').addEventListener('change', function () {
+        const categoriaId = this.value;
+        const subcategoriaDiv = document.getElementById('subcategoriaDiv');
+        const subcategoriaSelect = document.getElementById('subcategoria');
+    
+        // Mostrar solo las subcategorías que pertenecen a la categoría seleccionada
+        Array.from(subcategoriaSelect.options).forEach(option => {
+            option.style.display = option.getAttribute('data-categoria') === categoriaId ? 'block' : 'none';
+        });
+    
+        // Mostrar o esconder el selector de subcategoría
+        subcategoriaDiv.style.display = categoriaId ? 'block' : 'none';
+        subcategoriaSelect.value = ""; // Reiniciar selección
+    });
     // --------------------------------- Buscador ---------------------------------------------
     document.getElementById('button-search').addEventListener('click', function () {
         var inputSearch = document.getElementById('buscador');
