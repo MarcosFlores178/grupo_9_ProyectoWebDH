@@ -4,6 +4,7 @@ const path = require("path");
 const { validationResult } = require('express-validator');
 const dataSource = require("../service/dataSource.js");
 const { Sequelize } = require("sequelize");
+const { Op } = require('sequelize'); 
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
@@ -285,7 +286,8 @@ let successMessage = req.flash('successMessage')[0] || '';
                     {
                         model: db.Categoria,
                         as: 'categoria',
-                        where: { categoria: categoriaNombre }
+                        required: true,
+                        // where: { categoria: categoriaNombre }
                     }
                 ]
             });
@@ -335,8 +337,73 @@ let successMessage = req.flash('successMessage')[0] || '';
             res.status(500).send('Error al obtener los productos');
         }
     },
+  mostrarProductos: async (req, res)=> {
+    try {
+      const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
+      const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
 
+      // Buscamos la categoría seleccionada en la base de datos
+      const categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId);
 
+      // Si no se encuentra la categoría, mostramos todos los productos
+      if (!categoriaSeleccionada) {
+          // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
+          const productos = await db.Producto.findAll(); // Obtiene todos los productos
+          return res.render('products/productoscat', { productos });
+      }
+
+      let productosFiltrados = [];
+
+      // Caso 1: Si es una categoría principal
+      if (categoriaSeleccionada.nivel === 1) {
+          const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
+          const subcategoriasIds = subcategorias.map(sub => sub.id);
+
+          productosFiltrados = await db.Producto.findAll({
+              where: {
+                  [Op.or]: [
+                      { id_categoria: subcategoriasIds },
+                      { id_categoria: categoriaSeleccionadaId }
+                  ]
+              }
+          });
+      }
+      // Caso 2: Si es una subcategoría
+      else if (categoriaSeleccionada.nivel === 2) {
+          const tiposProductos = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
+          const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+
+          productosFiltrados = await db.Producto.findAll({
+              where: {
+                  [Op.or]: [
+                      { id_categoria: categoriaSeleccionadaId },
+                      { id_categoria: tiposProductosIds }
+                  ]
+              }
+          });
+      }
+      // Caso 3: Si es un tipo de producto específico
+      else if (categoriaSeleccionada.nivel === 3) {
+          productosFiltrados = await db.Producto.findAll({ where: { id_categoria: categoriaSeleccionadaId } });
+      }
+
+      // Enviamos los productos filtrados a la vista
+      res.render('products/productoscat', { productos: productosFiltrados });
+  } catch (error) {
+      console.error("Error al mostrar productos:", error);
+      res.status(500).send("Ocurrió un error al procesar la solicitud.");
+  }
+  },
+  
+    showMenu: async (req, res) => {
+        try {
+            const categorias = await db.Categoria.findAll();
+            res.render('partials/navbar', { categorias });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al cargar las categorías');
+        }
+      },
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
     const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error

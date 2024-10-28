@@ -1,9 +1,9 @@
 <nav class="menu-categorias">
   <ul class="menu-izquierdo">
-    <li>
+     <li>
       <a href="/products">Todos los productos</a>
     </li>
-    <li>
+   <!-- <li>
       <a href="/products/categoria/Hombre">Hombre</a>
       <ul class="submenu">
         <li><a href="/products/details-product">Botines</a></li>
@@ -56,7 +56,26 @@
         <li><a href="#">Protección</a></li>
         <li><a href="#">Redes</a></li>
       </ul>
-    </li>
+    </li> -->
+    <% categorias.filter(cat => !cat.parent_id).forEach(categoria => { %>
+      <li>
+          <a href="/products/categorias?categoriaId=<%= categoria.id %>"><%= categoria.categoria %></a>
+          <ul >
+              <% categorias.filter(subcat => subcat.parent_id === categoria.id).forEach(subcategoria => { %>
+                  <li>
+                      <a href="/products/categorias?categoriaId=<%= subcategoria.id %>"><%= subcategoria.categoria %></a>
+                      <ul >
+                          <% categorias.filter(tipo => tipo.parent_id === subcategoria.id).forEach(tipo => { %>
+                              <li>
+                                  <a href="/products/categorias?categoriaId=<%= tipo.id %>"><%= tipo.categoria %></a>
+                              </li>
+                          <% }) %>
+                      </ul>
+                  </li>
+              <% }) %>
+          </ul>
+      </li>
+  <% }) %>
   </ul>
   <ul class="menu-derecho">
     <li>

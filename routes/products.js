@@ -64,18 +64,18 @@ router.post(
 );
 
 router.get(
-  "/categoria/:categoria",
-  adminMiddleware,
-    productsController.listarPorCategoria
+  "/categorias",
+  // adminMiddleware,
+    productsController.mostrarProductos
 );
 router.get(
   "/subcategoria/:id",
-  adminMiddleware,
+  // adminMiddleware,
     productsController.listarPorSubcategoria
 );
 router.get(
   "/tipo/:id",
-  adminMiddleware,
+  // adminMiddleware,
     productsController.listarPorTipo
 );
 
