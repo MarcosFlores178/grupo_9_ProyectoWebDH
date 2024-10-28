@@ -3,86 +3,113 @@
 
     <body>
         <%-include ('../partials/header.ejs')%>
-        <%-include ('../partials/nav-bar.ejs')%>
-            <%-include ('../partials/button-top.ejs')%>
-                <main class="perfil-usuario">
-                    <div class="saludo">
-                        <img class="foto-perfil" src="/images/users/<%= usuario.foto_perfil%>" alt="">
-                        <h1>Hola <%=usuario.nombre%>!!!</h1>
-                    </div>
-                    <div class="todos-datos">
-                        <section class="container-datos">
-                            <h2>TUS DATOS PERSONALES</h2>
-                            <div class="datos">
-                                <h4 class="atributo">
-                                    Nombre:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.nombre%>
-                                </h4>
-                                <h4 class="atributo">
-                                Apellido:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.apellido%>
-                                </h4>
-                                <h4 class="atributo">
-                                DNI:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.dni%>
-                                </h4>
-                                <h4 class="atributo">
-                                Teléfono:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.telefono%>
-                                </h4>
-                                <h4 class="atributo">
-                                Domicilio:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.domicilio%>
-                                </h4>
-                                <h4 class="atributo">
-                                Pais:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.pais%>
-                                </h4>
-                                <h4 class="atributo">
-                                Genero:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.genero%>
-                                </h4>
-                            </div>
-                            <a href="editar-perfil">Editar datos personales</a>
-                        </section>
-                        <section class="container-datos">
-                            <h2>TUS DATOS DE USUARIO</h2>
-                            <div class="datos">
-
-                                <h4 class="atributo">
-                                    Nombre de usuario:
-                                </h4>
-                                <h4 class="valor">
-                                    <%=usuario.nombre_usuario%>
-                                </h4>
-
-                                <h4>
-                                    <h4 class="atributo">
-                                        Tipo de usuario:
-                                    </h4>
-                                    <h4 class="valor">
-                                        <%=usuario.tipo_usuario%>
-                                    </h4>
-                                </h4>
-                                <h4>
-                                    <%= 'EMAIL: ' + usuario.email%>
-                                </h4>
-                            </div>
-                            <a href="editar-cuenta">Editar datos de usuario</a>
+            <%-include ('../partials/nav-bar.ejs')%>
+                <%-include ('../partials/button-top.ejs')%>
+                    <main class="perfil-usuario">
+                        <div class="saludo">
+                            <img class="foto-perfil" src="/images/users/<%= usuario.foto_perfil%>" alt="">
+                            <h1>Hola <%=usuario.nombre%>.</h1>
+                        </div>
+                        <div class="todos-datos">
+                            <section class="container-datos">
+                                <h2>DATOS PERSONALES</h2>
+                                <div class="datos">
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Nombre:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.nombre%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Apellido:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.apellido%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            DNI:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.dni%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Teléfono:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.telefono%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Domicilio:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.domicilio%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Pais:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.pais%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Genero:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.genero%>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <a href="editar-perfil">
+                                    <button class="boton-editar">
+                                        Editar datos personales
+                                    </button>
+                                </a>
+                            </section>
+                            <section class="container-datos">
+                                <h2>DATOS DE USUARIO</h2>
+                                <div class="datos">
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Nombre de usuario:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.nombre_usuario%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Tipo de usuario:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.tipo_usuario%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Mail:
+                                        </h4>
+                                        <h4 class="valor">
+                                            <%=usuario.email%>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <a href="editar-cuenta">
+                                    <button class="boton-editar">
+                                        Editar datos de usuario
+                                    </button>
+                                </a>
 
                         </section>
                     </div>

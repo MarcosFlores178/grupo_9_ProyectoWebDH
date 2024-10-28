@@ -1,12 +1,13 @@
 /* Define estilos generales aquí */
-*{
+* {
     font-family: 'roboto';
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #EEFCFF;
-    
+
 }
 .error-container {
     display: flex; 
@@ -45,19 +46,23 @@ body {
     font-size: x-large;
     text-align: center;
     margin: 2%;
+
     h2 {
         margin-bottom: 20px;
     }
+
     form {
         display: flex;
         flex-direction: column;
         text-align: center;
         font-weight: bold;
+
         div {
             display: flex;
             align-items: center;
             margin: 15px 0;
             justify-content: center;
+
             input {
                 width: 30%;
                 text-align: justify;
@@ -65,6 +70,7 @@ body {
                 font-size: large;
                 margin-left: 2%;
             }
+
             textarea {
                 width: 30%;
                 text-align: justify;
@@ -74,44 +80,55 @@ body {
             }
         }
     }
-    .botones {
+
+    .style-div-botones {
         display: flex;
-        flex-direction: row;
-        width: auto;
-        margin: 2%;
-      }
-      .boton-aceptar {
-          color :#ebebeb; 
-          background-color: #2968c8; 
-          border-radius: 5px; 
-          margin: auto;
-          border: none;
-          font-weight: bold;
-          width: 25%;
-          height: 35px;
-          cursor: pointer;
-          transition: background-color 500ms;
-          text-decoration: none;
-        }
-    .boton-aceptar:hover{
-        background-color: #0022AA;
+        margin: 5% 20%;
+        align-items: center;
+        justify-content: space-around;
     }
-    .boton-cancelar {
-        color :#ebebeb; 
-        background-color: #ff4d4d; 
-        border-radius: 5px; 
-        margin: auto;
+
+    .boton-confirmar {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        color: #ebebeb;
+        background-color: #2968c8;
+        border-radius: 5px;
+        margin: 2% 5% 2% 5%;
+        padding: 10px 70px;
         border: none;
         font-weight: bold;
-        width: 25%;
         height: 35px;
         cursor: pointer;
         transition: background-color 500ms;
     }
+
+    .boton-confirmar:hover {
+        background-color: #0022AA;
+    }
+
+    .boton-cancelar {
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        color: #ebebeb;
+        background-color: #a8a8a8;
+        border-radius: 5px;
+        margin: 2% 5% 2% 5%;
+        padding: 10px 70px;
+        border: none;
+        font-weight: bold;
+        height: 35px;
+        cursor: pointer;
+        transition: background-color 500ms;
+    }
+
     .boton-cancelar:hover {
-        background-color: #e60000;
+        background-color: #585858;
     }
 }
+
 /*-------CSS de button-top.ejs-------*/
 .button-index {
     position: fixed;
@@ -126,9 +143,11 @@ body {
     cursor: pointer;
     display: none;
 }
+
 .button-index.show {
     display: block;
 }
+
 .button-index i {
     font-size: x-large;
     color: #000000;

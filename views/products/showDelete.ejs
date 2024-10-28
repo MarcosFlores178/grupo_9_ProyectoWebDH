@@ -20,15 +20,20 @@
                             <nav>
                                 <section>
                                     <% if (usuario) { %>
+                                        <div class="style-div-botones">
+                                            <form method="POST"
+                                                action="/products/deleteProduct/<%= producto.id %>?_method=DELETE"
+                                                style="display:inline">
+                                                <button class="boton-eliminar" type="submit">Eliminar</button>
+                                            </form>
 
-                                        <form class="boton-eliminar" method="POST"
-                                            action="/products/deleteProduct/<%= producto.id %>?_method=DELETE"
-                                            style="display:inline;">
-                                            <button class="boton-eliminar" type="submit">Eliminar</button>
-                                        </form>
-                                        <%}%>
-                                            <a href="/products/detail/<%= producto.id %>"><button>Cancelar</button></a>
-                                            </div>
+                                            <a href="/products/detail/<%= producto.id %>">
+                                                <button class="boton-cancelar">
+                                                    Cancelar
+                                                </button>
+                                            </a>
+                                        </div>
+                                    <%}%>
                                 </section>
                             </nav>
                         </nav>
