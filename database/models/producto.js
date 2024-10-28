@@ -36,10 +36,10 @@ module.exports = (sequelize, dataTypes) => {
       as: "talle",
       foreignKey: "id_talle",
     });
-    // Producto.belongsTo(models.Categoria, {
-    //   as: "categoria",
-    //   foreignKey: "id_categoria",
-    // });
+    Producto.belongsTo(models.Categoria, {
+       as: "categoria",
+       foreignKey: "id_categoria",
+     });
   };
   return Producto;
 };

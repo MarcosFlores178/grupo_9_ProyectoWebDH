@@ -154,7 +154,7 @@ let successMessage = req.flash('successMessage')[0] || '';
           precio,
           id_categoria: tipoProducto,
           id_marca: marca,
-          talle
+          id_talle: talle
         });
         // Guardar mensaje de éxito en flash
         req.flash('successMessage', 'Producto creado con éxito.');
@@ -273,6 +273,69 @@ let successMessage = req.flash('successMessage')[0] || '';
       return  res.redirect(`/products/detail/${id}`);
     }
   },
+  
+    // Método para listar productos por categoría principal
+    listarPorCategoria: async (req, res) => {
+        try {
+            const categoriaNombre = req.params.categoria; // Ej. "Hombre", "Mujer"
+            
+            // Buscar los productos de la categoría principal
+            const productos = await db.Producto.findAll({
+                include: [
+                    {
+                        model: db.Categoria,
+                        as: 'categoria',
+                        where: { categoria: categoriaNombre }
+                    }
+                ]
+            });
+
+            res.render('products/productoscat', { productos });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener los productos');
+        }
+    },
+
+    // Método para listar productos por subcategoría
+    listarPorSubcategoria: async (req, res) => {
+        try {
+            const subcategoriaId = req.params.subcategoriaId; 
+
+            // Buscar productos que pertenezcan a esta subcategoría
+            const productos = await db.Producto.findAll({
+                include: [
+                    {
+                        model: db.Categoria,
+                        as: 'subcategoria',
+                        where: { id: subcategoriaId }
+                    }
+                ]
+            });
+
+            res.render('productos', { productos });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener los productos');
+        }
+    },
+
+    // Método para listar productos por tipo de producto
+    listarPorTipo: async (req, res) => {
+        try {
+            const tipoId = req.params.tipoId;
+
+            const productos = await db.Producto.findAll({
+                where: { categoria_id: tipoId }
+            });
+
+            res.render('productos', { productos });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error al obtener los productos');
+        }
+    },
+
 
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
