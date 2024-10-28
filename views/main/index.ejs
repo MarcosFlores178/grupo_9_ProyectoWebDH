@@ -12,21 +12,79 @@
       <%-include ('../partials/nav-bar.ejs')%>
         <main>
           <%-include ('../partials/button-top.ejs')%>
-                     <section class="promociones">
+<!-- ------------------------------------------------------------------------------------->
+<div class="carrusel">
+  <div class="carrusel-inner">
+      <div class="item active">
+          <img src="../images/1.webp" alt="Imagen 1">
+      </div>
+      <div class="item">
+          <img src="../images/2.webp" alt="Imagen 2">
+      </div>
+      <div class="item">
+          <img src="../images/3.webp" alt="Imagen 3">
+      </div>
+      <div class="item">
+        <img src="../images/4.webp" alt="Imagen 4">
+    </div>
+    <div class="item">
+      <img src="../images/5.webp" alt="Imagen 5">
+  </div>
+  </div>
+  <button class="prev" onclick="cambiarSlide(-1)">&#10094;</button>
+  <button class="next" onclick="cambiarSlide(1)">&#10095;</button>
+</div>
+
+  <div class="boca-river" >
+    <img class="card-bocaRiver" src="images/PXBRAS3RQRD5TNDNTN3UV4E64U.jpg" alt="categoria hombres" />
+    <img class="card-bocaRiver" src="images/648ec8aee4954cf71ea440b4_boca-rp-Landscape.jpg" alt="categoria hombres" />
+  </div>
+
+ <div class="boca-river">
+    <img class="card-bocaRiver" src="images/22288-adidascamisetaalternativa2022river.jpg" alt="categoria hombres" />
+    <img class="card-bocaRiver" src="images/qJl01ux8r_1256x620__1.jpg" alt="categoria hombres" />
+  </div>
+
+
+
+<!-- ----------------------------------------------------------------------------------------
+          <div class="carrusel">
+            <div class="carrusel-inner">
+                <div class="item active">
+                    <img src="../images/1.webp" alt="Imagen 1">
+                </div>
+                <div class="item">
+                    <img src="../images/2.webp" alt="Imagen 2">
+                </div>
+                <div class="item">
+                    <img src="../images/3.webp" alt="Imagen 3">
+                </div>
+            </div>
+            <button class="prev" onclick="cambiarSlide(-1)">&#10094;</button>
+            <button class="next" onclick="cambiarSlide(1)">&#10095;</button>
+        </div>
+    
+        <script src="../../js/carrusel.js"></script> -->
+
+<!-- -----------------------------------------------------------------------------------------
+        <section class="promociones">
                     <img src="../images/1.webp" alt="">
                   </section>
-                  <section class="destacado">
-                    <a href="/products/details-product"><img src="../images/destacado.jpg" width="100%"></a>
-                  </section>
+----------------------------------------------------------------------------------------------------->
+      <section class="destacado">
+          <a href="/products/details-product"><img src="../images/destacado.jpg" width="100%"></a>
+      </section>
+                  
+                  
                   <section>
                     <h2 class="most-searched">CATEGORIAS</h2>
                     <div class="categorias">
-                      <img src="images/FLYERHOMBRE.jpg" alt="categoria hombres" />
-                      <img src="images/flyermujer.jpg" alt="categoria hombres" />
+                      <img class="card-hombre" src="images/FLYERHOMBRE.jpg" alt="categoria hombres" />
+                      <img class="card-mujer" src="images/flyermujer.jpg" alt="categoria hombres" />
                     </div>
                     <div class="categorias">
-                      <img src="images/flyerniños.jpg" alt="categoria hombres" />
-                      <img src="images/FLYERACC.jpg" alt="categoria hombres" />
+                      <img class="card-niños" src="images/flyerniños.jpg" alt="categoria hombres" />
+                      <img class="card-accesorios" src="images/FLYERACC.jpg" alt="categoria hombres" />
                     </div>
                   </section>
                   <!-- <section class="promociones">
@@ -39,6 +97,8 @@
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
             crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+          <script src="/js/carrusel.js"></script>
+    
   </body>
   <%# Desplazamiento suave del boton %>
 

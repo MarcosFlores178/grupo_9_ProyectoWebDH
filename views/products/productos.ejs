@@ -17,11 +17,11 @@
             <div class="todos-los-productos">
               <section>
                 <% productos.forEach(product=>{%>
-                  <a href="/products/detail/<%= product.id %>">
+                  <a class="card-ejs" href="/products/detail/<%= product.id %>">
                     <figure class="">
                       <img src="/images/products/<%= product.imagen  %>" alt="imagen de producto" />
                     </figure>
-                    <article class="">
+                    <article class="product-ejs">
                       <h2>
                         <%= product.nombre %>
                       </h2><br>
@@ -35,6 +35,17 @@
             </div>
           </div>
           <%- include('../partials/footer') %>
+          <% if (successMessage && successMessage.length > 0) { %>
+            <script>
+                Swal.fire({
+                    title: 'Producto eliminado',
+                    text: '<%= successMessage %>',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+                </script>
+            
+            <% } %>
   </body>
 
 </html>

@@ -49,12 +49,12 @@ module.exports = function (sequelize, dataTypes) {
   };
   let Usuario = sequelize.define(alias, cols, config);
 
-  Usuario.assosiate = (models) => {
-    Usuario.belongsTo(models.Carrito, {
-      as: "carrito",
-      foreignKey: "id_usuario",
-    });
-  };
+  // Usuario.associate = (models) => {
+  //   Usuario.belongsTo(models.Carrito, {
+  //     as: "carrito",
+  //     foreignKey: "id_usuario",
+  //   });
+  // };
 
   return Usuario;
 };

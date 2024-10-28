@@ -7,15 +7,16 @@
             <%-include ('../partials/button-top.ejs')%>
                 <main class="container">
                     <h1 class="h1">REGISTRO DE USUARIO</h1>
-                    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="/users/register" method="POST" enctype="multipart/form-data" id="formulario">
                         <h3 class="h3">Datos Personales</h3>
                         <div>
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.nombre ? 'error-border' : '' %>" type="text"
-                                    id="nombre" name="nombre" placeholder="* Nombre" value="<%= locals.old && old.nombre? old.nombre : "" %>"><br>
-                                    <div id="errornombre"></div>
+                                    id="nombre" name="nombre" placeholder="* Nombre" value="<%= locals.old && old.nombre? old.nombre : "" %>">
+                                    <br>
                                 <input class="cuadros-login <%= mapsDeError.apellido ? 'error-border' : '' %>"
-                                    type="text" id="apellido" name="apellido" placeholder="* Apellido" value="<%= locals.old && old.apellido? old.apellido : "" %>" ><br>
+                                    type="text" id="apellido" name="apellido" placeholder="* Apellido" value="<%= locals.old && old.apellido? old.apellido : "" %>" >
+                                    <br>
                             </div>
 
                             <div class="error-container">
@@ -28,12 +29,18 @@
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.dni ? 'error-border' : '' %>" type="text"
                                     id="dni" name="dni" placeholder="* DNI"
-                                    maxlength="8" value="<%= locals.old && old.dni? old.dni : "" %>" ><br>
+                                    maxlength="8" value="<%= locals.old && old.dni? old.dni : "" %>" >
+                                    <br>
                                 <input class="cuadros-login <%= mapsDeError.telefono ? 'error-border' : '' %>"
-                                    type="tel" id="telefono" name="telefono" placeholder="* Teléfono" value="<%= locals.old && old.telefono? old.telefono : "" %>"><br>
-                                    
-                                    <div class="error-container">
-                                        <p class="errorValidator izquierda" id="izquierda"></p>
+                                    type="tel" id="telefono" name="telefono" placeholder="* Teléfono" value="<%= locals.old && old.telefono? old.telefono : "" %>">
+                                    <br><br>
+                            </div>
+                            <div class="error-container">
+                                <% if (mapsDeError.dni) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.dni.msg %>
+                                    </p>
+                                    <% } else { %>
                                         <p class="errorValidator izquierda">&nbsp;</p>
                                         <p class="errorValidator derecha" id="derecha"></p>
                                         <p class="errorValidator derecha">&nbsp;</p>
@@ -43,6 +50,7 @@
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.domicilio ? 'error-border' : '' %>"
                                     type="text" id="domicilio" name="domicilio" placeholder="* Domicilio" value="<%= locals.old && old.domicilio? old.domicilio : "" %>">
+                                    
                                 <label for="countries"></label>
                                 <input class="cuadros-login <%= mapsDeError.country ? 'error-border' : '' %>"
                                     list="countries" id="country" name="country" placeholder="* País" value="<%= locals.old && old.country? old.country : "" %>">
@@ -76,7 +84,8 @@
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.nombreUsuario ? 'error-border' : '' %>"
                                     type="text" id="nombreUsuario" name="nombreUsuario"
-                                    placeholder="* Nombre de Usuario" value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : "" %>"><br>
+                                    placeholder="* Nombre de Usuario" value="<%= locals.old && old.nombreUsuario? old.nombreUsuario : "" %>">
+                                <br>
                             </div>
                             <div class="error-container">
                                 <% if (mapsDeError.nombreUsuario) { %>
@@ -135,15 +144,16 @@
                         <h3 class="h3">Admin-Comprador</h3>
                         <div class="style-label">
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp" value="admin">Administrador
+                                <input class="radio-checkbox" type="radio" name="admincomp" value="admin" id="admin">Administrador
                             </label>
                             <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp" value="comprador">Comprador
+                                <input class="radio-checkbox" type="radio" name="admincomp" value="comprador" id="comp">Comprador
                             </label>
                         </div>
                         <div class="error-container">
+                            <p class="errorValidator izquierda" id="error-message">
                             <% if (mapsDeError.admincomp) { %>
-                                <p class="errorValidator izquierda">
+                                <p class="errorValidator izquierda" id="error-message">
                                     <%= mapsDeError.admincomp.msg %>
                                 </p>
                                 <% } else { %>
@@ -165,6 +175,7 @@
                         </div>
                         <h3 class="h3">Vamos a conocerte mejor</h3>
                         <h4>¿Que marca deportiva son de tu interes?</h4>
+                        <br>
                         <div class="style-label-user">
                             <label class="style-label-cb">
                                 <input class="radio-checkbox" type="checkbox" name="intereses">
@@ -290,10 +301,10 @@
                                     </select>
                                 </label>
                             </div>
-                        </div>
+                        </div><br>
                         <div>
-                            <label for="foto">Escoge una foto para tu perfil</label><br>
-                            <input type="file" name="foto">
+                            <label for="foto">Escoge una foto para tu perfil</label><br><br>
+                            <input type="file" name="foto" id="fileUpload">
                         </div>
                         <div class="style-label-acept">
                             <input class="checkbox-accept" type="checkbox" id="privacy-policy"
@@ -311,7 +322,7 @@
                     </form>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
-            <script src="register.js" href="../../public/js/register.js"></script>
-    </body>
+                <script src="/js/register.js"></script>
 
+    </body>
 </html>
