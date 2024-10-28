@@ -161,6 +161,7 @@ main section img{
     color: white;
     cursor: pointer;
     border-radius: 4px;
+   
 }
 
 .promociones img{
@@ -280,6 +281,161 @@ nav.menu-categorias {
     padding: 10px;
     display: none;
     /* Esconde el menú por defecto */
+}
+/*---------------------------------------------Carrusel 2-----------------------------------------*/
+.carrusel {
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carrusel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.prev {
+    left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.next {
+    right: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.card-hombre {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+
+}
+
+.card-hombre:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+
+.card-mujer {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+
+}
+
+.card-mujer:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+
+.card-niños {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+
+}
+
+.card-niños:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+
+.card-accesorios {
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+}
+
+.card-accesorios:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+
+.boca-river{
+    display: flex;
+   justify-content: space-around;
+   
+   
+}
+.card-bocaRiver {
+    width: 600px;
+    height: 400px;
+    margin: 1px ;
+    transition: all 0.5s ease-in-out;
+    border: 2px solid #0056b3;
+    border-radius: 20px;
+
+}
+
+.card-bocaRiver:hover {
+    transform: scale(1.08); 
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+    
+   
+}
+
+.animated-heading {
+    font-size: 2em; /* Tamaño del texto */
+    color: #3498db; /* Color del texto */
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(-20px); /* Desplazado hacia arriba */
+    animation: fadeInUp 1s forwards; /* Aplicar la animación */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.most-searched {
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(-20px); /* Desplazado hacia arriba */
+    animation: fadeInUp 2s infinite; /* Aplicar la animación */
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    50% {
+        opacity: 1; /* Totalmente visible en el medio de la animación */
+        transform: translateY(0); /* Posición original */
+    }
+    100% {
+        opacity: 0; /* Vuelve a ser invisible al final */
+        transform: translateY(20px); /* Desplazado hacia abajo */
+    }
 }
 /*
 .footer {
