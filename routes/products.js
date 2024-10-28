@@ -42,12 +42,19 @@ router.get("/detail/:id", productsController.showById);
 
 router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
 
-router.get("/newproduct/", adminMiddleware, productsController.showNewProduct);
+
 
 router.get('/search', productsController.searchProduct);
 
 router.get('/search-menu', productsController.menuSearch);
 
+// router.post(
+//   "/",
+//   fileUpload.single("imagen"),
+//   adminMiddleware,
+//   validatorProd,
+//   productsController.addProduct
+// );
 router.post(
   "/",
   fileUpload.single("imagen"),

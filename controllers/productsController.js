@@ -93,48 +93,46 @@ let successMessage = req.flash('successMessage')[0] || '';
     console.log(this.productsList);
   },
 
-  showAddProduct: async (req, res) => {
+  showAddProduct : async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles
     let marcas = db.Marca.findAll();
     let talles = db.Talle.findAll();
-    
+  //   const categoriasPrincipales = await db.Categoria.findAll({
+  //     where: { parent_id: null },
+  //     include: {
+  //         model: db.Categoria, //esta es la linea 122
+  //         as: 'subcategoria'
+  //     }
 
+  // });
+  const categoriasPrincipales = await db.Categoria.findAll({
+    where: {parent_id: null, nivel: 1 },
+    include: {
+        model: db.Categoria,
+        as: 'subcategoria',
+        where: { nivel: 2 },
+        required: false, // Hacer opcional en caso de que alguna categoría no tenga subcategorías
+        include: {
+            model: db.Categoria,
+            as: 'tiposProducto', // Esto representa el nivel de tipo de producto
+            where: { nivel: 3 },
+            required: false
+        }
+    }
+});
 
     const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
     const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
     Promise.all([marcas, talles]).then(([marcas, talles]) => {
-      res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage});
+      res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage, categoriasPrincipales });
     });
   } catch (error) {
     console.error("Error obteniendo las categorías:", error);
     res.status(500).send("Hubo un error al cargar las categorías.");
 }
   },
-  showNewProduct : async (req, res) => {
-    try {
-      // Consultas a la base de datos para obtener marcas y talles
-    let marcas = db.Marca.findAll();
-    let talles = db.Talle.findAll();
-    const categoriasPrincipales = await db.Categoria.findAll({
-      where: { parent_id: null },
-      include: {
-          model: db.Categoria, //est es la linea 122
-          as: 'subcategoria'
-      }
-
-  });
-
-    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
-    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
-    Promise.all([marcas, talles]).then(([marcas, talles]) => {
-      res.render("products/newproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage, categoriasPrincipales });
-    });
-  } catch (error) {
-    console.error("Error obteniendo las categorías:", error);
-    res.status(500).send("Hubo un error al cargar las categorías.");
-}
-  },
+  
   addProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles
@@ -144,59 +142,7 @@ let successMessage = req.flash('successMessage')[0] || '';
       // Validación de errores en el request
       let errores = validationResult(req);
       const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
-
-      if (errores.isEmpty()) {
-        // Si no hay errores, crear el producto
-        await db.Producto.create({
-          nombre: req.body.nombre,
-          descripcion: req.body.descripcion,
-          imagen: imgProduct,
-          color: req.body.color,
-          precio: req.body.precio,
-          id_talle: req.body.talle,
-          id_marca: req.body.marca,
-        });
-        // Guardar mensaje de éxito en flash
-        req.flash('successMessage', 'Producto creado con éxito.');
-        return res.redirect('/products/addproduct'); // Redirigir a la misma página de carga
-        // Redirigir al listado de productos
-        // return res.redirect("/products");
-        // return res.render("products/addproduct", { mapsDeError: {} });
-      } else {
-        console.log(errores.mapped());
-        req.flash('ValErrorMessage', 'Complete los campos requeridos');
-        // Si hay errores, realizar las consultas para obtener marcas y talles
-        let [marcasResult, tallesResult] = await Promise.all([marcas, talles]);
-        const errorMessage = req.flash('ValErrorMessage')[0] || '';
-        const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
-        // Renderizar la vista de agregar producto con los errores, los datos viejos y las listas de marcas y talles
-        return res.render("products/addproduct", {
-          marcas: marcasResult,
-          talles: tallesResult,
-          mapsDeError: errores.mapped(),
-          old: req.body,
-          errorMessage, // Datos ingresados para que el formulario no se reinicie
-          successMessage
-        });
-      }
-    } catch (error) {
-      console.error(error);
-      req.flash('ValErrorMessage', 'Ocurrió un error. Intente nuevamente');
-      return res.render("products/addproduct");
-
-      // return res.status(500).send('Error al procesar la solicitud');
-    }
-  },
-  newProduct: async (req, res) => {
-    try {
-      // Consultas a la base de datos para obtener marcas y talles
-      let marcas = db.Marca.findAll();
-      let talles = db.Talle.findAll();
-
-      // Validación de errores en el request
-      let errores = validationResult(req);
-      const imgProduct = req.file ? `${req.file.filename}` : "default.jpg";
-      const { nombre, descripcion, color, precio, marca, categoria, subcategoria } = req.body;
+      const { nombre, descripcion, color, precio, marca, tipoProducto, talle } = req.body;
 
       if (errores.isEmpty()) {
         // Si no hay errores, crear el producto
@@ -206,8 +152,9 @@ let successMessage = req.flash('successMessage')[0] || '';
           imagen: imgProduct,
           color,
           precio,
-          id_categoria,
+          id_categoria: tipoProducto,
           id_marca: marca,
+          talle
         });
         // Guardar mensaje de éxito en flash
         req.flash('successMessage', 'Producto creado con éxito.');

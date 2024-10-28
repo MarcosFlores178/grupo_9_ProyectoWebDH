@@ -1,19 +1,62 @@
 window.addEventListener('load', function () {
     console.log('este es el script de product.js');
+    // document.getElementById('categoria').addEventListener('change', function () {
+    //     const categoriaId = this.value;
+    //     const subcategoriaDiv = document.getElementById('subcategoriaDiv');
+    //     const subcategoriaSelect = document.getElementById('subcategoria');
+    
+    //     // Mostrar solo las subcategorías que pertenecen a la categoría seleccionada
+    //     Array.from(subcategoriaSelect.options).forEach(option => {
+    //         option.style.display = option.getAttribute('data-categoria') === categoriaId ? 'block' : 'none';
+    //     });
+    
+    //     // Mostrar o esconder el selector de subcategoría
+    //     subcategoriaDiv.style.display = categoriaId ? 'block' : 'none';
+    //     subcategoriaSelect.value = ""; // Reiniciar selección
+    // });
+
+  
+    // Escucha cambios en el select de Categoría Principal
     document.getElementById('categoria').addEventListener('change', function () {
         const categoriaId = this.value;
         const subcategoriaDiv = document.getElementById('subcategoriaDiv');
         const subcategoriaSelect = document.getElementById('subcategoria');
-    
+        const tipoProductoDiv = document.getElementById('tipoProductoDiv');
+        const tipoProductoSelect = document.getElementById('tipoProducto');
+
+        // Resetear selección de subcategoría y tipo de producto
+        subcategoriaSelect.value = "";
+        tipoProductoSelect.value = "";
+
         // Mostrar solo las subcategorías que pertenecen a la categoría seleccionada
         Array.from(subcategoriaSelect.options).forEach(option => {
             option.style.display = option.getAttribute('data-categoria') === categoriaId ? 'block' : 'none';
         });
-    
-        // Mostrar o esconder el selector de subcategoría
+
+        // Mostrar u ocultar el selector de subcategorías
         subcategoriaDiv.style.display = categoriaId ? 'block' : 'none';
-        subcategoriaSelect.value = ""; // Reiniciar selección
+        tipoProductoDiv.style.display = 'none'; // Ocultar selector de tipo de producto hasta que se elija una subcategoría
     });
+
+    // Escucha cambios en el select de Subcategoría
+    document.getElementById('subcategoria').addEventListener('change', function () {
+        const subcategoriaId = this.value;
+        const tipoProductoDiv = document.getElementById('tipoProductoDiv');
+        const tipoProductoSelect = document.getElementById('tipoProducto');
+
+        // Resetear selección de tipo de producto
+        tipoProductoSelect.value = "";
+
+        // Mostrar solo los tipos de producto que pertenecen a la subcategoría seleccionada
+        Array.from(tipoProductoSelect.options).forEach(option => {
+            option.style.display = option.getAttribute('data-subcategoria') === subcategoriaId ? 'block' : 'none';
+        });
+
+        // Mostrar u ocultar el selector de tipos de producto
+        tipoProductoDiv.style.display = subcategoriaId ? 'block' : 'none';
+    });
+
+
     // --------------------------------- Buscador ---------------------------------------------
     document.getElementById('button-search').addEventListener('click', function () {
         var inputSearch = document.getElementById('buscador');

@@ -10,6 +10,10 @@ module.exports = (sequelize, dataTypes) => {
         type: dataTypes.INTEGER,
         allowNull: true
     },
+      nivel: {
+        type: dataTypes.INTEGER,
+        allowNull: false
+    },
       categoria: {
         type: dataTypes.STRING,
         allowNull: false
@@ -33,7 +37,11 @@ module.exports = (sequelize, dataTypes) => {
         as: "padre",
         foreignKey: "parent_id",
       });
-    };
+      Categoria.hasMany(models.Categoria, {
+         as: 'tiposProducto', 
+         foreignKey:'parent_id', 
+      })
+    }
     return Categoria;
-  };
+}
   
