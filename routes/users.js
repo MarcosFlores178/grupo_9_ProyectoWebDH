@@ -7,13 +7,9 @@ const logregMiddleware = require("../middlewares/logregMiddelware");
 const validateCurrentPassword = require("../middlewares/changePassword");
 
 
-router.get("/login", logregMiddleware, usersController.showLogin);
 
-router.post("/login", usersController.login);
 
-router.get("/logout", usersController.logout);
-router.get("/register", logregMiddleware, usersController.showRegister);
-
+//----------------------------------------Validar Registro Back----------------------------------
 const validator = [
   body('nombre').notEmpty().trim().withMessage('Ingrese su nombre'),
   body('apellido').notEmpty().trim().withMessage('Ingrese su apellido'),
@@ -110,12 +106,10 @@ const validatorPerfil  = [
     ] 
 router.get("/register", usersController.showRegister);
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
-
 router.get("/perfil", usersController.perfil);
 // router.get("/perfil/:id", usersController.perfil);
 router.get("/editar-perfil", usersController.showEdit);
 router.get("/editar-cuenta", usersController.showEditCuenta);
-
 router.put(
     "/perfil/:id",
     fotoUserUpload.single("foto"),

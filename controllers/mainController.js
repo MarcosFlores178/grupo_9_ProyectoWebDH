@@ -11,6 +11,7 @@ const mainController = {
       // return res.render("main/index");
     }
   },
+  
 };
 
 module.exports = mainController;
