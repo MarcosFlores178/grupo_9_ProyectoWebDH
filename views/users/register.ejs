@@ -20,10 +20,22 @@
                             </div>
 
                             <div class="error-container">
-                                <p class="errorValidator izquierda" id="izquierda"></p>
-                                <p class="errorValidator izquierda">&nbsp;</p>
-                                <p class="errorValidator derecha" id="derecha"></p>
-                                <p class="errorValidator derecha">&nbsp;</p>
+                                <% if (mapsDeError.nombre) { %>
+                                    <p class="errorValidator izquierda">
+                                        <%= mapsDeError.nombre.msg %>
+                                    </p>
+                                    <% } else { %>
+                                        <p class="errorValidator izquierda">&nbsp;</p>
+                                    <% } %>
+
+
+                                        <% if (mapsDeError.apellido) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.apellido.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
                             </div>
 
                             <div class="div-par">
@@ -42,11 +54,15 @@
                                     </p>
                                     <% } else { %>
                                         <p class="errorValidator izquierda">&nbsp;</p>
-                                        <p class="errorValidator derecha" id="derecha"></p>
-                                        <p class="errorValidator derecha">&nbsp;</p>
-                                    </div>
+                                    <% } %>
+                                        <% if (mapsDeError.telefono) { %>
+                                            <p class="errorValidator derecha">
+                                                <%= mapsDeError.telefono.msg %>
+                                            </p>
+                                            <% } else { %>
+                                                <p class="errorValidator derecha">&nbsp;</p>
+                                            <% } %>
                             </div>
-
                             <div class="div-par">
                                 <input class="cuadros-login <%= mapsDeError.domicilio ? 'error-border' : '' %>"
                                     type="text" id="domicilio" name="domicilio" placeholder="* Domicilio" value="<%= locals.old && old.domicilio? old.domicilio : "" %>">
@@ -325,4 +341,5 @@
                 <script src="/js/register.js"></script>
 
     </body>
+
 </html>
