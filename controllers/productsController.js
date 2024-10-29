@@ -276,137 +276,76 @@ let successMessage = req.flash('successMessage')[0] || '';
   },
   
     // Método para listar productos por categoría principal
-    listarPorCategoria: async (req, res) => {
+
+  
+      mostrarProductos: async (req, res) => {
+        console.log('hola');
         try {
-            const categoriaNombre = req.params.categoria; // Ej. "Hombre", "Mujer"
-            
-            // Buscar los productos de la categoría principal
-            const productos = await db.Producto.findAll({
-                include: [
-                    {
-                        model: db.Categoria,
-                        as: 'categoria',
-                        required: true,
-                        // where: { categoria: categoriaNombre }
-                    }
-                ]
-            });
-
-            res.render('products/productoscat', { productos });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('Error al obtener los productos');
-        }
-    },
-
-    // Método para listar productos por subcategoría
-    listarPorSubcategoria: async (req, res) => {
-        try {
-            const subcategoriaId = req.params.subcategoriaId; 
-
-            // Buscar productos que pertenezcan a esta subcategoría
-            const productos = await db.Producto.findAll({
-                include: [
-                    {
-                        model: db.Categoria,
-                        as: 'subcategoria',
-                        where: { id: subcategoriaId }
-                    }
-                ]
-            });
-
-            res.render('productos', { productos });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('Error al obtener los productos');
-        }
-    },
-
-    // Método para listar productos por tipo de producto
-    listarPorTipo: async (req, res) => {
-        try {
-            const tipoId = req.params.tipoId;
-
-            const productos = await db.Producto.findAll({
-                where: { categoria_id: tipoId }
-            });
-
-            res.render('productos', { productos });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('Error al obtener los productos');
-        }
-    },
-    mostrarProductos: async (req, res) => {
-      console.log('hola');
-      try {
-        console.log("Tipos", tiposProductosIds);
-          console.log("Subcategorias", subcategoriasIds);
-        const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
-        // const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
-        const categoriaSeleccionadaId = categoriaId; // Convertimos a número
-  
-        // Buscamos la categoría seleccionada en la base de datos
-        const categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId); //Primer where
-  
-        // Si no se encuentra la categoría, mostramos todos los productos
-        if (!categoriaSeleccionada) {
-          // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
-          const productos = await db.Producto.findAll(); // Obtiene todos los productos
-          return res.render('products/productoscat', { productos });
-        }
-  
-        let productosFiltrados = [];
-  
-        // Caso 1: Si es una categoría principal
-        if (categoriaSeleccionada.nivel === 7) {
-          const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });//Segundo where
-          const subcategoriasIds = subcategorias.map(sub => sub.id);
-      
-          const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
-          const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+         
+          const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
+          // const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
+          const categoriaSeleccionadaId = categoriaId; // Convertimos a número
+    
+          // Buscamos la categoría seleccionada en la base de datos
+          const categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId); //Primer where
+    
+          // Si no se encuentra la categoría, mostramos todos los productos
+          if (!categoriaSeleccionada) {
+            // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
+            const productos = await db.Producto.findAll(); // Obtiene todos los productos
+            return res.render('products/productoscat', { productos });
+          }
+    
+          let productosFiltrados = [];
+    
+          // Caso 1: Si es una categoría principal
+          if (categoriaSeleccionada.nivel === 1) {
+            const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });//Segundo where
+            const subcategoriasIds = subcategorias.map(sub => sub.id);
         
-          productosFiltrados = await db.Producto.findAll({
-            where: {
-              [Op.or]: [
-                { id_categoria: categoriaSeleccionadaId },
-                { id_categoria: subcategoriasIds },
-                { id_categoria: tiposProductosIds }
-  
-              ]
-            }
-          });
-       
-  
+            const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
+            const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+          
+            productosFiltrados = await db.Producto.findAll({
+              where: {
+                [Op.or]: [
+                  { id_categoria: categoriaSeleccionadaId },
+                  { id_categoria: subcategoriasIds },
+                  { id_categoria: tiposProductosIds }
+    
+                ]
+              }
+            });
+         
+    
+          }
+          // Caso 2: Si es una subcategoría
+          else if (categoriaSeleccionada.nivel === 2) {
+            const tiposProductos = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
+            const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+           
+            productosFiltrados = await db.Producto.findAll({
+              where: {
+                [Op.or]: [
+                  { id_categoria: categoriaSeleccionadaId },
+                  { id_categoria: tiposProductosIds }
+                ]
+              }
+            });
+          }
+          // Caso 3: Si es un tipo de producto específico
+          else if (categoriaSeleccionada.nivel === 3) {
+            productosFiltrados = await db.Producto.findAll({ where: { id_categoria: categoriaSeleccionadaId } });
+          console.log(productosFiltrados);
+          }
+    
+          // Enviamos los productos filtrados a la vista
+          res.render('products/productoscat', { productos: productosFiltrados });
+        } catch (error) {
+          console.error("Error al mostrar productos:", error);
+          res.status(500).send("Ocurrió un error al procesar la solicitud.");
         }
-        // Caso 2: Si es una subcategoría
-        else if (categoriaSeleccionada.nivel === 5) {
-          const tiposProductos = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
-          const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
-          console.log('Tipos de 2:', tiposProductosIds);
-          console.log('Hola que tal');
-          productosFiltrados = await db.Producto.findAll({
-            where: {
-              [Op.or]: [
-                { id_categoria: categoriaSeleccionadaId },
-                { id_categoria: tiposProductosIds }
-              ]
-            }
-          });
-        }
-        // Caso 3: Si es un tipo de producto específico
-        else if (categoriaSeleccionada.nivel === 4) {
-          productosFiltrados = await db.Producto.findAll({ where: { id_categoria: categoriaSeleccionadaId } });
-        console.log(productosFiltrados);
-        }
-  
-        // Enviamos los productos filtrados a la vista
-        res.render('products/productoscat', { productos: productosFiltrados });
-      } catch (error) {
-        console.error("Error al mostrar productos:", error);
-        res.status(500).send("Ocurrió un error al procesar la solicitud.");
-      }
-    },
+      },
   
     showMenu: async (req, res) => {
         try {

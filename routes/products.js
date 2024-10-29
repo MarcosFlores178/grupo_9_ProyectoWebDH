@@ -68,16 +68,7 @@ router.get(
   // adminMiddleware,
     productsController.mostrarProductos
 );
-router.get(
-  "/subcategoria/:id",
-  // adminMiddleware,
-    productsController.listarPorSubcategoria
-);
-router.get(
-  "/tipo/:id",
-  // adminMiddleware,
-    productsController.listarPorTipo
-);
+
 
 router.get(
   "/editproduct/:id",
