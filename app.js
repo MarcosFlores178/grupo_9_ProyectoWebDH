@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const rememberMiddleware = require("./middlewares/rememberMiddleware.js");
 const sessionMiddleware = require("./middlewares/sessionMiddleware.js");
-// const obtenerCategorias = require("./middlewares/categoriasMiddleware.js");
+const obtenerCategorias = require("./middlewares/obtenerCategorias.js");
 const flash = require('connect-flash');
 // const Swal = require('sweetalert2')
 
@@ -33,7 +33,7 @@ app.use(
 );
 app.use(sessionMiddleware);
 app.use(rememberMiddleware);
-
+app.use(obtenerCategorias);
 
 // app.use(obtenerCategorias);
 app.use("/users", rutaUsers);

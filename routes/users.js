@@ -110,6 +110,9 @@ const validatorPerfil  = [
   // })
     ] 
 // router.get("/register", usersController.showRegister);
+
+
+
 router.post("/register", fotoUserUpload.single("foto"), validator, usersController.register);
 router.get("/perfil", usersController.perfil);
 // router.get("/perfil/:id", usersController.perfil);

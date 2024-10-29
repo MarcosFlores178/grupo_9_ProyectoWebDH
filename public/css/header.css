@@ -347,7 +347,7 @@ nav.menu-categorias {
     }
 
 
-    nav.menu-categorias {
+    /* nav.menu-categorias {
         background-color: #333;
         padding: 10px;
         z-index: 2;
@@ -400,6 +400,92 @@ nav.menu-categorias {
 
     nav.menu-categorias ul li:hover ul.submenu {
         display: block;
-    }
+    } */
+
+/* Estilo general del menú */
+ul {
+    list-style-type: none; /* Quitar las viñetas */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Usar flex para alinear horizontalmente las categorías */
+    background-color: #333; /* Color de fondo del menú */
+}
+
+/* Estilo de cada categoría */
+ul > li {
+    position: relative; /* Para posicionar correctamente los submenús */
+}
+
+/* Enlace de cada categoría */
+ul > li > a {
+    display: block; /* Hacer que el enlace ocupe todo el espacio del li */
+    padding: 15px 20px; /* Espaciado interno */
+    color: white; /* Color del texto */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Cambia el color del enlace al pasar el mouse */
+ul > li > a:hover {
+    background-color: #555; /* Cambiar el fondo al pasar el mouse */
+}
+
+/* Estilo del submenú */
+ul li ul {
+    display: none; /* Ocultar subcategorías por defecto */
+    position: absolute; /* Posicionar absolutamente */
+    left: 0; /* Alinear con la categoría padre */
+    top: 100%; /* Colocar justo debajo de la categoría */
+    background-color: #333; /* Fondo del submenú */
+    padding: 0; /* Sin padding */
+}
+
+/* Mostrar subcategorías al pasar el mouse por la categoría */
+ul li:hover > ul {
+    display: block; /* Mostrar el submenú */
+}
+
+/* Estilo para cada subcategoría */
+ul li ul li {
+    position: relative; /* Permitir el posicionamiento de tipos */
+}
+
+/* Enlace de cada subcategoría */
+ul li ul li > a {
+    padding: 10px 20px; /* Espaciado interno para subcategorías */
+    color: white; /* Color del texto de subcategorías */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Cambiar el color del enlace al pasar el mouse en subcategorías */
+ul li ul li > a:hover {
+    background-color: #555; /* Cambiar el fondo al pasar el mouse */
+}
+
+/* Estilo para el menú de tipos */
+ul li ul li ul {
+    display: none; /* Ocultar tipos por defecto */
+    position: absolute; /* Posicionar absolutamente */
+    left: 100%; /* Desplazar a la derecha del submenú */
+    top: 0; /* Alinear con el submenú */
+    background-color: #333; /* Fondo del menú de tipos */
+}
+
+/* Mostrar tipos al pasar el mouse por la subcategoría */
+ul li ul li:hover > ul {
+    display: block; /* Mostrar el menú de tipos */
+}
+
+/* Estilo para cada tipo */
+ul li ul li ul li a {
+    padding: 10px 20px; /* Espaciado interno para tipos */
+    color: white; /* Color del texto de tipos */
+    text-decoration: none; /* Sin subrayado */
+}
+
+/* Cambiar el color del enlace al pasar el mouse en tipos */
+ul li ul li ul li a:hover {
+    background-color: #555; /* Cambiar el fondo al pasar el mouse */
+}
+
 
 }
