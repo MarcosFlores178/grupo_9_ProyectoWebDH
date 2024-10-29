@@ -356,15 +356,19 @@ let successMessage = req.flash('successMessage')[0] || '';
 
       // Caso 1: Si es una categoría principal
       if (categoriaSeleccionada.nivel === 1) {
-          const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } }); 
+        if (categoriaSeleccionada.nivel === 1) {
+          const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
           const subcategoriasIds = subcategorias.map(sub => sub.id);
+          const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
+          const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
           
 
           productosFiltrados = await db.Producto.findAll({
               where: {
                   [Op.or]: [
                       { id_categoria: subcategoriasIds },
-                      { id_categoria: categoriaSeleccionadaId }
+                      { id_categoria: categoriaSeleccionadaId },
+                      { id_categoria: tiposProductosIds },
                   ]
               }
           });
