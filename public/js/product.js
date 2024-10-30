@@ -185,6 +185,17 @@ window.addEventListener('load', function () {
     let descripcion = document.querySelector('#descripcion');
     validateField(descripcion, 20, 'Debe ingresar una descripción', 'La descripción debe tener al menos X caracteres');
     
+    //Validar categoria
+    let categoria= document.querySelector('#categoria');
+    validateField(categoria, 1, 'Debe ingresar la categoria');
+
+    //Validar la subcategoria
+    let subcategoria= document.querySelector('#subcategoria');
+    validateField(subcategoria, 1, 'Debe ingresar la subcategoria');
+
+    //Validar el tipo
+    let tipo= document.querySelector('#tipoProducto');
+    validateField(tipo, 1, 'Debe ingresar el tipo');
     
     // Validar color
     let color = document.querySelector('#color');
@@ -209,6 +220,9 @@ window.addEventListener('load', function () {
         const descripcion = document.getElementById('descripcion');
         const color = document.getElementById('color');
         const precio = document.getElementById('precio');
+        const categoria = document.getElementById('categoria');
+        const subcategoria = document.getElementById('subcategoria');
+        const tipo = document.getElementById('tipoProducto');   
         const validateField = (field, minLength, requiredMessage, minLengthMessage) => {
        
                 let value = field.value.trim();
@@ -269,6 +283,31 @@ window.addEventListener('load', function () {
             formIsValid = false;
             // alert('La descripción debe tener al menos 20 caracteres.');
         }
+ //Validar categoria
+    const categoriaValue = categoria.value.trim();
+    if (categoriaValue.length < 1) {
+        formIsValid = false;
+        validateField(categoria, 1, 'Debe ingresar la categoria');
+        // alert('Debe ingresar la categoria.');
+    }
+
+    //Validar la subcategoria
+    const subcategoriaValue = subcategoria.value.trim();
+    if (subcategoriaValue.length < 1) {
+        formIsValid = false;
+        validateField(subcategoria, 1, 'Debe ingresar la subcategoria');
+        // alert('Debe ingresar la subcategoria.');
+    }
+
+    //Validar el tipo
+    const tipoValue = tipo.value.trim();
+    if (tipoValue.length < 1) {
+        formIsValid = false;
+        validateField(tipo, 1, 'Debe ingresar el tipo');
+        // alert('Debe ingresar el tipo.');
+    }
+
+
         // Validar Color
         const colorValue = color.value.trim();
         if (colorValue.length < 1) {
@@ -335,6 +374,9 @@ window.addEventListener('load', function () {
     });
     const marcaSelect = document.getElementById('marca');
     const talleSelect = document.getElementById('talle');
+    const categoriaSelect = document.getElementById('categoria');
+    const subcategoriaSelect = document.getElementById('subcategoria');
+    const tipoProductoSelect = document.getElementById('tipoProducto');
     talleSelect.addEventListener('change', function() {
         
         talleSelect.classList.remove('error'); // Eliminar el estilo de error
@@ -347,4 +389,23 @@ window.addEventListener('load', function () {
         marcaSelect.style.borderColor = ''; 
         
     });
+    categoriaSelect.addEventListener('change', function() {
+            
+            categoriaSelect.classList.remove('error'); // Eliminar el estilo de error
+            categoriaSelect.style.borderColor = ''; 
+            
+        });
+    subcategoriaSelect.addEventListener('change', function() {
+            
+            subcategoriaSelect.classList.remove('error'); // Eliminar el estilo de error
+            subcategoriaSelect.style.borderColor = ''; 
+            
+        }); 
+        tipoProductoSelect.addEventListener('change', function() {
+            
+            tipoProductoSelect.classList.remove('error'); // Eliminar el estilo de error
+            tipoProductoSelect.style.borderColor = '';
+
+        });
+
 });

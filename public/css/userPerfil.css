@@ -187,12 +187,27 @@ h2 {
     align-items: center;
     justify-content: center;
 }
-
+.titulo-miperfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    margin-bottom: 2rem;
+}
 .foto-perfil {
     /* margin: 1rem; */
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    /* Hace la imagen redonda */
+    object-fit: cover;
+    /* Asegura que la imagen se recorte bien si no es cuadrada */
+}
+.foto-perfil-cuadrada {
+    /* margin: 1rem; */
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
     /* Hace la imagen redonda */
     object-fit: cover;
     /* Asegura que la imagen se recorte bien si no es cuadrada */

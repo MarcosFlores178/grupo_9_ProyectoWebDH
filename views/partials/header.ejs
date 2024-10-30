@@ -29,7 +29,7 @@
     </div>
     <nav class="menu-desktop">
         
-        <% if (!user) { %>
+        <% if (!user) { %> 
         <a href="/users/login">Ingresar
             <i class="fa-solid fa-right-to-bracket"></i>
         </a>
@@ -37,19 +37,27 @@
             <i class="fa-solid fa-user-plus"></i>
         </a>
         <% } else { %>
-            <a href="/users/perfil">Mi cuenta
-                <i class="fa-solid fa-user"></i>
-                
+            <a class="perfil-cuenta" href="/users/perfil" title="Ir a mi perfil">
+                <%= user.nombre_usuario %>
+                <img class="foto-perfil-header" src="/images/users/<%= user.foto_perfil %>" alt="Foto de perfil">
+                <!-- <span class="tooltip-text">Ir a mi perfil</span> -->
+                <!-- <i class="fa-solid fa-user"></i> -->
             </a>
-            <a href="/users/logout">Cerrar sesión
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <!-- <i class="fa-solid fa-user-large-slash"></i> -->
-            </a>
+            
+            <div class="user-profile" title="Ir a mi perfil">
+                <!-- <img src="ruta/de/foto-perfil.jpg" alt="Foto de perfil" class="profile-icon"> -->
+                <!-- <span>NombreUsuario</span> -->
+            </div>
+            
             <a href="#">Favoritos
                 <i class="fa-solid fa-heart"></i>
             </a>
             <a href="/products/shop-cart">Carrito
                 <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="/users/logout">Cerrar sesión
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <!-- <i class="fa-solid fa-user-large-slash"></i> -->
             </a>
             <% }%>
     </nav>

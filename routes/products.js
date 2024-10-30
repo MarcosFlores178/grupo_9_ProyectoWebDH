@@ -17,6 +17,9 @@ const adminMiddleware = require("../middlewares/adminMiddleware.js");
 const validatorProd = [
   body('nombre').notEmpty().trim().withMessage('Ingrese el nombre del producto').isLength({ min: 2}).withMessage('El nombre debe tener más de 2 caracteres'),
   body('descripcion').notEmpty().trim().withMessage('Ingrese la descripción').isLength({ min: 20}).withMessage('La descripcion debe tener al menos 20 caracteres'),
+  body('categoria').notEmpty().trim().withMessage('Ingrese la categoría'),
+  body('subcategoria').notEmpty().trim().withMessage('Ingrese la subcategoría'),
+  body('tipoProducto').notEmpty().trim().withMessage('Ingrese el tipo de producto'),
   body('color').notEmpty().trim().withMessage('Ingrese el color'),
   body('precio').isDecimal().trim().withMessage('Ingrese el precio'),
   body('marca').notEmpty().trim().withMessage('Ingrese la marca'),

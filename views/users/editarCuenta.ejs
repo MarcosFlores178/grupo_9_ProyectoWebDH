@@ -98,12 +98,10 @@
                             </label>
                             <label class="style-label-r">
                                 <input class="radio-checkbox" type="radio" name="admincomp" id="comp"
-                                    value="comprador" <% if (usuario.tipo_usuario==='comprador' ) { %> checked <% } %>>Comprador
+                                    value="comprador" <% if 
+                                    (usuario.tipo_usuario==='comprador' ) { %> checked <% } %>>Comprador
                             </label>
-                            <label class="style-label-r">
-                                <input class="radio-checkbox" type="radio" name="admincomp" id="vendedor"
-                                    value="vendedor" <% if (usuario.tipo_usuario==='vendedor' ) { %> checked <% } %>>Vendedor
-                            </label>
+                         
                         </div>
                         <div class="error-container">
                             <% if (mapsDeError.tipoUsuario) { %>
@@ -112,6 +110,10 @@
                                 </p>
                                 <% }  %>
                         </div> 
+                        <div>
+                            <label for="foto">Escoge una foto para tu perfil</label><br>
+                            <input type="file" name="foto" id="nuevaFoto">
+                        </div>
                         <h3 class="h3">Ingrese su contraseña actual</h3>
                         <label for="currentPassword"></label>
                         <input class="cuadros-login" type="password" id="currentPassword" name="currentPassword" placeholder="* Ingrese su contraseña actual">

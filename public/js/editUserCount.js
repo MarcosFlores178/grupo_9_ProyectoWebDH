@@ -156,6 +156,31 @@ window.addEventListener('load', function() {
             passwordVerify.style.borderColor = ''; // Quitar borde rojo al volver a enfocar
         });
     });
+
+    document.querySelector('#nuevaFoto').addEventListener('change', function() {
+        const fileInput = document.querySelector('#nuevaFoto');
+        const file = fileInput.files[0];  // Captura el archivo subido
+    console.log('se activo el evento change');
+        if (file) {
+            const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];  // Extensiones válidas
+            const fileName = file.name.toLowerCase();  // Nombre del archivo en minúsculas
+            const fileExtension = fileName.split('.').pop();  // Extraer la extensión del archivo
+    
+            if (!allowedExtensions.includes(fileExtension)) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Solo se permiten archivos de imagen: ' + allowedExtensions.join(', '),
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+                // alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
+                fileInput.value = '';  // Limpiar el input si no es válido
+            } else {
+                // Aquí puedes proceder con el procesamiento del archivo válido
+                console.log('Archivo válido: ', file.name);
+            }
+        }
+    });
     document.getElementById('editCount').addEventListener('submit', function (e) {
         e.preventDefault();
     console.log('El script de edit cuenta submit anda bien');
@@ -253,8 +278,8 @@ window.addEventListener('load', function() {
 
         const adminValue = admin.checked;
         const compValue = comp.checked;
-        const vendedorValue = vendedor.checked;
-        if (!adminValue && !compValue && !vendedorValue) {
+        // const vendedorValue = vendedor.checked;
+        if (!adminValue && !compValue) {
             errorMessage.textContent = "Debes seleccionar una opción.";
             formIsValid = false;
             

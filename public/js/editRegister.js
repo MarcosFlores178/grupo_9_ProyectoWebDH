@@ -78,30 +78,7 @@ window.addEventListener('load', function () {
 
 
   console.log('este lugar es el de la validación de los campos del formulario');
-  document.querySelector('#nuevaFoto').addEventListener('change', function() {
-    const fileInput = document.querySelector('#nuevaFoto');
-    const file = fileInput.files[0];  // Captura el archivo subido
-console.log('se activo el evento change');
-    if (file) {
-        const allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];  // Extensiones válidas
-        const fileName = file.name.toLowerCase();  // Nombre del archivo en minúsculas
-        const fileExtension = fileName.split('.').pop();  // Extraer la extensión del archivo
-
-        if (!allowedExtensions.includes(fileExtension)) {
-            Swal.fire({
-                title: 'Error',
-                text: 'Solo se permiten archivos de imagen: ' + allowedExtensions.join(', '),
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            });
-            // alert('Solo se permiten archivos de imagen: ' + allowedExtensions.join(', ')); //esta linea hace lo siguiente: si el archivo no es una imagen, muestra un alert con el mensaje que se encuentra entre comillas. Es decir, si el archivo no es una imagen, se mostrará un mensaje que dice "Solo se permiten archivos de imagen: jpg, jpeg, png, gif"
-            fileInput.value = '';  // Limpiar el input si no es válido
-        } else {
-            // Aquí puedes proceder con el procesamiento del archivo válido
-            console.log('Archivo válido: ', file.name);
-        }
-    }
-});
+  
     document.getElementById('editarRegistro').addEventListener('submit', function (e) {
            console.log('inicio de submit');
 

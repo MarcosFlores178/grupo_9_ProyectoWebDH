@@ -148,6 +148,49 @@ i {
         display: block; /* Opcional, elimina el espacio debajo de la imagen */
 }
 
+.perfil-cuenta{
+    position: relative;
+    /* display: inline-block; */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+.tooltip-text {
+    visibility: hidden;
+    width: 100px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    position: absolute;
+    bottom: 125%; /* Posición por encima del enlace */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9em;
+}
+
+
+.perfil-cuenta:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+.foto-perfil-header {
+    /* margin: 1rem; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* Hace la imagen redonda */
+    object-fit: cover;
+    /* Asegura que la imagen se recorte bien si no es cuadrada */
+}
 .search-bar button:hover {
     background-color: #365f9b;
 }
@@ -212,7 +255,10 @@ i {
     display: none;
     justify-content: space-evenly;
     width: 20%;
+    align-items: center;
 }
+
+
 .menu-desktop a:hover{
     color: #000000;
     cursor: pointer;
@@ -334,6 +380,7 @@ nav.menu-categorias {
     .menu-desktop {
         display: flex;
         width: auto;
+        align-items: center;
     }
 
     .menu-desktop a {

@@ -7,8 +7,8 @@
                 <%-include ('../partials/button-top.ejs')%>
                     <main class="perfil-usuario">
                         <div class="saludo">
-                            <img class="foto-perfil" src="/images/users/<%= usuario.foto_perfil%>" alt="">
-                            <h1>Hola <%=usuario.nombre%>.</h1>
+                            <!-- <img class="foto-perfil" src="/images/users/<%= usuario.foto_perfil%>" alt=""> -->
+                            <h1 class="titulo-miperfil">MI PERFIL</h1>
                         </div>
                         <div class="todos-datos">
                             <section class="container-datos">
@@ -102,6 +102,22 @@
                                         </h4>
                                         <h4 class="valor">
                                             <%=usuario.email%>
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Contraseña:
+                                        </h4>
+                                        <h4 class="valor">
+                                            ***********
+                                        </h4>
+                                    </div>
+                                    <div class="dato">
+                                        <h4 class="atributo">
+                                            Imagen de perfil:
+                                        </h4>
+                                        <img class="foto-perfil-cuadrada" src="/images/users/<%=user.foto_perfil%>" alt="">
+                                            
                                         </h4>
                                     </div>
                                 </div>
