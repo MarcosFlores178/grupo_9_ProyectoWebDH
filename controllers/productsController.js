@@ -275,17 +275,23 @@ let successMessage = req.flash('successMessage')[0] || '';
     }
   },
   
-    // Método para listar productos por categoría principal
-
-  
+ // Método para listar productos por categoría principal
+ 
       mostrarProductos: async (req, res) => {
+        async function obtenerCategoriaPrincipal(categoriaId) {
+          let categoriaActual = await db.Categoria.findByPk(categoriaId);
+          while (categoriaActual && categoriaActual.nivel !== 1) {
+              categoriaActual = await db.Categoria.findByPk(categoriaActual.parent_id);
+          }
+          return categoriaActual;
+      }
         console.log('hola');
         try {
          
           const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
           // const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
           const categoriaSeleccionadaId = categoriaId; // Convertimos a número
-    
+    console.log('categoriaId:', categoriaId);
           // Buscamos la categoría seleccionada en la base de datos
           const categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId); //Primer where
     
@@ -293,19 +299,33 @@ let successMessage = req.flash('successMessage')[0] || '';
           if (!categoriaSeleccionada) {
             // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
             const productos = await db.Producto.findAll(); // Obtiene todos los productos
-            return res.render('products/productoscat', { productos });
+            return res.render('products/productos', { productos });
           }
-    
+          const categoriaPrincipal = await obtenerCategoriaPrincipal(categoriaSeleccionadaId);
           let productosFiltrados = [];
-    
+          let categoriaBanner = ''; 
+          if (categoriaPrincipal) {
+            if (categoriaPrincipal.id === 1) {
+                categoriaBanner = 'hombre';
+            } else if (categoriaPrincipal.id === 2) {
+                categoriaBanner = 'mujer';
+            } else if (categoriaPrincipal.id === 3) {
+                categoriaBanner = 'infantil';
+            } else if (categoriaPrincipal.id === 4) {
+                categoriaBanner = 'accesorios';
+            }
+        }
+            console.log('categoriaBanner:', categoriaBanner);
           // Caso 1: Si es una categoría principal
           if (categoriaSeleccionada.nivel === 1) {
             const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });//Segundo where
             const subcategoriasIds = subcategorias.map(sub => sub.id);
-        
+        console.log('subcategoria:',subcategorias);
+        console.log('subcategoriasid:',subcategoriasIds);
+
             const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
             const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
-          
+        
             productosFiltrados = await db.Producto.findAll({
               where: {
                 [Op.or]: [
@@ -340,7 +360,8 @@ let successMessage = req.flash('successMessage')[0] || '';
           }
     
           // Enviamos los productos filtrados a la vista
-          res.render('products/productoscat', { productos: productosFiltrados });
+         
+          res.render('products/productoscat', { productos: productosFiltrados, categoriaBanner });
         } catch (error) {
           console.error("Error al mostrar productos:", error);
           res.status(500).send("Ocurrió un error al procesar la solicitud.");
