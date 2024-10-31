@@ -3,60 +3,7 @@
      <li>
       <a href="/products">Todos los productos</a>
     </li>
-   <!-- <li>
-      <a href="/products/categoria/Hombre">Hombre</a>
-      <ul class="submenu">
-        <li><a href="/products/details-product">Botines</a></li>
-        <li><a href="/products/details-product">Camisetas</a></li>
-        <li><a href="/products/details-product">Shorts</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">Mujer</a>
-      <ul class="submenu">
-        <li><a href="/products/details-product">Botines</a></li>
-        <li><a href="/products/details-product">Camisetas</a></li>
-        <li><a href="/products/details-product">Shorts</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">Infantil</a>
-      <ul class="submenu">
-        <li><a href="/products/details-product">Botines</a></li>
-        <li><a href="/products/details-product">Camisetas</a></li>
-        <li><a href="/products/details-product">Shorts</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">Marcas</a>
-      <ul class="submenu">
-        <li><a href="products/brands/adidas">Adidas</a></li>
-        <li><a href="#">Converse</a></li>
-        <li><a href="#">Fila</a></li>
-        <li><a href="#">Lotto</a></li>
-        <li><a href="#">Nike</a></li>
-        <li><a href="#">Puma</a></li>
-        <li><a href="#">Reebok</a></li>
-        <li><a href="#">Topper</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">Clubes</a>
-      <ul class="submenu">
-        <li><a href="#">Nacionales</a></li>
-        <li><a href="#">Internacionales</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#">Accesorios</a>
-      <ul class="submenu">
-        <li><a href="#">Guantes</a></li>
-        <li><a href="#">Medias</a></li>
-        <li><a href="#">Pelotas</a></li>
-        <li><a href="#">Protección</a></li>
-        <li><a href="#">Redes</a></li>
-      </ul>
-    </li> -->
+   
     <% categorias.filter(cat => !cat.parent_id).forEach(categoria => { %>
       <li>
           <a href="/products/categorias?categoriaId=<%= categoria.id %>"><%= categoria.categoria %></a>

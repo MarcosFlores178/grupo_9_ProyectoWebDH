@@ -35,17 +35,17 @@
             </div>
           </div>
           <%- include('../partials/footer') %>
-          <% if (successMessage && successMessage.length > 0) { %>
-            <script>
+            <% if (successMessage && successMessage.length> 0) { %>
+              <script>
                 Swal.fire({
-                    title: 'Producto eliminado',
-                    text: '<%= successMessage %>',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
+                  title: 'Producto eliminado',
+                  text: '<%= successMessage %>',
+                  icon: 'success',
+                  confirmButtonText: 'Aceptar'
                 });
-                </script>
-            
-            <% } %>
+              </script>
+
+              <% } %>
   </body>
 
 </html>

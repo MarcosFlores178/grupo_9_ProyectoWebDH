@@ -284,6 +284,8 @@ nav.menu-categorias {
 }
 /*---------------------------------------------Carrusel 2-----------------------------------------*/
 .carrusel {
+    z-index: -9999;
+   /* display: none; */
     position: relative;
     margin: auto;
     overflow: hidden;
@@ -437,86 +439,7 @@ img {
         transform: translateY(20px); /* Desplazado hacia abajo */
     }
 }
-/*
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 40px 0;
-}
 
-.footer .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-section {
-    flex: 1 1 200px;
-    margin: 20px;
-}
-
-.footer-section h3 {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-}
-
-.footer-section p, .footer-section ul, .footer-section a {
-    margin-bottom: 10px;
-    color: #bbb;
-    text-decoration: none;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li a:hover {
-    color: white;
-}
-
-
-.footer-section .social a {
-    display: inline-block;
-    margin-right: 10px;
-    color: #bbb;
-    font-size: 1.5em;
-}
-
-.footer-section .social a:hover {
-    color: white;
-}
-
-.footer-section .newsletter input[type="email"] {
-    padding: 10px;
-    margin-right: 10px;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-}
-
-.footer-section .newsletter button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #ff5e14;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.footer-section .newsletter button:hover {
-    background-color: #e04d0b;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    background-color: #222;
-    color: #bbb;
-}
-*/
 @media (min-width: 954px) {
 
     nav.menu-categorias {
@@ -634,59 +557,5 @@ img {
     }
 
 
-    nav.menu-categorias {
-        background-color: #333;
-        padding: 10px;
-        z-index: 2;
-    }
-
-    nav.menu-categorias ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-    }
-
-    nav.menu-categorias ul li {
-        position: relative;
-    }
-
-    nav.menu-categorias ul li a {
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        display: block;
-    }
-
-    nav.menu-categorias ul li a:hover {
-        background-color: #444;
-    }
-
-    nav.menu-categorias ul li ul.submenu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #444;
-        display: none;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        min-width: 150px;
-    }
-
-    nav.menu-categorias ul li ul.submenu li a {
-        color: white;
-        padding: 10px;
-        text-decoration: none;
-        display: block;
-    }
-
-    nav.menu-categorias ul li ul.submenu li a:hover {
-        background-color: #555;
-    }
-
-    nav.menu-categorias ul li:hover ul.submenu {
-        display: block;
-    }
 
 }

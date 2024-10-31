@@ -3,15 +3,11 @@
 <%-include ('../partials/head.ejs', {estilo:'index'})%>
 
   <body>
-    <%-include ('../partials/header.ejs')%>
-      <form class="search-bar">
-        <input type="text" name="" placeholder="Buscar productos, marcas, etc..." />
-        <!-- <button type="submit">Buscar</button> -->
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </form>
-      <%-include ('../partials/nav-bar.ejs')%>
-        <main>
-          <%-include ('../partials/button-top.ejs')%>
+     <!-- Header -->
+    <%- include('../partials/header') %>
+      <!-- /nav-bar -->
+      <%- include('../partials/nav-bar') %>
+        <%-include ('../partials/button-top')%>
 <!-- ------------------------------------------------------------------------------------->
 <div class="carrusel">
   <div class="carrusel-inner">
