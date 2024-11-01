@@ -25,7 +25,13 @@
                                     <%= producto.nombre %>
                                 </h1>
                                 <p class="price">
-                                $<%=producto.precio%>
+                                    <% if (producto.enOferta) { %>
+                                        <p><strong>Precio Original:</strong> $<%= producto.precio %></p>
+                                        <p><strong>Precio con Descuento:</strong> $<%= (producto.precio * (1 - producto.descuento / 100)).toFixed(2) %></p>
+                                        <p><strong>Descuento:</strong> <%= producto.descuento %>%</p>
+                                    <% } else { %>
+                                        <p><strong>Precio:</strong> $<%= producto.precio %></p>
+                                    <% } %>
                             </p>
                                 <p class="color">Color: 
                                 <%= producto.color %>

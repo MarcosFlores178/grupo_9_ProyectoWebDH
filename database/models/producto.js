@@ -21,6 +21,14 @@ module.exports = (sequelize, dataTypes) => {
     precio: {
       type: dataTypes.DECIMAL(10, 2),
     },
+    oferta: {
+      type: dataTypes.BOOLEAN,
+      defaultValue: false
+  },
+  descuento: {
+      type: dataTypes.FLOAT,
+      defaultValue: 0
+  },
   };
   let config = {
     tableName: "productos",

@@ -34,6 +34,13 @@
                                         </p>
                                         <% }%>
                                 </div>
+                                <label>
+                                    <input type="checkbox" name="oferta" <%= producto.oferta ? 'checked' : '' %>> Marcar como en oferta
+                                </label>
+                                <label>
+                                    Porcentaje de descuento:
+                                    <input type="number" name="descuento" min="0" max="100" value="<%= producto.descuento %>">
+                                </label>
                                 <div>
                                     <label for="color">Color: </label>
                                     <input type="text" name="color" id="color" value="<%= producto.color %>">
@@ -140,6 +147,7 @@
                         </script>
                     
                     <% } %>
+    
                 <%-include ('../partials/footer.ejs')%>
                   
     </body>

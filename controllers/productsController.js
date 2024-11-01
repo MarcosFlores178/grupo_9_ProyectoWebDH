@@ -241,6 +241,8 @@ let successMessage = req.flash('successMessage')[0] || '';
             precio: req.body.precio,
             id_talle: req.body.talle,
             id_marca: req.body.marca,
+            oferta: req.body.oferta==="on",
+            descuento: parseFloat(req.body.descuento)||0,
           },
           { where: { id: id } }
         );
