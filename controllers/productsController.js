@@ -9,7 +9,7 @@ const productsController = {
   productsList: null,
   showDetails: (req, res) => {
     db.Producto.findbyPk(req.param).then((producto) => {
-      return res.render("products/details-product", { producto, usuario });
+      return res.render("products/details-product2", { producto, usuario });
     });
   },
   showShopCart: (req, res) => {
@@ -77,7 +77,7 @@ let successMessage = req.flash('successMessage')[0] || '';
         },
       ],
     }).then((producto) => {
-      return res.render("products/details-product", {
+      return res.render("products/details-product2", {
         producto,
         usuario,
         successMessage
