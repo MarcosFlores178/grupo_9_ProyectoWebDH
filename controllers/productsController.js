@@ -189,37 +189,108 @@ let successMessage = req.flash('successMessage')[0] || '';
     }
   },
 
-  showEditForm: (req, res) => {
-    let marcas = db.Marca.findAll();
-    let talles = db.Talle.findAll();
-    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
-    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
-    const producto = db.Producto.findByPk(req.params.id, {
-      include: [
-        {
-          model: db.Talle,
-          atributes: ["id", "descripcion"],
-          as: "talle",
-        },
-        {
-          model: db.Marca,
-          atributes: ["id", "descripcion"],
-          as: "marca",
-        },
-      ],
-    });
-    Promise.all([marcas, talles, producto]).then(
-      ([marcas, talles, producto]) => {
-        res.render("products/editproduct", { producto, marcas, talles, mapsDeError: {}, errorMessage, successMessage });
-      }
-    );
-  },
+  showEditForm: async (req, res) => {
+    try {
+        const marcas = await db.Marca.findAll(); 
+        const talles = await db.Talle.findAll(); 
+        const errorMessage = req.flash('ValErrorMessage')[0] || ''; 
+        const successMessage = req.flash('successMessage')[0] || ''; 
+
+        const producto = await db.Producto.findByPk(req.params.id, {
+            include: [
+                {
+                    model: db.Talle,
+                    attributes: ["id", "descripcion"],
+                    as: "talle",
+                },
+                {
+                    model: db.Marca,
+                    attributes: ["id", "descripcion"],
+                    as: "marca",
+                },
+                {
+                  
+                    model: db.Categoria,
+                    as: "categoria",
+                    include: [
+                      {
+                        model: db.Categoria,
+                        as: "subcategoria",
+                        include: [
+                          {
+                            model: db.Categoria,
+                            as: "tiposProducto",
+                          }
+                        ]
+                      }
+                    ]
+                  }
+            ],
+        });
+        let tipo = producto.id_categoria;
+        let productoEditado = await db.Categoria.findByPk(tipo); 
+        let subcategoria = await db.Categoria.findByPk(productoEditado.parent_id);
+        let categoria = await db.Categoria.findByPk(subcategoria.parent_id);
+
+        console.log('tipo:', tipo);
+        console.log('productoEditado:', productoEditado);
+        console.log('subcategoria:', subcategoria);
+        console.log('categoria:', categoria);
+        // Verificar si el producto existe
+        if (!producto) {
+            return res.status(404).send("Producto no encontrado.");
+        }
+
+        // Obtener las categorías principales
+        const categoriasPrincipales = await db.Categoria.findAll({
+            where: { parent_id: null, nivel: 1 },
+            include: {
+                model: db.Categoria,
+                as: 'subcategoria',
+                where: { nivel: 2 },
+                required: false,
+                include: {
+                    model: db.Categoria,
+                    as: 'tiposProducto',
+                    where: { nivel: 3 },
+                    required: false
+                }
+            }
+        });
+
+        // Definir los IDs de categoría, subcategoría y tipo de producto actuales del producto
+        const productoCategoriaId = producto.categoria ? producto.categoria.id : null;
+        const productoSubcategoriaId = producto.categoria && producto.categoria.subcategoria ? producto.categoria.subcategoria.id : null; // Acceso correcto
+        const productoTipoId = producto.categoria && producto.categoria.subcategoria && producto.categoria.subcategoria.tiposProducto ? producto.categoria.subcategoria.tiposProducto.id : null;
+console.log(productoCategoriaId);
+console.log(productoSubcategoriaId);
+console.log(productoTipoId);
+        // Renderizar la vista
+        res.render("products/editproduct", { 
+            producto, 
+            marcas, 
+            talles, 
+            mapsDeError: {}, 
+            errorMessage, 
+            successMessage, 
+            categoriasPrincipales, 
+            productoEditado, 
+            subcategoria, 
+            categoria 
+        });
+    } catch (error) {
+        console.error("Error en showEditForm:", error);
+        res.status(500).send("Hubo un error al cargar el formulario de edición.");
+    }
+},
+
   
   editProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles (await porque son operaciones asincrónicas)
       let marcas = await db.Marca.findAll();
       let talles = await db.Talle.findAll();
+      let categorias = await db.Categoria.findAll();
 
       // Validación de errores en el request
       let errores = validationResult(req);
