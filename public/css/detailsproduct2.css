@@ -251,6 +251,19 @@ body {
     /* Eliminar height para permitir ajuste automático */
 }
 
+.normal{
+    text-decoration: line-through;
+    margin-bottom: 0.50rem;
+}
+.precio-final{
+   
+    font-size: 1.25em;
+}
+.descuento{
+    color: green;
+    font-size: 0.75em;
+    margin-left: 0.75rem;
+}
 .boton-editar:hover {
     background-color: #0022AA;
 }
