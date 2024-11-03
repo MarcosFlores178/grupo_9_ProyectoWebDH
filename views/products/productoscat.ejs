@@ -10,18 +10,21 @@
       <%- include('../partials/nav-bar') %>
         <%-include ('../partials/button-top')%>
           <!-- todos los productos -->
-           <% if (  categoriaBanner ==='accesorios') { %>
+           <% if (  bannerCategoriaPrincipal ==='Accesorios' ) { %>
           <img class="banner" src="/images/banners/banneraccesorios.jpg" alt="">
            <% } %>
-           <% if (  categoriaBanner ==='hombre') { %>
+           <% if (  bannerCategoriaPrincipal ==='Hombre') { %>
           <img class="banner" src="/images/banners/bannerHombre.jpg" alt="">
            <% } %>
-           <% if (  categoriaBanner ==='mujer') { %>
+           <% if (  bannerCategoriaPrincipal ==='Mujer') { %>
           <img class="banner" src="/images/banners/bannerMujer.jpg" alt="">
            <% } %>
-           <% if (  categoriaBanner ==='infantil') { %>
+           <% if (  bannerCategoriaPrincipal ==='Infantil') { %>
           <img class="banner" src="/images/banners/bannerInfantil.jpg" alt="">
            <% } %>
+           <%=bannerCategoriaPrincipal  %>
+           <%=bannerSubcategoria%>
+           <%=bannerTipoProducto%>
             <div class="div-body">
            
             <div class="todos-los-productos">

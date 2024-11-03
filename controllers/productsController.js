@@ -4,7 +4,7 @@ const path = require("path");
 const { validationResult } = require('express-validator');
 const dataSource = require("../service/dataSource.js");
 const { Sequelize } = require("sequelize");
-const { Op } = require('sequelize'); 
+const { Op } = require('sequelize');
 const productsController = {
   productsList: null,
   showDetails: (req, res) => {
@@ -46,7 +46,7 @@ const productsController = {
         //  }
 
       });
-let successMessage = req.flash('successMessage')[0] || '';
+      let successMessage = req.flash('successMessage')[0] || '';
       // Renderizar la vista y pasar los productos
       res.render('products/productos', { productos, successMessage });
     } catch (error) {
@@ -94,46 +94,46 @@ let successMessage = req.flash('successMessage')[0] || '';
     console.log(this.productsList);
   },
 
-  showAddProduct : async (req, res) => {
+  showAddProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles
-    let marcas = db.Marca.findAll();
-    let talles = db.Talle.findAll();
-  //   const categoriasPrincipales = await db.Categoria.findAll({
-  //     where: { parent_id: null },
-  //     include: {
-  //         model: db.Categoria, //esta es la linea 122
-  //         as: 'subcategoria'
-  //     }
+      let marcas = db.Marca.findAll();
+      let talles = db.Talle.findAll();
+      //   const categoriasPrincipales = await db.Categoria.findAll({
+      //     where: { parent_id: null },
+      //     include: {
+      //         model: db.Categoria, //esta es la linea 122
+      //         as: 'subcategoria'
+      //     }
 
-  // });
-  const categoriasPrincipales = await db.Categoria.findAll({
-    where: {parent_id: null, nivel: 1 },
-    include: {
-        model: db.Categoria,
-        as: 'subcategoria',
-        where: { nivel: 2 },
-        required: false, // Hacer opcional en caso de que alguna categoría no tenga subcategorías
+      // });
+      const categoriasPrincipales = await db.Categoria.findAll({
+        where: { parent_id: null, nivel: 1 },
         include: {
+          model: db.Categoria,
+          as: 'subcategoria',
+          where: { nivel: 2 },
+          required: false, // Hacer opcional en caso de que alguna categoría no tenga subcategorías
+          include: {
             model: db.Categoria,
             as: 'tiposProducto', // Esto representa el nivel de tipo de producto
             where: { nivel: 3 },
             required: false
+          }
         }
-    }
-});
+      });
 
-    const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
-    const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
-    Promise.all([marcas, talles]).then(([marcas, talles]) => {
-      res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage, categoriasPrincipales });
-    });
-  } catch (error) {
-    console.error("Error obteniendo las categorías:", error);
-    res.status(500).send("Hubo un error al cargar las categorías.");
-}
+      const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+      const successMessage = req.flash('successMessage')[0] || ''; // Recuperar el mensaje de éxito
+      Promise.all([marcas, talles]).then(([marcas, talles]) => {
+        res.render("products/addproduct", { marcas, talles, mapsDeError: {}, errorMessage, successMessage, categoriasPrincipales });
+      });
+    } catch (error) {
+      console.error("Error obteniendo las categorías:", error);
+      res.status(500).send("Hubo un error al cargar las categorías.");
+    }
   },
-  
+
   addProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles
@@ -191,100 +191,100 @@ let successMessage = req.flash('successMessage')[0] || '';
 
   showEditForm: async (req, res) => {
     try {
-        const marcas = await db.Marca.findAll(); 
-        const talles = await db.Talle.findAll(); 
-        const errorMessage = req.flash('ValErrorMessage')[0] || ''; 
-        const successMessage = req.flash('successMessage')[0] || ''; 
+      const marcas = await db.Marca.findAll();
+      const talles = await db.Talle.findAll();
+      const errorMessage = req.flash('ValErrorMessage')[0] || '';
+      const successMessage = req.flash('successMessage')[0] || '';
 
-        const producto = await db.Producto.findByPk(req.params.id, {
+      const producto = await db.Producto.findByPk(req.params.id, {
+        include: [
+          {
+            model: db.Talle,
+            attributes: ["id", "descripcion"],
+            as: "talle",
+          },
+          {
+            model: db.Marca,
+            attributes: ["id", "descripcion"],
+            as: "marca",
+          },
+          {
+
+            model: db.Categoria,
+            as: "categoria",
             include: [
-                {
-                    model: db.Talle,
-                    attributes: ["id", "descripcion"],
-                    as: "talle",
-                },
-                {
-                    model: db.Marca,
-                    attributes: ["id", "descripcion"],
-                    as: "marca",
-                },
-                {
-                  
-                    model: db.Categoria,
-                    as: "categoria",
-                    include: [
-                      {
-                        model: db.Categoria,
-                        as: "subcategoria",
-                        include: [
-                          {
-                            model: db.Categoria,
-                            as: "tiposProducto",
-                          }
-                        ]
-                      }
-                    ]
-                  }
-            ],
-        });
-        let tipo = producto.id_categoria;
-        let productoEditado = await db.Categoria.findByPk(tipo); 
-        let subcategoria = await db.Categoria.findByPk(productoEditado.parent_id);
-        let categoria = await db.Categoria.findByPk(subcategoria.parent_id);
-
-        console.log('tipo:', tipo);
-        console.log('productoEditado:', productoEditado);
-        console.log('subcategoria:', subcategoria);
-        console.log('categoria:', categoria);
-        // Verificar si el producto existe
-        if (!producto) {
-            return res.status(404).send("Producto no encontrado.");
-        }
-
-        // Obtener las categorías principales
-        const categoriasPrincipales = await db.Categoria.findAll({
-            where: { parent_id: null, nivel: 1 },
-            include: {
+              {
                 model: db.Categoria,
-                as: 'subcategoria',
-                where: { nivel: 2 },
-                required: false,
-                include: {
+                as: "subcategoria",
+                include: [
+                  {
                     model: db.Categoria,
-                    as: 'tiposProducto',
-                    where: { nivel: 3 },
-                    required: false
-                }
-            }
-        });
+                    as: "tiposProducto",
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+      });
+      let tipo = producto.id_categoria;
+      let productoEditado = await db.Categoria.findByPk(tipo);
+      let subcategoria = await db.Categoria.findByPk(productoEditado.parent_id);
+      let categoria = await db.Categoria.findByPk(subcategoria.parent_id);
 
-        // Definir los IDs de categoría, subcategoría y tipo de producto actuales del producto
-        const productoCategoriaId = producto.categoria ? producto.categoria.id : null;
-        const productoSubcategoriaId = producto.categoria && producto.categoria.subcategoria ? producto.categoria.subcategoria.id : null; // Acceso correcto
-        const productoTipoId = producto.categoria && producto.categoria.subcategoria && producto.categoria.subcategoria.tiposProducto ? producto.categoria.subcategoria.tiposProducto.id : null;
-console.log(productoCategoriaId);
-console.log(productoSubcategoriaId);
-console.log(productoTipoId);
-        // Renderizar la vista
-        res.render("products/editproduct", { 
-            producto, 
-            marcas, 
-            talles, 
-            mapsDeError: {}, 
-            errorMessage, 
-            successMessage, 
-            categoriasPrincipales, 
-            productoEditado, 
-            subcategoria, 
-            categoria 
-        });
+      console.log('tipo:', tipo);
+      console.log('productoEditado:', productoEditado);
+      console.log('subcategoria:', subcategoria);
+      console.log('categoria:', categoria);
+      // Verificar si el producto existe
+      if (!producto) {
+        return res.status(404).send("Producto no encontrado.");
+      }
+
+      // Obtener las categorías principales
+      const categoriasPrincipales = await db.Categoria.findAll({
+        where: { parent_id: null, nivel: 1 },
+        include: {
+          model: db.Categoria,
+          as: 'subcategoria',
+          where: { nivel: 2 },
+          required: false,
+          include: {
+            model: db.Categoria,
+            as: 'tiposProducto',
+            where: { nivel: 3 },
+            required: false
+          }
+        }
+      });
+
+      // Definir los IDs de categoría, subcategoría y tipo de producto actuales del producto
+      const productoCategoriaId = producto.categoria ? producto.categoria.id : null;
+      const productoSubcategoriaId = producto.categoria && producto.categoria.subcategoria ? producto.categoria.subcategoria.id : null; // Acceso correcto
+      const productoTipoId = producto.categoria && producto.categoria.subcategoria && producto.categoria.subcategoria.tiposProducto ? producto.categoria.subcategoria.tiposProducto.id : null;
+      console.log(productoCategoriaId);
+      console.log(productoSubcategoriaId);
+      console.log(productoTipoId);
+      // Renderizar la vista
+      res.render("products/editproduct", {
+        producto,
+        marcas,
+        talles,
+        mapsDeError: {},
+        errorMessage,
+        successMessage,
+        categoriasPrincipales,
+        productoEditado,
+        subcategoria,
+        categoria
+      });
     } catch (error) {
-        console.error("Error en showEditForm:", error);
-        res.status(500).send("Hubo un error al cargar el formulario de edición.");
+      console.error("Error en showEditForm:", error);
+      res.status(500).send("Hubo un error al cargar el formulario de edición.");
     }
-},
+  },
 
-  
+
   editProduct: async (req, res) => {
     try {
       // Consultas a la base de datos para obtener marcas y talles (await porque son operaciones asincrónicas)
@@ -312,8 +312,8 @@ console.log(productoTipoId);
             precio: req.body.precio,
             id_talle: req.body.talle,
             id_marca: req.body.marca,
-            oferta: req.body.oferta==="on",
-            descuento: parseFloat(req.body.descuento)||0,
+            oferta: req.body.oferta === "on",
+            descuento: parseFloat(req.body.descuento) || 0,
           },
           { where: { id: id } }
         );
@@ -344,112 +344,143 @@ console.log(productoTipoId);
       console.error(error);
       req.flash('ValErrorMessage', 'Ocurrió un error. Intente nuevamente');
       // return res.status(500).send("Error al procesar la solicitud");
-      return  res.redirect(`/products/detail/${id}`);
+      return res.redirect(`/products/detail/${id}`);
     }
   },
-  
- // Método para listar productos por categoría principal
- 
-      mostrarProductos: async (req, res) => {
-        async function obtenerCategoriaPrincipal(categoriaId) {
-          let categoriaActual = await db.Categoria.findByPk(categoriaId);
-          while (categoriaActual && categoriaActual.nivel !== 1) {
-              categoriaActual = await db.Categoria.findByPk(categoriaActual.parent_id);
-          }
-          return categoriaActual;
-      }
-        console.log('hola');
-        try {
-         
-          const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
-          // const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
-          const categoriaSeleccionadaId = categoriaId; // Convertimos a número
-    console.log('categoriaId:', categoriaId);
-          // Buscamos la categoría seleccionada en la base de datos
-          const categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId); //Primer where
-    
-          // Si no se encuentra la categoría, mostramos todos los productos
-          if (!categoriaSeleccionada) {
-            // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
-            const productos = await db.Producto.findAll(); // Obtiene todos los productos
-            return res.render('products/productos', { productos });
-          }
-          const categoriaPrincipal = await obtenerCategoriaPrincipal(categoriaSeleccionadaId);
-          let productosFiltrados = [];
-          let categoriaBanner = ''; 
-          if (categoriaPrincipal) {
-            if (categoriaPrincipal.id === 1) {
-                categoriaBanner = 'hombre';
-            } else if (categoriaPrincipal.id === 2) {
-                categoriaBanner = 'mujer';
-            } else if (categoriaPrincipal.id === 3) {
-                categoriaBanner = 'infantil';
-            } else if (categoriaPrincipal.id === 4) {
-                categoriaBanner = 'accesorios';
-            }
-        }
-            console.log('categoriaBanner:', categoriaBanner);
-          // Caso 1: Si es una categoría principal
-          if (categoriaSeleccionada.nivel === 1) {
-            const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });//Segundo where
-            const subcategoriasIds = subcategorias.map(sub => sub.id);
-        console.log('subcategoria:',subcategorias);
-        console.log('subcategoriasid:',subcategoriasIds);
 
-            const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
-            const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
-        
-            productosFiltrados = await db.Producto.findAll({
-              where: {
-                [Op.or]: [
-                  { id_categoria: categoriaSeleccionadaId },
-                  { id_categoria: subcategoriasIds },
-                  { id_categoria: tiposProductosIds }
-    
-                ]
-              }
-            });
-         
-    
-          }
-          // Caso 2: Si es una subcategoría
-          else if (categoriaSeleccionada.nivel === 2) {
-            const tiposProductos = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
-            const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
-           
-            productosFiltrados = await db.Producto.findAll({
-              where: {
-                [Op.or]: [
-                  { id_categoria: categoriaSeleccionadaId },
-                  { id_categoria: tiposProductosIds }
-                ]
-              }
-            });
-          }
-          // Caso 3: Si es un tipo de producto específico
-          else if (categoriaSeleccionada.nivel === 3) {
-            productosFiltrados = await db.Producto.findAll({ where: { id_categoria: categoriaSeleccionadaId } });
-          console.log(productosFiltrados);
-          }
-    
-          // Enviamos los productos filtrados a la vista
-         
-          res.render('products/productoscat', { productos: productosFiltrados, categoriaBanner });
-        } catch (error) {
-          console.error("Error al mostrar productos:", error);
-          res.status(500).send("Ocurrió un error al procesar la solicitud.");
-        }
-      },
+  // Método para listar productos por categoría principal
+
+  mostrarProductos: async (req, res) => {
+    async function obtenerCategoriaPrincipal(categoriaId) {
+      let categoriaActual = await db.Categoria.findByPk(categoriaId);
+      while (categoriaActual && categoriaActual.nivel !== 1) {
+        categoriaActual = await db.Categoria.findByPk(categoriaActual.parent_id);
+      }
+      return categoriaActual;
+    }
+    async function obtenerSubcategoria(categoriaId) {
+      let subCategoriaActual = await db.Categoria.findByPk(categoriaId);
+      while (subCategoriaActual && subCategoriaActual.nivel !== 2 && subCategoriaActual.nivel !== 1) {
+        subCategoriaActual = await db.Categoria.findByPk(subCategoriaActual.parent_id);
+      }
+      return subCategoriaActual;
+    }
+
+    try {
+
+      const { categoriaId } = req.query; // Obtenemos el ID de categoría seleccionada
+      // const categoriaSeleccionadaId = Number(categoriaId); // Convertimos a número
+      let categoriaSeleccionadaId = categoriaId; // Convertimos a número
+      console.log('categoriaId:', categoriaId);
+      // Buscamos la categoría seleccionada en la base de datos
+      let categoriaSeleccionada = await db.Categoria.findByPk(categoriaSeleccionadaId); //Primer where
+
+      // Si no se encuentra la categoría, mostramos todos los productos
+      if (!categoriaSeleccionada) {
+        // Asumiendo que `productos` está disponible en el contexto, quizás desde una consulta previa
+        const productos = await db.Producto.findAll(); // Obtiene todos los productos
+        return res.render('products/productos', { productos });
+      }
+      let categoriaPrincipal;
+      let nombreSubcategoria;
+      let tipoProducto;
+      let bannerSubcategoria;
+      let bannerSubcategoriaCategoria;
+      let tipoSubcategoria;
+      let tipoCategoria;
+      
+      let categoriaBanner = '';
+      let subCategoriaBanner = '';
+      let bannerTipoProducto = '';
+      let bannerCategoriaPrincipal = '';
+      if (categoriaSeleccionada.nivel === 1) {
+        categoriaPrincipal = await obtenerCategoriaPrincipal(categoriaSeleccionadaId);
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal (nivel 1)
+
+      }
+      if (categoriaSeleccionada.nivel === 2) {
+        nombreSubcategoria = await obtenerSubcategoria(categoriaSeleccionadaId);
+        categoriaPrincipal = await db.Categoria.findByPk(nombreSubcategoria.parent_id);
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal
+        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria.categoria : null;
+        // bannerSubcategoriaCategoria = subCategoriaCategoria ? subCategoriaCategoria.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una subcategoria (nivel 2)
+      }
+
+      if (categoriaSeleccionada.nivel === 3) {
+        tipoProducto = await db.Categoria.findByPk(categoriaSeleccionadaId);
+        nombreSubcategoria = await db.Categoria.findByPk(tipoProducto.parent_id);
+        categoriaPrincipal = await db.Categoria.findByPk(nombreSubcategoria.parent_id);
+
+        bannerTipoProducto = tipoProducto ? tipoProducto.categoria : null;
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null;
+        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria.categoria : null;
+      }
   
-    showMenu: async (req, res) => {
-        try {
-            const categorias = await db.Categoria.findAll();
-            res.render('partials/navbar', { categorias });
-        } catch (error) {
-            console.error(error);
-            res.status(500).send('Error al cargar las categorías');
-        }
-      },
+
+      let productosFiltrados = [];
+  
+      console.log('categoriaBanner:', categoriaBanner);
+      // Caso 1: Si es una categoría principal
+      if (categoriaSeleccionada.nivel === 1) {
+        const subcategorias = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });//Segundo where
+        const subcategoriasIds = subcategorias.map(sub => sub.id);
+        // console.log('subcategoria:', subcategorias);
+        // console.log('subcategoriasid:', subcategoriasIds);
+
+        const tiposProductos = await db.Categoria.findAll({ where: { parent_id: subcategoriasIds } });
+        const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+
+        productosFiltrados = await db.Producto.findAll({
+          where: {
+            [Op.or]: [
+              { id_categoria: categoriaSeleccionadaId },
+              { id_categoria: subcategoriasIds },
+              { id_categoria: tiposProductosIds }
+
+            ]
+          }
+        });
+
+
+      }
+      // Caso 2: Si es una subcategoría
+      else if (categoriaSeleccionada.nivel === 2) {
+        const tiposProductos = await db.Categoria.findAll({ where: { parent_id: categoriaSeleccionadaId } });
+        const tiposProductosIds = tiposProductos.map(tipo => tipo.id);
+
+        productosFiltrados = await db.Producto.findAll({
+          where: {
+            [Op.or]: [
+              { id_categoria: categoriaSeleccionadaId },
+              { id_categoria: tiposProductosIds }
+            ]
+          }
+        });
+      }
+      // Caso 3: Si es un tipo de producto específico
+      else if (categoriaSeleccionada.nivel === 3) {
+        productosFiltrados = await db.Producto.findAll({ where: { id_categoria: categoriaSeleccionadaId } });
+        // console.log(productosFiltrados);
+      }
+
+      // Enviamos los productos filtrados a la vista
+
+      res.render('products/productoscat', { productos: productosFiltrados, categoriaBanner, nombreSubcategoria: null, bannerSubcategoria, bannerCategoriaPrincipal, bannerTipoProducto});
+    } catch (error) {
+      console.error("Error al mostrar productos:", error);
+      res.status(500).send("Ocurrió un error al procesar la solicitud.");
+    }
+  },
+
+  showMenu: async (req, res) => {
+    try {
+      const categorias = await db.Categoria.findAll();
+      res.render('partials/navbar', { categorias });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al cargar las categorías');
+    }
+  },
   showDelete: (req, res) => {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
     const errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
