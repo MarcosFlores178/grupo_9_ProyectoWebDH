@@ -381,13 +381,11 @@ const productsController = {
         const productos = await db.Producto.findAll(); // Obtiene todos los productos
         return res.render('products/productos', { productos });
       }
-      let categoriaPrincipal;
-      let nombreSubcategoria;
-      let tipoProducto;
-      let bannerSubcategoria;
-      let bannerSubcategoriaCategoria;
-      let tipoSubcategoria;
-      let tipoCategoria;
+      let categoriaPrincipal='';
+      let nombreSubcategoria='';
+      let tipoProducto='';
+      let bannerSubcategoria='';
+      
       
       let categoriaBanner = '';
       let subCategoriaBanner = '';
@@ -395,14 +393,14 @@ const productsController = {
       let bannerCategoriaPrincipal = '';
       if (categoriaSeleccionada.nivel === 1) {
         categoriaPrincipal = await obtenerCategoriaPrincipal(categoriaSeleccionadaId);
-        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal (nivel 1)
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal (nivel 1)
 
       }
       if (categoriaSeleccionada.nivel === 2) {
         nombreSubcategoria = await obtenerSubcategoria(categoriaSeleccionadaId);
         categoriaPrincipal = await db.Categoria.findByPk(nombreSubcategoria.parent_id);
-        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal
-        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria.categoria : null;
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una categoria principal
+        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria: null;
         // bannerSubcategoriaCategoria = subCategoriaCategoria ? subCategoriaCategoria.categoria : null; //Acá se le da el valor a la categoria en caso de que se haga clic en una subcategoria (nivel 2)
       }
 
@@ -411,9 +409,9 @@ const productsController = {
         nombreSubcategoria = await db.Categoria.findByPk(tipoProducto.parent_id);
         categoriaPrincipal = await db.Categoria.findByPk(nombreSubcategoria.parent_id);
 
-        bannerTipoProducto = tipoProducto ? tipoProducto.categoria : null;
-        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal.categoria : null;
-        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria.categoria : null;
+        bannerTipoProducto = tipoProducto ? tipoProducto : null;
+        bannerCategoriaPrincipal = categoriaPrincipal ? categoriaPrincipal : null;
+        bannerSubcategoria = nombreSubcategoria ? nombreSubcategoria : null;
       }
   
 
