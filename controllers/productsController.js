@@ -141,12 +141,12 @@ const productsController = {
             as: "categoria",
             include: [
               {
-                model: db.Categoria,
-                as: "subcategoria",
+                model: db.Categoria,  //Modifiqué y agregue relaciones, ya que este metodo sólo funciona con relaciones belongsTo. Los otros metodos funcionan con hasMany, los metodos mostrarproductos y demas. Debo investigarlo.
+                as: "subca",
                 include: [
                   {
                     model: db.Categoria,
-                    as: "tiposProducto",
+                    as: "tiposPro",
                   }
                 ]
               }
@@ -159,8 +159,8 @@ const productsController = {
         return res.status(404).send("Producto no encontrado");
       }
       const categoria = producto.categoria;
-      const subcategoria = categoria?.subcategoria || null;
-      const tipoProducto = subcategoria?.tiposProducto || null;
+      const subcategoria = categoria?.subca || null;
+      const tipoProducto = subcategoria?.tiposPro || null;
       return res.render("products/details-product2", {
         producto,
         usuario,
