@@ -6,7 +6,12 @@ const fotoUserUpload = require("../service/fotoUserUpload");
 const logregMiddleware = require("../middlewares/logregMiddelware");
 const validateCurrentPassword = require("../middlewares/changePassword");
 
+router.get("/login", logregMiddleware, usersController.showLogin);
 
+router.post("/login", usersController.login);
+
+router.get("/logout", usersController.logout);
+router.get("/register", logregMiddleware, usersController.showRegister);
 
 
 //----------------------------------------Validar Registro Back----------------------------------
