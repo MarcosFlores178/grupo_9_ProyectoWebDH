@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const { validationResult } = require('express-validator');
 const dataSource = require("../service/dataSource.js");
-const { Sequelize } = require("sequelize");
+const { Sequelize, where } = require("sequelize");
 const { Op } = require('sequelize');
 const productsController = {
   productsList: null,
@@ -54,6 +54,32 @@ const productsController = {
       res.status(500).send('Error al cargar los productos');
     }
   },
+  showOfertas: async (req, res) => {
+    try {
+      // Obtener todos los productos de la base de datos
+      const productos = await db.Producto.findAll({
+        where: {
+          oferta: true
+        },
+        include: {
+          model: db.Marca, //Acá se pone el modelo, o sea el return que se envia desde el modelo Marca
+          as: 'marca',  // Alias que definimos en la asociación
+          attributes: ['descripcion'] // Solo traer el nombre de la marca
+        }
+        // {   model: Talle,
+        //   as: 'talles',  // Alias que definimos en la asociación
+        //   attributes: ['talle'] 
+        //  }
+
+      });
+      let successMessage = req.flash('successMessage')[0] || '';
+      // Renderizar la vista y pasar los productos
+      res.render('products/ofertas', { productos, successMessage });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Error al cargar los productos');
+    }
+  },
   showById: async function (req, res) {
     let usuario = req.session.user || null; // Asigna null si no hay usuario
     let successMessage = req.flash('successMessage')[0] || '';
@@ -67,14 +93,15 @@ const productsController = {
       include: [
         {
           model: db.Talle,
-          atributes: ["descripcion"],
+          attributes: ["descripcion"],
           as: "talle",
         },
         {
           model: db.Marca,
-          atributes: ["descripcion"],
+          attributes: ["descripcion"],
           as: "marca",
-        },
+        }
+        
       ],
     }).then((producto) => {
       return res.render("products/details-product2", {
@@ -84,6 +111,70 @@ const productsController = {
       });
     });
   },
+  showByIdCategoria: async function (req, res) {
+    let usuario = req.session.user || null; // Asigna null si no hay usuario
+    let successMessage = req.flash('successMessage')[0] || '';
+    
+    // Verifica si el usuario tiene la propiedad admincomp y si es "admin"
+    if (usuario && usuario.tipo_usuario === "admin") {
+      console.log("administrador:", usuario);
+    } else {
+      usuario = {};
+    }
+  
+    try {
+      // Busca el producto por ID e incluye las asociaciones
+      const producto = await db.Producto.findByPk(req.params.id, {
+        include: [
+          {
+            model: db.Talle,
+            attributes: ["descripcion"],
+            as: "talle",
+          },
+          {
+            model: db.Marca,
+            attributes: ["descripcion"],
+            as: "marca",
+          },
+          {
+            model: db.Categoria,
+            as: "categoria",
+            include: [
+              {
+                model: db.Categoria,
+                as: "subcategoria",
+                include: [
+                  {
+                    model: db.Categoria,
+                    as: "tiposProducto",
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+      });
+  
+      if (!producto) {
+        return res.status(404).send("Producto no encontrado");
+      }
+      const categoria = producto.categoria;
+      const subcategoria = categoria?.subcategoria || null;
+      const tipoProducto = subcategoria?.tiposProducto || null;
+      return res.render("products/details-product2", {
+        producto,
+        usuario,
+        successMessage,
+        categoria,
+        subcategoria,
+        tipoProducto
+      });
+    } catch (error) {
+      console.error("Error al obtener el producto:", error);
+      return res.status(500).send("Error interno del servidor");
+    }
+  },
+  
   showBrand: async (req, res) => {
     const { brand } = req.params.brand;
     this.productsList = await dataSource.load();
@@ -493,12 +584,12 @@ const productsController = {
       include: [
         {
           model: db.Talle,
-          atributes: ["descripcion"],
+          attributes: ["descripcion"],
           as: "talle",
         },
         {
           model: db.Marca,
-          atributes: ["descripcion"],
+          attributes: ["descripcion"],
           as: "marca",
         },
       ],

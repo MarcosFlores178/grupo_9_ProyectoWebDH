@@ -37,11 +37,13 @@ router.get("/shop-cart", userMiddleware, productsController.showShopCart);
 
 router.get("/", productsController.showAll);
 
+router.get("/ofertas", productsController.showOfertas);
+
 // router.get("/details-product", productsController.showDetails);
 
 // router.get("/brands/:brand", productsController.showBrand);
 
-router.get("/detail/:id", productsController.showById);
+router.get("/detail/:id", productsController.showByIdCategoria);
 
 router.get("/addproduct/", adminMiddleware, productsController.showAddProduct);
 

@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
         as: "producto",
         foreignKey: "id_categoria",
       });
-      Categoria.hasMany(models.Categoria, {
+      Categoria.belongsTo(models.Categoria, {
         as: "subcategoria",
         foreignKey: "parent_id",
       });
@@ -37,7 +37,7 @@ module.exports = (sequelize, dataTypes) => {
         as: "padre",
         foreignKey: "parent_id",
       });
-      Categoria.hasMany(models.Categoria, {
+      Categoria.belongsTo(models.Categoria, {
          as: 'tiposProducto', 
          foreignKey:'parent_id', 
       })
