@@ -30,7 +30,7 @@ body {
     }
     img{
         width: 250px;
-        margin-bottom: 20px;
+        margin: 20px 0px;
     }
     .botones {
         display: flex;

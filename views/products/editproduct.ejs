@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <%-include ('../partials/head.ejs', {estilo:'editproduct'})%>
 
     <body>
@@ -8,11 +8,13 @@
                 <main>
                     <%-include ('../partials/button-top.ejs')%>
                         <section class="cargaproducto">
-                            <h2>Editar producto</h2>
+                            <h2>Editar Producto</h2>
                             <form action="/products/detail/<%= producto.id %>?_method=put" method="POST"
                                 enctype="multipart/form-data" class="formulario" id="formulario">
                                 <div>
                                     <label for="nombre">Nombre del Producto:</label>
+                                    <input type="text" name="nombre" id="producto" placeholder="* Nombre del Producto"
+                                        value="<%= producto.nombre%>" />
                                     <input type="text" name="nombre" id="producto" placeholder="* Nombre del Producto"
                                         value="<%= producto.nombre%>" />
                                 </div>
@@ -153,7 +155,24 @@
                                     <br>
                                 </div>
                                 <span id="charCounter">Faltan 20 caracteres para el mínimo requerido (20).</span>
+                                        id="descripcion"><%= producto.descripcion%></textarea>
+                                    <br>
+                                </div>
+                                <span id="charCounter">Faltan 20 caracteres para el mínimo requerido (20).</span>
                                 <div class="error-container">
+                                    <% if (mapsDeError.descripcion) { %>
+                                        <p class="errorValidator">
+                                            <%= mapsDeError.descripcion.msg %>
+                                        </p>
+                                        <% }%>
+                                </div>
+                                <div class="imagen">
+                                    <label for="imagen">Cambiar imagen del producto:</label>
+                                    <div class="image-preview" id="imagePreview">
+                                        <img src="/images/products/<%= producto.imagen %>" id="imgPreview" src=""
+                                            alt="Vista previa de la imagen" style="width: 100%; max-width: 200px;" />
+                                    </div>
+                                    <br>
                                     <% if (mapsDeError.descripcion) { %>
                                         <p class="errorValidator">
                                             <%= mapsDeError.descripcion.msg %>
@@ -171,9 +190,11 @@
                                     <input type="hidden" name="currentImage" value="<%= producto.imagen %>">
                                 </div><br>
                                 <div class="botones">
-                                    <button class="boton-aceptar" type="submit" name="enviar"
+                                    <button class="boton-confirmar" type="submit" name="enviar"
                                         id="enviar">Confirmar</button>
                                     <button class="boton-cancelar" type="reset" class="boton-reset"
+                                        onclick="location.href='/products';">Cancelar</button>
+
                                         onclick="location.href='/products';">Cancelar</button>
 
                                 </div>
@@ -181,6 +202,7 @@
                         </section>
                 </main>
                 <script src="/js/product.js"></script>
+                <script src="/js/mostrarimagen.js"></script>
                 <% if (errorMessage && errorMessage.length> 0) { %>
                     <script>
                         Swal.fire({
@@ -189,6 +211,8 @@
                             icon: 'error',
                             confirmButtonText: 'Aceptar'
                         });
+                    </script>
+
                     </script>
 
                     <% } %>
@@ -204,6 +228,19 @@
 
                             <% } %>
                                 <%-include ('../partials/footer.ejs')%>
+
+                        <% if (successMessage && successMessage.length> 0) { %>
+                            <script>
+                                Swal.fire({
+                                    title: 'Producto editado',
+                                    text: '<%= successMessage %>',
+                                    icon: 'success',
+                                    confirmButtonText: 'Aceptar'
+                                });
+                            </script>
+
+                        <% } %>
+            <%-include ('../partials/footer.ejs')%>
 
     </body>
 
