@@ -20,6 +20,20 @@ body {
     /* height: 250px; */
    
 }
+.normal{
+    text-decoration: line-through;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+.precio-final{
+   
+    font-size: 16px;
+}
+.descuento{
+    color: green;
+    font-size: 14px;
+    margin-left: 2px;
+}
 .signo{
     /* display: inline; */
     /* width: 100%; */
