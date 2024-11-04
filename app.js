@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 const methodOverride = require("method-override");
 const rutaUsers = require("./routes/users.js");
 const rutaProducts = require("./routes/products.js");
@@ -41,5 +41,5 @@ app.use("/products", rutaProducts);
 app.use("/", rutaMain);
 
 app.listen(port, () => {
-  console.log("Servidor corriendo en el puerto 8080");
+  console.log("Servidor corriendo en el puerto 8000");
 });

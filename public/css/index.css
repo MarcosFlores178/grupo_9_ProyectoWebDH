@@ -397,13 +397,13 @@ img {
     
    
 }
-
+/*
 .animated-heading {
-    font-size: 2em; /* Tamaño del texto */
-    color: #3498db; /* Color del texto */
-    opacity: 0; /* Comienza invisible */
-    transform: translateY(-20px); /* Desplazado hacia arriba */
-    animation: fadeInUp 1s forwards; /* Aplicar la animación */
+    font-size: 2em; 
+    color: #3498db; 
+    opacity: 0; 
+    transform: translateY(-20px); 
+    animation: fadeInUp 1s forwards; 
 }
 
 @keyframes fadeInUp {
@@ -418,9 +418,9 @@ img {
 }
 
 .most-searched {
-    opacity: 0; /* Comienza invisible */
-    transform: translateY(-20px); /* Desplazado hacia arriba */
-    animation: fadeInUp 2s infinite; /* Aplicar la animación */
+    opacity: 0;
+    transform: translateY(-20px); 
+    animation: fadeInUp 2s infinite;
 }
 
 @keyframes fadeInUp {
@@ -429,14 +429,15 @@ img {
         transform: translateY(-20px);
     }
     50% {
-        opacity: 1; /* Totalmente visible en el medio de la animación */
-        transform: translateY(0); /* Posición original */
+        opacity: 1; 
+        transform: translateY(0); 
     }
     100% {
-        opacity: 0; /* Vuelve a ser invisible al final */
-        transform: translateY(20px); /* Desplazado hacia abajo */
+        opacity: 0; 
+        transform: translateY(20px); 
     }
-}
+}*/
+
 /*
 .footer {
     background-color: #333;
