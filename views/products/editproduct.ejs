@@ -97,9 +97,8 @@
                                 <select name="categoria" id="categoria">
                                     <option value="">Selecciona una categoría</option>
                                     <% categoriasPrincipales.forEach(categoria=> { %>
-                                        <option value="<%= categoria.id %>" <% if (categoria.id===categoria.id)
-                                            {
-                                            %> selected <% } %>>
+                                        <option value="<%= categoria.id %>" <% if (categoria.id===categoriaEditado.id)
+                                            { %> selected <% } %>>
                                                 <%= categoria.categoria %>
                                         </option>
                                         <% }) %>
@@ -115,8 +114,7 @@
                                                 <% categoria.subcategoria.forEach(subcategoria=> { %>
                                                     <option data-categoria="<%= categoria.id %>"
                                                         value="<%= subcategoria.id %>" <% if
-                                                        (subcategoria.id===subcategoria.id) { %> selected <% } %>
-                                                            >
+                                                        (subcategoria.id===subcategoriaEditado.id) { %> selected <% } %>>
                                                             <%= subcategoria.categoria %>
                                                     </option>
                                                     <% }) %>
