@@ -30,6 +30,23 @@
   <button class="prev" onclick="cambiarSlide(-1)">&#10094;</button>
   <button class="next" onclick="cambiarSlide(1)">&#10095;</button>
 </div>
+<!---------------------------------------Ofertas-->
+<h1>Catálogo de Productos</h1>
+  <div class="catalog-container">
+    <div class="block">
+      <!-- Cards del primer bloque -->
+      <div id="block1" class="cards"></div>
+    </div>
+    <div class="block">
+      <!-- Cards del segundo bloque -->
+      <div id="block2" class="cards"></div>
+    </div>
+  </div>
+
+
+
+<!--------------------------------------------------------------------------------------->
+
 
   <div class="boca-river" >
     <img class="card-bocaRiver" src="images/PXBRAS3RQRD5TNDNTN3UV4E64U.jpg" alt="categoria hombres" />
@@ -43,30 +60,9 @@
 
 
 
-<!-- ----------------------------------------------------------------------------------------
-          <div class="carrusel">
-            <div class="carrusel-inner">
-                <div class="item active">
-                    <img src="../images/1.webp" alt="Imagen 1">
-                </div>
-                <div class="item">
-                    <img src="../images/2.webp" alt="Imagen 2">
-                </div>
-                <div class="item">
-                    <img src="../images/3.webp" alt="Imagen 3">
-                </div>
-            </div>
-            <button class="prev" onclick="cambiarSlide(-1)">&#10094;</button>
-            <button class="next" onclick="cambiarSlide(1)">&#10095;</button>
-        </div>
-    
-        <script src="../../js/carrusel.js"></script> -->
+<!-- ---------------------------------------------------------------------------------------->
 
-<!-- -----------------------------------------------------------------------------------------
-        <section class="promociones">
-                    <img src="../images/1.webp" alt="">
-                  </section>
------------------------------------------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------------->
       <section class="destacado">
           <a href="/products/details-product"><img src="../images/destacado.jpg" width="100%"></a>
       </section>
@@ -75,13 +71,17 @@
                   <section>
                     <h2 class="most-searched">CATEGORIAS</h2>
                     <div class="categorias">
-                      <a href="/products/categorias?categoriaId=1"><img class="card-hombre" src="images/FLYERHOMBRE.jpg" alt="categoria hombres" /></a>
-                     <a href="/products/categorias?categoriaId=2"><img class="card-mujer" src="images/flyermujer.jpg" alt="categoria hombres" /></a>
+                     <div class="image-top-left"><a href="/products/categorias?categoriaId=1"><img class="card-hombre" src="images/FLYERHOMBRE.jpg" alt="categoria hombres" /></a></div>
+                     <div class="image-top-rigth"><a href="/products/categorias?categoriaId=2"><img class="card-mujer" src="images/flyermujer.jpg" alt="categoria hombres" /></a></div><hr>
+                     </div>
+                     
+                     <div class="categorias" id="ofertas">
+                      <a href="/products/ofertas"><img class="card-ofertas" src="/images/unnamed.png" alt=""> </a>
                     </div>
-                    <div class="categorias">
-                      <a href="/products/categorias?categoriaId=3"><img class="card-niños" src="images/flyerniños.jpg" alt="categoria hombres" /></a>
-                      <a href="/products/categorias?categoriaId=4"><img class="card-accesorios" src="images/FLYERACC.jpg" alt="categoria hombres" /></a>
-                      
+                     
+                     <div class="categorias">
+                     <div class="image-bottom-left"><a href="/products/categorias?categoriaId=3"><img class="card-niños" src="images/flyerniños.jpg" alt="categoria hombres" /></a></div>
+                     <div class="image-bottom-rigth"><a href="/products/categorias?categoriaId=4"><img class="card-accesorios" src="images/FLYERACC.jpg" alt="categoria hombres" /></a></div>
                     </div>
                   </section>
                   <!-- <section class="promociones">
@@ -95,6 +95,7 @@
             crossorigin="anonymous"></script>
           <script src="https://kit.fontawesome.com/a076d05399.js"></script>
           <script src="/js/carrusel.js"></script>
+          <script src="/js/productDestacados.js"></script>
     
   </body>
   <%# Desplazamiento suave del boton %>

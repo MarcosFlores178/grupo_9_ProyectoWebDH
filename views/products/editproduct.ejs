@@ -36,7 +36,7 @@
                                         <% }%>
                                 </div>
                                 <label>
-                                    <input type="checkbox" name="oferta" <%= producto.oferta ? 'checked' : '' %>> Marcar como en oferta
+                                    En oferta: <input type="checkbox" name="oferta" <%= producto.oferta ? 'checked' : '' %>> 
                                 </label>
                                 <label>
                                     Porcentaje de descuento:
@@ -173,12 +173,7 @@
                                         </p>
                                         <% }%>
                                 </div>
-                                <div>
-                                    <label for="imagen">Cambiar imagen del Producto</label>
-                                </div>
-                                <div>
-                                    <img src="/images/products/<%= producto.imagen %>" alt="" width="200px"><br>
-                                </div>
+                                
                                 <div>
                                     <input type="file" name="imagen" id="imagen" value="<%=producto.imagen%>" />
                                     <input type="hidden" name="currentImage" value="<%= producto.imagen %>">

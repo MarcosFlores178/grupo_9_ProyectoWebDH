@@ -96,5 +96,8 @@ router.delete(
   adminMiddleware,
   productsController.deleteProduct
 );
+//--------------------------------------Destacados-----------------------------------------------------------
+
+
 
 module.exports = router;

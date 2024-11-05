@@ -621,10 +621,26 @@ const productsController = {
     try {
       const productos = await db.Producto.findAll({
         where: {
+      [Sequelize.Op.or]: [
+        {
           nombre: {
             [Sequelize.Op.like]: `%${query}%`
           }
+        },
+        {
+          '$Marca.descripcion$': {
+            [Sequelize.Op.like]: `%${query}%`
+          }
         }
+      ]
+    },
+    include: [
+      {
+        model: db.Marca,
+        as: 'marca', 
+        attributes: ['descripcion'] // Incluir sólo el campo necesario de la marca
+      }
+    ]
       });
       res.render('products/resultadosBusqueda', { productos, query })
     } catch (error) {
