@@ -25,7 +25,13 @@
                       <h2>
                         <%= product.nombre %>
                       </h2><br>
-                      <h3>$ <%= product.precio %>
+                      <% if (product.oferta) { %>
+                        <p class="normal">$ <%= product.precio %></p>
+                        <p class="precio-final"> $ <%= (product.precio * (1 - product.descuento / 100)).toFixed(2) %> <span class="descuento"> <%= product.descuento %>%  OFF <span></span></p>
+                    <% } else { %>
+                        <p>$ <%= product.precio %></p>
+                    <% } %> 
+                      <!-- <h3>$ <%= product.precio %> -->
                       </h3><br>
                       <i class="fas fa-truck"></i>
                     </article>
