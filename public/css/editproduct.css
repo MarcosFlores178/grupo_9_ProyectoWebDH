@@ -133,15 +133,14 @@ body {
         background-color: #585858;
     }
 }
-.image-preview {
-    margin-top: 10px;
-  }
+
   
-  .image-preview img {
+  .image-preview img{
       max-width: 150px;
       margin-left: 20px;
       border: solid 1px #adbadd;
       border-radius: 10px;
+      margin-top: 10px;
   }
 /*-------CSS de button-top.ejs-------*/
 .button-index {
