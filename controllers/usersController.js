@@ -12,8 +12,10 @@ const usersController = {
   userList: null,
   user: null,
   showLogin: (req, res) => {
+    let successMessage = req.flash('successMessage')[0] || ''; //esta linea hace que si hay un mensaje de éxito, entonces se muestre en la vista. Y si no hay un mensaje de éxito, entonces no se muestre en la vista. Este req.flash viene desde el backend, desde el método el cual configura el success message y luego redirige el flujo hacia esta ruta/método. Y el [0] es para que se muestre el mensaje de éxito en la vista. Si no se pone el [0], entonces no se mostrará el mensaje de éxito en la vista. 
+
     usuario = req.session.user
-    res.render("users/login", {usuario});
+    res.render("users/login", {usuario, successMessage});
   },
   login: async (req, res) => {
     const { email, password } = req.body;
@@ -93,6 +95,8 @@ const usersController = {
       // Intenta crear el nuevo usuario
       try {
         await db.Usuario.create(newUser);
+        req.flash('successMessage', 'Usuario registrado con éxito.'); //No sé a dónde va este mensaje. El mensaje que sale es el de el ejs
+      // res.redirect(`/users/perfil`);
         res.redirect('/users/login'); // Redirige después de la creación exitosa
       } catch (error) {
         console.error(error);

@@ -35,6 +35,17 @@
             </form>
             <%-include ('../partials/footer.ejs')%>
             <script src="/js/login.js"></script>
+            <% if (successMessage && successMessage.length > 0) { %>
+              <script>
+                  Swal.fire({
+                      title: 'Usuario creado con éxito',
+                      text: '<%= successMessage %>',
+                      icon: 'success',
+                      confirmButtonText: 'Aceptar'
+                  });
+                  </script>
+              
+              <% } %>
   </body>
 
 </html>

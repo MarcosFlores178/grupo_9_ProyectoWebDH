@@ -16,8 +16,8 @@ router.get("/register", logregMiddleware, usersController.showRegister);
 
 //----------------------------------------Validar Registro Back----------------------------------
 const validator = [
-  body('nombre').notEmpty().trim().withMessage('Ingrese su nombre'),
-  body('apellido').notEmpty().trim().withMessage('Ingrese su apellido'),
+  body('nombre').isLength({min: 2}).withMessage('Nombre debe tener más de 1 caracter').notEmpty().trim().withMessage('Ingrese su nombre'),
+  body('apellido').isLength({min: 2}).withMessage('Apellido debe tener más de 1 caracter').notEmpty().trim().withMessage('Ingrese su apellido'),
   body('dni').isInt().trim().withMessage('Ingrese su dni'),
   body('telefono').isInt().trim().withMessage('Ingrese su teléfono'),
   body('domicilio').notEmpty().trim().withMessage('Ingrese su domicilio'),
