@@ -46,6 +46,17 @@
                   </script>
               
               <% } %>
+              <% if (errorMessage && errorMessage.length> 0) { %>
+                <script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: '<%= errorMessage %>',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>
+
+                <% } %>
   </body>
 
 </html>
