@@ -58,10 +58,12 @@ const usersController = {
   },
   showRegister: (req, res) => {
     // res.render("users/register");
-    const countryList = Object.values(countries).map(country => country.name);
+    let errorMessage = req.flash('ValErrorMessage')[0] || ''; // Recuperar el mensaje de error
+    let countryList = Object.values(countries).map(country => country.name);
     // let errores = validationResult(req);
     // mapsDeError = undefined;
-    res.render('users/register', { countries: countryList, mapsDeError: {} });
+    console.log('error message en el showregister:', errorMessage);
+    res.render('users/register', { countries: countryList, mapsDeError: {}, errorMessage });
   },
   register: async (req, res) => {
     let errores = validationResult(req);
@@ -82,6 +84,25 @@ const usersController = {
         tipoUsuario,
         foto,
       } = req.body;
+      console.log('justo antes del try')
+      try {
+        // Verificar si el email ya está registrado
+        const emailExistente = await Usuario.findOne({
+          where: { email }
+        });
+  
+        if (emailExistente) {
+          req.flash('ValErrorMessage', 'El email ya está registrado');
+          let errorMessage = req.flash('ValErrorMessage')[0] || '';
+          return res.render("users/register", {
+            mapsDeError: { email: { msg: 'El email ya está registrado' } },
+            old: req.body,
+            countries: countryList,
+            errorMessage
+          });
+        }
+        console.log('emailExistente:', emailExistente);
+
       const newUser = {
         // id: uuidv4(),
         // id: crypto.randomUUID(),
@@ -99,7 +120,18 @@ const usersController = {
         foto_perfil: fotoUsuario,
       };
       // Intenta crear el nuevo usuario
-      try {
+      // const emailExistente = await Usuario.findOne({
+      //   where: { email }
+      // });
+      // if (emailExistente) {
+      //   req.flash('ValErrorMessage', 'El email ya está registrado');
+      //   return res.render("users/register", {
+      //     mapsDeError: { email: { msg: 'El email ya está registrado' } },
+      //     old: req.body,
+      //     countries: countryList
+      //   });
+      // }
+      // try {
         await db.Usuario.create(newUser);
         req.flash('successMessage', 'Usuario registrado con éxito.'); //No sé a dónde va este mensaje. El mensaje que sale es el de el ejs
         // res.redirect(`/users/perfil`);
@@ -113,10 +145,12 @@ const usersController = {
 
     } else {
       // Si hay errores de validación, renderiza el formulario con los errores
+      console.log('errores:', errores.mapped());
       return res.render("users/register", {
         mapsDeError: errores.mapped(),
         old: req.body,
-        countries: countryList
+        countries: countryList,
+        errorMessage: 'Complete los campos requeridos'
       });
     }
 

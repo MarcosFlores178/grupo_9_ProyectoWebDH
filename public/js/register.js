@@ -284,7 +284,7 @@ console.log('este es el cuarto script de register.js');
             document.getElementById('formulario').submit();
 
             // Aquí se puede proceder con el envío del formulario si es válido
-            alert('Formulario enviado con éxito.');
+            // alert('Formulario enviado con éxito.');
             console.log('Formulario enviado con éxito.');
             console.log(formIsValid);
 

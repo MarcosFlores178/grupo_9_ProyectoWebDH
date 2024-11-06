@@ -339,6 +339,17 @@
                 </main>
                 <%-include ('../partials/footer.ejs')%>
                 <script src="/js/register.js"></script>
+                <% if (errorMessage && errorMessage.length> 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    </script>
+
+                    <% } %>
 
     </body>
 
