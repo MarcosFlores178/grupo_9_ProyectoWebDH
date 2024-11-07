@@ -25,6 +25,12 @@ body {
     display: flex;
     text-align: center;
     justify-content: center;
+    
+}
+.nuestrosp{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 .products-title {
     font-size: 42px;
