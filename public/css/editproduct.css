@@ -38,6 +38,7 @@ body {
   #charCounter.error {
     color: red; /* Color rojo si el número de caracteres es menor al mínimo */
   }
+
 .cargaproducto{
     width: auto;
     display: flex;
@@ -60,7 +61,7 @@ body {
         div {
             display: flex;
             align-items: center;
-            margin: 15px 0;
+            margin: 10px 0;
             justify-content: center;
 
             input {
@@ -78,6 +79,10 @@ body {
                 margin-left: 2%;
                 font-size: large;
             }
+
+            select {
+                margin: 8px 25px 5px 10px;
+              }
         }
     }
 
@@ -129,6 +134,14 @@ body {
     }
 }
 
+  
+  .image-preview img{
+      max-width: 150px;
+      margin-left: 20px;
+      border: solid 1px #adbadd;
+      border-radius: 10px;
+      margin-top: 10px;
+  }
 /*-------CSS de button-top.ejs-------*/
 .button-index {
     position: fixed;

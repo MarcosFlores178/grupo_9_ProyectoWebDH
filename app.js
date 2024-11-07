@@ -41,5 +41,5 @@ app.use("/products", rutaProducts);
 app.use("/", rutaMain);
 
 app.listen(port, () => {
-  console.log("Servidor corriendo en el puerto 8080");
+  console.log("Servidor corriendo en el puerto", port);
 });

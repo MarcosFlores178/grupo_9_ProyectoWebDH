@@ -141,12 +141,12 @@ const productsController = {
             as: "categoria",
             include: [
               {
-                model: db.Categoria,
-                as: "subcategoria",
+                model: db.Categoria,  //Modifiqué y agregue relaciones, ya que este metodo sólo funciona con relaciones belongsTo. Los otros metodos funcionan con hasMany, los metodos mostrarproductos y demas. Debo investigarlo.
+                as: "subca",
                 include: [
                   {
                     model: db.Categoria,
-                    as: "tiposProducto",
+                    as: "tiposPro",
                   }
                 ]
               }
@@ -159,8 +159,8 @@ const productsController = {
         return res.status(404).send("Producto no encontrado");
       }
       const categoria = producto.categoria;
-      const subcategoria = categoria?.subcategoria || null;
-      const tipoProducto = subcategoria?.tiposProducto || null;
+      const subcategoria = categoria?.subca || null;
+      const tipoProducto = subcategoria?.tiposPro || null;
       return res.render("products/details-product2", {
         producto,
         usuario,
@@ -306,11 +306,11 @@ const productsController = {
             include: [
               {
                 model: db.Categoria,
-                as: "subcategoria",
+                as: "subca",
                 include: [
                   {
                     model: db.Categoria,
-                    as: "tiposProducto",
+                    as: "tiposPro",
                   }
                 ]
               }
@@ -318,15 +318,16 @@ const productsController = {
           }
         ],
       });
+      //ETE METODO USO PARA OBTENER LOS DATOS DE LAS CATEGORIAS, SUBCATEGORIAS Y TIPOS DE PRODUCTOS. HABIA ERROR PORQUE ESTABA NOMBRANDO A LAS VARIABLES DE FORMA INCORRECTA, LE PONIA "SUBCATEGORIA" Y "CATEGORIA", Y LOS RENOMBRÉ COMO "subcategoriaEditado" Y "categoriaEditado" PARA QUE NO HAYA ERROR.
       let tipo = producto.id_categoria;
       let productoEditado = await db.Categoria.findByPk(tipo);
-      let subcategoria = await db.Categoria.findByPk(productoEditado.parent_id);
-      let categoria = await db.Categoria.findByPk(subcategoria.parent_id);
+      let subcategoriaEditado = await db.Categoria.findByPk(productoEditado.parent_id);
+      let categoriaEditado = await db.Categoria.findByPk(subcategoriaEditado.parent_id);
 
       console.log('tipo:', tipo);
       console.log('productoEditado:', productoEditado);
-      console.log('subcategoria:', subcategoria);
-      console.log('categoria:', categoria);
+      console.log('subcategoria:', subcategoriaEditado);
+      console.log('categoria:', categoriaEditado);
       // Verificar si el producto existe
       if (!producto) {
         return res.status(404).send("Producto no encontrado.");
@@ -349,13 +350,13 @@ const productsController = {
         }
       });
 
-      // Definir los IDs de categoría, subcategoría y tipo de producto actuales del producto
-      const productoCategoriaId = producto.categoria ? producto.categoria.id : null;
-      const productoSubcategoriaId = producto.categoria && producto.categoria.subcategoria ? producto.categoria.subcategoria.id : null; // Acceso correcto
-      const productoTipoId = producto.categoria && producto.categoria.subcategoria && producto.categoria.subcategoria.tiposProducto ? producto.categoria.subcategoria.tiposProducto.id : null;
-      console.log(productoCategoriaId);
-      console.log(productoSubcategoriaId);
-      console.log(productoTipoId);
+      // Definir los IDs de categoría, subcategoría y tipo de producto actuales del producto. SE USAN EL NOMBRE DE LAS RELACIONES!!! ES OTRA FORMA DE ACCEDER A LOS DATOS DE LAS CATEGORIAS. ESTA FORMA NO LA USO
+      const productoTipo = producto.categoria ? producto.categoria : null;
+      const productoSubcategoria = producto.categoria && producto.categoria.subca ? producto.categoria.subca : null; // Acceso correcto
+      const productoCategoria = producto.categoria && producto.categoria.subca && producto.categoria.subca.tiposPro ? producto.categoria.subca.tiposPro : null;
+      console.log('1',productoTipo);
+      console.log('2',productoSubcategoria);
+      console.log('3',productoCategoria);
       // Renderizar la vista
       res.render("products/editproduct", {
         producto,
@@ -366,8 +367,11 @@ const productsController = {
         successMessage,
         categoriasPrincipales,
         productoEditado,
-        subcategoria,
-        categoria
+        subcategoriaEditado,
+        categoriaEditado,
+        productoTipo,
+        productoSubcategoria,
+        productoCategoria
       });
     } catch (error) {
       console.error("Error en showEditForm:", error);
@@ -403,6 +407,7 @@ const productsController = {
             precio: req.body.precio,
             id_talle: req.body.talle,
             id_marca: req.body.marca,
+            id_categoria: req.body.tipoProducto,
             oferta: req.body.oferta === "on",
             descuento: parseFloat(req.body.descuento) || 0,
           },
@@ -616,10 +621,26 @@ const productsController = {
     try {
       const productos = await db.Producto.findAll({
         where: {
+      [Sequelize.Op.or]: [
+        {
           nombre: {
             [Sequelize.Op.like]: `%${query}%`
           }
+        },
+        {
+          '$Marca.descripcion$': {
+            [Sequelize.Op.like]: `%${query}%`
+          }
         }
+      ]
+    },
+    include: [
+      {
+        model: db.Marca,
+        as: 'marca', 
+        attributes: ['descripcion'] // Incluir sólo el campo necesario de la marca
+      }
+    ]
       });
       res.render('products/resultadosBusqueda', { productos, query })
     } catch (error) {
