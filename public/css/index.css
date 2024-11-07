@@ -374,7 +374,7 @@ img {
 
 div .card-ofertas{
     position: relative;
-    width: 100px;
+    width: 200px;
     border-radius: 200px;
     z-index: 2;
 }
