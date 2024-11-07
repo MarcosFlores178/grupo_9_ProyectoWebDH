@@ -363,7 +363,7 @@ img {
 }
 
 .card-ofertas {
-
+    width: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -372,10 +372,10 @@ img {
        
 }
 
-div .card-ofertas{
+.categorias .card-ofertas{
     position: relative;
     width: 200px;
-    border-radius: 200px;
+    border-radius: 500px;
     z-index: 2;
 }
 
