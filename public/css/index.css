@@ -268,7 +268,6 @@ nav.menu-categorias {
 /*---------------------------------------------Carrusel 2-----------------------------------------*/
 .carrusel {
     z-index: -9999;
-   /* display: none; */
     position: relative;
     margin: auto;
     overflow: hidden;
@@ -284,10 +283,10 @@ nav.menu-categorias {
     box-sizing: border-box;
 }
 
-/*img {
+img {
     width: 100%;
     display: block;
-}*/
+}
 
 .prev {
     left: 10px;
@@ -404,7 +403,7 @@ div .card-ofertas{
 .card-bocaRiver {
     width: 600px;
     height: 400px;
-    margin: 1px ;
+    margin: 10px ;
     transition: all 0.5s ease-in-out;
     border: 2px solid #0056b3;
     border-radius: 20px;
