@@ -15,9 +15,6 @@ module.exports = function (sequelize, dataTypes) {
     cantidad: {
       type: dataTypes.INTEGER,
     },
-    id_usuario: {
-      type: dataTypes.INTEGER,
-    },
     total: {
       type: dataTypes.DECIMAL(10, 2),
     },
