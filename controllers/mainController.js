@@ -1,14 +1,33 @@
+const db = require("../database/models");
+const fs = require("fs");
+const path = require("path");
+const { validationResult } = require('express-validator');
+const dataSource = require("../service/dataSource.js");
+const { Sequelize, where } = require("sequelize");
+const { Op } = require('sequelize');
 const mainController = {
-  showIndex: (req, res) => {
+  showIndex: async (req, res) => {
     let usuario = null;
-    // console.log(usuario);
+  
+    // Verifica si el usuario está logueado
     if (req.session.user) {
       usuario = req.session.user;
-      return res.render("main/index", { usuario });
     } else {
       usuario = false;
-      return res.render("main/index", { usuario });
-      // return res.render("main/index");
+    }
+  
+    try {
+      // Obtén productos aleatorios
+      const randomProducts = await db.Producto.findAll({
+        order: Sequelize.literal('RAND()'), // Ordena aleatoriamente
+        limit: 9, // Cambia este número para ajustar la cantidad de productos
+      });
+  
+      // Renderiza la vista con el usuario y los productos aleatorios
+      return res.render("main/index", { usuario, randomProducts });
+    } catch (error) {
+      console.error("Error al obtener productos aleatorios:", error);
+      res.status(500).send("Hubo un error al cargar los productos.");
     }
   },
   showAll: async (req, res) => {
