@@ -62,34 +62,7 @@
 </div>
 <!--------------------------------------------------------------------------------------->
 
-<div class="aleatorios">
 
-  <div class="todos-los-productos">
-    <section>
-      <% randomProducts.forEach(product=>{%>
-        <a class="card-ejs" href="/products/detail/<%= product.id %>">
-          <figure class="">
-            <img src="/images/products/<%= product.imagen  %>" alt="imagen de producto" />
-          </figure>
-          <article class="product-ejs">
-            <h2>
-              <%= product.nombre %>
-            </h2><br>
-            <% if (product.oferta) { %>
-              <p class="normal">$ <%= product.precio %></p>
-              <p class="precio-final"> $ <%= (product.precio * (1 - product.descuento / 100)).toFixed(2) %> <span class="descuento"> <%= product.descuento %>%  OFF <span></span></p>
-          <% } else { %>
-              <p>$ <%= product.precio %></p>
-          <% } %> 
-            <!-- <h3>$ <%= product.precio %> -->
-            </h3><br>
-            <i class="fas fa-truck"></i>
-          </article>
-        </a>
-        <%})%>
-    </section><br>
-  </div>
-</div>
 <!--------------------------------------------------------------------------------------->
 
 
