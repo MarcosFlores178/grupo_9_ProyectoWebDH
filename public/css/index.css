@@ -203,10 +203,18 @@ main section img{
 .search-bar button:hover {
     background-color: #365f9b;
 }
-
+.cat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 2rem;
+    /* padding-bottom: 2rem; */
+    font-family: 'roboto';
+}
 .most-searched {
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    /* padding-bottom: 2rem; */
     text-align: center;
     font-family: 'roboto';
 }
@@ -357,7 +365,30 @@ img {
     transform: scale(1.05); 
     box-shadow: 0px 0px 10px rgb(71, 71, 71);
 }
+/* Contenedor del div que rodea la imagen */
+#ofertas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease-in-out;
+}
 
+/* Estilo de la imagen */
+.card-ofertas {
+    position: relative;
+    width: 20%; /* Ajusta el tamaño de la imagen según tus necesidades */
+    max-width:100px; /* Limita el tamaño máximo */
+    border-radius: 200px;
+    transition: transform 0.5s ease-in-out; /* Transición suave */
+    z-index: 2; /* Asegura que la imagen esté por encima de otros elementos */
+}
+
+/* Efecto hover para aumentar la imagen */
+.card-ofertas:hover {
+    transform: scale(1.5);
+    box-shadow: 0px 0px 10px rgb(71, 71, 71);
+}
+/* 
 .card-ofertas {
 
     display: flex;
@@ -365,12 +396,13 @@ img {
     justify-content: center;
     transition: all 0.5s ease-in-out;
     border: 5px solid #0056b3;
+    width: 10%;
        
 }
 
 div .card-ofertas{
     position: relative;
-    width: 200px;
+    width: 20%;
     border-radius: 200px;
     z-index: 2;
 }
@@ -379,7 +411,7 @@ div .card-ofertas{
 .card-ofertas:hover {
     transform: scale(1.5); 
     box-shadow: 0px 0px 10px rgb(71, 71, 71)
-}
+} */
 
 .card-accesorios {
     position: relative;

@@ -34,6 +34,7 @@
 <div class="aleatorios">
 
   <div class="todos-los-productos">
+    <h2 class="algunos">Algunos de nuestros productos:</h2>
     <section>
       <% randomProducts.forEach(product=>{%>
         <a class="card-ejs" href="/products/detail/<%= product.id %>">
@@ -83,7 +84,9 @@
                   
                   
                   <section>
+                    <div class="cat">
                     <h2 class="most-searched">CATEGORIAS</h2>
+                  </div>
                     <div class="categorias">
                      <div class="image-top-left"><a href="/products/categorias?categoriaId=1"><img class="card-hombre" src="images/FLYERHOMBRE.jpg" alt="categoria hombres" /></a></div>
                      <div class="image-top-rigth"><a href="/products/categorias?categoriaId=2"><img class="card-mujer" src="images/flyermujer.jpg" alt="categoria hombres" /></a></div><hr>

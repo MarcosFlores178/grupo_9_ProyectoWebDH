@@ -12,6 +12,15 @@ body {
     padding: 2%;
     
 }
+.algunos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+    font-size: 38px;
+}
 .nuestrosp{
     display: flex;
     text-align: center;
