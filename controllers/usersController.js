@@ -9,6 +9,9 @@ const Marca = db.Marca;
 const Usuario = db.Usuario;
 const Talle = db.Talle;
 const usersController = {
+  somos: (req, res) => {
+    res.render("users/somosgooolstore");
+  },
   userList: null,
   user: null,
   showLogin: (req, res) => {

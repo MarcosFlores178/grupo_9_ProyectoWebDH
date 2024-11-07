@@ -7,7 +7,7 @@ const logregMiddleware = require("../middlewares/logregMiddelware");
 const validateCurrentPassword = require("../middlewares/changePassword");
 
 router.get("/login", logregMiddleware, usersController.showLogin);
-
+router.get("/somosgooolstore", usersController.somos);
 router.post("/login", usersController.login);
 
 router.get("/logout", usersController.logout);
