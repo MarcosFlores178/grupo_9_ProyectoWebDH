@@ -10,10 +10,20 @@ body {
     width: 100%;
     text-align: center;
     padding: 2%;
+    
+}
+.nuestrosp{
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 .products-title {
-    font-size: xx-large;
-    margin-bottom: 20px;
+    font-size: 42px;
+    margin-bottom: 5rem;
+    margin-top: 2rem;
+    text-align: center;
+    /* margin: auto; */
+
 }
 .banner{
     width: 100%;
