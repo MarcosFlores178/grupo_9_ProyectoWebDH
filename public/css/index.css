@@ -312,6 +312,10 @@ img {
     cursor: pointer;
 }
 
+.productos-home {
+    margin: 10px;
+}
+
 .card-hombre {
     position: relative;
     transition: all 0.5s ease-in-out;
@@ -370,7 +374,7 @@ img {
 
 div .card-ofertas{
     position: relative;
-    width: 200px;
+    width: 100px;
     border-radius: 200px;
     z-index: 2;
 }
