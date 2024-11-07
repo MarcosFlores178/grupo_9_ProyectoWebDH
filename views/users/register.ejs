@@ -333,12 +333,23 @@
                         </div>
                         <div class="style-div-botones">
                             <button class="boton-aceptar" type="submit">Aceptar</button>
-                            <button class="boton-cancelar" type="reset">Cancelar</button><br>
+                            <button class="boton-cancelar" type="reset" onclick="location.href='/';">Cancelar</button><br>
                         </div>
                     </form>
                 </main>
                 <%-include ('../partials/footer.ejs')%>
                 <script src="/js/register.js"></script>
+                <% if (errorMessage && errorMessage.length> 0) { %>
+                    <script>
+                        Swal.fire({
+                            title: 'Error',
+                            text: '<%= errorMessage %>',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    </script>
+
+                    <% } %>
 
     </body>
 

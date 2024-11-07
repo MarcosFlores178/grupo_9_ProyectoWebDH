@@ -35,6 +35,28 @@
             </form>
             <%-include ('../partials/footer.ejs')%>
             <script src="/js/login.js"></script>
+            <% if (successMessage && successMessage.length > 0) { %>
+              <script>
+                  Swal.fire({
+                      title: 'Usuario creado con éxito',
+                      text: '<%= successMessage %>',
+                      icon: 'success',
+                      confirmButtonText: 'Aceptar'
+                  });
+                  </script>
+              
+              <% } %>
+              <% if (errorMessage && errorMessage.length> 0) { %>
+                <script>
+                    Swal.fire({
+                        title: 'Error',
+                        text: '<%= errorMessage %>',
+                        icon: 'error',
+                        confirmButtonText: 'Aceptar'
+                    });
+                </script>
+
+                <% } %>
   </body>
 
 </html>
