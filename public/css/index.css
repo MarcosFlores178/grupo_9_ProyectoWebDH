@@ -203,12 +203,22 @@ main section img{
 .search-bar button:hover {
     background-color: #365f9b;
 }
+.cat{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 2rem;
+    /* padding-bottom: 2rem; */
+    font-family: 'roboto';
+}
 
 .most-searched {
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
     font-family: 'roboto';
+    font-size: 40px;
 }
 
 .categorias {
